@@ -3,16 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maia Mak Ke Xin | Portfolio</title>
+    <title>Maia Mak Ke Xin | Interactive Portfolio</title>
     <style>
         :root {
-            --primary: #4f46e5;
-            --primary-hover: #4338ca;
-            --bg: #f8fafc;
-            --card-bg: #ffffff;
-            --text-main: #0f172a;
-            --text-muted: #475569;
-            --border: #e2e8f0;
+            --primary: #6366f1;
+            --primary-hover: #4f46e5;
+            --accent: #ec4899;
+            --bg-gradient: linear-gradient(135deg, #f0f4ff 0%, #fae8ff 100%);
+            --card-bg: rgba(255, 255, 255, 0.85);
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: rgba(226, 232, 240, 0.8);
+            --shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.1), 0 8px 10px -6px rgba(99, 102, 241, 0.05);
         }
 
         * {
@@ -23,14 +25,18 @@
         }
 
         body {
-            background-color: var(--bg);
+            background: var(--bg-gradient);
+            background-attachment: fixed;
             color: var(--text-main);
             line-height: 1.6;
             padding-bottom: 60px;
+            min-height: 100vh;
         }
 
+        /* Glassmorphism Header */
         .header {
-            background: var(--card-bg);
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border);
             position: sticky;
             top: 0;
@@ -38,7 +44,7 @@
         }
 
         .nav-container {
-            max-width: 1000px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 1rem 2rem;
             display: flex;
@@ -47,115 +53,191 @@
         }
 
         .logo {
-            font-weight: 700;
-            font-size: 1.25rem;
-            color: var(--primary);
+            font-weight: 800;
+            font-size: 1.35rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .lang-btn {
-            background: var(--primary);
+            background: linear-gradient(135deg, var(--primary), #8b5cf6);
             color: white;
             border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
+            padding: 0.5rem 1.25rem;
+            border-radius: 20px;
             cursor: pointer;
             font-weight: 600;
-            transition: background 0.2s;
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.25);
+            transition: all 0.3s ease;
         }
 
         .lang-btn:hover {
-            background: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(99, 102, 241, 0.35);
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 2rem;
+            padding: 2rem 1.5rem;
         }
 
+        /* Hero Card */
         .hero {
             background: var(--card-bg);
-            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
             padding: 2.5rem;
-            border: 1px solid var(--border);
+            border: 1px solid white;
+            box-shadow: var(--shadow);
             margin-bottom: 2rem;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
+            animation: fadeInDown 0.8s ease-out;
         }
 
         .hero h1 {
             font-size: 2.25rem;
             color: var(--text-main);
+            margin-bottom: 0.25rem;
         }
 
         .hero h2 {
-            font-size: 1.25rem;
+            font-size: 1.15rem;
             color: var(--primary);
             font-weight: 600;
+            margin-bottom: 1rem;
         }
 
         .contact-info {
             display: flex;
             flex-wrap: wrap;
-            gap: 1.5rem;
-            margin-top: 1rem;
-            color: var(--text-muted);
-            font-size: 0.95rem;
+            gap: 1rem;
+            margin-top: 1.25rem;
+            font-size: 0.9rem;
         }
 
-        .contact-info a {
-            color: var(--primary);
-            text-decoration: none;
-        }
-
-        .section {
-            background: var(--card-bg);
+        .contact-pill {
+            background: #ffffff;
+            padding: 0.4rem 0.9rem;
             border-radius: 12px;
-            padding: 2rem;
             border: 1px solid var(--border);
-            margin-bottom: 2rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
         }
 
-        .section-title {
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--text-main);
-            border-bottom: 2px solid var(--bg);
-            padding-bottom: 0.5rem;
+        .contact-pill:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-2px);
         }
 
+        /* Metric Grid & Counters */
         .metric-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin-bottom: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+            gap: 1.25rem;
+            margin-bottom: 2rem;
         }
 
         .metric-card {
-            background: var(--bg);
-            padding: 1rem;
-            border-radius: 8px;
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 1rem;
+            border-radius: 16px;
+            border: 1px solid white;
+            box-shadow: var(--shadow);
             text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            border-color: var(--primary);
         }
 
         .metric-value {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary);
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .metric-label {
-            font-size: 0.875rem;
+            font-size: 0.85rem;
             color: var(--text-muted);
+            margin-top: 0.25rem;
+            font-weight: 500;
         }
 
-        .job {
-            margin-bottom: 2rem;
+        /* Interactive Navigation Tabs */
+        .tab-menu {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+            overflow-x: auto;
+            padding-bottom: 0.5rem;
         }
 
-        .job:last-child {
-            margin-bottom: 0;
+        .tab-btn {
+            background: rgba(255, 255, 255, 0.6);
+            border: 1px solid var(--border);
+            padding: 0.65rem 1.25rem;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--text-muted);
+            transition: all 0.25s ease;
+            white-space: nowrap;
+        }
+
+        .tab-btn:hover {
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--primary);
+        }
+
+        .tab-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.25);
+        }
+
+        /* Tab Content Section */
+        .tab-content {
+            display: none;
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid white;
+            box-shadow: var(--shadow);
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Interactive Timeline / Jobs */
+        .job-card {
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 14px;
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            margin-bottom: 1.25rem;
+            transition: all 0.3s ease;
+        }
+
+        .job-card:hover {
+            background: #ffffff;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.05);
+            border-color: rgba(99, 102, 241, 0.3);
         }
 
         .job-header {
@@ -163,52 +245,93 @@
             justify-content: space-between;
             align-items: flex-start;
             flex-wrap: wrap;
-            margin-bottom: 0.5rem;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
         }
 
         .job-title {
             font-weight: 700;
             font-size: 1.1rem;
+            color: var(--text-main);
         }
 
         .job-company {
             color: var(--primary);
             font-weight: 600;
+            font-size: 0.95rem;
         }
 
-        .job-date {
-            color: var(--text-muted);
-            font-size: 0.875rem;
+        .job-badge {
+            background: #e0e7ff;
+            color: var(--primary);
+            padding: 0.2rem 0.6rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
         }
 
         .job ul {
-            list-style-position: inside;
+            padding-left: 1.2rem;
             color: var(--text-muted);
-            margin-top: 0.5rem;
+            font-size: 0.95rem;
         }
 
         .job li {
             margin-bottom: 0.4rem;
         }
 
+        /* Interactive Skill Tags */
         .tag-group {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
+            gap: 0.6rem;
+            margin-top: 0.75rem;
         }
 
         .tag {
-            background: #eeefbe;
-            color: #3730a3;
-            background-color: #e0e7ff;
-            padding: 0.35rem 0.75rem;
+            background: #ffffff;
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 0.4rem 0.85rem;
             border-radius: 20px;
-            font-size: 0.875rem;
+            font-size: 0.85rem;
             font-weight: 500;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .tag:hover {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            border-color: transparent;
+            transform: scale(1.05);
         }
 
         .lang-hide {
             display: none !important;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
@@ -222,182 +345,180 @@
     </header>
 
     <main class="container">
+        <!-- HERO SECTION -->
         <section class="hero">
             <div>
-                <h1>Maia Mak Ke Xin (麥可欣) [cite: 1]</h1>
-                <h2 class="lang-en">Regional Quality Assurance & Training Specialist [cite: 1]</h2>
+                <h1>Maia Mak Ke Xin (麥可欣)</h1>
+                <h2 class="lang-en">Regional Quality Assurance & Training Specialist</h2>
                 <h2 class="lang-zh lang-hide">区域质量保证 (QA) 与培训专家</h2>
             </div>
             
-            <p class="lang-en">Regional quality assurance and training specialist with experience leading high-volume audits, new-hire learning, calibration, compliance, and performance improvement across at least seven markets. [cite: 1]</p>
-            <p class="lang-zh lang-hide">拥有覆盖至少7个全球市场的质量保证 (QA) 及培训专家经验，擅长高强度质量审计、新员工入职培训、评分标定校准、合规管理及绩效提升。 [cite: 1]</p>
+            <p class="lang-en">Regional quality assurance and training specialist with experience leading high-volume audits, new-hire learning, calibration, compliance, and performance improvement across at least seven markets.</p>
+            <p class="lang-zh lang-hide">拥有覆盖至少7个全球市场的质量保证 (QA) 及培训专家经验，擅长高强度质量审计、新员工入职培训、评分标定校准、合规管理及绩效提升。</p>
 
             <div class="contact-info">
-                <span>📍 Selangor, Malaysia [cite: 4]</span>
-                <span>📞 +60 19-390 6809 [cite: 4]</span>
-                <span>✉️ <a href="mailto:kexin0410@gmail.com">kexin0410@gmail.com [cite: 4]</a></span>
+                <span class="contact-pill">📍 Selangor, Malaysia</span>
+                <a href="tel:+60193906809" class="contact-pill">📞 +60 19-390 6809</a>
+                <a href="mailto:kexin0410@gmail.com" class="contact-pill">✉️ kexin0410@gmail.com</a>
             </div>
         </section>
 
-        <section class="section">
-            <h3 class="section-title lang-en">Key Metrics & Impact</h3>
-            <h3 class="section-title lang-zh lang-hide">核心业绩与影响力</h3>
-            <div class="metric-grid">
-                <div class="metric-card">
-                    <div class="metric-value">80% ➔ >95%</div>
-                    <div class="metric-label lang-en">Tenured Agent QA Uplift (1 Month) [cite: 2, 6]</div>
-                    <div class="metric-label lang-zh lang-hide">资深员工 QA 成绩提升（1个月内） [cite: 2, 6]</div>
-                </div>
-                <div class="metric-card">
-                    <div class="metric-value">-80%</div>
-                    <div class="metric-label lang-en">Policy Violation Red Flags [cite: 2, 9, 16]</div>
-                    <div class="metric-label lang-zh lang-hide">违规政策风险降低 [cite: 2, 9, 16]</div>
-                </div>
-                <div class="metric-card">
-                    <div class="metric-value">90%+</div>
-                    <div class="metric-label lang-en">Scoring Calibration Alignment [cite: 2, 8]</div>
-                    <div class="metric-label lang-zh lang-hide">QA 团队评分标定一致性 [cite: 2, 8]</div>
-                </div>
-                <div class="metric-card">
-                    <div class="metric-value">$612K+</div>
-                    <div class="metric-label lang-en">Q4 Revenue Generated (Meta) [cite: 3, 23]</div>
-                    <div class="metric-label lang-zh lang-hide">单季度 (Q4) 创造广告收益 [cite: 3, 23]</div>
-                </div>
+        <!-- HIGHLIGHT METRICS (INTERACTIVE CARDS) -->
+        <div class="metric-grid">
+            <div class="metric-card" onclick="switchTab('experience')">
+                <div class="metric-value">80% ➔ >95%</div>
+                <div class="metric-label lang-en">Tenured Agent QA Uplift (1 Month)</div>
+                <div class="metric-label lang-zh lang-hide">资深员工 QA 成绩提升（1个月内）</div>
             </div>
-        </section>
+            <div class="metric-card" onclick="switchTab('experience')">
+                <div class="metric-value">-80%</div>
+                <div class="metric-label lang-en">Policy Violation Red Flags</div>
+                <div class="metric-label lang-zh lang-hide">违规政策风险降低</div>
+            </div>
+            <div class="metric-card" onclick="switchTab('experience')">
+                <div class="metric-value">90%+</div>
+                <div class="metric-label lang-en">Scoring Calibration Alignment</div>
+                <div class="metric-label lang-zh lang-hide">QA 团队评分标定一致性</div>
+            </div>
+            <div class="metric-card" onclick="switchTab('experience')">
+                <div class="metric-value">$612K+</div>
+                <div class="metric-label lang-en">Q4 Revenue Generated (Meta)</div>
+                <div class="metric-label lang-zh lang-hide">单季度 (Q4) 创造广告收益</div>
+            </div>
+        </div>
 
-        <section class="section">
-            <h3 class="section-title lang-en">Work Experience</h3>
-            <h3 class="section-title lang-zh lang-hide">工作经历</h3>
+        <!-- NAVIGATION TABS -->
+        <div class="tab-menu">
+            <button class="tab-btn active" onclick="switchTab('experience')">💼 <span class="lang-en">Experience</span><span class="lang-zh lang-hide">工作经历</span></button>
+            <button class="tab-btn" onclick="switchTab('skills')">⚡ <span class="lang-en">Skills & Tools</span><span class="lang-zh lang-hide">技能与工具</span></button>
+            <button class="tab-btn" onclick="switchTab('education')">🎓 <span class="lang-en">Education</span><span class="lang-zh lang-hide">教育与语言</span></button>
+        </div>
 
-            <div class="job">
+        <!-- TAB CONTENT: EXPERIENCE -->
+        <div id="experience" class="tab-content active">
+            <!-- HEYTEA -->
+            <div class="job-card">
                 <div class="job-header">
                     <div>
-                        <div class="job-title lang-en">Sr. Trainer / Quality Analyst (HEYTEA 喜茶) [cite: 5]</div>
-                        <div class="job-title lang-zh lang-hide">高级培训师 / 质量分析师 (喜茶 HEYTEA) [cite: 5]</div>
-                        <div class="job-company">Concentrix, KL Malaysia [cite: 5]</div>
+                        <div class="job-title lang-en">Sr. Trainer / Quality Analyst (HEYTEA 喜茶)</div>
+                        <div class="job-title lang-zh lang-hide">高级培训师 / 质量分析师 (喜茶 HEYTEA)</div>
+                        <div class="job-company">Concentrix, KL Malaysia</div>
                     </div>
-                    <div class="job-date">July 2026 - Present [cite: 5]</div>
+                    <span class="job-badge">July 2026 - Present</span>
                 </div>
                 <ul class="lang-en">
-                    <li>Lead quality assurance and learning operations for HEYTEA's global customer service across USA, CAD, APAC (HK, MY, SG, AUS), and Greater China (CN). [cite: 5]</li>
-                    <li>Conduct 50+ chat and email quality evaluations daily (250+ weekly) across 7+ global markets. [cite: 5]</li>
-                    <li>Uplifted tenured agent QA performance from an 80% baseline to >95% target within one month. [cite: 6]</li>
-                    <li>Led end-to-end New Hire Training programs and provided direct daily operational support for a team of 10 customer service agents. [cite: 7]</li>
-                    <li>Maintained 90%+ calibration alignment across the QA and leadership team. [cite: 8]</li>
+                    <li>Lead quality assurance and learning operations for HEYTEA's global customer service across USA, CAD, APAC (HK, MY, SG, AUS), and Greater China (CN).</li>
+                    <li>Conduct 50+ chat and email quality evaluations daily (250+ weekly) across 7+ global markets.</li>
+                    <li>Uplifted tenured agent QA performance from an 80% baseline to >95% target within one month.</li>
+                    <li>Led end-to-end New Hire Training programs and provided direct daily operational support for 10 CS agents.</li>
+                    <li>Maintained 90%+ calibration alignment across the QA and leadership team.</li>
                 </ul>
                 <ul class="lang-zh lang-hide">
-                    <li>主导喜茶 (HEYTEA) 涵盖美国、加拿大、亚太区（香港、马来西亚、新加坡、澳大利亚）及大中华区的全球客服质量保证及培训运营。 [cite: 5]</li>
-                    <li>每日执行 50+ 笔（每周 250+ 笔）跨多区域的在线聊天及邮件服务质量评估。 [cite: 5]</li>
-                    <li>通过针对性辅导，在一个月内将资深客服的 QA 达标率从 80% 提升至 95% 以上。 [cite: 6]</li>
-                    <li>负责新员工全流程培训，并直接辅导 10 人客服团队的日常运营。 [cite: 7]</li>
-                    <li>保持 QA 团队与管理层之间 90% 以上的高标定评估一致性。 [cite: 8]</li>
+                    <li>主导喜茶 (HEYTEA) 涵盖美国、加拿大、亚太区（香港、马来西亚、新加坡、澳大利亚）及大中华区的全球客服质量保证及培训运营。</li>
+                    <li>每日执行 50+ 笔（每周 250+ 笔）跨多区域的在线聊天及邮件服务质量评估。</li>
+                    <li>通过针对性辅导，在一个月内将资深客服的 QA 达标率从 80% 提升至 95% 以上。</li>
+                    <li>负责新员工全流程培训，并直接辅导 10 人客服团队的日常运营。</li>
+                    <li>保持 QA 团队与管理层之间 90% 以上的高标定评估一致性。</li>
                 </ul>
             </div>
 
-            <hr style="border: 0; border-top: 1px dashed var(--border); margin: 1.5rem 0;">
-
-            <div class="job">
+            <!-- META QA -->
+            <div class="job-card">
                 <div class="job-header">
                     <div>
-                        <div class="job-title lang-en">Sr. Quality Evaluator (META) [cite: 12]</div>
-                        <div class="job-title lang-zh lang-hide">高级质量评估师 (META) [cite: 12]</div>
-                        <div class="job-company">Concentrix, KL Malaysia [cite: 12]</div>
+                        <div class="job-title lang-en">Sr. Quality Evaluator (META)</div>
+                        <div class="job-title lang-zh lang-hide">高级质量评估师 (META)</div>
+                        <div class="job-company">Concentrix, KL Malaysia</div>
                     </div>
-                    <div class="job-date">Oct 2024 - June 2026 [cite: 12]</div>
+                    <span class="job-badge">Oct 2024 - June 2026</span>
                 </div>
                 <ul class="lang-en">
-                    <li>Led QA across Meta's SEA & Traditional Mandarin markets covering Sales, Technical, and Creative operations. [cite: 12]</li>
-                    <li>Conducted 80+ audits/month, leveraging internal QMS tools for consistent quality coverage. [cite: 13]</li>
-                    <li>Improved tenured agent QA scores from 65% to 80% and new hire scores from 50% to 75-85%. [cite: 14, 15]</li>
-                    <li>Reduced policy violation red flags by 80% by identifying compliance gaps. [cite: 16]</li>
-                    <li>Maintained 85%+ calibration alignment (ATA) across stakeholders. [cite: 17]</li>
+                    <li>Led QA across Meta's SEA & Traditional Mandarin markets covering Sales, Technical, and Creative operations.</li>
+                    <li>Conducted 80+ audits/month, leveraging internal QMS tools for consistent quality coverage.</li>
+                    <li>Improved tenured agent QA scores from 65% to 80% and new hire scores from 50% to 75-85%.</li>
+                    <li>Reduced policy violation red flags by 80% by identifying compliance gaps.</li>
+                    <li>Maintained 85%+ calibration alignment (ATA) across stakeholders.</li>
                 </ul>
                 <ul class="lang-zh lang-hide">
-                    <li>负责 Meta 东南亚及繁体中文市场的销售、技术与广告创意运营的 QA 质量监管。 [cite: 12]</li>
-                    <li>每月使用内部 QMS 质量管理系统完成 80+ 深度审计。 [cite: 13]</li>
-                    <li>将资深团队 QA 成绩从 65% 提升至 80%，新员工成绩从 50% 提升至 75-85%。 [cite: 14, 15]</li>
-                    <li>通过精准识别合规风险漏洞，将政策违规红旗率降低了 80%。 [cite: 16]</li>
-                    <li>主持标定会议，确保团队对齐度 (ATA) 维持在 85% 以上。 [cite: 17]</li>
+                    <li>负责 Meta 东南亚及繁体中文市场的销售、技术与广告创意运营的 QA 质量监管。</li>
+                    <li>每月使用内部 QMS 质量管理系统完成 80+ 深度审计。</li>
+                    <li>将资深团队 QA 成绩从 65% 提升至 80%，新员工成绩从 50% 提升至 75-85%。</li>
+                    <li>通过精准识别合规风险漏洞，将政策违规红旗率降低了 80%。</li>
+                    <li>主持标定会议，确保团队对齐度 (ATA) 维持在 85% 以上。</li>
                 </ul>
             </div>
 
-            <hr style="border: 0; border-top: 1px dashed var(--border); margin: 1.5rem 0;">
-
-            <div class="job">
+            <!-- META SALES -->
+            <div class="job-card">
                 <div class="job-header">
                     <div>
-                        <div class="job-title lang-en">Sales Advisor II (META Marketing Pro) [cite: 23]</div>
-                        <div class="job-title lang-zh lang-hide">高级销售顾问 (META 营销专家) [cite: 23]</div>
-                        <div class="job-company">Concentrix, KL Malaysia [cite: 23]</div>
+                        <div class="job-title lang-en">Sales Advisor II (META Marketing Pro)</div>
+                        <div class="job-title lang-zh lang-hide">高级销售顾问 (META 营销专家)</div>
+                        <div class="job-company">Concentrix, KL Malaysia</div>
                     </div>
-                    <div class="job-date">Feb 2023 - Oct 2024 [cite: 23]</div>
+                    <span class="job-badge">Feb 2023 - Oct 2024</span>
                 </div>
                 <ul class="lang-en">
-                    <li>Generated USD 612,458 in Q4 2023 revenue by optimizing advertiser performance. [cite: 23]</li>
-                    <li>Increased client conversion rates by 185.71% while reducing cost per result by 64.28%. [cite: 24]</li>
-                    <li>Managed 150+ advertiser accounts per quarter across varying budget tiers ($1K-$50K). [cite: 25]</li>
-                    <li>Recognized as CNX SBG Rockstar (Q4 2023) for outstanding revenue contribution. [cite: 27]</li>
+                    <li>Generated USD 612,458 in Q4 2023 revenue by optimizing advertiser performance.</li>
+                    <li>Increased client conversion rates by 185.71% while reducing cost per result by 64.28%.</li>
+                    <li>Managed 150+ advertiser accounts per quarter across varying budget tiers ($1K-$50K).</li>
+                    <li>Recognized as CNX SBG Rockstar (Q4 2023) for outstanding revenue contribution.</li>
                 </ul>
                 <ul class="lang-zh lang-hide">
-                    <li>在 2023 年第四季度通过优化广告主投放策略，创造了 612,458 美元的收益。 [cite: 23]</li>
-                    <li>将客户转化率提升了 185.71%，同时将单次结果成本降低了 64.28%。 [cite: 24]</li>
-                    <li>每季度管理 150+ 广告主账户，预算跨越 1 千至 5 万美元不等。 [cite: 25]</li>
-                    <li>因卓越的业绩表现荣获 2023 年 Q4 "CNX SBG Rockstar" 奖项。 [cite: 27]</li>
+                    <li>在 2023 年第四季度通过优化广告主投放策略，创造了 612,458 美元的收益。</li>
+                    <li>将客户转化率提升了 185.71%，同时将单次结果成本降低了 64.28%。</li>
+                    <li>每季度管理 150+ 广告主账户，预算跨越 1 千至 5 万美元不等。</li>
+                    <li>因卓越的业绩表现荣获 2023 年 Q4 "CNX SBG Rockstar" 奖项。</li>
                 </ul>
             </div>
-        </section>
+        </div>
 
-        <section class="section">
-            <h3 class="section-title lang-en">Core Skills & Tools</h3>
-            <h3 class="section-title lang-zh lang-hide">核心技能与工具</h3>
-            
-            <div style="margin-bottom: 1rem;">
-                <strong style="display: block; margin-bottom: 0.5rem;" class="lang-en">Core Competencies [cite: 46, 47]</strong>
-                <strong style="display: block; margin-bottom: 0.5rem;" class="lang-zh lang-hide">核心专业能力 [cite: 46, 47]</strong>
-                <div class="tag-group">
-                    <span class="tag">QA Audit & Compliance [cite: 46]</span>
-                    <span class="tag">Calibration Alignment [cite: 46]</span>
-                    <span class="tag">Performance Coaching [cite: 46]</span>
-                    <span class="tag">Process Improvement [cite: 46]</span>
-                    <span class="tag">CSAT / DSAT Optimization [cite: 47]</span>
-                    <span class="tag">SLA Management [cite: 47]</span>
-                    <span class="tag">New Hire Onboarding & Training [cite: 47]</span>
-                </div>
-            </div>
-
-            <div>
-                <strong style="display: block; margin-bottom: 0.5rem;" class="lang-en">Tools & Technologies [cite: 48, 49]</strong>
-                <strong style="display: block; margin-bottom: 0.5rem;" class="lang-zh lang-hide">使用工具与软件 [cite: 48, 49]</strong>
-                <div class="tag-group">
-                    <span class="tag">Meta QMS [cite: 48]</span>
-                    <span class="tag">Zendesk [cite: 49]</span>
-                    <span class="tag">Meta Ads Manager [cite: 48]</span>
-                    <span class="tag">Tableau [cite: 48]</span>
-                    <span class="tag">Microsoft Excel [cite: 48]</span>
-                    <span class="tag">Google Sheets [cite: 48]</span>
-                    <span class="tag">Live Chat Systems [cite: 49]</span>
-                </div>
-            </div>
-        </section>
-
-        <section class="section">
-            <h3 class="section-title lang-en">Education & Languages</h3>
-            <h3 class="section-title lang-zh lang-hide">教育背景与语言</h3>
-            
+        <!-- TAB CONTENT: SKILLS -->
+        <div id="skills" class="tab-content">
             <div style="margin-bottom: 1.5rem;">
-                <strong class="lang-en">Diploma in Fine Arts (CGPA 3.60/4.0) [cite: 42, 45]</strong>
-                <strong class="lang-zh lang-hide">纯美术文凭 (CGPA 3.60/4.0) [cite: 42, 45]</strong>
-                <p style="color: var(--text-muted);">Malaysian Institute of Art, Kuala Lumpur (Aug 2014 - Apr 2018) [cite: 42]</p>
+                <strong class="lang-en" style="font-size: 1.1rem; color: var(--primary);">Core Competencies</strong>
+                <strong class="lang-zh lang-hide" style="font-size: 1.1rem; color: var(--primary);">核心专业能力</strong>
+                <div class="tag-group">
+                    <span class="tag">QA Audit & Compliance</span>
+                    <span class="tag">Calibration Alignment</span>
+                    <span class="tag">Performance Coaching</span>
+                    <span class="tag">Process Improvement</span>
+                    <span class="tag">CSAT / DSAT Optimization</span>
+                    <span class="tag">SLA Management</span>
+                    <span class="tag">New Hire Onboarding & Training</span>
+                </div>
             </div>
 
             <div>
-                <strong class="lang-en">Languages [cite: 49]</strong>
-                <strong class="lang-zh lang-hide">语言能力 [cite: 49]</strong>
-                <p style="color: var(--text-muted);" class="lang-en">English, Mandarin, Malay, Cantonese [cite: 49]</p>
-                <p style="color: var(--text-muted);" class="lang-zh lang-hide">英文、中文（普通话）、马来文、粤语（广东话） [cite: 49]</p>
+                <strong class="lang-en" style="font-size: 1.1rem; color: var(--primary);">Tools & Technologies</strong>
+                <strong class="lang-zh lang-hide" style="font-size: 1.1rem; color: var(--primary);">使用工具与软件</strong>
+                <div class="tag-group">
+                    <span class="tag">Meta QMS</span>
+                    <span class="tag">Zendesk</span>
+                    <span class="tag">Meta Ads Manager</span>
+                    <span class="tag">Tableau</span>
+                    <span class="tag">Microsoft Excel</span>
+                    <span class="tag">Google Sheets</span>
+                    <span class="tag">Live Chat Systems</span>
+                </div>
             </div>
-        </section>
+        </div>
+
+        <!-- TAB CONTENT: EDUCATION -->
+        <div id="education" class="tab-content">
+            <div class="job-card">
+                <strong class="lang-en" style="font-size: 1.1rem;">Diploma in Fine Arts (CGPA 3.60/4.0)</strong>
+                <strong class="lang-zh lang-hide" style="font-size: 1.1rem;">纯美术文凭 (CGPA 3.60/4.0)</strong>
+                <p style="color: var(--text-muted); margin-top: 0.25rem;">Malaysian Institute of Art, Kuala Lumpur (Aug 2014 - Apr 2018)</p>
+            </div>
+
+            <div class="job-card">
+                <strong class="lang-en" style="font-size: 1.1rem;">Languages</strong>
+                <strong class="lang-zh lang-hide" style="font-size: 1.1rem;">语言能力</strong>
+                <p style="color: var(--text-muted); margin-top: 0.25rem;" class="lang-en">English, Mandarin, Malay, Cantonese</p>
+                <p style="color: var(--text-muted); margin-top: 0.25rem;" class="lang-zh lang-hide">英文、中文（普通话）、马来文、粤语（广东话）</p>
+            </div>
+        </div>
     </main>
 
     <script>
@@ -414,11 +535,32 @@
                 langBtn.textContent = 'English';
                 currentLang = 'zh';
             } else {
-                zhElements.forEach(el => el.classList.add('lang-hide'));
+                zhElements.forEach(el => el.classList.remove('lang-hide'));
                 enElements.forEach(el => el.classList.remove('lang-hide'));
                 langBtn.textContent = '中文';
                 currentLang = 'en';
             }
+        }
+
+        function switchTab(tabId) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Deactivate all tab buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Show selected tab content and activate button
+            document.getElementById(tabId).classList.add('active');
+            
+            // Find clicked button or corresponding tab button
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            if (tabId === 'experience') tabButtons[0].classList.add('active');
+            if (tabId === 'skills') tabButtons[1].classList.add('active');
+            if (tabId === 'education') tabButtons[2].classList.add('active');
         }
     </script>
 </body>
