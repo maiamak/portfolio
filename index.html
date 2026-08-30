@@ -35,7 +35,6 @@
             overflow-x: hidden;
         }
 
-        /* Floating background shapes */
         .shape {
             position: fixed;
             border-radius: 50%;
@@ -130,7 +129,6 @@
             padding: 2rem 1.5rem;
         }
 
-        /* Hero Card */
         .hero {
             background: var(--card-bg);
             backdrop-filter: blur(10px);
@@ -274,7 +272,6 @@
             border-color: #005582;
         }
 
-        /* Metric Grid & Cards */
         .metric-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
@@ -327,7 +324,6 @@
             font-weight: 500;
         }
 
-        /* POPUP MODAL */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -406,7 +402,6 @@
             line-height: 1.6;
         }
 
-        /* Tabs */
         .tab-menu {
             display: flex;
             gap: 0.75rem;
@@ -440,7 +435,6 @@
             box-shadow: 0 4px 14px rgba(99, 102, 241, 0.3);
         }
 
-        /* Content Section */
         .tab-content {
             display: none;
             background: var(--card-bg);
@@ -508,7 +502,6 @@
 
         .job li { margin-bottom: 0.4rem; }
 
-        /* Case Study Box */
         .case-study-box {
             margin-top: 1rem;
             background: #f8fafc;
@@ -534,7 +527,6 @@
             color: var(--text-muted);
         }
 
-        /* CAT & GALLERY SECTION */
         .cat-group-card {
             background: #ffffff;
             border-radius: 20px;
@@ -578,7 +570,6 @@
             text-align: center;
         }
 
-        /* Animal Crossing Photo Gallery Grid */
         .acnh-gallery {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -600,7 +591,6 @@
             box-shadow: 0 6px 16px rgba(99, 102, 241, 0.2);
         }
 
-        /* Skill Tags */
         .tag-group {
             display: flex;
             flex-wrap: wrap;
@@ -699,10 +689,10 @@
             </div>
         </section>
 
-        <!-- HIGHLIGHT METRICS (ANIMATED COUNTERS) -->
+        <!-- HIGHLIGHT METRICS (FIXED CARD 1 FORMAT) -->
         <div class="metric-grid">
             <div class="metric-card" onclick="openModal('m1')">
-                <div class="metric-value"><span class="counter" data-target="80">0</span>% ➔ ><span class="counter" data-target="95">0</span>%</div>
+                <div class="metric-value">80% ➔ &gt;95%</div>
                 <div class="metric-label lang-en">Tenured Agent QA Score Uplift</div>
                 <div class="metric-label lang-zh lang-hide">資深專員 QA 成績提升</div>
                 <span class="click-hint lang-en">Click for details ✨</span>
@@ -894,7 +884,6 @@
 
         <!-- TAB CONTENT: SKILLS & TOOLS -->
         <div id="skills" class="tab-content">
-            <!-- CATEGORY 1: QA & COMPLIANCE -->
             <div style="margin-bottom: 1.2rem;">
                 <strong class="lang-en" style="font-size: 1.05rem; color: var(--primary);">Quality Assurance & Risk Governance 🔍</strong>
                 <strong class="lang-zh lang-hide" style="font-size: 1.05rem; color: var(--primary);">QA 質量保證與合規風控 🔍</strong>
@@ -906,7 +895,6 @@
                 </div>
             </div>
 
-            <!-- CATEGORY 2: TRAINING & COACHING -->
             <div style="margin-bottom: 1.2rem;">
                 <strong class="lang-en" style="font-size: 1.05rem; color: var(--primary);">Training, Enablement & Operations 🎓</strong>
                 <strong class="lang-zh lang-hide" style="font-size: 1.05rem; color: var(--primary);">培訓、賦能與團隊營運 🎓</strong>
@@ -918,7 +906,6 @@
                 </div>
             </div>
 
-            <!-- CATEGORY 3: TOOLS & ANALYTICS -->
             <div>
                 <strong class="lang-en" style="font-size: 1.05rem; color: var(--primary);">Tools & Systems 🛠️ (Click for Details)</strong>
                 <strong class="lang-zh lang-hide" style="font-size: 1.05rem; color: var(--primary);">工具與系統應用 🛠️（點擊查看細節）</strong>
@@ -1150,7 +1137,7 @@
             const counters = document.querySelectorAll('.counter');
             counters.forEach(counter => {
                 const target = +counter.getAttribute('data-target');
-                const duration = 1200; 
+                const duration = 1000; 
                 const stepTime = 20; 
                 const steps = duration / stepTime;
                 const increment = target / steps;
