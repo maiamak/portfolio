@@ -102,7 +102,7 @@
             padding: 2rem 1.5rem;
         }
 
-        /* Hero Card with Photo Slot */
+        /* Hero Card */
         .hero {
             background: var(--card-bg);
             backdrop-filter: blur(10px);
@@ -192,6 +192,13 @@
             gap: 0.4rem;
         }
 
+        .contact-pill.linkedin-pill {
+            background: #0077b5;
+            color: white;
+            border-color: #0077b5;
+            font-weight: 600;
+        }
+
         .contact-pill:hover {
             border-color: var(--accent);
             color: var(--accent);
@@ -199,7 +206,13 @@
             box-shadow: 0 4px 10px rgba(236, 72, 153, 0.15);
         }
 
-        /* Metric Grid & Cards */
+        .contact-pill.linkedin-pill:hover {
+            background: #005582;
+            color: white;
+            border-color: #005582;
+        }
+
+        /* Metric Grid & Interactive Cards */
         .metric-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
@@ -217,11 +230,24 @@
             text-align: center;
             transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
             cursor: pointer;
+            position: relative;
         }
 
         .metric-card:hover {
             transform: translateY(-6px) scale(1.03);
             border-color: var(--accent);
+            box-shadow: 0 12px 28px rgba(236, 72, 153, 0.2);
+        }
+
+        .click-hint {
+            font-size: 0.72rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-top: 0.5rem;
+            display: inline-block;
+            background: #fce7f3;
+            padding: 0.2rem 0.6rem;
+            border-radius: 10px;
         }
 
         .metric-value {
@@ -239,7 +265,86 @@
             font-weight: 500;
         }
 
-        /* Interactive Navigation Tabs */
+        /* POPUP MODAL STYLES */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.4);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 24px;
+            max-width: 480px;
+            width: 90%;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            transform: translateY(20px) scale(0.95);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+        }
+
+        .modal-overlay.active .modal-card {
+            transform: translateY(0) scale(1);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1.25rem;
+            background: #f1f5f9;
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            font-weight: bold;
+            cursor: pointer;
+            color: var(--text-muted);
+            transition: all 0.2s;
+        }
+
+        .modal-close:hover {
+            background: var(--accent);
+            color: white;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            color: var(--primary);
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-subtitle {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 1rem;
+        }
+
+        .modal-body {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Navigation Tabs */
         .tab-menu {
             display: flex;
             gap: 0.75rem;
@@ -346,6 +451,46 @@
             margin-bottom: 0.4rem;
         }
 
+        /* COMBINED CAT SECTION STYLES */
+        .cat-group-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            margin-top: 1rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+        }
+
+        .cat-group-img {
+            width: 100%;
+            max-height: 420px;
+            object-fit: cover;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            margin-bottom: 1.25rem;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+        }
+
+        .cat-intro-list {
+            list-style: none;
+            padding-left: 0 !important;
+        }
+
+        .cat-intro-list li {
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        .cat-summary-text {
+            margin-top: 1rem;
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.05rem;
+            text-align: center;
+        }
+
         /* Interactive Skill Tags */
         .tag-group {
             display: flex;
@@ -378,7 +523,6 @@
             display: none !important;
         }
 
-        /* Responsive adjustments */
         @media (max-width: 640px) {
             .hero {
                 flex-direction: column;
@@ -418,54 +562,66 @@
         <!-- HERO SECTION WITH PROFILE PICTURE -->
         <section class="hero">
             <div class="profile-container">
-                <!-- Replace 'profile.jpg' with your photo filename if uploaded to GitHub -->
                 <img src="profile.jpg" alt="Maia Mak" class="profile-img" onerror="this.src='https://api.dicebear.com/7.x/bottts/svg?seed=Maia';">
                 <span class="profile-badge">✨</span>
             </div>
 
             <div class="hero-details">
                 <h1>Maia Mak Ke Xin (麥可欣)</h1>
-                <h2 class="lang-en">Regional Quality Assurance & Training Specialist 🚀</h2>
-                <h2 class="lang-zh lang-hide">区域质量保证 (QA) 与培训专家 🚀</h2>
+                <h2 class="lang-en">Regional Quality Assurance & Training Specialist | Micro-Entrepreneur 🚀</h2>
+                <h2 class="lang-zh lang-hide">区域质量保证 (QA) 与培训专家 | 品牌代理批發 🚀</h2>
                 
-                <p class="lang-en">Regional quality assurance and training specialist with experience leading high-volume audits, new-hire learning, calibration, compliance, and performance improvement across at least seven markets.</p>
-                <p class="lang-zh lang-hide">拥有覆盖至少7个全球市场的质量保证 (QA) 及培训专家经验，擅长高强度质量审计、新员工入职培训、评分标定校准、合规管理及绩效提升。</p>
+                <p class="lang-en">Regional QA and training specialist leading high-volume audits and compliance across 7+ global markets. Side entrepreneur managing functional food & skincare distribution.</p>
+                <p class="lang-zh lang-hide">拥有覆盖 7+ 全球市场的 QA 与培训专家，擅长高强度审计与合规管理。工作之余也是一位微型创业家，經營功能性食品与護膚品品牌代理批發。</p>
 
                 <div class="contact-info">
                     <span class="contact-pill">📍 Selangor, Malaysia</span>
                     <a href="tel:+60193906809" class="contact-pill">📞 +60 19-390 6809</a>
                     <a href="mailto:kexin0410@gmail.com" class="contact-pill">✉️ kexin0410@gmail.com</a>
+                    <a href="https://www.linkedin.com/" target="_blank" class="contact-pill linkedin-pill">🔗 LinkedIn</a>
                 </div>
             </div>
         </section>
 
-        <!-- HIGHLIGHT METRICS (INTERACTIVE CARDS) -->
+        <!-- HIGHLIGHT METRICS -->
         <div class="metric-grid">
-            <div class="metric-card" onclick="switchTab('experience')">
+            <div class="metric-card" onclick="openModal('m1')">
                 <div class="metric-value">80% ➔ >95%</div>
-                <div class="metric-label lang-en">Tenured Agent QA Uplift (1 Month)</div>
-                <div class="metric-label lang-zh lang-hide">资深员工 QA 成绩提升（1个月内）</div>
+                <div class="metric-label lang-en">Tenured Agent QA Uplift</div>
+                <div class="metric-label lang-zh lang-hide">资深员工 QA 成绩提升</div>
+                <span class="click-hint lang-en">Click for details ✨</span>
+                <span class="click-hint lang-zh lang-hide">点击查看详情 ✨</span>
             </div>
-            <div class="metric-card" onclick="switchTab('experience')">
+
+            <div class="metric-card" onclick="openModal('m2')">
                 <div class="metric-value">-80%</div>
                 <div class="metric-label lang-en">Policy Violation Red Flags</div>
                 <div class="metric-label lang-zh lang-hide">违规政策风险降低</div>
+                <span class="click-hint lang-en">Click for details ✨</span>
+                <span class="click-hint lang-zh lang-hide">点击查看详情 ✨</span>
             </div>
-            <div class="metric-card" onclick="switchTab('experience')">
+
+            <div class="metric-card" onclick="openModal('m3')">
                 <div class="metric-value">90%+</div>
                 <div class="metric-label lang-en">Scoring Calibration Alignment</div>
                 <div class="metric-label lang-zh lang-hide">QA 团队评分标定一致性</div>
+                <span class="click-hint lang-en">Click for details ✨</span>
+                <span class="click-hint lang-zh lang-hide">点击查看详情 ✨</span>
             </div>
-            <div class="metric-card" onclick="switchTab('experience')">
+
+            <div class="metric-card" onclick="openModal('m4')">
                 <div class="metric-value">$612K+</div>
                 <div class="metric-label lang-en">Q4 Revenue Generated (Meta)</div>
                 <div class="metric-label lang-zh lang-hide">单季度 (Q4) 创造广告收益</div>
+                <span class="click-hint lang-en">Click for details ✨</span>
+                <span class="click-hint lang-zh lang-hide">点击查看详情 ✨</span>
             </div>
         </div>
 
         <!-- NAVIGATION TABS -->
         <div class="tab-menu">
             <button class="tab-btn active" onclick="switchTab('experience')">💼 <span class="lang-en">Experience</span><span class="lang-zh lang-hide">工作经历</span></button>
+            <button class="tab-btn" onclick="switchTab('about')">🐱 <span class="lang-en">About & Side Biz</span><span class="lang-zh lang-hide">關於我 & 創業亮點</span></button>
             <button class="tab-btn" onclick="switchTab('skills')">⚡ <span class="lang-en">Skills & Tools</span><span class="lang-zh lang-hide">技能与工具</span></button>
             <button class="tab-btn" onclick="switchTab('education')">🎓 <span class="lang-en">Education</span><span class="lang-zh lang-hide">教育与语言</span></button>
         </div>
@@ -549,6 +705,62 @@
             </div>
         </div>
 
+        <!-- TAB CONTENT: ABOUT & ENTREPRENEURSHIP -->
+        <div id="about" class="tab-content">
+            <div class="job-card">
+                <div class="job-title lang-en">🌱 Micro-Entrepreneur / Brand Agency Wholesale Owner</div>
+                <div class="job-title lang-zh lang-hide">🌱 小小企業家 | 品牌代理批發</div>
+                <p class="lang-en" style="margin-top: 0.5rem; color: var(--text-muted);">
+                    Beyond quality management, I run a part-time brand agency business specializing in functional health beverages, wellness products, and skincare distribution. I handle B2B outreach, store collaborations, and sales growth, blending corporate strategy with entrepreneurship!
+                </p>
+                <p class="lang-zh lang-hide" style="margin-top: 0.5rem; color: var(--text-muted);">
+                    除了專注於 QA 與培訓，我也經營自己的微型創業事業（品牌代理批發），專注於功能性飲品與優質護膚品推廣。我親自對接門市合作與 B2B 業務拓展，把企業級的商務思維融入實戰創業！
+                </p>
+            </div>
+
+            <div class="job-card">
+                <div class="job-title lang-en">🐾 Life & Hobbies | Fun Facts</div>
+                <div class="job-title lang-zh lang-hide">🐾 生活樂趣 & 個人愛好</div>
+                <ul class="lang-en" style="margin-top: 0.5rem; color: var(--text-muted);">
+                    <li>🐱 <strong>Cat Enthusiast:</strong> Proud cat mom of 3 adorable boys (Bubur, Keera & Ollie). Daily cat snuggles keep my creativity high!</li>
+                    <li>🏸 <strong>Badminton Player:</strong> Love staying active and energetic through regular badminton games.</li>
+                    <li>🎨 <strong>Creative Mind:</strong> Background in Fine Arts gives me a unique aesthetic sense and visual design perspective in everything I do.</li>
+                </ul>
+                <ul class="lang-zh lang-hide" style="margin-top: 0.5rem; color: var(--text-muted);">
+                    <li>🐱 <strong>資深擼貓官：</strong> 家有 3 隻可愛的貓兒子（Bubur、Keera 和 Ollie），每日擼貓是我放鬆和源源不絕靈感的來源！</li>
+                    <li>🏸 <strong>羽毛球愛好者：</strong> 熱愛打羽毛球，保持滿滿的精力與團隊協作默契。</li>
+                    <li>🎨 <strong>美學靈魂：</strong> 純美術背景培養了我對細節的極致追求與獨特的視覺美感。</li>
+                </ul>
+
+                <!-- COMBINED CAT PHOTO & INTRO SECTION -->
+                <div class="cat-group-card">
+                    <img src="cats.jpg" alt="Bubur, Keera and Ollie" class="cat-group-img" onerror="this.src='https://images.unsplash.com/photo-1543852786-1cf6624b9987?w=800';">
+                    
+                    <!-- ENGLISH CAT INTRO -->
+                    <div class="lang-en">
+                        <strong style="color: var(--primary); font-size: 1.1rem; display: block; margin-bottom: 0.75rem;">Meet Bubur, Keera, and Ollie 🐾🤍</strong>
+                        <ul class="cat-intro-list">
+                            <li>🐄 <strong>Bubur</strong> | 9–10-year-old cow cat, the senior gentleman of the family.</li>
+                            <li>🐯 <strong>Keera</strong> | 4-year-old tabby, a clingy boy — curious, easily scared, and loves butt pats.</li>
+                            <li>🦁 <strong>Ollie</strong> | 1-year-old orange baby, the youngest boy who somehow loves being held upside down. 🙃</li>
+                        </ul>
+                        <div class="cat-summary-text">Three boys. One little family. 🐾✨</div>
+                    </div>
+
+                    <!-- CHINESE CAT INTRO -->
+                    <div class="lang-zh lang-hide">
+                        <strong style="color: var(--primary); font-size: 1.1rem; display: block; margin-bottom: 0.75rem;">認識一下 Bubur、Keera 和 Ollie 🐾🤍</strong>
+                        <ul class="cat-intro-list">
+                            <li>🐄 <strong>Bubur</strong> | 9–10歲的奶牛，是家裡的資深大叔。</li>
+                            <li>🐯 <strong>Keera</strong> | 4歲的虎斑，撒嬌怪、好奇心滿滿、膽小，還超喜歡拍屁股。</li>
+                            <li>🦁 <strong>Ollie</strong> | 1歲的橘貓寶寶，家裡最小，而且莫名喜歡被倒著抱。🙃</li>
+                        </ul>
+                        <div class="cat-summary-text">三個男孩子，一個小小的家。🐾✨</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- TAB CONTENT: SKILLS -->
         <div id="skills" class="tab-content">
             <div style="margin-bottom: 1.5rem;">
@@ -562,6 +774,7 @@
                     <span class="tag">CSAT / DSAT Optimization</span>
                     <span class="tag">SLA Management</span>
                     <span class="tag">New Hire Onboarding & Training</span>
+                    <span class="tag">B2B Business Outreach</span>
                 </div>
             </div>
 
@@ -584,7 +797,7 @@
         <div id="education" class="tab-content">
             <div class="job-card">
                 <strong class="lang-en" style="font-size: 1.1rem;">Diploma in Fine Arts (CGPA 3.60/4.0) 🎨</strong>
-                <strong class="lang-zh lang-hide" style="font-size: 1.1rem;">纯美术文凭 (CGPA 3.60/4.0) 🎨</strong>
+                <strong class="lang-zh lang-hide" style="font-size: 1.1rem;">純美術文憑 (CGPA 3.60/4.0) 🎨</strong>
                 <p style="color: var(--text-muted); margin-top: 0.25rem;">Malaysian Institute of Art, Kuala Lumpur (Aug 2014 - Apr 2018)</p>
             </div>
 
@@ -597,8 +810,91 @@
         </div>
     </main>
 
+    <!-- POPUP MODALS FOR METRICS -->
+    <div id="modalOverlay" class="modal-overlay" onclick="closeModal(event)">
+        <div class="modal-card">
+            <button class="modal-close" onclick="closeModalForce()">✕</button>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
     <script>
         let currentLang = 'en';
+
+        // Modal Content Data
+        const modalData = {
+            m1: {
+                en: {
+                    title: "80% ➔ >95%",
+                    subtitle: "Tenured Agent QA Uplift (1 Month)",
+                    body: "At HEYTEA, designed targeted 1-on-1 coaching frameworks and error-analysis quizzes, lifting tenured customer service agents' performance scores from 80% to over 95% within 30 days."
+                },
+                zh: {
+                    title: "80% ➔ >95%",
+                    subtitle: "资深员工 QA 成绩提升（1个月内）",
+                    body: "在喜茶 (HEYTEA) 项目中，通过设计 1对1 针对性辅导方案及易错点测验，在 30 天内成功将资深客服团队的 QA 达标率从 80% 基础提升至 95% 以上。"
+                }
+            },
+            m2: {
+                en: {
+                    title: "-80%",
+                    subtitle: "Policy Violation Red Flags Reduction",
+                    body: "At Meta, identified critical compliance gaps and conducted targeted team alignment sessions, cutting major policy violation red flags by 80%."
+                },
+                zh: {
+                    title: "-80%",
+                    subtitle: "违规政策风险降低",
+                    body: "在 Meta 项目中，精准识别合规风险漏洞并开展针对性宣贯与校准，成功将团队的高风险违规政策红旗率降低了 80%。"
+                }
+            },
+            m3: {
+                en: {
+                    title: "90%+",
+                    subtitle: "Scoring Calibration Alignment",
+                    body: "Led weekly calibration sessions between QA leads, team leaders, and management to ensure 90%+ alignment on scoring criteria across multi-regional teams."
+                },
+                zh: {
+                    title: "90%+",
+                    subtitle: "QA 团队评分标定一致性",
+                    body: "定期主持 QA 团队、TL 及管理层的标定会议 (Calibration)，确保跨区域团队对服务质量评估标准达到 90% 以上的高度一致性。"
+                }
+            },
+            m4: {
+                en: {
+                    title: "$612K+",
+                    subtitle: "Q4 Revenue Generated (Meta Marketing Pro)",
+                    body: "Optimized advertiser campaigns, increasing client conversion rates by 185.71% and generating $612,458 in revenue during Q4 2023, earning the CNX SBG Rockstar Award."
+                },
+                zh: {
+                    title: "$612K+",
+                    subtitle: "单季度 (Q4) 创造广告收益",
+                    body: "作为 Meta 营销专家，通过优化广告主投放策略使转化率提升 185.71%，在 2023 年 Q4 创造了 612,458 美元收益，并荣获 CNX SBG Rockstar 奖项。"
+                }
+            }
+        };
+
+        function openModal(id) {
+            const data = modalData[id][currentLang];
+            const contentDiv = document.getElementById('modalContent');
+            
+            contentDiv.innerHTML = `
+                <div class="modal-title">${data.title}</div>
+                <div class="modal-subtitle">${data.subtitle}</div>
+                <div class="modal-body">${data.body}</div>
+            `;
+            
+            document.getElementById('modalOverlay').classList.add('active');
+        }
+
+        function closeModal(e) {
+            if (e.target.id === 'modalOverlay') {
+                document.getElementById('modalOverlay').classList.remove('active');
+            }
+        }
+
+        function closeModalForce() {
+            document.getElementById('modalOverlay').classList.remove('active');
+        }
 
         function toggleLanguage() {
             const enElements = document.querySelectorAll('.lang-en');
@@ -631,8 +927,9 @@
             
             const tabButtons = document.querySelectorAll('.tab-btn');
             if (tabId === 'experience') tabButtons[0].classList.add('active');
-            if (tabId === 'skills') tabButtons[1].classList.add('active');
-            if (tabId === 'education') tabButtons[2].classList.add('active');
+            if (tabId === 'about') tabButtons[1].classList.add('active');
+            if (tabId === 'skills') tabButtons[2].classList.add('active');
+            if (tabId === 'education') tabButtons[3].classList.add('active');
         }
     </script>
 </body>
