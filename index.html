@@ -35,7 +35,7 @@
             overflow-x: hidden;
         }
 
-        /* Decorative Floating Elements */
+        /* Floating background shapes */
         .shape {
             position: fixed;
             border-radius: 50%;
@@ -52,7 +52,6 @@
             100% { transform: translateY(20px) rotate(10deg); }
         }
 
-        /* Glassmorphism Header */
         .header {
             background: rgba(255, 255, 255, 0.75);
             backdrop-filter: blur(12px);
@@ -179,7 +178,6 @@
             animation: bounce 2s infinite;
         }
 
-        /* Cat Tooltip Easter Egg */
         .easter-egg-bubble {
             position: absolute;
             top: -40px;
@@ -220,9 +218,7 @@
             50% { transform: translateY(-5px); }
         }
 
-        .hero-details {
-            flex-grow: 1;
-        }
+        .hero-details { flex-grow: 1; }
 
         .hero h1 {
             font-size: 2.25rem;
@@ -278,7 +274,7 @@
             border-color: #005582;
         }
 
-        /* Metric Grid & Interactive Cards */
+        /* Metric Grid & Cards */
         .metric-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
@@ -331,7 +327,7 @@
             font-weight: 500;
         }
 
-        /* POPUP MODAL STYLES */
+        /* POPUP MODAL */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -410,7 +406,7 @@
             line-height: 1.6;
         }
 
-        /* Navigation Tabs */
+        /* Tabs */
         .tab-menu {
             display: flex;
             gap: 0.75rem;
@@ -444,7 +440,7 @@
             box-shadow: 0 4px 14px rgba(99, 102, 241, 0.3);
         }
 
-        /* Tab Content Section */
+        /* Content Section */
         .tab-content {
             display: none;
             background: var(--card-bg);
@@ -456,11 +452,8 @@
             animation: fadeIn 0.4s ease-in-out;
         }
 
-        .tab-content.active {
-            display: block;
-        }
+        .tab-content.active { display: block; }
 
-        /* Interactive Job Cards & Before/After Case Studies */
         .job-card {
             background: rgba(255, 255, 255, 0.65);
             border-radius: 16px;
@@ -513,11 +506,9 @@
             font-size: 0.95rem;
         }
 
-        .job li {
-            margin-bottom: 0.4rem;
-        }
+        .job li { margin-bottom: 0.4rem; }
 
-        /* Before & After Case Study Box */
+        /* Case Study Box */
         .case-study-box {
             margin-top: 1rem;
             background: #f8fafc;
@@ -543,7 +534,7 @@
             color: var(--text-muted);
         }
 
-        /* COMBINED CAT SECTION STYLES */
+        /* CAT & GALLERY SECTION */
         .cat-group-card {
             background: #ffffff;
             border-radius: 20px;
@@ -565,9 +556,7 @@
             transition: transform 0.3s ease;
         }
 
-        .cat-group-img:hover {
-            transform: scale(1.01);
-        }
+        .cat-group-img:hover { transform: scale(1.01); }
 
         .cat-intro-list {
             list-style: none;
@@ -589,12 +578,35 @@
             text-align: center;
         }
 
-        /* Interactive Skill Tags */
+        /* Animal Crossing Photo Gallery Grid */
+        .acnh-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.75rem;
+            margin-top: 0.8rem;
+        }
+
+        .acnh-img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            transition: transform 0.3s ease;
+        }
+
+        .acnh-img:hover {
+            transform: scale(1.04);
+            box-shadow: 0 6px 16px rgba(99, 102, 241, 0.2);
+        }
+
+        /* Skill Tags */
         .tag-group {
             display: flex;
             flex-wrap: wrap;
             gap: 0.6rem;
             margin-top: 0.75rem;
+            margin-bottom: 1.5rem;
         }
 
         .tag {
@@ -617,9 +629,7 @@
             box-shadow: 0 4px 12px rgba(236, 72, 153, 0.25);
         }
 
-        .lang-hide {
-            display: none !important;
-        }
+        .lang-hide { display: none !important; }
 
         @media (max-width: 640px) {
             .hero {
@@ -627,12 +637,8 @@
                 text-align: center;
                 padding: 1.5rem;
             }
-            .contact-info {
-                justify-content: center;
-            }
-            .nav-actions {
-                gap: 0.4rem;
-            }
+            .contact-info { justify-content: center; }
+            .nav-actions { gap: 0.4rem; }
             .download-btn {
                 padding: 0.4rem 0.8rem;
                 font-size: 0.78rem;
@@ -652,7 +658,6 @@
 </head>
 <body>
 
-    <!-- Background Decorative Bubbles -->
     <div class="shape shape-1"></div>
     <div class="shape shape-2"></div>
 
@@ -669,7 +674,7 @@
     </header>
 
     <main class="container">
-        <!-- HERO SECTION WITH PROFILE PICTURE & EASTER EGG -->
+        <!-- HERO SECTION -->
         <section class="hero">
             <div class="profile-container" onclick="triggerProfileEasterEgg()">
                 <div class="easter-egg-bubble" id="profileBubble">Click me! ✨</div>
@@ -679,11 +684,11 @@
 
             <div class="hero-details">
                 <h1>Maia Mak Ke Xin (麦可欣)</h1>
-                <h2 class="lang-en">Regional Quality Assurance & Training Specialist | Part-Time Entrepreneur & Independent Brand Distributor 🚀</h2>
-                <h2 class="lang-zh lang-hide">区域质量保证 (QA) 与培训专家 | 兼职创业家与品牌代理批发商 🚀</h2>
+                <h2 class="lang-en">Regional QA & Training Lead | Operations Specialist & Brand Distributor 🚀</h2>
+                <h2 class="lang-zh lang-hide">区域质量保证 (QA) 与培训专家 | 运营优化与品牌代理批发商 🚀</h2>
                 
-                <p class="lang-en">Regional QA and training specialist leading high-volume audits and compliance across 7+ global markets. Running a part-time entrepreneurship and brand distribution business focusing on functional foods and skin care.</p>
-                <p class="lang-zh lang-hide">拥有覆盖 7+ 全球市场的 QA 与培训专家，擅长高强度审计与合规管理。兼职创业经营品牌代理批发业务，专注于功能性食品与功能性护肤品推广。</p>
+                <p class="lang-en">Regional QA & Training Lead overseeing high-volume audits and operational performance across 7+ global markets. Experienced in process standardization, compliance risk mitigation, and managing B2B brand distribution in functional food & skincare.</p>
+                <p class="lang-zh lang-hide">拥有覆盖 7+ 全球市场的 QA 与培训专家，擅长高强度服务质量审计、合规风控及流程标准化。同时具备丰富的大团队培训管理与 B2B 功能性食品及护肤品品牌代理经验。</p>
 
                 <div class="contact-info">
                     <span class="contact-pill">📍 Selangor, Malaysia</span>
@@ -694,7 +699,7 @@
             </div>
         </section>
 
-        <!-- HIGHLIGHT METRICS (WITH ANIMATED COUNTERS) -->
+        <!-- HIGHLIGHT METRICS (ANIMATED COUNTERS) -->
         <div class="metric-grid">
             <div class="metric-card" onclick="openModal('m1')">
                 <div class="metric-value"><span class="counter" data-target="80">0</span>% ➔ ><span class="counter" data-target="95">0</span>%</div>
@@ -751,25 +756,24 @@
                 </div>
                 <ul class="lang-en">
                     <li>Lead quality assurance and learning operations for HEYTEA's global customer service across USA, CAD, APAC (HK, MY, SG, AUS), and Greater China (CN).</li>
-                    <li>Conduct 50+ chat and email quality evaluations daily (250+ weekly) across 7+ global markets.</li>
-                    <li>Uplifted tenured agent QA performance from an 80% baseline to >95% target through targeted coaching.</li>
+                    <li>Conduct 50+ chat and email quality evaluations daily (250+ weekly) across 7+ global markets with zero SLA breach.</li>
+                    <li>Uplifted tenured agent QA performance from an 80% baseline to >95% target through root-cause analysis and targeted 1-on-1 coaching.</li>
                     <li>Led end-to-end New Hire Training programs and provided direct daily operational support for 10 CS agents.</li>
                     <li>Maintained 90%+ calibration alignment across the QA and leadership team.</li>
                 </ul>
                 <ul class="lang-zh lang-hide">
                     <li>主导喜茶 (HEYTEA) 涵盖美国、加拿大、亚太区（香港、马来西亚、新加坡、澳大利亚）及大中华区的全球客服质量保证及培训运营。</li>
-                    <li>每日执行 50+ 笔（每周 250+ 笔）跨多区域的在线聊天及邮件服务质量评估。</li>
-                    <li>通过针对性辅导，成功将资深客服专员的 QA 成绩从 80% 提升至 95% 以上。</li>
-                    <li>负责新员工全流程培训，并直接辅导 10 人客服团队的日常运营。</li>
-                    <li>保持 QA 团队与管理层之间 90% 以上的高标定评估一致性。</li>
+                    <li>每日执行 50+ 笔（每周 250+ 笔）跨多区域的在线聊天及邮件服务质量评估，保持零 SLA 违规。</li>
+                    <li>通过根本原因分析 (RCA) 与 1对1 针对性辅导，成功将资深客服专员的 QA 成绩从 80% 提升至 95% 以上。</li>
+                    <li>负责新员工全流程培训，并直接辅导 10 人客服团队的日常运营与问题升级排查。</li>
+                    <li>主持标定会议，保持 QA 团队与管理层之间 90% 以上的高标定评估一致性。</li>
                 </ul>
 
-                <!-- BEFORE & AFTER CASE STUDY -->
                 <div class="case-study-box">
                     <div class="case-study-title">💡 <span class="lang-en">Key Impact Spotlight</span><span class="lang-zh lang-hide">实战亮点对比</span></div>
                     <div class="case-grid">
                         <div><strong>Before:</strong> Low response consistency in multi-market chats (Baseline: 80% QA score).</div>
-                        <div><strong>After:</strong> Standardized multi-regional SOPs, pushing QA accuracy to <strong>>95%</strong> across all agents.</div>
+                        <div><strong>After:</strong> Standardized multi-regional SOPs & coaching, pushing QA accuracy to <strong>>95%</strong>.</div>
                     </div>
                 </div>
             </div>
@@ -786,20 +790,19 @@
                 </div>
                 <ul class="lang-en">
                     <li>Led QA across Meta's SEA & Traditional Mandarin markets covering Sales, Technical, and Creative operations.</li>
-                    <li>Conducted 80+ audits/month, leveraging internal QMS tools for consistent quality coverage.</li>
-                    <li>Uplifted tenured agent QA scores from 65% to 80% and new hire scores from 50% to 75-85% through structured coaching.</li>
-                    <li>Reduced policy violation red flags by 80% by identifying compliance gaps.</li>
-                    <li>Maintained 85%+ calibration alignment (ATA) across stakeholders.</li>
+                    <li>Conducted 80+ audits/month, leveraging internal QMS tools for consistent quality coverage and process compliance.</li>
+                    <li>Uplifted tenured agent QA scores from 65% to 80% and new hire scores from 50% to 75-85% through structured performance frameworks.</li>
+                    <li>Reduced policy violation red flags by 80% by identifying compliance gaps and delivering weekly refreshers.</li>
+                    <li>Maintained 85%+ calibration alignment (ATA) across regional stakeholders.</li>
                 </ul>
                 <ul class="lang-zh lang-hide">
-                    <li>负责 Meta 东南亚及繁体中文市场的销售、技术与广告创意运营的 QA 质量监管。</li>
-                    <li>每月使用内部 QMS 质量管理系统完成 80+ 深度审计。</li>
+                    <li>负责 Meta 东南亚及繁体中文市场的销售、技术与广告创意运营的 QA 质量监管与合规审视。</li>
+                    <li>每月使用内部 QMS 质量管理系统完成 80+ 深度审计，确保业务流程全面合规。</li>
                     <li>通过结构化辅导，成功提升专员 QA 成绩：将资深团队成绩从 65% 提升至 80%，新员工成绩从 50% 提升至 75-85%。</li>
-                    <li>通过精准识别合规风险漏洞，将政策违规红旗率降低了 80%。</li>
-                    <li>主持标定会议，确保团队对齐度 (ATA) 维持在 85% 以上。</li>
+                    <li>通过精准识别合规风险漏洞并安排每周强化培训，将政策违规红旗率降低了 80%。</li>
+                    <li>主持跨国标定会议，确保团队对齐度 (ATA) 维持在 85% 以上。</li>
                 </ul>
 
-                <!-- BEFORE & AFTER CASE STUDY -->
                 <div class="case-study-box">
                     <div class="case-study-title">💡 <span class="lang-en">Risk Mitigation Impact</span><span class="lang-zh lang-hide">风控优化对比</span></div>
                     <div class="case-grid">
@@ -820,16 +823,16 @@
                     <span class="job-badge">Feb 2023 - Oct 2024</span>
                 </div>
                 <ul class="lang-en">
-                    <li>Generated USD 612,458 in Q4 2023 revenue by optimizing advertiser performance.</li>
+                    <li>Generated USD 612,458 in Q4 2023 revenue by optimizing advertiser ad account performance and campaign strategies.</li>
                     <li>Increased client conversion rates by 185.71% while reducing cost per result by 64.28%.</li>
                     <li>Managed 150+ advertiser accounts per quarter across varying budget tiers ($1K-$50K).</li>
-                    <li>Recognized as CNX SBG Rockstar (Q4 2023) for outstanding revenue contribution.</li>
+                    <li>Recognized as CNX SBG Rockstar (Q4 2023) for outstanding revenue contribution and client satisfaction.</li>
                 </ul>
                 <ul class="lang-zh lang-hide">
-                    <li>在 2023 年第四季度通过优化广告主投放策略，创造了 612,458 美元的收益。</li>
-                    <li>将客户转化率提升了 185.71%，同时将单次结果成本降低了 64.28%。</li>
+                    <li>在 2023 年第四季度通过优化广告主投放策略与账户结构，创造了 612,458 美元的广告收益。</li>
+                    <li>将客户转化率提升了 185.71%，同时将单次结果成本（Cost per Result）降低了 64.28%。</li>
                     <li>每季度管理 150+ 广告主账户，预算跨越 1 千至 5 万美元不等。</li>
-                    <li>因卓越的业绩表现荣获 2023 年 Q4 "CNX SBG Rockstar" 奖项。</li>
+                    <li>因卓越的业绩表现与极高客户满意度，荣获 2023 年 Q4 "CNX SBG Rockstar" 极高荣誉奖项。</li>
                 </ul>
             </div>
         </div>
@@ -840,14 +843,14 @@
                 <div class="job-title lang-en">🌱 Part-Time Entrepreneur & Independent Brand Distributor</div>
                 <div class="job-title lang-zh lang-hide">🌱 兼职创业家与品牌代理批发商</div>
                 <ul class="lang-en" style="margin-top: 0.5rem; color: var(--text-muted); padding-left: 1.2rem;">
-                    <li><strong>Business Focus:</strong> Functional foods and skin care.</li>
-                    <li><strong>Core Operations:</strong> B2B retail partnerships, wholesale distribution, and brand outreach.</li>
-                    <li><strong>Key Responsibilities:</strong> Market expansion, retail client management, and product distribution strategy.</li>
+                    <li><strong>Business Focus:</strong> Functional foods and skin care distribution.</li>
+                    <li><strong>Core Operations:</strong> B2B retail partnerships, wholesale negotiations, and brand outreach.</li>
+                    <li><strong>Key Capabilities:</strong> Market expansion, retail channel management, and client relationship building.</li>
                 </ul>
                 <ul class="lang-zh lang-hide" style="margin-top: 0.5rem; color: var(--text-muted); padding-left: 1.2rem;">
-                    <li><strong>业务核心：</strong>功能性食品与功能性护肤品。</li>
-                    <li><strong>主要运营：</strong>B2B 零售渠道合作、批发经销与品牌推广。</li>
-                    <li><strong>重点职能：</strong>市场拓展、渠道客户管理与产品经销策略。</li>
+                    <li><strong>业务核心：</strong>功能性食品与功能性护肤品代理。</li>
+                    <li><strong>主要运营：</strong>B2B 零售渠道合作、批发谈判与品牌商务推广。</li>
+                    <li><strong>重点能力：</strong>市场渠道拓展、零售客户关系管理与经销策略制定。</li>
                 </ul>
             </div>
 
@@ -855,10 +858,10 @@
                 <div class="job-title lang-en">🐾 Life & Hobbies | Personal Highlights</div>
                 <div class="job-title lang-zh lang-hide">🐾 生活乐趣 & 个人爱好</div>
                 <ul class="lang-en" style="margin-top: 0.5rem; color: var(--text-muted);">
-                    <li>🐱 <strong>Cat Enthusiast:</strong> Proud cat mom of 3 adorable boys (Bubur, Keera & Ollie). Daily cat snuggles keep my creativity high!</li>
-                    <li>🎮 <strong>Animal Crossing Mayor:</strong> Passionate <em>Animal Crossing: New Horizons</em> player on Nintendo Switch[cite: 1]! Love island designing, custom layout planning, and hosting friends for online island visits[cite: 1].</li>
+                    <li>🐱 <strong>Cat Enthusiast:</strong> Proud cat mom of 3 adorable boys (Bubur, Keera & Ollie). Daily cat snuggles keep my creativity and empathy high!</li>
+                    <li>🎮 <strong>Animal Crossing Mayor:</strong> Passionate <em>Animal Crossing: New Horizons</em> player on Nintendo Switch! Love island designing, custom layout planning, and hosting friends for online island visits[cite: 1].</li>
                     <li>🏸 <strong>Badminton Player:</strong> Love staying active and energetic through regular badminton games with friends.</li>
-                    <li>🎨 <strong>Creative Mind:</strong> Background in Fine Arts gives me a unique aesthetic sense and visual design perspective in everything I do.</li>
+                    <li>🎨 <strong>Creative Mind:</strong> Background in Fine Arts gives me a unique aesthetic sense and visual detail orientation in everything I do.</li>
                 </ul>
                 <ul class="lang-zh lang-hide" style="margin-top: 0.5rem; color: var(--text-muted);">
                     <li>🐱 <strong>资深猫奴：</strong> 家有 3 只可爱的猫儿子（Bubur、Keera 和 Ollie），每日撸猫是我放松和源源不断灵感的来源！</li>
@@ -867,11 +870,20 @@
                     <li>🎨 <strong>美学灵魂：</strong> 纯美术背景培养了我对细节的极致追求与独特的视觉美感。</li>
                 </ul>
 
-                <!-- COMBINED CAT PHOTO & INTRO SECTION -->
+                <!-- ANIMAL CROSSING PHOTO GALLERY -->
+                <div style="margin-top: 1.2rem; background: #fdf2f8; padding: 1rem; border-radius: 16px; border: 1px solid var(--soft-pink);">
+                    <strong class="lang-en" style="color: var(--accent); font-size: 0.95rem;">🎮 Animal Crossing Island Showcase</strong>
+                    <strong class="lang-zh lang-hide" style="color: var(--accent); font-size: 0.95rem;">🎮 动森无人岛日常与岛建展示</strong>
+                    <div class="acnh-gallery">
+                        <img src="https://raw.githubusercontent.com/maiamak/portfolio/main/acnh1.jpg" alt="ACNH 1" class="acnh-img" onerror="this.src='https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=500';">
+                        <img src="https://raw.githubusercontent.com/maiamak/portfolio/main/acnh2.jpg" alt="ACNH 2" class="acnh-img" onerror="this.src='https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?w=500';">
+                    </div>
+                </div>
+
+                <!-- CAT PHOTO & INTRO -->
                 <div class="cat-group-card">
                     <img src="https://raw.githubusercontent.com/maiamak/portfolio/main/cats.jpg" alt="Bubur, Keera and Ollie" class="cat-group-img" onerror="this.src='https://images.unsplash.com/photo-1543852786-1cf6624b9987?w=800';">
                     
-                    <!-- ENGLISH CAT INTRO -->
                     <div class="lang-en">
                         <strong style="color: var(--primary); font-size: 1.1rem; display: block; margin-bottom: 0.75rem;">Meet Bubur, Keera, and Ollie 🐾🤍</strong>
                         <ul class="cat-intro-list">
@@ -882,7 +894,6 @@
                         <div class="cat-summary-text">Three boys. One little family. 🐾✨</div>
                     </div>
 
-                    <!-- CHINESE CAT INTRO -->
                     <div class="lang-zh lang-hide">
                         <strong style="color: var(--primary); font-size: 1.1rem; display: block; margin-bottom: 0.75rem;">认识一下 Bubur、Keera 和 Ollie 🐾🤍</strong>
                         <ul class="cat-intro-list">
@@ -896,34 +907,42 @@
             </div>
         </div>
 
-        <!-- TAB CONTENT: SKILLS & TOOLS (WITH INTERACTIVE TOOL MODALS) -->
+        <!-- TAB CONTENT: SKILLS & TOOLS -->
         <div id="skills" class="tab-content">
-            <div style="margin-bottom: 1.5rem;">
-                <strong class="lang-en" style="font-size: 1.1rem; color: var(--primary);">Core Competencies 🌟</strong>
-                <strong class="lang-zh lang-hide" style="font-size: 1.1rem; color: var(--primary);">核心专业能力 🌟</strong>
+            <!-- CATEGORY 1: QA & COMPLIANCE -->
+            <div style="margin-bottom: 1.2rem;">
+                <strong class="lang-en" style="font-size: 1.05rem; color: var(--primary);">Quality Assurance & Compliance 🔍</strong>
+                <strong class="lang-zh lang-hide" style="font-size: 1.05rem; color: var(--primary);">QA 质量保证与合规风控 🔍</strong>
                 <div class="tag-group">
                     <span class="tag" onclick="openSkillDetail('qa_audit')">QA Audit & Compliance 🔍</span>
                     <span class="tag" onclick="openSkillDetail('calibration')">Calibration Alignment 🎯</span>
-                    <span class="tag" onclick="openSkillDetail('coaching')">Performance Coaching 🗣️</span>
-                    <span class="tag" onclick="openSkillDetail('process')">Process Improvement ⚡</span>
+                    <span class="tag" onclick="openSkillDetail('rca')">Root Cause Analysis (RCA) 🧩</span>
                     <span class="tag" onclick="openSkillDetail('csat')">CSAT / DSAT Optimization 📊</span>
-                    <span class="tag" onclick="openSkillDetail('sla')">SLA Management ⏰</span>
-                    <span class="tag" onclick="openSkillDetail('onboarding')">New Hire Onboarding 🎓</span>
-                    <span class="tag" onclick="openSkillDetail('b2b')">B2B Business Outreach 🤝</span>
                 </div>
             </div>
 
+            <!-- CATEGORY 2: TRAINING & COACHING -->
+            <div style="margin-bottom: 1.2rem;">
+                <strong class="lang-en" style="font-size: 1.05rem; color: var(--primary);">Training & Team Delivery 🎓</strong>
+                <strong class="lang-zh lang-hide" style="font-size: 1.05rem; color: var(--primary);">培训与团队交付 🎓</strong>
+                <div class="tag-group">
+                    <span class="tag" onclick="openSkillDetail('coaching')">Performance Coaching 🗣️</span>
+                    <span class="tag" onclick="openSkillDetail('onboarding')">New Hire Onboarding 🎓</span>
+                    <span class="tag" onclick="openSkillDetail('process')">Process & SOP Standardization ⚡</span>
+                </div>
+            </div>
+
+            <!-- CATEGORY 3: BUSINESS & TOOLS -->
             <div>
-                <strong class="lang-en" style="font-size: 1.1rem; color: var(--primary);">Tools & Technologies 🛠️ (Click for Use Cases!)</strong>
-                <strong class="lang-zh lang-hide" style="font-size: 1.1rem; color: var(--primary);">使用工具与软件 🛠️（点击查看实战应用！）</strong>
+                <strong class="lang-en" style="font-size: 1.05rem; color: var(--primary);">Tools & Business Development 🛠️ (Click for Details)</strong>
+                <strong class="lang-zh lang-hide" style="font-size: 1.05rem; color: var(--primary);">工具应用与商务拓展 🛠️（点击查看细节）</strong>
                 <div class="tag-group">
                     <span class="tag" onclick="openSkillDetail('qms')">Meta QMS 🛠️</span>
                     <span class="tag" onclick="openSkillDetail('zendesk')">Zendesk 🛠️</span>
                     <span class="tag" onclick="openSkillDetail('ads_mgr')">Meta Ads Manager 🛠️</span>
                     <span class="tag" onclick="openSkillDetail('tableau')">Tableau 🛠️</span>
                     <span class="tag" onclick="openSkillDetail('excel')">Microsoft Excel 🛠️</span>
-                    <span class="tag" onclick="openSkillDetail('gsheets')">Google Sheets 🛠️</span>
-                    <span class="tag" onclick="openSkillDetail('livechat')">Live Chat Systems 🛠️</span>
+                    <span class="tag" onclick="openSkillDetail('b2b')">B2B Business Outreach 🤝</span>
                 </div>
             </div>
         </div>
@@ -945,7 +964,7 @@
         </div>
     </main>
 
-    <!-- POPUP MODALS FOR METRICS & SKILLS -->
+    <!-- POPUP MODALS -->
     <div id="modalOverlay" class="modal-overlay" onclick="closeModal(event)">
         <div class="modal-card">
             <button class="modal-close" onclick="closeModalForce()">✕</button>
@@ -956,7 +975,6 @@
     <script>
         let currentLang = 'en';
 
-        // Modal Content Data for Metrics
         const modalData = {
             m1: {
                 en: {
@@ -1008,7 +1026,6 @@
             }
         };
 
-        // Skill & Tool Details Data
         const skillDetails = {
             qms: {
                 en: { title: "Meta QMS", desc: "Used daily for high-volume quality audits, tagging compliance violations, and generating data-driven feedback reports for regional leads." },
@@ -1037,10 +1054,33 @@
             calibration: {
                 en: { title: "Calibration Alignment", desc: "Facilitated multi-stakeholder calibration sessions to maintain 90%+ scoring consistency across QA, TL, and Trainers." },
                 zh: { title: "标定一致性 (Calibration)", desc: "主持多方参与的标定会议，确保 QA、团队主管与培训师之间的评分一致性保持在 90% 以上。" }
+            },
+            rca: {
+                en: { title: "Root Cause Analysis (RCA)", desc: "Applied 5-Whys and data categorizations to identify systematic operational breakdowns and prevent recurring errors." },
+                zh: { title: "根本原因分析 (RCA)", desc: "运用 5-Whys 及归因分类法深入剖析服务失误根源，制定长期预防措施并重构 SOP。" }
+            },
+            coaching: {
+                en: { title: "Performance Coaching", desc: "Delivered structured 1-on-1 feedback sessions that improved underperforming agents' scores by 15-20% within 4 weeks." },
+                zh: { title: "绩效一对一辅导", desc: "提供结构化的 1对1 反馈与辅导，帮助低分专员在 4 周内实现 15-20% 的大幅成绩提升。" }
+            },
+            onboarding: {
+                en: { title: "New Hire Onboarding", desc: "Designed learning paths and SOP quizzes for seamless agent transition into live customer operations." },
+                zh: { title: "新员工入职培训", desc: "设计系统化学习路径与 SOP 考评体系，协助新员工平稳过渡并快速达到上线运营标准。" }
+            },
+            process: {
+                en: { title: "Process & SOP Standardization", desc: "Drafted clear SOP playbooks and workflow documentation across APAC and global CS teams." },
+                zh: { title: "流程与 SOP 标准化", desc: "撰写并更新清晰的 SOP 操作手册与客服流程文档，覆盖亚太及全球多个服务区域。" }
+            },
+            csat: {
+                en: { title: "CSAT / DSAT Optimization", desc: "Analyzed negative feedback trends to implement corrective action plans, directly improving CSAT scores." },
+                zh: { title: "CSAT 满意度优化", desc: "深入分析差评（DSAT）趋势并制定纠偏行动计划，直接提升整体客户服务满意度。" }
+            },
+            b2b: {
+                en: { title: "B2B Business Outreach", desc: "Managed retail merchant relationships, wholesale pitch decks, and brand distribution channels." },
+                zh: { title: "B2B 商务拓展与经销", desc: "管理零售商合作关系、撰写批发合作提案，并维护功能性食品与护肤品的经销渠道。" }
             }
         };
 
-        // Open Metrics Modal
         function openModal(id) {
             const data = modalData[id][currentLang];
             const contentDiv = document.getElementById('modalContent');
@@ -1052,7 +1092,6 @@
             document.getElementById('modalOverlay').classList.add('active');
         }
 
-        // Open Skill Modal
         function openSkillDetail(skillKey) {
             const skill = skillDetails[skillKey] ? skillDetails[skillKey][currentLang] : { title: "Skill Overview", desc: "Hands-on experience in high-performing CX operations." };
             const contentDiv = document.getElementById('modalContent');
@@ -1084,8 +1123,8 @@
                 langBtn.textContent = 'English';
                 currentLang = 'zh';
             } else {
-                zhElements.forEach(el => el.classList.add('lang-hide'));
-                enElements.forEach(el => el.classList.remove('lang-hide'));
+                zhElements.forEach(el => el.classList.remove('lang-hide'));
+                enElements.forEach(el => el.classList.add('lang-hide'));
                 langBtn.textContent = '中文';
                 currentLang = 'en';
             }
@@ -1109,7 +1148,6 @@
             if (tabId === 'education') tabButtons[3].classList.add('active');
         }
 
-        // Easter Egg for Profile Picture
         function triggerProfileEasterEgg() {
             const bubble = document.getElementById('profileBubble');
             const messages = ["Hi there! 👋", "Meow! 🐱", "Welcome! ✨", "Enjoy my portfolio! 🌸"];
@@ -1123,7 +1161,6 @@
             }, 1800);
         }
 
-        // Animated Number Counters Functionality
         function animateCounters() {
             const counters = document.querySelectorAll('.counter');
             counters.forEach(counter => {
