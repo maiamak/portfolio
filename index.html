@@ -572,14 +572,14 @@
 
         .acnh-gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 0.75rem;
             margin-top: 0.8rem;
         }
 
         .acnh-img {
             width: 100%;
-            height: 150px;
+            height: 140px;
             object-fit: cover;
             border-radius: 12px;
             border: 1px solid var(--border);
@@ -633,6 +633,9 @@
                 padding: 0.4rem 0.8rem;
                 font-size: 0.78rem;
             }
+            .acnh-gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
         @keyframes fadeInDown {
@@ -668,7 +671,7 @@
         <section class="hero">
             <div class="profile-container" onclick="triggerProfileEasterEgg()">
                 <div class="easter-egg-bubble" id="profileBubble">点我点我！✨</div>
-                <img src="https://raw.githubusercontent.com/maiamak/portfolio/main/profile.jpg" alt="Maia Mak" class="profile-img" onerror="this.src='https://api.dicebear.com/7.x/bottts/svg?seed=Maia';">
+                <img src="https://raw.githubusercontent.com/maiamak/portfolio/main/profile.jpg" alt="Maia Mak" class="profile-img">
                 <span class="profile-badge">✨</span>
             </div>
 
@@ -853,19 +856,23 @@
                     <li>🎨 <strong>美学灵魂：</strong> 纯美术背景培养了我对细节的极致追求与独特的视觉美感。</li>
                 </ul>
 
-                <!-- ANIMAL CROSSING PHOTO GALLERY -->
+                <!-- ANIMAL CROSSING PHOTO GALLERY (6 PHOTOS) -->
                 <div style="margin-top: 1.2rem; background: #fdf2f8; padding: 1rem; border-radius: 16px; border: 1px solid var(--soft-pink);">
                     <strong class="lang-en lang-hide" style="color: var(--accent); font-size: 0.95rem;">🎮 Animal Crossing Island Showcase</strong>
                     <strong class="lang-zh" style="color: var(--accent); font-size: 0.95rem;">🎮 动森无人岛日常与岛建展示</strong>
                     <div class="acnh-gallery">
-                        <img src="https://raw.githubusercontent.com/maiamak/portfolio/main/acnh1.jpg" alt="ACNH 1" class="acnh-img" onerror="this.src='https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=500';">
-                        <img src="https://raw.githubusercontent.com/maiamak/portfolio/main/acnh2.jpg" alt="ACNH 2" class="acnh-img" onerror="this.src='https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?w=500';">
+                        <img src="https://raw.githubusercontent.com/maiamak/portfolio/main/acnh1.jpg" alt="ACNH 1" class="acnh-img">
+                        <img src="https://raw.githubusercontent.com/maiamak/portfolio/main/acnh2.jpg" alt="ACNH 2" class="acnh-img">
+                        <img src="https://raw.githubusercontent.com/maiamak/portfolio/main/acnh3.jpg" alt="ACNH 3" class="acnh-img">
+                        <img src="https://raw.githubusercontent.com/maiamak/portfolio/main/acnh4.jpg" alt="ACNH 4" class="acnh-img">
+                        <img src="https://raw.githubusercontent.com/maiamak/portfolio/main/acnh5.jpg" alt="ACNH 5" class="acnh-img">
+                        <img src="https://raw.githubusercontent.com/maiamak/portfolio/main/acnh6.jpg" alt="ACNH 6" class="acnh-img">
                     </div>
                 </div>
 
                 <!-- CAT PHOTO & INTRO -->
                 <div class="cat-group-card">
-                    <img src="https://raw.githubusercontent.com/maiamak/portfolio/main/cats.jpg" alt="Bubur, Keera and Ollie" class="cat-group-img" onerror="this.src='https://images.unsplash.com/photo-1543852786-1cf6624b9987?w=800';">
+                    <img src="https://raw.githubusercontent.com/maiamak/portfolio/main/cats.jpg" alt="Bubur, Keera and Ollie" class="cat-group-img">
                     
                     <div class="lang-en lang-hide">
                         <strong style="color: var(--primary); font-size: 1.1rem; display: block; margin-bottom: 0.75rem;">Meet Bubur, Keera, and Ollie 🐾🤍</strong>
@@ -953,7 +960,7 @@
     </div>
 
     <script>
-        let currentLang = 'zh'; // Default language set to Simplified Chinese
+        let currentLang = 'zh';
 
         const modalData = {
             m1: {
