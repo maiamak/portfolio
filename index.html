@@ -79,6 +79,35 @@
             -webkit-text-fill-color: transparent;
         }
 
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .download-btn {
+            background: #ffffff;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .download-btn:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.25);
+        }
+
         .lang-btn {
             background: linear-gradient(135deg, var(--primary), #8b5cf6);
             color: white;
@@ -121,6 +150,7 @@
         .profile-container {
             position: relative;
             flex-shrink: 0;
+            cursor: pointer;
         }
 
         .profile-img {
@@ -147,6 +177,42 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
             font-size: 1.2rem;
             animation: bounce 2s infinite;
+        }
+
+        /* Cat Tooltip Easter Egg */
+        .easter-egg-bubble {
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%) scale(0.8);
+            background: var(--text-main);
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .easter-egg-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 6px 6px 0;
+            border-style: solid;
+            border-color: var(--text-main) transparent;
+        }
+
+        .profile-container:hover .easter-egg-bubble {
+            opacity: 1;
+            transform: translateX(-50%) scale(1);
+            top: -48px;
         }
 
         @keyframes bounce {
@@ -394,7 +460,7 @@
             display: block;
         }
 
-        /* Interactive Job Cards */
+        /* Interactive Job Cards & Before/After Case Studies */
         .job-card {
             background: rgba(255, 255, 255, 0.65);
             border-radius: 16px;
@@ -451,6 +517,32 @@
             margin-bottom: 0.4rem;
         }
 
+        /* Before & After Case Study Box */
+        .case-study-box {
+            margin-top: 1rem;
+            background: #f8fafc;
+            border-left: 4px solid var(--primary);
+            border-radius: 0 12px 12px 0;
+            padding: 0.85rem 1rem;
+            font-size: 0.88rem;
+        }
+
+        .case-study-title {
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.4rem;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .case-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.5rem;
+            color: var(--text-muted);
+        }
+
         /* COMBINED CAT SECTION STYLES */
         .cat-group-card {
             background: #ffffff;
@@ -459,6 +551,7 @@
             border: 1px solid var(--border);
             margin-top: 1rem;
             box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            position: relative;
         }
 
         .cat-group-img {
@@ -469,6 +562,11 @@
             border: 1px solid var(--border);
             margin-bottom: 1.25rem;
             box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+            transition: transform 0.3s ease;
+        }
+
+        .cat-group-img:hover {
+            transform: scale(1.01);
         }
 
         .cat-intro-list {
@@ -532,6 +630,13 @@
             .contact-info {
                 justify-content: center;
             }
+            .nav-actions {
+                gap: 0.4rem;
+            }
+            .download-btn {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.78rem;
+            }
         }
 
         @keyframes fadeInDown {
@@ -554,25 +659,31 @@
     <header class="header">
         <div class="nav-container">
             <div class="logo">Maia Mak 🌸</div>
-            <button class="lang-btn" onclick="toggleLanguage()">中文</button>
+            <div class="nav-actions">
+                <a href="https://raw.githubusercontent.com/maiamak/portfolio/main/profile.jpg" target="_blank" class="download-btn">
+                    📄 <span class="lang-en">PDF Resume</span><span class="lang-zh lang-hide">下载简历</span>
+                </a>
+                <button class="lang-btn" onclick="toggleLanguage()">中文</button>
+            </div>
         </div>
     </header>
 
     <main class="container">
-        <!-- HERO SECTION WITH PROFILE PICTURE -->
+        <!-- HERO SECTION WITH PROFILE PICTURE & EASTER EGG -->
         <section class="hero">
-            <div class="profile-container">
-                <img src="profile.jpg" alt="Maia Mak" class="profile-img" onerror="this.src='https://api.dicebear.com/7.x/bottts/svg?seed=Maia';">
+            <div class="profile-container" onclick="triggerProfileEasterEgg()">
+                <div class="easter-egg-bubble" id="profileBubble">Click me! ✨</div>
+                <img src="https://raw.githubusercontent.com/maiamak/portfolio/main/profile.jpg" alt="Maia Mak" class="profile-img" onerror="this.src='https://api.dicebear.com/7.x/bottts/svg?seed=Maia';">
                 <span class="profile-badge">✨</span>
             </div>
 
             <div class="hero-details">
                 <h1>Maia Mak Ke Xin (麦可欣)</h1>
-                <h2 class="lang-en">Regional Quality Assurance & Training Specialist | Part-Time Brand Agency Wholesaler 🚀</h2>
-                <h2 class="lang-zh lang-hide">区域质量保证 (QA) 与培训专家 | 兼职品牌代理批发 🚀</h2>
+                <h2 class="lang-en">Regional Quality Assurance & Training Specialist | Part-Time Entrepreneur & Independent Brand Distributor 🚀</h2>
+                <h2 class="lang-zh lang-hide">区域质量保证 (QA) 与培训专家 | 兼职创业家与品牌代理批发商 🚀</h2>
                 
-                <p class="lang-en">Regional QA and training specialist leading high-volume audits and compliance across 7+ global markets. Running a part-time brand agency wholesale business distributing functional foods.</p>
-                <p class="lang-zh lang-hide">拥有覆盖 7+ 全球市场的 QA 与培训专家，擅长高强度审计与合规管理。兼职经营品牌代理批发业务，专注于 functional foods（功能性食品）推广。</p>
+                <p class="lang-en">Regional QA and training specialist leading high-volume audits and compliance across 7+ global markets. Running a part-time entrepreneurship and brand distribution business focusing on functional foods and skin care.</p>
+                <p class="lang-zh lang-hide">拥有覆盖 7+ 全球市场的 QA 与培训专家，擅长高强度审计与合规管理。兼职创业经营品牌代理批发业务，专注于功能性食品与功能性护肤品推广。</p>
 
                 <div class="contact-info">
                     <span class="contact-pill">📍 Selangor, Malaysia</span>
@@ -583,10 +694,10 @@
             </div>
         </section>
 
-        <!-- HIGHLIGHT METRICS -->
+        <!-- HIGHLIGHT METRICS (WITH ANIMATED COUNTERS) -->
         <div class="metric-grid">
             <div class="metric-card" onclick="openModal('m1')">
-                <div class="metric-value">80% ➔ >95%</div>
+                <div class="metric-value"><span class="counter" data-target="80">0</span>% ➔ ><span class="counter" data-target="95">0</span>%</div>
                 <div class="metric-label lang-en">Tenured Agent QA Score Uplift</div>
                 <div class="metric-label lang-zh lang-hide">资深专员 QA 成绩提升</div>
                 <span class="click-hint lang-en">Click for details ✨</span>
@@ -594,7 +705,7 @@
             </div>
 
             <div class="metric-card" onclick="openModal('m2')">
-                <div class="metric-value">-80%</div>
+                <div class="metric-value">-<span class="counter" data-target="80">0</span>%</div>
                 <div class="metric-label lang-en">Policy Violation Red Flags</div>
                 <div class="metric-label lang-zh lang-hide">违规政策风险降低</div>
                 <span class="click-hint lang-en">Click for details ✨</span>
@@ -602,7 +713,7 @@
             </div>
 
             <div class="metric-card" onclick="openModal('m3')">
-                <div class="metric-value">90%+</div>
+                <div class="metric-value"><span class="counter" data-target="90">0</span>%+</div>
                 <div class="metric-label lang-en">Scoring Calibration Alignment</div>
                 <div class="metric-label lang-zh lang-hide">QA 团队评分标定一致性</div>
                 <span class="click-hint lang-en">Click for details ✨</span>
@@ -610,7 +721,7 @@
             </div>
 
             <div class="metric-card" onclick="openModal('m4')">
-                <div class="metric-value">$612K+</div>
+                <div class="metric-value">$<span class="counter" data-target="612">0</span>K+</div>
                 <div class="metric-label lang-en">Q4 Revenue Generated (Meta)</div>
                 <div class="metric-label lang-zh lang-hide">单季度 (Q4) 创造广告收益</div>
                 <span class="click-hint lang-en">Click for details ✨</span>
@@ -621,7 +732,7 @@
         <!-- NAVIGATION TABS -->
         <div class="tab-menu">
             <button class="tab-btn active" onclick="switchTab('experience')">💼 <span class="lang-en">Experience</span><span class="lang-zh lang-hide">工作经历</span></button>
-            <button class="tab-btn" onclick="switchTab('about')">🐱 <span class="lang-en">About & Side Biz</span><span class="lang-zh lang-hide">关于我 & 副业亮點</span></button>
+            <button class="tab-btn" onclick="switchTab('about')">🐱 <span class="lang-en">About & Hobbies</span><span class="lang-zh lang-hide">关于我 & 个人爱好</span></button>
             <button class="tab-btn" onclick="switchTab('skills')">⚡ <span class="lang-en">Skills & Tools</span><span class="lang-zh lang-hide">技能与工具</span></button>
             <button class="tab-btn" onclick="switchTab('education')">🎓 <span class="lang-en">Education</span><span class="lang-zh lang-hide">教育与语言</span></button>
         </div>
@@ -652,6 +763,15 @@
                     <li>负责新员工全流程培训，并直接辅导 10 人客服团队的日常运营。</li>
                     <li>保持 QA 团队与管理层之间 90% 以上的高标定评估一致性。</li>
                 </ul>
+
+                <!-- BEFORE & AFTER CASE STUDY -->
+                <div class="case-study-box">
+                    <div class="case-study-title">💡 <span class="lang-en">Key Impact Spotlight</span><span class="lang-zh lang-hide">实战亮点对比</span></div>
+                    <div class="case-grid">
+                        <div><strong>Before:</strong> Low response consistency in multi-market chats (Baseline: 80% QA score).</div>
+                        <div><strong>After:</strong> Standardized multi-regional SOPs, pushing QA accuracy to <strong>>95%</strong> across all agents.</div>
+                    </div>
+                </div>
             </div>
 
             <!-- META QA -->
@@ -678,6 +798,15 @@
                     <li>通过精准识别合规风险漏洞，将政策违规红旗率降低了 80%。</li>
                     <li>主持标定会议，确保团队对齐度 (ATA) 维持在 85% 以上。</li>
                 </ul>
+
+                <!-- BEFORE & AFTER CASE STUDY -->
+                <div class="case-study-box">
+                    <div class="case-study-title">💡 <span class="lang-en">Risk Mitigation Impact</span><span class="lang-zh lang-hide">风控优化对比</span></div>
+                    <div class="case-grid">
+                        <div><strong>Before:</strong> High compliance risk due to frequent policy update breaches.</div>
+                        <div><strong>After:</strong> Designed weekly SOP quizzes & calibration syncs, slashing red flags by <strong>80%</strong>.</div>
+                    </div>
+                </div>
             </div>
 
             <!-- META SALES -->
@@ -705,36 +834,42 @@
             </div>
         </div>
 
-        <!-- TAB CONTENT: ABOUT & ENTREPRENEURSHIP -->
+        <!-- TAB CONTENT: ABOUT & HOBBIES -->
         <div id="about" class="tab-content">
             <div class="job-card">
-                <div class="job-title lang-en">🌱 Part-Time Brand Agency Wholesaler | Functional Foods</div>
-                <div class="job-title lang-zh lang-hide">🌱 兼职品牌代理批发 | 功能性食品 (Functional Foods)</div>
-                <p class="lang-en" style="margin-top: 0.5rem; color: var(--text-muted);">
-                    Beyond quality management, I run a part-time brand agency business specializing in functional foods distribution. I handle B2B outreach, store collaborations, and sales growth, blending corporate strategy with entrepreneurship!
-                </p>
-                <p class="lang-zh lang-hide" style="margin-top: 0.5rem; color: var(--text-muted);">
-                    除了专注于 QA 与培训，我也兼职经营自己的品牌代理批发业务，专注于 functional foods（功能性食品）推广。我亲自对接门市合作与 B2B 业务拓展，把企业级的商务思维融入实战创业！
-                </p>
+                <div class="job-title lang-en">🌱 Part-Time Entrepreneur & Independent Brand Distributor</div>
+                <div class="job-title lang-zh lang-hide">🌱 兼职创业家与品牌代理批发商</div>
+                <ul class="lang-en" style="margin-top: 0.5rem; color: var(--text-muted); padding-left: 1.2rem;">
+                    <li><strong>Business Focus:</strong> Functional foods and skin care.</li>
+                    <li><strong>Core Operations:</strong> B2B retail partnerships, wholesale distribution, and brand outreach.</li>
+                    <li><strong>Key Responsibilities:</strong> Market expansion, retail client management, and product distribution strategy.</li>
+                </ul>
+                <ul class="lang-zh lang-hide" style="margin-top: 0.5rem; color: var(--text-muted); padding-left: 1.2rem;">
+                    <li><strong>业务核心：</strong>功能性食品与功能性护肤品。</li>
+                    <li><strong>主要运营：</strong>B2B 零售渠道合作、批发经销与品牌推广。</li>
+                    <li><strong>重点职能：</strong>市场拓展、渠道客户管理与产品经销策略。</li>
+                </ul>
             </div>
 
             <div class="job-card">
-                <div class="job-title lang-en">🐾 Life & Hobbies | Fun Facts</div>
+                <div class="job-title lang-en">🐾 Life & Hobbies | Personal Highlights</div>
                 <div class="job-title lang-zh lang-hide">🐾 生活乐趣 & 个人爱好</div>
                 <ul class="lang-en" style="margin-top: 0.5rem; color: var(--text-muted);">
                     <li>🐱 <strong>Cat Enthusiast:</strong> Proud cat mom of 3 adorable boys (Bubur, Keera & Ollie). Daily cat snuggles keep my creativity high!</li>
-                    <li>🏸 <strong>Badminton Player:</strong> Love staying active and energetic through regular badminton games.</li>
+                    <li>🎮 <strong>Animal Crossing Mayor:</strong> Passionate <em>Animal Crossing: New Horizons</em> player on Nintendo Switch[cite: 1]! Love island designing, custom layout planning, and hosting friends for online island visits[cite: 1].</li>
+                    <li>🏸 <strong>Badminton Player:</strong> Love staying active and energetic through regular badminton games with friends.</li>
                     <li>🎨 <strong>Creative Mind:</strong> Background in Fine Arts gives me a unique aesthetic sense and visual design perspective in everything I do.</li>
                 </ul>
                 <ul class="lang-zh lang-hide" style="margin-top: 0.5rem; color: var(--text-muted);">
                     <li>🐱 <strong>资深猫奴：</strong> 家有 3 只可爱的猫儿子（Bubur、Keera 和 Ollie），每日撸猫是我放松和源源不断灵感的来源！</li>
+                    <li>🎮 <strong>无人岛岛主：</strong> <em>集合啦！动物森友会</em>（Animal Crossing: New Horizons）Switch 资深玩家[cite: 1]，喜欢岛建设计、规划布局以及邀请朋友连线串门[cite: 1]！</li>
                     <li>🏸 <strong>羽毛球爱好者：</strong> 热爱打羽毛球，保持满满的精力与团队协作默契。</li>
                     <li>🎨 <strong>美学灵魂：</strong> 纯美术背景培养了我对细节的极致追求与独特的视觉美感。</li>
                 </ul>
 
                 <!-- COMBINED CAT PHOTO & INTRO SECTION -->
                 <div class="cat-group-card">
-                    <img src="cats.jpg" alt="Bubur, Keera and Ollie" class="cat-group-img" onerror="this.src='https://images.unsplash.com/photo-1543852786-1cf6624b9987?w=800';">
+                    <img src="https://raw.githubusercontent.com/maiamak/portfolio/main/cats.jpg" alt="Bubur, Keera and Ollie" class="cat-group-img" onerror="this.src='https://images.unsplash.com/photo-1543852786-1cf6624b9987?w=800';">
                     
                     <!-- ENGLISH CAT INTRO -->
                     <div class="lang-en">
@@ -747,7 +882,7 @@
                         <div class="cat-summary-text">Three boys. One little family. 🐾✨</div>
                     </div>
 
-                    <!-- CHINESE CAT INTRO (Simplified Chinese) -->
+                    <!-- CHINESE CAT INTRO -->
                     <div class="lang-zh lang-hide">
                         <strong style="color: var(--primary); font-size: 1.1rem; display: block; margin-bottom: 0.75rem;">认识一下 Bubur、Keera 和 Ollie 🐾🤍</strong>
                         <ul class="cat-intro-list">
@@ -761,34 +896,34 @@
             </div>
         </div>
 
-        <!-- TAB CONTENT: SKILLS -->
+        <!-- TAB CONTENT: SKILLS & TOOLS (WITH INTERACTIVE TOOL MODALS) -->
         <div id="skills" class="tab-content">
             <div style="margin-bottom: 1.5rem;">
                 <strong class="lang-en" style="font-size: 1.1rem; color: var(--primary);">Core Competencies 🌟</strong>
                 <strong class="lang-zh lang-hide" style="font-size: 1.1rem; color: var(--primary);">核心专业能力 🌟</strong>
                 <div class="tag-group">
-                    <span class="tag">QA Audit & Compliance</span>
-                    <span class="tag">Calibration Alignment</span>
-                    <span class="tag">Performance Coaching</span>
-                    <span class="tag">Process Improvement</span>
-                    <span class="tag">CSAT / DSAT Optimization</span>
-                    <span class="tag">SLA Management</span>
-                    <span class="tag">New Hire Onboarding & Training</span>
-                    <span class="tag">B2B Business Outreach</span>
+                    <span class="tag" onclick="openSkillDetail('qa_audit')">QA Audit & Compliance 🔍</span>
+                    <span class="tag" onclick="openSkillDetail('calibration')">Calibration Alignment 🎯</span>
+                    <span class="tag" onclick="openSkillDetail('coaching')">Performance Coaching 🗣️</span>
+                    <span class="tag" onclick="openSkillDetail('process')">Process Improvement ⚡</span>
+                    <span class="tag" onclick="openSkillDetail('csat')">CSAT / DSAT Optimization 📊</span>
+                    <span class="tag" onclick="openSkillDetail('sla')">SLA Management ⏰</span>
+                    <span class="tag" onclick="openSkillDetail('onboarding')">New Hire Onboarding 🎓</span>
+                    <span class="tag" onclick="openSkillDetail('b2b')">B2B Business Outreach 🤝</span>
                 </div>
             </div>
 
             <div>
-                <strong class="lang-en" style="font-size: 1.1rem; color: var(--primary);">Tools & Technologies 🛠️</strong>
-                <strong class="lang-zh lang-hide" style="font-size: 1.1rem; color: var(--primary);">使用工具与软件 🛠️</strong>
+                <strong class="lang-en" style="font-size: 1.1rem; color: var(--primary);">Tools & Technologies 🛠️ (Click for Use Cases!)</strong>
+                <strong class="lang-zh lang-hide" style="font-size: 1.1rem; color: var(--primary);">使用工具与软件 🛠️（点击查看实战应用！）</strong>
                 <div class="tag-group">
-                    <span class="tag">Meta QMS</span>
-                    <span class="tag">Zendesk</span>
-                    <span class="tag">Meta Ads Manager</span>
-                    <span class="tag">Tableau</span>
-                    <span class="tag">Microsoft Excel</span>
-                    <span class="tag">Google Sheets</span>
-                    <span class="tag">Live Chat Systems</span>
+                    <span class="tag" onclick="openSkillDetail('qms')">Meta QMS 🛠️</span>
+                    <span class="tag" onclick="openSkillDetail('zendesk')">Zendesk 🛠️</span>
+                    <span class="tag" onclick="openSkillDetail('ads_mgr')">Meta Ads Manager 🛠️</span>
+                    <span class="tag" onclick="openSkillDetail('tableau')">Tableau 🛠️</span>
+                    <span class="tag" onclick="openSkillDetail('excel')">Microsoft Excel 🛠️</span>
+                    <span class="tag" onclick="openSkillDetail('gsheets')">Google Sheets 🛠️</span>
+                    <span class="tag" onclick="openSkillDetail('livechat')">Live Chat Systems 🛠️</span>
                 </div>
             </div>
         </div>
@@ -810,7 +945,7 @@
         </div>
     </main>
 
-    <!-- POPUP MODALS FOR METRICS -->
+    <!-- POPUP MODALS FOR METRICS & SKILLS -->
     <div id="modalOverlay" class="modal-overlay" onclick="closeModal(event)">
         <div class="modal-card">
             <button class="modal-close" onclick="closeModalForce()">✕</button>
@@ -821,7 +956,7 @@
     <script>
         let currentLang = 'en';
 
-        // Modal Content Data
+        // Modal Content Data for Metrics
         const modalData = {
             m1: {
                 en: {
@@ -873,16 +1008,58 @@
             }
         };
 
+        // Skill & Tool Details Data
+        const skillDetails = {
+            qms: {
+                en: { title: "Meta QMS", desc: "Used daily for high-volume quality audits, tagging compliance violations, and generating data-driven feedback reports for regional leads." },
+                zh: { title: "Meta QMS", desc: "每日用于高强度服务质量审计，精准标记政策违规项，并为区域主管生成数据驱动的反馈报告。" }
+            },
+            zendesk: {
+                en: { title: "Zendesk", desc: "Expert in managing multi-channel customer inquiries, tracking SLA resolution metrics, and setting up macro workflows." },
+                zh: { title: "Zendesk", desc: "熟练掌握多渠道客户工单管理，监控 SLA 解决时效，并配置高效的宏指令（Macros）流程。" }
+            },
+            ads_mgr: {
+                en: { title: "Meta Ads Manager", desc: "Audited and optimized 150+ advertiser accounts per quarter across campaign strategy, pixel integration, and ROAS scaling." },
+                zh: { title: "Meta Ads Manager", desc: "每季度审计并优化 150+ 广告主账户，涵盖广告系列策略、Pixel 像素追踪及 ROAS 转化提效。" }
+            },
+            tableau: {
+                en: { title: "Tableau", desc: "Analyzed weekly QA trend dashboards to identify agent knowledge gaps and root-cause compliance red flags." },
+                zh: { title: "Tableau", desc: "分析每周 QA 趋势看板，精准识别客服人员的知识盲区及合规风险的根本原因。" }
+            },
+            excel: {
+                en: { title: "Microsoft Excel", desc: "Utilized Pivot Tables, VLOOKUP, and conditional formatting to build weekly pulse reports and performance scorecards." },
+                zh: { title: "Microsoft Excel", desc: "熟练运用透视表、VLOOKUP 及条件格式，构建每周 QA 脉冲报告与绩效评估计分卡。" }
+            },
+            qa_audit: {
+                en: { title: "QA Audit & Compliance", desc: "Evaluated 250+ tickets weekly across 7+ global markets ensuring 100% adherence to brand & regional guidelines." },
+                zh: { title: "QA 质量审计与合规", desc: "每周跨 7+ 全球市场评估 250+ 笔工单，确保 100% 严格符合品牌与区域合规标准。" }
+            },
+            calibration: {
+                en: { title: "Calibration Alignment", desc: "Facilitated multi-stakeholder calibration sessions to maintain 90%+ scoring consistency across QA, TL, and Trainers." },
+                zh: { title: "标定一致性 (Calibration)", desc: "主持多方参与的标定会议，确保 QA、团队主管与培训师之间的评分一致性保持在 90% 以上。" }
+            }
+        };
+
+        // Open Metrics Modal
         function openModal(id) {
             const data = modalData[id][currentLang];
             const contentDiv = document.getElementById('modalContent');
-            
             contentDiv.innerHTML = `
                 <div class="modal-title">${data.title}</div>
                 <div class="modal-subtitle">${data.subtitle}</div>
                 <div class="modal-body">${data.body}</div>
             `;
-            
+            document.getElementById('modalOverlay').classList.add('active');
+        }
+
+        // Open Skill Modal
+        function openSkillDetail(skillKey) {
+            const skill = skillDetails[skillKey] ? skillDetails[skillKey][currentLang] : { title: "Skill Overview", desc: "Hands-on experience in high-performing CX operations." };
+            const contentDiv = document.getElementById('modalContent');
+            contentDiv.innerHTML = `
+                <div class="modal-title">${skill.title}</div>
+                <div class="modal-body" style="margin-top:0.8rem; font-size:1rem;">${skill.desc}</div>
+            `;
             document.getElementById('modalOverlay').classList.add('active');
         }
 
@@ -907,7 +1084,7 @@
                 langBtn.textContent = 'English';
                 currentLang = 'zh';
             } else {
-                zhElements.forEach(el => el.classList.remove('lang-hide'));
+                zhElements.forEach(el => el.classList.add('lang-hide'));
                 enElements.forEach(el => el.classList.remove('lang-hide'));
                 langBtn.textContent = '中文';
                 currentLang = 'en';
@@ -931,6 +1108,47 @@
             if (tabId === 'skills') tabButtons[2].classList.add('active');
             if (tabId === 'education') tabButtons[3].classList.add('active');
         }
+
+        // Easter Egg for Profile Picture
+        function triggerProfileEasterEgg() {
+            const bubble = document.getElementById('profileBubble');
+            const messages = ["Hi there! 👋", "Meow! 🐱", "Welcome! ✨", "Enjoy my portfolio! 🌸"];
+            const randomMsg = messages[Math.floor(Math.random() * messages.length)];
+            bubble.textContent = randomMsg;
+            bubble.style.opacity = '1';
+            bubble.style.transform = 'translateX(-50%) scale(1.1)';
+            setTimeout(() => {
+                bubble.style.opacity = '';
+                bubble.style.transform = '';
+            }, 1800);
+        }
+
+        // Animated Number Counters Functionality
+        function animateCounters() {
+            const counters = document.querySelectorAll('.counter');
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                const duration = 1200; 
+                const stepTime = 20; 
+                const steps = duration / stepTime;
+                const increment = target / steps;
+                let current = 0;
+
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        counter.textContent = target;
+                        clearInterval(timer);
+                    } else {
+                        counter.textContent = Math.ceil(current);
+                    }
+                }, stepTime);
+            });
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            animateCounters();
+        });
     </script>
 </body>
 </html>
