@@ -1,187 +1,940 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Part-Time Entrepreneur Portfolio</title>
-  <style>
-    :root {
-      --primary-color: #2c3e50;
-      --accent-color: #27ae60;
-      --bg-color: #f8f9fa;
-      --card-bg: #ffffff;
-      --text-color: #333333;
-      --text-muted: #666666;
-      --border-color: #e0e0e0;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maia Mak Ke Xin | Interactive Portfolio</title>
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-hover: #4f46e5;
+            --accent: #ec4899;
+            --soft-pink: #fbcfe8;
+            --bg-gradient: linear-gradient(135deg, #f0f4ff 0%, #fae8ff 50%, #fef2f2 100%);
+            --card-bg: rgba(255, 255, 255, 0.88);
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: rgba(226, 232, 240, 0.9);
+            --shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.12), 0 8px 10px -6px rgba(236, 72, 153, 0.08);
+        }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
 
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      line-height: 1.6;
-      padding: 20px;
-    }
+        body {
+            background: var(--bg-gradient);
+            background-attachment: fixed;
+            color: var(--text-main);
+            line-height: 1.6;
+            padding-bottom: 60px;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
 
-    .container {
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
+        /* Decorative Floating Elements */
+        .shape {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(40px);
+            z-index: -1;
+            opacity: 0.5;
+            animation: float 8s ease-in-out infinite alternate;
+        }
+        .shape-1 { top: -5%; left: -5%; width: 250px; height: 250px; background: #c084fc; }
+        .shape-2 { bottom: 10%; right: -5%; width: 300px; height: 300px; background: #f472b6; }
 
-    .lang-toggle {
-      text-align: right;
-      margin-bottom: 20px;
-    }
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            100% { transform: translateY(20px) rotate(10deg); }
+        }
 
-    .lang-btn {
-      background-color: var(--card-bg);
-      border: 1px solid var(--border-color);
-      padding: 8px 16px;
-      font-size: 14px;
-      cursor: pointer;
-      border-radius: 4px;
-      transition: all 0.3s ease;
-    }
+        /* Glassmorphism Header */
+        .header {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
 
-    .lang-btn:hover {
-      background-color: var(--primary-color);
-      color: #ffffff;
-    }
+        .nav-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    .card {
-      background: var(--card-bg);
-      border-radius: 8px;
-      padding: 32px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-      border: 1px solid var(--border-color);
-    }
+        .logo {
+            font-weight: 800;
+            font-size: 1.35rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-    .lang-section {
-      display: none;
-    }
+        .lang-btn {
+            background: linear-gradient(135deg, var(--primary), #8b5cf6);
+            color: white;
+            border: none;
+            padding: 0.5rem 1.25rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.25);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
 
-    .lang-section.active {
-      display: block;
-    }
+        .lang-btn:hover {
+            transform: scale(1.08) rotate(-2deg);
+            box-shadow: 0 6px 16px rgba(99, 102, 241, 0.35);
+        }
 
-    h1 {
-      color: var(--primary-color);
-      font-size: 28px;
-      margin-bottom: 8px;
-    }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
 
-    .subtitle {
-      color: var(--accent-color);
-      font-size: 18px;
-      font-weight: 600;
-      margin-bottom: 24px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
+        /* Hero Card */
+        .hero {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            padding: 2.5rem;
+            border: 2px solid white;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            animation: fadeInDown 0.8s ease-out;
+            position: relative;
+        }
 
-    .section-title {
-      font-size: 16px;
-      font-weight: 700;
-      color: var(--primary-color);
-      margin-top: 20px;
-      margin-bottom: 8px;
-    }
+        .profile-container {
+            position: relative;
+            flex-shrink: 0;
+        }
 
-    ul {
-      list-style-type: square;
-      padding-left: 20px;
-      margin-bottom: 16px;
-    }
+        .profile-img {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid white;
+            box-shadow: 0 8px 20px rgba(236, 72, 153, 0.3);
+            transition: transform 0.4s ease;
+        }
 
-    li {
-      margin-bottom: 8px;
-      color: var(--text-color);
-    }
+        .profile-container:hover .profile-img {
+            transform: scale(1.05) rotate(3deg);
+        }
 
-    @media (max-width: 600px) {
-      .container {
-        margin: 20px auto;
-      }
-      .card {
-        padding: 20px;
-      }
-      h1 {
-        font-size: 22px;
-      }
-      .subtitle {
-        font-size: 16px;
-      }
-    }
-  </style>
+        .profile-badge {
+            position: absolute;
+            bottom: 4px;
+            right: 4px;
+            background: #ffffff;
+            border-radius: 50%;
+            padding: 6px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            font-size: 1.2rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .hero-details {
+            flex-grow: 1;
+        }
+
+        .hero h1 {
+            font-size: 2.25rem;
+            color: var(--text-main);
+            margin-bottom: 0.25rem;
+        }
+
+        .hero h2 {
+            font-size: 1.15rem;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 1.25rem;
+            font-size: 0.88rem;
+        }
+
+        .contact-pill {
+            background: #ffffff;
+            padding: 0.4rem 0.9rem;
+            border-radius: 14px;
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: all 0.25s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .contact-pill.linkedin-pill {
+            background: #0077b5;
+            color: white;
+            border-color: #0077b5;
+            font-weight: 600;
+        }
+
+        .contact-pill:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(236, 72, 153, 0.15);
+        }
+
+        .contact-pill.linkedin-pill:hover {
+            background: #005582;
+            color: white;
+            border-color: #005582;
+        }
+
+        /* Metric Grid & Interactive Cards */
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+            gap: 1.25rem;
+            margin-bottom: 2rem;
+        }
+
+        .metric-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 1rem;
+            border-radius: 20px;
+            border: 2px solid white;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-6px) scale(1.03);
+            border-color: var(--accent);
+            box-shadow: 0 12px 28px rgba(236, 72, 153, 0.2);
+        }
+
+        .click-hint {
+            font-size: 0.72rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-top: 0.5rem;
+            display: inline-block;
+            background: #fce7f3;
+            padding: 0.2rem 0.6rem;
+            border-radius: 10px;
+        }
+
+        .metric-value {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .metric-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+            font-weight: 500;
+        }
+
+        /* POPUP MODAL STYLES */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.4);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 24px;
+            max-width: 480px;
+            width: 90%;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            transform: translateY(20px) scale(0.95);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+        }
+
+        .modal-overlay.active .modal-card {
+            transform: translateY(0) scale(1);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1.25rem;
+            background: #f1f5f9;
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            font-weight: bold;
+            cursor: pointer;
+            color: var(--text-muted);
+            transition: all 0.2s;
+        }
+
+        .modal-close:hover {
+            background: var(--accent);
+            color: white;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            color: var(--primary);
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-subtitle {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 1rem;
+        }
+
+        .modal-body {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Navigation Tabs */
+        .tab-menu {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+            overflow-x: auto;
+            padding-bottom: 0.5rem;
+        }
+
+        .tab-btn {
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid var(--border);
+            padding: 0.65rem 1.25rem;
+            border-radius: 16px;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--text-muted);
+            transition: all 0.25s ease;
+            white-space: nowrap;
+        }
+
+        .tab-btn:hover {
+            background: rgba(255, 255, 255, 0.95);
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, var(--primary), #8b5cf6);
+            color: white;
+            border-color: transparent;
+            box-shadow: 0 4px 14px rgba(99, 102, 241, 0.3);
+        }
+
+        /* Tab Content Section */
+        .tab-content {
+            display: none;
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            padding: 2rem;
+            border: 2px solid white;
+            box-shadow: var(--shadow);
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Interactive Job Cards */
+        .job-card {
+            background: rgba(255, 255, 255, 0.65);
+            border-radius: 16px;
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            margin-bottom: 1.25rem;
+            transition: all 0.3s ease;
+        }
+
+        .job-card:hover {
+            background: #ffffff;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+            border-color: var(--soft-pink);
+            transform: translateY(-2px);
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .job-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--text-main);
+        }
+
+        .job-company {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .job-badge {
+            background: #fce7f3;
+            color: var(--accent);
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .job ul {
+            padding-left: 1.2rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .job li {
+            margin-bottom: 0.4rem;
+        }
+
+        /* COMBINED CAT SECTION STYLES */
+        .cat-group-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            margin-top: 1rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+        }
+
+        .cat-group-img {
+            width: 100%;
+            max-height: 420px;
+            object-fit: cover;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            margin-bottom: 1.25rem;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+        }
+
+        .cat-intro-list {
+            list-style: none;
+            padding-left: 0 !important;
+        }
+
+        .cat-intro-list li {
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        .cat-summary-text {
+            margin-top: 1rem;
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.05rem;
+            text-align: center;
+        }
+
+        /* Interactive Skill Tags */
+        .tag-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-top: 0.75rem;
+        }
+
+        .tag {
+            background: #ffffff;
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 0.45rem 0.95rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .tag:hover {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            border-color: transparent;
+            transform: scale(1.08) rotate(-1deg);
+            box-shadow: 0 4px 12px rgba(236, 72, 153, 0.25);
+        }
+
+        .lang-hide {
+            display: none !important;
+        }
+
+        @media (max-width: 640px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 1.5rem;
+            }
+            .contact-info {
+                justify-content: center;
+            }
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
 </head>
 <body>
 
-  <div class="container">
-    <div class="lang-toggle">
-      <button class="lang-btn" onclick="toggleLanguage()">Switch Language / 切换语言</button>
+    <!-- Background Decorative Bubbles -->
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo">Maia Mak 🌸</div>
+            <button class="lang-btn" onclick="toggleLanguage()">中文</button>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- HERO SECTION WITH PROFILE PICTURE -->
+        <section class="hero">
+            <div class="profile-container">
+                <img src="profile.jpg" alt="Maia Mak" class="profile-img" onerror="this.src='https://api.dicebear.com/7.x/bottts/svg?seed=Maia';">
+                <span class="profile-badge">✨</span>
+            </div>
+
+            <div class="hero-details">
+                <h1>Maia Mak Ke Xin (麦可欣)</h1>
+                <h2 class="lang-en">Regional Quality Assurance & Training Specialist | Part-Time Entrepreneur & Independent Brand Distributor 🚀</h2>
+                <h2 class="lang-zh lang-hide">区域质量保证 (QA) 与培训专家 | 兼职创业家与品牌代理批发商 🚀</h2>
+                
+                <p class="lang-en">Regional QA and training specialist leading high-volume audits and compliance across 7+ global markets. Running a part-time entrepreneurship and brand distribution business focusing on functional foods and skin care.</p>
+                <p class="lang-zh lang-hide">拥有覆盖 7+ 全球市场的 QA 与培训专家，擅长高强度审计与合规管理。兼职创业经营品牌代理批发业务，专注于功能性食品与功能性护肤品推广。</p>
+
+                <div class="contact-info">
+                    <span class="contact-pill">📍 Selangor, Malaysia</span>
+                    <a href="tel:+60193906809" class="contact-pill">📞 +60 19-390 6809</a>
+                    <a href="mailto:kexin0410@gmail.com" class="contact-pill">✉️ kexin0410@gmail.com</a>
+                    <a href="https://www.linkedin.com/in/maia-mak-ke-xin-19969a1a8/" target="_blank" class="contact-pill linkedin-pill">🔗 LinkedIn Profile</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- HIGHLIGHT METRICS -->
+        <div class="metric-grid">
+            <div class="metric-card" onclick="openModal('m1')">
+                <div class="metric-value">80% ➔ >95%</div>
+                <div class="metric-label lang-en">Tenured Agent QA Score Uplift</div>
+                <div class="metric-label lang-zh lang-hide">资深专员 QA 成绩提升</div>
+                <span class="click-hint lang-en">Click for details ✨</span>
+                <span class="click-hint lang-zh lang-hide">点击查看详情 ✨</span>
+            </div>
+
+            <div class="metric-card" onclick="openModal('m2')">
+                <div class="metric-value">-80%</div>
+                <div class="metric-label lang-en">Policy Violation Red Flags</div>
+                <div class="metric-label lang-zh lang-hide">违规政策风险降低</div>
+                <span class="click-hint lang-en">Click for details ✨</span>
+                <span class="click-hint lang-zh lang-hide">点击查看详情 ✨</span>
+            </div>
+
+            <div class="metric-card" onclick="openModal('m3')">
+                <div class="metric-value">90%+</div>
+                <div class="metric-label lang-en">Scoring Calibration Alignment</div>
+                <div class="metric-label lang-zh lang-hide">QA 团队评分标定一致性</div>
+                <span class="click-hint lang-en">Click for details ✨</span>
+                <span class="click-hint lang-zh lang-hide">点击查看详情 ✨</span>
+            </div>
+
+            <div class="metric-card" onclick="openModal('m4')">
+                <div class="metric-value">$612K+</div>
+                <div class="metric-label lang-en">Q4 Revenue Generated (Meta)</div>
+                <div class="metric-label lang-zh lang-hide">单季度 (Q4) 创造广告收益</div>
+                <span class="click-hint lang-en">Click for details ✨</span>
+                <span class="click-hint lang-zh lang-hide">点击查看详情 ✨</span>
+            </div>
+        </div>
+
+        <!-- NAVIGATION TABS -->
+        <div class="tab-menu">
+            <button class="tab-btn active" onclick="switchTab('experience')">💼 <span class="lang-en">Experience</span><span class="lang-zh lang-hide">工作经历</span></button>
+            <button class="tab-btn" onclick="switchTab('about')">🐱 <span class="lang-en">About & Side Biz</span><span class="lang-zh lang-hide">关于我 & 副业亮點</span></button>
+            <button class="tab-btn" onclick="switchTab('skills')">⚡ <span class="lang-en">Skills & Tools</span><span class="lang-zh lang-hide">技能与工具</span></button>
+            <button class="tab-btn" onclick="switchTab('education')">🎓 <span class="lang-en">Education</span><span class="lang-zh lang-hide">教育与语言</span></button>
+        </div>
+
+        <!-- TAB CONTENT: EXPERIENCE -->
+        <div id="experience" class="tab-content active">
+            <!-- HEYTEA -->
+            <div class="job-card">
+                <div class="job-header">
+                    <div>
+                        <div class="job-title lang-en">Sr. Trainer / Quality Analyst (HEYTEA 喜茶) 🧋</div>
+                        <div class="job-title lang-zh lang-hide">高级培训师 / 质量分析师 (喜茶 HEYTEA) 🧋</div>
+                        <div class="job-company">Concentrix, KL Malaysia</div>
+                    </div>
+                    <span class="job-badge">July 2026 - Present</span>
+                </div>
+                <ul class="lang-en">
+                    <li>Lead quality assurance and learning operations for HEYTEA's global customer service across USA, CAD, APAC (HK, MY, SG, AUS), and Greater China (CN).</li>
+                    <li>Conduct 50+ chat and email quality evaluations daily (250+ weekly) across 7+ global markets.</li>
+                    <li>Uplifted tenured agent QA performance from an 80% baseline to >95% target through targeted coaching.</li>
+                    <li>Led end-to-end New Hire Training programs and provided direct daily operational support for 10 CS agents.</li>
+                    <li>Maintained 90%+ calibration alignment across the QA and leadership team.</li>
+                </ul>
+                <ul class="lang-zh lang-hide">
+                    <li>主导喜茶 (HEYTEA) 涵盖美国、加拿大、亚太区（香港、马来西亚、新加坡、澳大利亚）及大中华区的全球客服质量保证及培训运营。</li>
+                    <li>每日执行 50+ 笔（每周 250+ 笔）跨多区域的在线聊天及邮件服务质量评估。</li>
+                    <li>通过针对性辅导，成功将资深客服专员的 QA 成绩从 80% 提升至 95% 以上。</li>
+                    <li>负责新员工全流程培训，并直接辅导 10 人客服团队的日常运营。</li>
+                    <li>保持 QA 团队与管理层之间 90% 以上的高标定评估一致性。</li>
+                </ul>
+            </div>
+
+            <!-- META QA -->
+            <div class="job-card">
+                <div class="job-header">
+                    <div>
+                        <div class="job-title lang-en">Sr. Quality Evaluator (META) 🔍</div>
+                        <div class="job-title lang-zh lang-hide">高级质量评估师 (META) 🔍</div>
+                        <div class="job-company">Concentrix, KL Malaysia</div>
+                    </div>
+                    <span class="job-badge">Oct 2024 - June 2026</span>
+                </div>
+                <ul class="lang-en">
+                    <li>Led QA across Meta's SEA & Traditional Mandarin markets covering Sales, Technical, and Creative operations.</li>
+                    <li>Conducted 80+ audits/month, leveraging internal QMS tools for consistent quality coverage.</li>
+                    <li>Uplifted tenured agent QA scores from 65% to 80% and new hire scores from 50% to 75-85% through structured coaching.</li>
+                    <li>Reduced policy violation red flags by 80% by identifying compliance gaps.</li>
+                    <li>Maintained 85%+ calibration alignment (ATA) across stakeholders.</li>
+                </ul>
+                <ul class="lang-zh lang-hide">
+                    <li>负责 Meta 东南亚及繁体中文市场的销售、技术与广告创意运营的 QA 质量监管。</li>
+                    <li>每月使用内部 QMS 质量管理系统完成 80+ 深度审计。</li>
+                    <li>通过结构化辅导，成功提升专员 QA 成绩：将资深团队成绩从 65% 提升至 80%，新员工成绩从 50% 提升至 75-85%。</li>
+                    <li>通过精准识别合规风险漏洞，将政策违规红旗率降低了 80%。</li>
+                    <li>主持标定会议，确保团队对齐度 (ATA) 维持在 85% 以上。</li>
+                </ul>
+            </div>
+
+            <!-- META SALES -->
+            <div class="job-card">
+                <div class="job-header">
+                    <div>
+                        <div class="job-title lang-en">Sales Advisor II (META Marketing Pro) 📈</div>
+                        <div class="job-title lang-zh lang-hide">高级销售顾问 (META 营销专家) 📈</div>
+                        <div class="job-company">Concentrix, KL Malaysia</div>
+                    </div>
+                    <span class="job-badge">Feb 2023 - Oct 2024</span>
+                </div>
+                <ul class="lang-en">
+                    <li>Generated USD 612,458 in Q4 2023 revenue by optimizing advertiser performance.</li>
+                    <li>Increased client conversion rates by 185.71% while reducing cost per result by 64.28%.</li>
+                    <li>Managed 150+ advertiser accounts per quarter across varying budget tiers ($1K-$50K).</li>
+                    <li>Recognized as CNX SBG Rockstar (Q4 2023) for outstanding revenue contribution.</li>
+                </ul>
+                <ul class="lang-zh lang-hide">
+                    <li>在 2023 年第四季度通过优化广告主投放策略，创造了 612,458 美元的收益。</li>
+                    <li>将客户转化率提升了 185.71%，同时将单次结果成本降低了 64.28%。</li>
+                    <li>每季度管理 150+ 广告主账户，预算跨越 1 千至 5 万美元不等。</li>
+                    <li>因卓越的业绩表现荣获 2023 年 Q4 "CNX SBG Rockstar" 奖项。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- TAB CONTENT: ABOUT & ENTREPRENEURSHIP -->
+        <div id="about" class="tab-content">
+            <div class="job-card">
+                <div class="job-title lang-en">🌱 Part-Time Entrepreneur & Independent Brand Distributor</div>
+                <div class="job-title lang-zh lang-hide">🌱 兼职创业家与品牌代理批发商</div>
+                <ul class="lang-en" style="margin-top: 0.5rem; color: var(--text-muted); padding-left: 1.2rem;">
+                    <li><strong>Business Focus:</strong> Functional foods and skin care.</li>
+                    <li><strong>Core Operations:</strong> B2B retail partnerships, wholesale distribution, and brand outreach.</li>
+                    <li><strong>Key Responsibilities:</strong> Market expansion, retail client management, and product distribution strategy.</li>
+                </ul>
+                <ul class="lang-zh lang-hide" style="margin-top: 0.5rem; color: var(--text-muted); padding-left: 1.2rem;">
+                    <li><strong>业务核心：</strong>功能性食品与功能性护肤品。</li>
+                    <li><strong>主要运营：</strong>B2B 零售渠道合作、批发经销与品牌推广。</li>
+                    <li><strong>重点职能：</strong>市场拓展、渠道客户管理与产品经销策略。</li>
+                </ul>
+            </div>
+
+            <div class="job-card">
+                <div class="job-title lang-en">🐾 Life & Hobbies | Fun Facts</div>
+                <div class="job-title lang-zh lang-hide">🐾 生活乐趣 & 个人爱好</div>
+                <ul class="lang-en" style="margin-top: 0.5rem; color: var(--text-muted);">
+                    <li>🐱 <strong>Cat Enthusiast:</strong> Proud cat mom of 3 adorable boys (Bubur, Keera & Ollie). Daily cat snuggles keep my creativity high!</li>
+                    <li>🏸 <strong>Badminton Player:</strong> Love staying active and energetic through regular badminton games.</li>
+                    <li>🎨 <strong>Creative Mind:</strong> Background in Fine Arts gives me a unique aesthetic sense and visual design perspective in everything I do.</li>
+                </ul>
+                <ul class="lang-zh lang-hide" style="margin-top: 0.5rem; color: var(--text-muted);">
+                    <li>🐱 <strong>资深猫奴：</strong> 家有 3 只可爱的猫儿子（Bubur、Keera 和 Ollie），每日撸猫是我放松和源源不断灵感的来源！</li>
+                    <li>🏸 <strong>羽毛球爱好者：</strong> 热爱打羽毛球，保持满满的精力与团队协作默契。</li>
+                    <li>🎨 <strong>美学灵魂：</strong> 纯美术背景培养了我对细节的极致追求与独特的视觉美感。</li>
+                </ul>
+
+                <!-- COMBINED CAT PHOTO & INTRO SECTION -->
+                <div class="cat-group-card">
+                    <img src="cats.jpg" alt="Bubur, Keera and Ollie" class="cat-group-img" onerror="this.src='https://images.unsplash.com/photo-1543852786-1cf6624b9987?w=800';">
+                    
+                    <!-- ENGLISH CAT INTRO -->
+                    <div class="lang-en">
+                        <strong style="color: var(--primary); font-size: 1.1rem; display: block; margin-bottom: 0.75rem;">Meet Bubur, Keera, and Ollie 🐾🤍</strong>
+                        <ul class="cat-intro-list">
+                            <li>🐄 <strong>Bubur</strong> | 9–10-year-old cow cat, the senior gentleman of the family.</li>
+                            <li>🐯 <strong>Keera</strong> | 4-year-old tabby, a clingy boy — curious, easily scared, and loves butt pats.</li>
+                            <li>🦁 <strong>Ollie</strong> | 1-year-old orange baby, the youngest boy who somehow loves being held upside down. 🙃</li>
+                        </ul>
+                        <div class="cat-summary-text">Three boys. One little family. 🐾✨</div>
+                    </div>
+
+                    <!-- CHINESE CAT INTRO (Simplified Chinese) -->
+                    <div class="lang-zh lang-hide">
+                        <strong style="color: var(--primary); font-size: 1.1rem; display: block; margin-bottom: 0.75rem;">认识一下 Bubur、Keera 和 Ollie 🐾🤍</strong>
+                        <ul class="cat-intro-list">
+                            <li>🐄 <strong>Bubur</strong> | 9–10岁的奶牛猫，是家里的资深大叔。</li>
+                            <li>🐯 <strong>Keera</strong> | 4岁的虎斑猫，黏人怪、好奇心满满、胆小，还超喜欢被拍屁股。</li>
+                            <li>🦁 <strong>Ollie</strong> | 1岁的橘猫宝宝，家里最小，而且莫名喜欢被倒着抱。🙃</li>
+                        </ul>
+                        <div class="cat-summary-text">三个男孩子，一个小小的家。🐾✨</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB CONTENT: SKILLS -->
+        <div id="skills" class="tab-content">
+            <div style="margin-bottom: 1.5rem;">
+                <strong class="lang-en" style="font-size: 1.1rem; color: var(--primary);">Core Competencies 🌟</strong>
+                <strong class="lang-zh lang-hide" style="font-size: 1.1rem; color: var(--primary);">核心专业能力 🌟</strong>
+                <div class="tag-group">
+                    <span class="tag">QA Audit & Compliance</span>
+                    <span class="tag">Calibration Alignment</span>
+                    <span class="tag">Performance Coaching</span>
+                    <span class="tag">Process Improvement</span>
+                    <span class="tag">CSAT / DSAT Optimization</span>
+                    <span class="tag">SLA Management</span>
+                    <span class="tag">New Hire Onboarding & Training</span>
+                    <span class="tag">B2B Business Outreach</span>
+                </div>
+            </div>
+
+            <div>
+                <strong class="lang-en" style="font-size: 1.1rem; color: var(--primary);">Tools & Technologies 🛠️</strong>
+                <strong class="lang-zh lang-hide" style="font-size: 1.1rem; color: var(--primary);">使用工具与软件 🛠️</strong>
+                <div class="tag-group">
+                    <span class="tag">Meta QMS</span>
+                    <span class="tag">Zendesk</span>
+                    <span class="tag">Meta Ads Manager</span>
+                    <span class="tag">Tableau</span>
+                    <span class="tag">Microsoft Excel</span>
+                    <span class="tag">Google Sheets</span>
+                    <span class="tag">Live Chat Systems</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB CONTENT: EDUCATION -->
+        <div id="education" class="tab-content">
+            <div class="job-card">
+                <strong class="lang-en" style="font-size: 1.1rem;">Diploma in Fine Arts (CGPA 3.60/4.0) 🎨</strong>
+                <strong class="lang-zh lang-hide" style="font-size: 1.1rem;">纯美术文凭 (CGPA 3.60/4.0) 🎨</strong>
+                <p style="color: var(--text-muted); margin-top: 0.25rem;">Malaysian Institute of Art, Kuala Lumpur (Aug 2014 - Apr 2018)</p>
+            </div>
+
+            <div class="job-card">
+                <strong class="lang-en" style="font-size: 1.1rem;">Languages 🗣️</strong>
+                <strong class="lang-zh lang-hide" style="font-size: 1.1rem;">语言能力 🗣️</strong>
+                <p style="color: var(--text-muted); margin-top: 0.25rem;" class="lang-en">English, Mandarin, Malay, Cantonese</p>
+                <p style="color: var(--text-muted); margin-top: 0.25rem;" class="lang-zh lang-hide">英文、中文（普通话）、马来文、粤语（广东话）</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- POPUP MODALS FOR METRICS -->
+    <div id="modalOverlay" class="modal-overlay" onclick="closeModal(event)">
+        <div class="modal-card">
+            <button class="modal-close" onclick="closeModalForce()">✕</button>
+            <div id="modalContent"></div>
+        </div>
     </div>
 
-    <div class="card">
-      <!-- English Version -->
-      <section id="en-content" class="lang-section">
-        <h1>Part-Time Entrepreneur</h1>
-        <p class="subtitle">Independent Brand Distributor</p>
-        
-        <p class="section-title">Business Focus</p>
-        <ul>
-          <li>Functional foods, and skin care.</li>
-        </ul>
+    <script>
+        let currentLang = 'en';
 
-        <p class="section-title">Core Operations</p>
-        <ul>
-          <li>B2B retail partnerships, wholesale distribution, and brand outreach.</li>
-        </ul>
+        // Modal Content Data
+        const modalData = {
+            m1: {
+                en: {
+                    title: "80% ➔ >95%",
+                    subtitle: "Tenured Agent QA Score Uplift",
+                    body: "Across both HEYTEA and Meta operations, designed targeted 1-on-1 coaching frameworks and performance alignment, successfully uplifting tenured agents' QA scores from 80% to over 95% (HEYTEA) and 65% to 80% (Meta)."
+                },
+                zh: {
+                    title: "80% ➔ >95%",
+                    subtitle: "资深专员 QA 成绩提升",
+                    body: "在喜茶 (HEYTEA) 和 Meta 项目中，通过设计 1对1 针对性辅导方案及绩效对齐，成功提升专员 QA 成绩（喜茶专员提升至 95% 以上，Meta 资深专员从 65% 提升至 80%）。"
+                }
+            },
+            m2: {
+                en: {
+                    title: "-80%",
+                    subtitle: "Policy Violation Red Flags Reduction",
+                    body: "At Meta, identified critical compliance gaps and conducted targeted team alignment sessions, cutting major policy violation red flags by 80%."
+                },
+                zh: {
+                    title: "-80%",
+                    subtitle: "违规政策风险降低",
+                    body: "在 Meta 项目中，精准识别合规风险漏洞并开展针对性宣贯与校准，成功将团队的高风险违规政策红旗率降低了 80%。"
+                }
+            },
+            m3: {
+                en: {
+                    title: "90%+",
+                    subtitle: "Scoring Calibration Alignment",
+                    body: "Led weekly calibration sessions between QA leads, team leaders, and management to ensure 90%+ alignment on scoring criteria across multi-regional teams."
+                },
+                zh: {
+                    title: "90%+",
+                    subtitle: "QA 团队评分标定一致性",
+                    body: "定期主持 QA 团队、TL 及管理层的标定会议 (Calibration)，确保跨区域团队对服务质量评估标准达到 90% 以上的高度一致性。"
+                }
+            },
+            m4: {
+                en: {
+                    title: "$612K+",
+                    subtitle: "Q4 Revenue Generated (Meta Marketing Pro)",
+                    body: "Optimized advertiser campaigns, increasing client conversion rates by 185.71% and generating $612,458 in revenue during Q4 2023, earning the CNX SBG Rockstar Award."
+                },
+                zh: {
+                    title: "$612K+",
+                    subtitle: "单季度 (Q4) 创造广告收益",
+                    body: "作为 Meta 营销专家，通过优化广告主投放策略使转化率提升 185.71%，在 2023 年 Q4 创造了 612,458 美元收益，并荣获 CNX SBG Rockstar 奖项。"
+                }
+            }
+        };
 
-        <p class="section-title">Key Responsibilities</p>
-        <ul>
-          <li>Market expansion, retail client management, and product distribution strategy.</li>
-        </ul>
-      </section>
+        function openModal(id) {
+            const data = modalData[id][currentLang];
+            const contentDiv = document.getElementById('modalContent');
+            
+            contentDiv.innerHTML = `
+                <div class="modal-title">${data.title}</div>
+                <div class="modal-subtitle">${data.subtitle}</div>
+                <div class="modal-body">${data.body}</div>
+            `;
+            
+            document.getElementById('modalOverlay').classList.add('active');
+        }
 
-      <!-- Simplified Chinese Version (Default Active) -->
-      <section id="zh-content" class="lang-section active">
-        <h1>兼职创业家</h1>
-        <p class="subtitle">品牌代理批发商</p>
-        
-        <p class="section-title">业务核心</p>
-        <ul>
-          <li>功能性食品与功能性护肤品。</li>
-        </ul>
+        function closeModal(e) {
+            if (e.target.id === 'modalOverlay') {
+                document.getElementById('modalOverlay').classList.remove('active');
+            }
+        }
 
-        <p class="section-title">主要运营</p>
-        <ul>
-          <li>B2B 零售渠道合作、批发经销与品牌推广。</li>
-        </ul>
+        function closeModalForce() {
+            document.getElementById('modalOverlay').classList.remove('active');
+        }
 
-        <p class="section-title">重点职能</p>
-        <ul>
-          <li>市场拓展、渠道客户管理与产品经销策略。</li>
-        </ul>
-      </section>
-    </div>
-  </div>
+        function toggleLanguage() {
+            const enElements = document.querySelectorAll('.lang-en');
+            const zhElements = document.querySelectorAll('.lang-zh');
+            const langBtn = document.querySelector('.lang-btn');
 
-  <script>
-    function toggleLanguage() {
-      const enContent = document.getElementById('en-content');
-      const zhContent = document.getElementById('zh-content');
-      
-      enContent.classList.toggle('active');
-      zhContent.classList.toggle('active');
-    }
-  </script>
+            if (currentLang === 'en') {
+                enElements.forEach(el => el.classList.add('lang-hide'));
+                zhElements.forEach(el => el.classList.remove('lang-hide'));
+                langBtn.textContent = 'English';
+                currentLang = 'zh';
+            } else {
+                zhElements.forEach(el => el.classList.add('lang-hide'));
+                enElements.forEach(el => el.classList.remove('lang-hide'));
+                langBtn.textContent = '中文';
+                currentLang = 'en';
+            }
+        }
 
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            document.getElementById(tabId).classList.add('active');
+            
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            if (tabId === 'experience') tabButtons[0].classList.add('active');
+            if (tabId === 'about') tabButtons[1].classList.add('active');
+            if (tabId === 'skills') tabButtons[2].classList.add('active');
+            if (tabId === 'education') tabButtons[3].classList.add('active');
+        }
+    </script>
 </body>
 </html>
