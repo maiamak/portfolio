@@ -1,1310 +1,3629 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maia Mak Ke Xin | 互动个人作品集</title>
-
-    <!-- 社群分享卡片 (Open Graph Meta Tags) -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://maiamak.github.io/portfolio/">
-    <meta property="og:title" content="Maia Mak | Regional QA & Operations Lead Portfolio">
-    <meta property="og:description" content="Explore Maia's interactive portfolio showcasing QA audit impacts, process standardization, and operational excellence.">
-    <meta property="og:image" content="profile.jpg">
-
-    <style>
-        :root {
-            --primary: #6366f1;
-            --primary-hover: #4f46e5;
-            --accent: #ec4899;
-            --soft-pink: #fbcfe8;
-            --bg-gradient: linear-gradient(135deg, #f0f4ff 0%, #fae8ff 50%, #fef2f2 100%);
-            --card-bg: rgba(255, 255, 255, 0.88);
-            --text-main: #1e293b;
-            --text-muted: #64748b;
-            --border: rgba(226, 232, 240, 0.9);
-            --shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.12), 0 8px 10px -6px rgba(236, 72, 153, 0.08);
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-        }
-
-        body {
-            background: var(--bg-gradient);
-            background-attachment: fixed;
-            color: var(--text-main);
-            line-height: 1.6;
-            padding-bottom: 60px;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        .shape {
-            position: fixed;
-            border-radius: 50%;
-            filter: blur(40px);
-            z-index: -1;
-            opacity: 0.5;
-            animation: float 8s ease-in-out infinite alternate;
-        }
-        .shape-1 { top: -5%; left: -5%; width: 250px; height: 250px; background: #c084fc; }
-        .shape-2 { bottom: 10%; right: -5%; width: 300px; height: 300px; background: #f472b6; }
-
-        @keyframes float {
-            0% { transform: translateY(0px) rotate(0deg); }
-            100% { transform: translateY(20px) rotate(10deg); }
-        }
-
-        .header {
-            background: rgba(255, 255, 255, 0.75);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .nav-container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-weight: 800;
-            font-size: 1.35rem;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .nav-actions {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .download-btn {
-            background: #ffffff;
-            color: var(--primary);
-            border: 1px solid var(--primary);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 0.85rem;
-            text-decoration: none;
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            display: inline-flex;
-            align-items: center;
-            gap: 0.3rem;
-        }
-
-        .download-btn:hover {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.25);
-        }
-
-        .lang-btn {
-            background: linear-gradient(135deg, var(--primary), #8b5cf6);
-            color: white;
-            border: none;
-            padding: 0.5rem 1.25rem;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: 600;
-            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.25);
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        .lang-btn:hover {
-            transform: scale(1.08) rotate(-2deg);
-            box-shadow: 0 6px 16px rgba(99, 102, 241, 0.35);
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 2rem 1.5rem;
-        }
-
-        .hero {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            border-radius: 24px;
-            padding: 2.5rem;
-            border: 2px solid white;
-            box-shadow: var(--shadow);
-            margin-bottom: 2rem;
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-            animation: fadeInDown 0.8s ease-out;
-            position: relative;
-        }
-
-        .profile-container {
-            position: relative;
-            flex-shrink: 0;
-            cursor: pointer;
-        }
-
-        .profile-img {
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid white;
-            box-shadow: 0 8px 20px rgba(236, 72, 153, 0.3);
-            transition: transform 0.4s ease;
-        }
-
-        .profile-container:hover .profile-img {
-            transform: scale(1.05) rotate(3deg);
-        }
-
-        .profile-badge {
-            position: absolute;
-            bottom: 4px;
-            right: 4px;
-            background: #ffffff;
-            border-radius: 50%;
-            padding: 6px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            font-size: 1.2rem;
-            animation: bounce 2s infinite;
-        }
-
-        .easter-egg-bubble {
-            position: absolute;
-            top: -40px;
-            left: 50%;
-            transform: translateX(-50%) scale(0.8);
-            background: var(--text-main);
-            color: white;
-            padding: 0.4rem 0.8rem;
-            border-radius: 12px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            white-space: nowrap;
-            opacity: 0;
-            pointer-events: none;
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        }
-
-        .easter-egg-bubble::after {
-            content: '';
-            position: absolute;
-            bottom: -6px;
-            left: 50%;
-            transform: translateX(-50%);
-            border-width: 6px 6px 0;
-            border-style: solid;
-            border-color: var(--text-main) transparent;
-        }
-
-        .profile-container:hover .easter-egg-bubble {
-            opacity: 1;
-            transform: translateX(-50%) scale(1);
-            top: -48px;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
-        }
-
-        .hero-details { flex-grow: 1; }
-
-        .hero h1 {
-            font-size: 2.25rem;
-            color: var(--text-main);
-            margin-bottom: 0.25rem;
-        }
-
-        .hero h2 {
-            font-size: 1.15rem;
-            color: var(--primary);
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .bio-statement {
-            background: rgba(255, 255, 255, 0.6);
-            border-left: 3px solid var(--accent);
-            padding: 0.75rem 1rem;
-            border-radius: 0 12px 12px 0;
-            font-size: 0.92rem;
-            color: var(--text-main);
-            margin-bottom: 1rem;
-            font-style: italic;
-        }
-
-        .contact-info {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-            margin-top: 1.25rem;
-            font-size: 0.88rem;
-        }
-
-        .contact-pill {
-            background: #ffffff;
-            padding: 0.4rem 0.9rem;
-            border-radius: 14px;
-            border: 1px solid var(--border);
-            color: var(--text-muted);
-            text-decoration: none;
-            transition: all 0.25s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-        }
-
-        .contact-pill.linkedin-pill {
-            background: #0077b5;
-            color: white;
-            border-color: #0077b5;
-            font-weight: 600;
-        }
-
-        .contact-pill:hover {
-            border-color: var(--accent);
-            color: var(--accent);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(236, 72, 153, 0.15);
-        }
-
-        .contact-pill.linkedin-pill:hover {
-            background: #005582;
-            color: white;
-            border-color: #005582;
-        }
-
-        .metric-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-            gap: 1.25rem;
-            margin-bottom: 2rem;
-        }
-
-        .metric-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            padding: 1.5rem 1rem;
-            border-radius: 20px;
-            border: 2px solid white;
-            box-shadow: var(--shadow);
-            text-align: center;
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            cursor: pointer;
-            position: relative;
-        }
-
-        .metric-card:hover {
-            transform: translateY(-6px) scale(1.03);
-            border-color: var(--accent);
-            box-shadow: 0 12px 28px rgba(236, 72, 153, 0.2);
-        }
-
-        .click-hint {
-            font-size: 0.72rem;
-            color: var(--accent);
-            font-weight: 600;
-            margin-top: 0.5rem;
-            display: inline-block;
-            background: #fce7f3;
-            padding: 0.2rem 0.6rem;
-            border-radius: 10px;
-        }
-
-        .metric-value {
-            font-size: 1.8rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .metric-label {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-top: 0.25rem;
-            font-weight: 500;
-        }
-
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(15, 23, 42, 0.4);
-            backdrop-filter: blur(8px);
-            z-index: 1000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
-        }
-
-        .modal-overlay.active {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        .modal-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 24px;
-            max-width: 480px;
-            width: 90%;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-            transform: translateY(20px) scale(0.95);
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            position: relative;
-        }
-
-        .modal-overlay.active .modal-card {
-            transform: translateY(0) scale(1);
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 1rem;
-            right: 1.25rem;
-            background: #f1f5f9;
-            border: none;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            font-weight: bold;
-            cursor: pointer;
-            color: var(--text-muted);
-            transition: all 0.2s;
-        }
-
-        .modal-close:hover {
-            background: var(--accent);
-            color: white;
-        }
-
-        .modal-title {
-            font-size: 1.5rem;
-            color: var(--primary);
-            font-weight: 800;
-            margin-bottom: 0.5rem;
-        }
-
-        .modal-subtitle {
-            font-size: 1rem;
-            font-weight: 700;
-            color: var(--text-main);
-            margin-bottom: 1rem;
-        }
-
-        .modal-body {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        .tab-menu {
-            display: flex;
-            gap: 0.75rem;
-            margin-bottom: 1.5rem;
-            overflow-x: auto;
-            padding-bottom: 0.5rem;
-        }
-
-        .tab-btn {
-            background: rgba(255, 255, 255, 0.7);
-            border: 1px solid var(--border);
-            padding: 0.65rem 1.25rem;
-            border-radius: 16px;
-            cursor: pointer;
-            font-weight: 600;
-            color: var(--text-muted);
-            transition: all 0.25s ease;
-            white-space: nowrap;
-        }
-
-        .tab-btn:hover {
-            background: rgba(255, 255, 255, 0.95);
-            color: var(--primary);
-            transform: translateY(-2px);
-        }
-
-        .tab-btn.active {
-            background: linear-gradient(135deg, var(--primary), #8b5cf6);
-            color: white;
-            border-color: transparent;
-            box-shadow: 0 4px 14px rgba(99, 102, 241, 0.3);
-        }
-
-        .tab-content {
-            display: none;
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            border-radius: 24px;
-            padding: 2rem;
-            border: 2px solid white;
-            box-shadow: var(--shadow);
-            animation: fadeIn 0.4s ease-in-out;
-        }
-
-        .tab-content.active { display: block; }
-
-        .job-card {
-            background: rgba(255, 255, 255, 0.65);
-            border-radius: 16px;
-            padding: 1.5rem;
-            border: 1px solid var(--border);
-            margin-bottom: 1.25rem;
-            transition: all 0.3s ease;
-        }
-
-        .job-card:hover {
-            background: #ffffff;
-            box-shadow: 0 6px 18px rgba(0,0,0,0.06);
-            border-color: var(--soft-pink);
-            transform: translateY(-2px);
-        }
-
-        .job-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .job-title {
-            font-weight: 700;
-            font-size: 1.1rem;
-            color: var(--text-main);
-        }
-
-        .job-company {
-            color: var(--primary);
-            font-weight: 600;
-            font-size: 0.95rem;
-        }
-
-        .job-badge {
-            background: #fce7f3;
-            color: var(--accent);
-            padding: 0.25rem 0.75rem;
-            border-radius: 12px;
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
-
-        .job ul {
-            padding-left: 1.2rem;
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
-
-        .job li { margin-bottom: 0.4rem; }
-
-        .case-study-box {
-            margin-top: 1rem;
-            background: #f8fafc;
-            border-left: 4px solid var(--primary);
-            border-radius: 0 12px 12px 0;
-            padding: 0.85rem 1rem;
-            font-size: 0.88rem;
-        }
-
-        .case-study-title {
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 0.4rem;
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
-        }
-
-        .case-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 0.5rem;
-            color: var(--text-muted);
-        }
-
-        .cat-group-card {
-            background: #ffffff;
-            border-radius: 20px;
-            padding: 1.5rem;
-            border: 1px solid var(--border);
-            margin-top: 1rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-            position: relative;
-        }
-
-        .cat-group-img {
-            width: 100%;
-            max-height: 420px;
-            object-fit: cover;
-            border-radius: 16px;
-            border: 1px solid var(--border);
-            margin-bottom: 1.25rem;
-            box-shadow: 0 6px 16px rgba(0,0,0,0.06);
-            transition: transform 0.3s ease;
-        }
-
-        .cat-group-img:hover { transform: scale(1.01); }
-
-        .cat-intro-list {
-            list-style: none;
-            padding-left: 0 !important;
-        }
-
-        .cat-intro-list li {
-            margin-bottom: 0.75rem;
-            font-size: 0.95rem;
-            color: var(--text-main);
-            line-height: 1.6;
-        }
-
-        .cat-summary-text {
-            margin-top: 1rem;
-            font-weight: 700;
-            color: var(--primary);
-            font-size: 1.05rem;
-            text-align: center;
-        }
-
-        .acnh-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 0.75rem;
-            margin-top: 0.8rem;
-        }
-
-        .acnh-img {
-            width: 100%;
-            height: 140px;
-            object-fit: cover;
-            border-radius: 12px;
-            border: 1px solid var(--border);
-            transition: transform 0.3s ease;
-        }
-
-        .acnh-img:hover {
-            transform: scale(1.04);
-            box-shadow: 0 6px 16px rgba(99, 102, 241, 0.2);
-        }
-
-        .tag-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.6rem;
-            margin-top: 0.75rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .tag {
-            background: #ffffff;
-            color: var(--text-main);
-            border: 1px solid var(--border);
-            padding: 0.45rem 0.95rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        .tag:hover {
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            color: white;
-            border-color: transparent;
-            transform: scale(1.08) rotate(-1deg);
-            box-shadow: 0 4px 12px rgba(236, 72, 153, 0.25);
-        }
-
-        /* 頁尾聯絡專區 (Footer CTA) */
-        .footer-cta {
-            margin-top: 3rem;
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            border-radius: 24px;
-            padding: 2.5rem 1.5rem;
-            border: 2px solid white;
-            box-shadow: var(--shadow);
-            text-align: center;
-        }
-
-        .footer-cta h2 {
-            font-size: 1.5rem;
-            color: var(--text-main);
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-cta p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-bottom: 1.25rem;
-        }
-
-        .cta-btn {
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            color: white;
-            padding: 0.75rem 1.8rem;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 700;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            box-shadow: 0 6px 18px rgba(236, 72, 153, 0.25);
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        .cta-btn:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 8px 24px rgba(236, 72, 153, 0.35);
-        }
-
-        /* 懸浮回到頂部按鈕 */
-        .back-to-top {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            width: 48px;
-            height: 48px;
-            background: #ffffff;
-            color: var(--primary);
-            border: 1px solid var(--border);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.2rem;
-            cursor: pointer;
-            box-shadow: 0 6px 16px rgba(0,0,0,0.1);
-            opacity: 0;
-            pointer-events: none;
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            z-index: 99;
-        }
-
-        .back-to-top.show {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        .back-to-top:hover {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-4px);
-        }
-
-        /* 語言隱藏控制 */
-        .lang-hide { display: none !important; }
-
-        @media (max-width: 640px) {
-            .hero {
-                flex-direction: column;
-                text-align: center;
-                padding: 1.5rem;
-            }
-            .contact-info { justify-content: center; }
-            .nav-actions { gap: 0.4rem; }
-            .download-btn {
-                padding: 0.4rem 0.8rem;
-                font-size: 0.78rem;
-            }
-            .acnh-gallery {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-    </style>
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Maia Mak Ke Xin | Regional QA & Operations Lead</title>
+
+<meta name="description"
+content="Maia Mak Ke Xin — Regional QA Lead, Operations & Quality Governance Specialist.">
+
+<style>
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+:root {
+    --primary: #6366f1;
+    --primary-dark: #4f46e5;
+    --secondary: #8b5cf6;
+    --accent: #ec4899;
+
+    --text: #1e293b;
+    --muted: #64748b;
+
+    --white: #ffffff;
+    --soft: #f8fafc;
+    --soft-pink: #fdf2f8;
+    --border: rgba(226, 232, 240, 0.9);
+
+    --shadow:
+        0 12px 30px rgba(99, 102, 241, 0.12),
+        0 8px 20px rgba(236, 72, 153, 0.08);
+
+    --gradient:
+        linear-gradient(
+            135deg,
+            #eef2ff 0%,
+            #f5e8ff 45%,
+            #fff1f2 100%
+        );
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        "Helvetica Neue",
+        Arial,
+        sans-serif;
+
+    color: var(--text);
+    background: var(--gradient);
+    background-attachment: fixed;
+
+    line-height: 1.6;
+
+    min-height: 100vh;
+
+    overflow-x: hidden;
+}
+
+button,
+a {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+img {
+    max-width: 100%;
+}
+
+
+/* =========================================================
+   BACKGROUND DECORATION
+========================================================= */
+
+.shape {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(55px);
+    opacity: 0.4;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.shape-1 {
+    width: 300px;
+    height: 300px;
+    background: #c084fc;
+    top: -80px;
+    left: -80px;
+}
+
+.shape-2 {
+    width: 350px;
+    height: 350px;
+    background: #f472b6;
+    bottom: -100px;
+    right: -100px;
+}
+
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes fadeDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pop {
+    0% {
+        transform: scale(0.95);
+    }
+
+    70% {
+        transform: scale(1.02);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-10px);
+    }
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.header {
+    position: sticky;
+    top: 0;
+
+    z-index: 100;
+
+    background: rgba(255,255,255,0.78);
+
+    backdrop-filter: blur(16px);
+
+    border-bottom: 1px solid var(--border);
+}
+
+.nav-container {
+    max-width: 1100px;
+
+    margin: auto;
+
+    padding:
+        14px
+        24px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.25rem;
+
+    font-weight: 900;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--accent)
+        );
+
+    -webkit-background-clip: text;
+
+    background-clip: text;
+
+    color: transparent;
+}
+
+.nav-actions {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+}
+
+.nav-btn,
+.download-btn,
+.lang-btn {
+    text-decoration: none;
+
+    border: 1px solid var(--border);
+
+    background: white;
+
+    color: var(--primary);
+
+    padding:
+        8px
+        14px;
+
+    border-radius: 20px;
+
+    font-size: 0.85rem;
+
+    font-weight: 700;
+
+    transition: 0.25s;
+}
+
+.nav-btn:hover,
+.download-btn:hover,
+.lang-btn:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 18px
+        rgba(99,102,241,0.15);
+}
+
+.lang-btn {
+    color: white;
+
+    border: none;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--secondary)
+        );
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+.container {
+    width: min(1100px, calc(100% - 32px));
+
+    margin: auto;
+}
+
+main {
+    padding:
+        24px
+        0
+        80px;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+    background:
+        rgba(255,255,255,0.84);
+
+    backdrop-filter: blur(14px);
+
+    border:
+        2px solid
+        rgba(255,255,255,0.95);
+
+    border-radius: 30px;
+
+    padding: 40px;
+
+    display: flex;
+
+    gap: 34px;
+
+    align-items: center;
+
+    box-shadow: var(--shadow);
+
+    animation:
+        fadeDown
+        0.7s
+        ease;
+}
+
+
+/* =========================================================
+   PROFILE IMAGE
+========================================================= */
+
+.profile-container {
+    position: relative;
+
+    flex-shrink: 0;
+
+    cursor: pointer;
+}
+
+.profile-image-frame {
+    width: 175px;
+    height: 175px;
+
+    border-radius: 50%;
+
+    padding: 5px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--accent)
+        );
+
+    box-shadow:
+        0 14px 30px
+        rgba(236,72,153,0.25);
+}
+
+.profile-img {
+    width: 100%;
+    height: 100%;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+
+    display: block;
+
+    background: #f8fafc;
+
+    border: 4px solid white;
+
+    transition:
+        0.4s
+        cubic-bezier(.34,1.56,.64,1);
+}
+
+.profile-container:hover .profile-img {
+    transform:
+        scale(1.05)
+        rotate(3deg);
+}
+
+.profile-badge {
+    position: absolute;
+
+    bottom: 8px;
+
+    right: 4px;
+
+    background: white;
+
+    width: 38px;
+    height: 38px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    box-shadow:
+        0 6px 15px
+        rgba(0,0,0,0.12);
+
+    animation:
+        float
+        2s
+        ease-in-out
+        infinite
+        alternate;
+}
+
+.profile-bubble {
+    position: absolute;
+
+    left: 50%;
+
+    top: -55px;
+
+    transform:
+        translateX(-50%)
+        scale(0.8);
+
+    background:
+        var(--text);
+
+    color: white;
+
+    padding:
+        7px
+        12px;
+
+    border-radius: 12px;
+
+    font-size: 0.75rem;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition: 0.3s;
+}
+
+.profile-bubble.show {
+    opacity: 1;
+
+    transform:
+        translateX(-50%)
+        scale(1);
+}
+
+
+/* =========================================================
+   HERO TEXT
+========================================================= */
+
+.hero h1 {
+    font-size:
+        clamp(
+            2rem,
+            5vw,
+            3rem
+        );
+
+    line-height: 1.1;
+
+    margin-bottom: 7px;
+}
+
+.hero h2 {
+    font-size: 1.15rem;
+
+    color: var(--primary);
+
+    margin-bottom: 15px;
+}
+
+.bio-statement {
+    background:
+        rgba(255,255,255,0.7);
+
+    border-left:
+        4px solid
+        var(--accent);
+
+    padding:
+        12px
+        16px;
+
+    border-radius:
+        0
+        14px
+        14px
+        0;
+
+    font-style: italic;
+
+    margin-bottom: 15px;
+}
+
+.hero-description {
+    color: var(--muted);
+
+    max-width: 780px;
+}
+
+.contact-info {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    margin-top: 18px;
+}
+
+.contact-pill {
+    background: white;
+
+    border:
+        1px solid
+        var(--border);
+
+    padding:
+        7px
+        11px;
+
+    border-radius: 14px;
+
+    text-decoration: none;
+
+    color: var(--muted);
+
+    font-size: 0.8rem;
+
+    transition: 0.25s;
+}
+
+.contact-pill:hover {
+    color: var(--accent);
+
+    transform:
+        translateY(-2px);
+
+    border-color:
+        var(--accent);
+}
+
+.linkedin {
+    background: #0077b5;
+
+    color: white;
+
+    border-color: #0077b5;
+}
+
+
+/* =========================================================
+   SECTION HEADER
+========================================================= */
+
+.section-header {
+    margin:
+        55px
+        0
+        20px;
+}
+
+.eyebrow {
+    color: var(--accent);
+
+    font-size: 0.72rem;
+
+    font-weight: 900;
+
+    letter-spacing: 0.15em;
+
+    text-transform: uppercase;
+
+    margin-bottom: 5px;
+}
+
+.section-header h2 {
+    font-size: 2rem;
+
+    line-height: 1.2;
+}
+
+.section-header p {
+    color: var(--muted);
+
+    margin-top: 6px;
+}
+
+
+/* =========================================================
+   IMPACT SNAPSHOT
+========================================================= */
+
+.impact-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 16px;
+}
+
+.impact-card {
+    background:
+        rgba(255,255,255,0.86);
+
+    border:
+        2px solid
+        rgba(255,255,255,0.95);
+
+    border-radius: 24px;
+
+    padding:
+        28px
+        18px;
+
+    text-align: center;
+
+    box-shadow: var(--shadow);
+
+    transition:
+        0.35s
+        cubic-bezier(.34,1.56,.64,1);
+
+    cursor: pointer;
+}
+
+.impact-card:hover {
+    transform:
+        translateY(-8px)
+        scale(1.025);
+
+    border-color:
+        #fbcfe8;
+
+    box-shadow:
+        0 18px 35px
+        rgba(236,72,153,0.18);
+}
+
+.impact-number {
+    font-size: 2.25rem;
+
+    line-height: 1.2;
+
+    font-weight: 950;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--accent)
+        );
+
+    -webkit-background-clip: text;
+
+    background-clip: text;
+
+    color: transparent;
+
+    margin-bottom: 10px;
+}
+
+.impact-title {
+    color: var(--muted);
+
+    font-size: 0.88rem;
+
+    font-weight: 750;
+
+    min-height: 44px;
+}
+
+.impact-click {
+    display: inline-block;
+
+    margin-top: 14px;
+
+    background:
+        #fce7f3;
+
+    color:
+        var(--accent);
+
+    padding:
+        5px
+        10px;
+
+    border-radius: 12px;
+
+    font-size: 0.68rem;
+
+    font-weight: 900;
+}
+
+
+/* =========================================================
+   HOW I CREATE IMPACT
+========================================================= */
+
+.method-section {
+    margin-top: 60px;
+}
+
+.method-intro {
+    color: var(--muted);
+
+    max-width: 800px;
+
+    margin-bottom: 20px;
+}
+
+.method-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 18px;
+}
+
+.method-card {
+    background:
+        rgba(255,255,255,0.85);
+
+    border:
+        2px solid
+        white;
+
+    border-radius: 25px;
+
+    padding: 28px;
+
+    box-shadow: var(--shadow);
+
+    cursor: pointer;
+
+    transition:
+        0.35s
+        cubic-bezier(.34,1.56,.64,1);
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+.method-card:hover {
+    transform:
+        translateY(-8px);
+
+    border-color:
+        #fbcfe8;
+}
+
+.method-icon {
+    width: 54px;
+    height: 54px;
+
+    border-radius: 17px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #eef2ff,
+            #fce7f3
+        );
+
+    font-size: 1.5rem;
+
+    margin-bottom: 18px;
+}
+
+.method-card h3 {
+    font-size: 1.25rem;
+
+    margin-bottom: 8px;
+}
+
+.method-card p {
+    color: var(--muted);
+
+    font-size: 0.9rem;
+}
+
+.method-link {
+    display: inline-block;
+
+    margin-top: 18px;
+
+    color: var(--accent);
+
+    font-size: 0.75rem;
+
+    font-weight: 900;
+}
+
+
+/* =========================================================
+   PROCESS
+========================================================= */
+
+.process-box {
+    margin-top: 20px;
+
+    background:
+        rgba(255,255,255,0.8);
+
+    border:
+        2px solid white;
+
+    border-radius: 25px;
+
+    padding: 25px;
+
+    box-shadow: var(--shadow);
+}
+
+.process-flow {
+    display: grid;
+
+    grid-template-columns:
+        repeat(6, 1fr);
+
+    gap: 8px;
+}
+
+.process-step {
+    background: white;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius: 15px;
+
+    padding:
+        14px
+        5px;
+
+    text-align: center;
+
+    transition: 0.25s;
+}
+
+.process-step:hover {
+    transform:
+        translateY(-4px);
+
+    border-color:
+        var(--accent);
+}
+
+.process-step small {
+    display: block;
+
+    color: var(--accent);
+
+    font-size: 0.65rem;
+
+    font-weight: 900;
+}
+
+.process-step strong {
+    font-size: 0.78rem;
+}
+
+
+/* =========================================================
+   TABS
+========================================================= */
+
+.tabs {
+    display: flex;
+
+    gap: 8px;
+
+    overflow-x: auto;
+
+    margin-top: 60px;
+
+    padding-bottom: 5px;
+}
+
+.tab-button {
+    flex-shrink: 0;
+
+    border:
+        1px solid
+        var(--border);
+
+    background:
+        rgba(255,255,255,0.8);
+
+    color: var(--muted);
+
+    padding:
+        10px
+        16px;
+
+    border-radius: 15px;
+
+    font-weight: 750;
+
+    transition: 0.25s;
+}
+
+.tab-button:hover {
+    color: var(--primary);
+
+    transform:
+        translateY(-2px);
+}
+
+.tab-button.active {
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--secondary)
+        );
+
+    color: white;
+
+    border-color: transparent;
+}
+
+.tab-panel {
+    display: none;
+
+    background:
+        rgba(255,255,255,0.84);
+
+    border:
+        2px solid
+        white;
+
+    border-radius: 25px;
+
+    padding: 28px;
+
+    box-shadow: var(--shadow);
+
+    animation:
+        fadeUp
+        0.35s
+        ease;
+}
+
+.tab-panel.active {
+    display: block;
+}
+
+
+/* =========================================================
+   EXPERIENCE
+========================================================= */
+
+.job-card {
+    background:
+        rgba(255,255,255,0.75);
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius: 18px;
+
+    padding: 22px;
+
+    margin-bottom: 16px;
+
+    transition: 0.25s;
+}
+
+.job-card:hover {
+    background: white;
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 10px 25px
+        rgba(0,0,0,0.05);
+}
+
+.job-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    flex-wrap: wrap;
+
+    margin-bottom: 12px;
+}
+
+.job-title {
+    font-size: 1.1rem;
+
+    font-weight: 850;
+}
+
+.job-company {
+    color: var(--primary);
+
+    font-size: 0.88rem;
+
+    font-weight: 700;
+}
+
+.job-date {
+    background:
+        #fce7f3;
+
+    color:
+        var(--accent);
+
+    border-radius: 12px;
+
+    padding:
+        4px
+        9px;
+
+    font-size: 0.7rem;
+
+    font-weight: 850;
+}
+
+.job-card ul {
+    padding-left: 20px;
+
+    color: var(--muted);
+
+    font-size: 0.9rem;
+}
+
+.job-card li {
+    margin-bottom: 6px;
+}
+
+
+/* =========================================================
+   PERSONAL
+========================================================= */
+
+.personal-list {
+    list-style: none;
+
+    margin-bottom: 20px;
+}
+
+.personal-list li {
+    margin-bottom: 8px;
+
+    color: var(--muted);
+}
+
+.gallery-box {
+    background:
+        var(--soft-pink);
+
+    border:
+        1px solid
+        #fbcfe8;
+
+    border-radius: 20px;
+
+    padding: 18px;
+
+    margin-top: 20px;
+}
+
+.gallery-title {
+    color: var(--accent);
+
+    font-weight: 900;
+
+    margin-bottom: 12px;
+}
+
+.acnh-gallery {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 10px;
+}
+
+.gallery-item {
+    height: 170px;
+
+    overflow: hidden;
+
+    border-radius: 14px;
+
+    cursor: pointer;
+
+    background:
+        #e2e8f0;
+
+    position: relative;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    transition: 0.4s;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.07);
+}
+
+.gallery-item::after {
+    content: "🔍";
+
+    position: absolute;
+
+    right: 8px;
+
+    bottom: 8px;
+
+    background:
+        rgba(255,255,255,0.9);
+
+    width: 30px;
+    height: 30px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    border-radius: 50%;
+}
+
+
+/* =========================================================
+   CAT IMAGE
+========================================================= */
+
+.cat-card {
+    margin-top: 20px;
+
+    background: white;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius: 20px;
+
+    padding: 18px;
+}
+
+.cat-image-frame {
+    width: 100%;
+
+    max-height: 480px;
+
+    overflow: hidden;
+
+    border-radius: 17px;
+
+    cursor: pointer;
+
+    background: #f1f5f9;
+}
+
+.cat-image-frame img {
+    width: 100%;
+
+    max-height: 480px;
+
+    object-fit: cover;
+
+    display: block;
+
+    transition: 0.4s;
+}
+
+.cat-image-frame:hover img {
+    transform: scale(1.02);
+}
+
+.cat-list {
+    margin-top: 15px;
+
+    list-style: none;
+
+    color: var(--muted);
+}
+
+.cat-list li {
+    margin-bottom: 7px;
+}
+
+
+/* =========================================================
+   SKILLS
+========================================================= */
+
+.skill-section {
+    margin-bottom: 25px;
+}
+
+.skill-section h3 {
+    color: var(--primary);
+
+    margin-bottom: 10px;
+}
+
+.tags {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+}
+
+.tag {
+    background: white;
+
+    border:
+        1px solid
+        var(--border);
+
+    padding:
+        7px
+        12px;
+
+    border-radius: 20px;
+
+    color: var(--muted);
+
+    font-size: 0.8rem;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.25s;
+}
+
+.tag:hover {
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--accent)
+        );
+
+    transform:
+        scale(1.05);
+}
+
+
+/* =========================================================
+   EDUCATION
+========================================================= */
+
+.edu-card {
+    background: white;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius: 17px;
+
+    padding: 20px;
+
+    margin-bottom: 12px;
+}
+
+.edu-card strong {
+    font-size: 1rem;
+}
+
+.edu-card p {
+    color: var(--muted);
+
+    margin-top: 4px;
+}
+
+
+/* =========================================================
+   CTA
+========================================================= */
+
+.cta {
+    margin-top: 60px;
+
+    background:
+        rgba(255,255,255,0.85);
+
+    border:
+        2px solid
+        white;
+
+    border-radius: 28px;
+
+    padding: 40px 25px;
+
+    text-align: center;
+
+    box-shadow: var(--shadow);
+}
+
+.cta h2 {
+    font-size: 1.7rem;
+
+    margin-bottom: 7px;
+}
+
+.cta p {
+    color: var(--muted);
+
+    margin-bottom: 18px;
+}
+
+.cta-button {
+    display: inline-block;
+
+    text-decoration: none;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--accent)
+        );
+
+    color: white;
+
+    padding:
+        11px
+        22px;
+
+    border-radius: 30px;
+
+    font-weight: 850;
+
+    box-shadow:
+        0 8px 20px
+        rgba(236,72,153,0.25);
+
+    transition: 0.3s;
+}
+
+.cta-button:hover {
+    transform:
+        translateY(-4px)
+        scale(1.03);
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.modal-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    background:
+        rgba(15,23,42,0.6);
+
+    backdrop-filter:
+        blur(8px);
+
+    z-index: 1000;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 20px;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition: 0.3s;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+
+    pointer-events: auto;
+}
+
+.modal {
+    width: min(650px, 100%);
+
+    max-height: 88vh;
+
+    overflow-y: auto;
+
+    background: white;
+
+    border-radius: 25px;
+
+    padding: 30px;
+
+    position: relative;
+
+    box-shadow:
+        0 30px 80px
+        rgba(0,0,0,0.25);
+
+    animation:
+        pop
+        0.3s
+        ease;
+}
+
+.modal-close {
+    position: absolute;
+
+    right: 15px;
+
+    top: 15px;
+
+    width: 36px;
+
+    height: 36px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #f1f5f9;
+
+    color: var(--muted);
+
+    font-weight: 900;
+}
+
+.modal-close:hover {
+    background: var(--accent);
+
+    color: white;
+}
+
+.modal h2 {
+    color: var(--primary);
+
+    margin-bottom: 5px;
+}
+
+.modal h3 {
+    margin-top: 18px;
+
+    margin-bottom: 5px;
+
+    color: var(--text);
+}
+
+.modal p {
+    color: var(--muted);
+
+    margin-bottom: 10px;
+}
+
+.modal-stat {
+    font-size: 2.7rem;
+
+    font-weight: 950;
+
+    color: var(--primary);
+
+    margin:
+        15px
+        0;
+}
+
+.modal-image {
+    width: 100%;
+
+    max-height: 70vh;
+
+    object-fit: contain;
+
+    border-radius: 15px;
+}
+
+
+/* =========================================================
+   BACK TO TOP
+========================================================= */
+
+.back-top {
+    position: fixed;
+
+    bottom: 24px;
+
+    right: 24px;
+
+    width: 50px;
+    height: 50px;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius: 50%;
+
+    background: white;
+
+    color: var(--primary);
+
+    box-shadow:
+        0 8px 20px
+        rgba(0,0,0,0.12);
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition: 0.3s;
+
+    z-index: 99;
+}
+
+.back-top.show {
+    opacity: 1;
+
+    pointer-events: auto;
+}
+
+.back-top:hover {
+    background: var(--primary);
+
+    color: white;
+
+    transform:
+        translateY(-4px);
+}
+
+
+/* =========================================================
+   LANGUAGE
+========================================================= */
+
+.lang-hide {
+    display: none !important;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width: 850px) {
+
+    .hero {
+        flex-direction: column;
+
+        text-align: center;
+    }
+
+    .contact-info {
+        justify-content: center;
+    }
+
+    .impact-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .method-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+    .process-flow {
+        grid-template-columns:
+            repeat(3, 1fr);
+    }
+}
+
+
+@media(max-width: 600px) {
+
+    .container {
+        width:
+            calc(100% - 22px);
+    }
+
+    .hero {
+        padding: 25px 18px;
+    }
+
+    .profile-image-frame {
+        width: 145px;
+        height: 145px;
+    }
+
+    .impact-grid {
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+    .impact-card {
+        padding:
+            22px
+            10px;
+    }
+
+    .impact-number {
+        font-size: 1.75rem;
+    }
+
+    .process-flow {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .acnh-gallery {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .gallery-item {
+        height: 140px;
+    }
+
+    .nav-btn {
+        display: none;
+    }
+
+    .download-btn {
+        font-size: 0.72rem;
+    }
+}
+
+</style>
 </head>
+
+
 <body>
 
-    <div class="shape shape-1"></div>
-    <div class="shape shape-2"></div>
+<div class="shape shape-1"></div>
+<div class="shape shape-2"></div>
 
-    <header class="header">
-        <div class="nav-container">
-            <div class="logo">Maia Mak 🌸</div>
-            <div class="nav-actions">
-                <a href="resume.pdf" download="Maia_Mak_Resume.pdf" target="_blank" class="download-btn">
-                    📄 <span class="lang-en lang-hide">PDF Resume</span><span class="lang-zh">下载简历</span>
-                </a>
-                <button class="lang-btn" onclick="toggleLanguage()">English</button>
-            </div>
-        </div>
-    </header>
 
-    <main class="container">
-        <!-- HERO SECTION -->
-        <section class="hero">
-            <div class="profile-container" onclick="triggerProfileEasterEgg()">
-                <div class="easter-egg-bubble" id="profileBubble">点我点我！✨</div>
-                <img src="profile.jpg" alt="Maia Mak" class="profile-img">
-                <span class="profile-badge">✨</span>
-            </div>
+<!-- =======================================================
+     HEADER
+======================================================= -->
 
-            <div class="hero-details">
-                <h1>Maia Mak Ke Xin (麦可欣)</h1>
-                <h2 class="lang-en lang-hide">Regional QA Lead | Operations & Quality Governance Specialist 🚀</h2>
-                <h2 class="lang-zh">区域质量保证 (QA) 负责人 | 运营优化与合规风控专家 🚀</h2>
-                
-                <!-- 自我介紹宣言 (Bio Statement) -->
-                <div class="bio-statement lang-en lang-hide">
-                    "Passionate Regional QA Specialist bridging compliance precision with operational excellence to ensure high organizational standards."
-                </div>
-                <div class="bio-statement lang-zh">
-                    “以精准的合规标准与高标准的品质把控为核心，赋能跨国团队，交付卓越的运营品质。”
-                </div>
+<header class="header">
 
-                <p class="lang-en lang-hide">Regional QA Lead overseeing high-volume audits and operational performance across 7+ global markets. Experienced in process standardization, compliance risk mitigation, data-driven performance analysis, and cross-functional operational governance.</p>
-                <p class="lang-zh">深耕区域 QA 质量管理领域，主导覆盖 7+ 全球市场的高强度服务质量审计与运营绩效优化。擅长流程标准化、合规风控降本增效、数据驱动的绩效分析及跨部门协同交付。</p>
+    <div class="nav-container">
 
-                <div class="contact-info">
-                    <span class="contact-pill">📍 Selangor, Malaysia</span>
-                    <a href="tel:+60193906809" class="contact-pill">📞 +60 19-390 6809</a>
-                    <a href="mailto:kexin0410@gmail.com" class="contact-pill">✉️ kexin0410@gmail.com</a>
-                    <a href="https://www.linkedin.com/in/maia-mak-ke-xin-19969a1a8/" target="_blank" class="contact-pill linkedin-pill">🔗 LinkedIn Profile</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- HIGHLIGHT METRICS -->
-        <div class="metric-grid">
-            <div class="metric-card" onclick="openModal('m1')">
-                <div class="metric-value">80% ➔ &gt;<span class="counter" data-target="95">0</span>%</div>
-                <div class="metric-label lang-en lang-hide">Tenured Agent QA Score Uplift</div>
-                <div class="metric-label lang-zh">资深专员 QA 成绩提升</div>
-                <span class="click-hint lang-en lang-hide">Click for details ✨</span>
-                <span class="click-hint lang-zh">点击查看详情 ✨</span>
-            </div>
-
-            <div class="metric-card" onclick="openModal('m2')">
-                <div class="metric-value">-<span class="counter" data-target="80">0</span>%</div>
-                <div class="metric-label lang-en lang-hide">Policy Violation Red Flags</div>
-                <div class="metric-label lang-zh">违规政策风险降低</div>
-                <span class="click-hint lang-en lang-hide">Click for details ✨</span>
-                <span class="click-hint lang-zh">点击查看详情 ✨</span>
-            </div>
-
-            <div class="metric-card" onclick="openModal('m3')">
-                <div class="metric-value"><span class="counter" data-target="90">0</span>%+</div>
-                <div class="metric-label lang-en lang-hide">Scoring Calibration Alignment</div>
-                <div class="metric-label lang-zh">QA 团队评分标定一致性</div>
-                <span class="click-hint lang-en lang-hide">Click for details ✨</span>
-                <span class="click-hint lang-zh">点击查看详情 ✨</span>
-            </div>
-
-            <div class="metric-card" onclick="openModal('m4')">
-                <div class="metric-value">$<span class="counter" data-target="612">0</span>K+</div>
-                <div class="metric-label lang-en lang-hide">Q4 Revenue Generated (Meta)</div>
-                <div class="metric-label lang-zh">单季度 (Q4) 创造广告收益</div>
-                <span class="click-hint lang-en lang-hide">Click for details ✨</span>
-                <span class="click-hint lang-zh">点击查看详情 ✨</span>
-            </div>
+        <div class="logo">
+            Maia Mak 🌸
         </div>
 
-        <!-- NAVIGATION TABS -->
-        <div class="tab-menu">
-            <button class="tab-btn active" onclick="switchTab('experience')">💼 <span class="lang-en lang-hide">Experience</span><span class="lang-zh">工作经历</span></button>
-            <button class="tab-btn" onclick="switchTab('about')">🐱 <span class="lang-en lang-hide">About & Hobbies</span><span class="lang-zh">关于我 & 个人爱好</span></button>
-            <button class="tab-btn" onclick="switchTab('skills')">⚡ <span class="lang-en lang-hide">Skills & Tools</span><span class="lang-zh">技能与工具</span></button>
-            <button class="tab-btn" onclick="switchTab('education')">🎓 <span class="lang-en lang-hide">Education</span><span class="lang-zh">教育与语言</span></button>
-        </div>
+        <div class="nav-actions">
 
-        <!-- TAB CONTENT: EXPERIENCE -->
-        <div id="experience" class="tab-content active">
-            <!-- HEYTEA -->
-            <div class="job-card">
-                <div class="job-header">
-                    <div>
-                        <div class="job-title lang-en lang-hide">Quality Assurance Specialist (HEYTEA 喜茶) 🧋</div>
-                        <div class="job-title lang-zh">质量分析师 (喜茶 HEYTEA) 🧋</div>
-                        <div class="job-company">Concentrix, KL Malaysia</div>
-                    </div>
-                    <span class="job-badge">July 2026 - Present</span>
-                </div>
-                <ul class="lang-en lang-hide">
-                    <li>Lead quality assurance and service compliance operations for HEYTEA's global operations across USA, CAD, APAC (HK, MY, SG, AUS), and Greater China (CN).</li>
-                    <li>Conduct 50+ quality evaluations daily (250+ weekly) across 7+ global markets with zero SLA breach.</li>
-                    <li>Uplifted tenured agent QA performance from an 80% baseline to >95% target through root-cause analysis (RCA) and structured quality coaching.</li>
-                    <li>Maintained 90%+ calibration alignment across the QA and leadership team to ensure standard consistency.</li>
-                </ul>
-                <ul class="lang-zh">
-                    <li>主导喜茶 (HEYTEA) 涵盖美国、加拿大、亚太区（中国香港、马来西亚、新加坡、澳大利亚）及大中华区的全球服务质量保证与合规监管。</li>
-                    <li>每日执行 50+ 笔（每周 250+ 笔）跨多区域的服务质量评估，保持零 SLA 违规。</li>
-                    <li>通过根本原因分析 (RCA) 与结构化质量辅导，成功将资深客服专员的 QA 成绩从 80% 提升至 95% 以上。</li>
-                    <li>主持标定会议，保持 QA 团队与管理层之间 90% 以上的高标定评估一致性。</li>
-                </ul>
-
-                <div class="case-study-box">
-                    <div class="case-study-title">💡 <span class="lang-en lang-hide">Key Impact Spotlight</span><span class="lang-zh">实战亮点对比</span></div>
-                    <div class="case-grid lang-en lang-hide">
-                        <div><strong>Before:</strong> Low response consistency in multi-market operations (Baseline: 80% QA score).</div>
-                        <div><strong>After:</strong> Standardized multi-regional SOPs & quality alignment, pushing QA accuracy to <strong>>95%</strong>.</div>
-                    </div>
-                    <div class="case-grid lang-zh">
-                        <div><strong>优化前：</strong> 跨区域多市场运营一致性较低（基线：QA 成绩 80%）。</div>
-                        <div><strong>优化后：</strong> 标准化多区域 SOP 与质量校准机制，将 QA 准确率提升至 <strong>>95%</strong>。</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- META QA -->
-            <div class="job-card">
-                <div class="job-header">
-                    <div>
-                        <div class="job-title lang-en lang-hide">Sr. Quality Evaluator (META) 🔍</div>
-                        <div class="job-title lang-zh">高级质量评估师 (META) 🔍</div>
-                        <div class="job-company">Concentrix, KL Malaysia</div>
-                    </div>
-                    <span class="job-badge">Oct 2024 - June 2026</span>
-                </div>
-                <ul class="lang-en lang-hide">
-                    <li>Led QA across Meta's SEA & Traditional Mandarin markets covering Sales, Technical, and Creative operations.</li>
-                    <li>Conducted 80+ audits/month, leveraging internal QMS tools for consistent quality coverage and process compliance.</li>
-                    <li>Uplifted tenured agent QA scores from 65% to 80% and new hire scores from 50% to 75-85% through structured performance frameworks.</li>
-                    <li>Reduced policy violation red flags by 80% by identifying compliance gaps and delivering targeted SOP refreshers.</li>
-                    <li>Maintained 85%+ calibration alignment (ATA) across regional stakeholders.</li>
-                </ul>
-                <ul class="lang-zh">
-                    <li>负责 Meta 东南亚及繁体中文市场的销售、技术与广告创意运营的 QA 质量监管与合规审视。</li>
-                    <li>每月使用内部 QMS 质量管理系统完成 80+ 深度审计，确保业务流程全面合规。</li>
-                    <li>通过结构化辅导，成功提升专员 QA 成绩：将资深团队成绩从 65% 提升至 80%，新员工成绩从 50% 提升至 75-85%。</li>
-                    <li>通过精准识别合规风险漏洞并安排每周 SOP 强化，将政策违规红旗率降低了 80%。</li>
-                    <li>主持跨国标定会议，确保团队对齐度 (ATA) 维持在 85% 以上。</li>
-                </ul>
-
-                <div class="case-study-box">
-                    <div class="case-study-title">💡 <span class="lang-en lang-hide">Risk Mitigation Impact</span><span class="lang-zh">风控优化对比</span></div>
-                    <div class="case-grid lang-en lang-hide">
-                        <div><strong>Before:</strong> High compliance risk due to frequent policy update breaches.</div>
-                        <div><strong>After:</strong> Designed weekly SOP quizzes & calibration syncs, slashing red flags by <strong>80%</strong>.</div>
-                    </div>
-                    <div class="case-grid lang-zh">
-                        <div><strong>优化前：</strong> 政策更新频繁，合规违规风险高。</div>
-                        <div><strong>优化后：</strong> 设计每周 SOP 测验与标定同步，将违规红旗率大幅降低 <strong>80%</strong>。</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- META SALES -->
-            <div class="job-card">
-                <div class="job-header">
-                    <div>
-                        <div class="job-title lang-en lang-hide">Sales Advisor II (META Marketing Pro) 📈</div>
-                        <div class="job-title lang-zh">高级销售顾问 (META 营销专家) 📈</div>
-                        <div class="job-company">Concentrix, KL Malaysia</div>
-                    </div>
-                    <span class="job-badge">Feb 2023 - Oct 2024</span>
-                </div>
-                <ul class="lang-en lang-hide">
-                    <li>Generated USD 612,458 in Q4 2023 revenue by optimizing advertiser ad account performance and campaign strategies.</li>
-                    <li>Increased client conversion rates by 185.71% while reducing cost per result by 64.28%.</li>
-                    <li>Managed 150+ advertiser accounts per quarter across varying budget tiers ($1K-$50K).</li>
-                    <li>Recognized as CNX SBG Rockstar (Q4 2023) for outstanding revenue contribution and client satisfaction.</li>
-                </ul>
-                <ul class="lang-zh">
-                    <li>在 2023 年第四季度通过优化广告主投放策略与账户结构，创造了 612,458 美元的广告收益。</li>
-                    <li>将客户转化率提升了 185.71%，同时将单次结果成本（Cost per Result）降低了 64.28%。</li>
-                    <li>每季度管理 150+ 广告主账户，预算跨越 1 千至 5 万美元不等。</li>
-                    <li>因卓越的业绩表现与极高客户满意度，荣获 2023 年 Q4 "CNX SBG Rockstar" 极高荣誉奖项。</li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- TAB CONTENT: ABOUT & HOBBIES -->
-        <div id="about" class="tab-content">
-            <div class="job-card">
-                <div class="job-title lang-en lang-hide">🐾 Life & Hobbies | Personal Highlights</div>
-                <div class="job-title lang-zh">🐾 生活乐趣 & 个人爱好</div>
-                <ul class="lang-en lang-hide" style="margin-top: 0.5rem; color: var(--text-muted);">
-                    <li>🐱 <strong>Cat Enthusiast:</strong> Proud cat mom of 3 adorable boys (Bubur, Keera & Ollie). Daily cat snuggles keep my creativity and empathy high!</li>
-                    <li>🎮 <strong>Animal Crossing Mayor:</strong> Passionate <em>Animal Crossing: New Horizons</em> player on Nintendo Switch! Love island designing, custom layout planning, and hosting friends for online island visits.</li>
-                    <li>🏸 <strong>Badminton Player:</strong> Love staying active and energetic through regular badminton games with friends.</li>
-                    <li>🎨 <strong>Creative Mind:</strong> Background in Fine Arts gives me a unique aesthetic sense and visual detail orientation in everything I do.</li>
-                </ul>
-                <ul class="lang-zh" style="margin-top: 0.5rem; color: var(--text-muted);">
-                    <li>🐱 <strong>资深猫奴：</strong> 家有 3 只可爱的猫儿子（Bubur、Keera 和 Ollie），每日撸猫是我放松和源源不断灵感的来源！</li>
-                    <li>🎮 <strong>无人岛岛主：</strong> <em>集合啦！动物森友会</em>（Animal Crossing: New Horizons）Switch 资深玩家，喜欢岛建设计、规划布局以及邀请朋友连线串门！</li>
-                    <li>🏸 <strong>羽毛球爱好者：</strong> 热爱打羽毛球，保持满满的精力与团队协作默契。</li>
-                    <li>🎨 <strong>美学灵魂：</strong> 纯美术背景培养了我对细节的极致追求与独特的视觉美感。</li>
-                </ul>
-
-                <!-- ANIMAL CROSSING PHOTO GALLERY -->
-                <div style="margin-top: 1.2rem; background: #fdf2f8; padding: 1rem; border-radius: 16px; border: 1px solid var(--soft-pink);">
-                    <strong class="lang-en lang-hide" style="color: var(--accent); font-size: 0.95rem;">🎮 Animal Crossing Island Showcase</strong>
-                    <strong class="lang-zh" style="color: var(--accent); font-size: 0.95rem;">🎮 动森无人岛日常与岛建展示</strong>
-                    <div class="acnh-gallery">
-                        <img src="acnh1.jpg?v=2" alt="ACNH 1" class="acnh-img">
-                        <img src="acnh2.jpg?v=2" alt="ACNH 2" class="acnh-img">
-                        <img src="acnh3.jpg?v=2" alt="ACNH 3" class="acnh-img">
-                        <img src="acnh4.jpg?v=2" alt="ACNH 4" class="acnh-img">
-                        <img src="acnh5.jpg?v=2" alt="ACNH 5" class="acnh-img">
-                        <img src="acnh6.jpg?v=2" alt="ACNH 6" class="acnh-img">
-                    </div>
-                </div>
-
-                <!-- CAT PHOTO & INTRO -->
-                <div class="cat-group-card">
-                    <img src="cats.jpg" alt="Bubur, Keera and Ollie" class="cat-group-img">
-                    
-                    <div class="lang-en lang-hide">
-                        <strong style="color: var(--primary); font-size: 1.1rem; display: block; margin-bottom: 0.75rem;">Meet Bubur, Keera, and Ollie 🐾🤍</strong>
-                        <ul class="cat-intro-list">
-                            <li>🐄 <strong>Bubur</strong> | 9–10-year-old cow cat, the senior gentleman of the family.</li>
-                            <li>🐯 <strong>Keera</strong> | 4-year-old tabby, a clingy boy — curious, easily scared, and loves butt pats.</li>
-                            <li>🦁 <strong>Ollie</strong> | 1-year-old orange baby, the youngest boy who somehow loves being held upside down. 🙃</li>
-                        </ul>
-                        <div class="cat-summary-text">Three boys. One little family. 🐾✨</div>
-                    </div>
-
-                    <div class="lang-zh">
-                        <strong style="color: var(--primary); font-size: 1.1rem; display: block; margin-bottom: 0.75rem;">认识一下 Bubur、Keera 和 Ollie 🐾🤍</strong>
-                        <ul class="cat-intro-list">
-                            <li>🐄 <strong>Bubur</strong> | 9–10岁的奶牛猫，是家里的资深大叔。</li>
-                            <li>🐯 <strong>Keera</strong> | 4岁的虎斑猫，黏人怪、好奇心满满、胆小，还超喜欢被拍屁股。</li>
-                            <li>🦁 <strong>Ollie</strong> | 1岁的橘猫宝宝，家里最小，而且莫名喜欢被倒着抱。🙃</li>
-                        </ul>
-                        <div class="cat-summary-text">三个男孩子，一个小小的家。🐾✨</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- TAB CONTENT: SKILLS & TOOLS -->
-        <div id="skills" class="tab-content">
-            <div style="margin-bottom: 1.2rem;">
-                <strong class="lang-en lang-hide" style="font-size: 1.05rem; color: var(--primary);">Quality Governance & Compliance 🔍</strong>
-                <strong class="lang-zh" style="font-size: 1.05rem; color: var(--primary);">QA 质量保证与合规风控 🔍</strong>
-                <div class="tag-group">
-                    <span class="tag" onclick="openSkillDetail('qa_audit')">QA Audit & Compliance 🔍</span>
-                    <span class="tag" onclick="openSkillDetail('calibration')">Calibration Alignment 🎯</span>
-                    <span class="tag" onclick="openSkillDetail('rca')">Root Cause Analysis (RCA) 🧩</span>
-                    <span class="tag" onclick="openSkillDetail('csat')">Operational Metrics & CSAT 📊</span>
-                </div>
-            </div>
-
-            <div style="margin-bottom: 1.2rem;">
-                <strong class="lang-en lang-hide" style="font-size: 1.05rem; color: var(--primary);">Process & Operational Excellence ⚡</strong>
-                <strong class="lang-zh" style="font-size: 1.05rem; color: var(--primary);">流程优化与运营管理 ⚡</strong>
-                <div class="tag-group">
-                    <span class="tag" onclick="openSkillDetail('coaching')">Performance Coaching 🗣️</span>
-                    <span class="tag" onclick="openSkillDetail('process')">Process & SOP Standardization ⚡</span>
-                    <span class="tag" onclick="openSkillDetail('ops')">Cross-Functional Governance 🤝</span>
-                </div>
-            </div>
-
-            <div>
-                <strong class="lang-en lang-hide" style="font-size: 1.05rem; color: var(--primary);">Tools & Systems 🛠️ (Click for Details)</strong>
-                <strong class="lang-zh" style="font-size: 1.05rem; color: var(--primary);">工具与系统应用 🛠️（点击查看细节）</strong>
-                <div class="tag-group">
-                    <span class="tag" onclick="openSkillDetail('qms')">Meta QMS 🛠️</span>
-                    <span class="tag" onclick="openSkillDetail('zendesk')">Zendesk 🛠️</span>
-                    <span class="tag" onclick="openSkillDetail('ads_mgr')">Meta Ads Manager 🛠️</span>
-                    <span class="tag" onclick="openSkillDetail('tableau')">Tableau 🛠️</span>
-                    <span class="tag" onclick="openSkillDetail('excel')">Microsoft Excel 🛠️</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- TAB CONTENT: EDUCATION -->
-        <div id="education" class="tab-content">
-            <div class="job-card">
-                <strong class="lang-en lang-hide" style="font-size: 1.1rem;">Diploma in Fine Arts (CGPA 3.60/4.0) 🎨</strong>
-                <strong class="lang-zh" style="font-size: 1.1rem;">纯美术文凭 (CGPA 3.60/4.0) 🎨</strong>
-                <p style="color: var(--text-muted); margin-top: 0.25rem;">Malaysian Institute of Art, Kuala Lumpur (Aug 2014 - Apr 2018)</p>
-            </div>
-
-            <div class="job-card">
-                <strong class="lang-en lang-hide" style="font-size: 1.1rem;">Languages 🗣️</strong>
-                <strong class="lang-zh" style="font-size: 1.1rem;">语言能力 🗣️</strong>
-                <p style="color: var(--text-muted); margin-top: 0.25rem;" class="lang-en lang-hide">English, Mandarin, Malay, Cantonese</p>
-                <p style="color: var(--text-muted); margin-top: 0.25rem;" class="lang-zh">英文、中文（普通话）、马来文、粤语（广东话）</p>
-            </div>
-        </div>
-
-        <!-- 頁尾聯絡專區 (Footer CTA Section) -->
-        <section class="footer-cta">
-            <h2 class="lang-en lang-hide">Let's Connect & Drive Operational Excellence! ✨</h2>
-            <h2 class="lang-zh">期待与您一同打造卓越的质量管理与运营服务！✨</h2>
-            <p class="lang-en lang-hide">Open for Regional QA, Operations Leadership, and Quality Governance opportunities.</p>
-            <p class="lang-zh">目前寻求区域 QA 质量管理、营运主管及合规风控相关职位机会。</p>
-            <a href="mailto:kexin0410@gmail.com" class="cta-btn">
-                ✉️ <span class="lang-en lang-hide">Get In Touch</span><span class="lang-zh">即刻联系我</span>
+            <a
+                href="#impact"
+                class="nav-btn">
+                ✨ Explore
             </a>
-        </section>
-    </main>
 
-    <!-- 懸浮回到頂部按鈕 -->
-    <button class="back-to-top" id="backToTopBtn" onclick="scrollToTop()">⬆️</button>
+            <a
+                href="./resume.pdf"
+                download="Maia_Mak_Resume.pdf"
+                class="download-btn">
+                📄 Resume
+            </a>
 
-    <!-- POPUP MODALS -->
-    <div id="modalOverlay" class="modal-overlay" onclick="closeModal(event)">
-        <div class="modal-card">
-            <button class="modal-close" onclick="closeModalForce()">✕</button>
-            <div id="modalContent"></div>
+            <button
+                class="lang-btn"
+                onclick="toggleLanguage()">
+                中文
+            </button>
+
         </div>
+
     </div>
 
-    <script>
-        let currentLang = 'zh';
+</header>
 
-        const modalData = {
-            m1: {
-                en: {
-                    title: "80% ➔ >95%",
-                    subtitle: "Tenured Agent QA Score Uplift",
-                    body: "Across both HEYTEA and Meta operations, designed targeted 1-on-1 coaching frameworks and performance alignment, successfully uplifting tenured agents' QA scores from 80% to over 95% (HEYTEA) and 65% to 80% (Meta)."
-                },
-                zh: {
-                    title: "80% ➔ >95%",
-                    subtitle: "资深专员 QA 成绩提升",
-                    body: "在喜茶 (HEYTEA) 和 Meta 项目中，通过设计 1对1 针对性辅导方案及绩效对齐，成功提升专员 QA 成绩（喜茶专员提升至 95% 以上，Meta 资深专员从 65% 提升至 80%）。"
-                }
-            },
-            m2: {
-                en: {
-                    title: "-80%",
-                    subtitle: "Policy Violation Red Flags Reduction",
-                    body: "At Meta, identified critical compliance gaps and conducted targeted team alignment sessions, cutting major policy violation red flags by 80%."
-                },
-                zh: {
-                    title: "-80%",
-                    subtitle: "违规政策风险降低",
-                    body: "在 Meta 项目中，精准识别合规风险漏洞并开展针对性宣贯与校准，成功将团队的高风险违规政策红旗率降低了 80%。"
-                }
-            },
-            m3: {
-                en: {
-                    title: "90%+",
-                    subtitle: "Scoring Calibration Alignment",
-                    body: "Led weekly calibration sessions between QA leads, team leaders, and management to ensure 90%+ alignment on scoring criteria across multi-regional teams."
-                },
-                zh: {
-                    title: "90%+",
-                    subtitle: "QA 团队评分标定一致性",
-                    body: "定期主持 QA 团队、TL 及管理层的标定会议 (Calibration)，确保跨区域团队对服务质量评估标准达到 90% 以上的高度一致性。"
-                }
-            },
-            m4: {
-                en: {
-                    title: "$612K+",
-                    subtitle: "Q4 Revenue Generated (Meta Marketing Pro)",
-                    body: "Optimized advertiser campaigns, increasing client conversion rates by 185.71% and generating $612,458 in revenue during Q4 2023, earning the CNX SBG Rockstar Award."
-                },
-                zh: {
-                    title: "$612K+",
-                    subtitle: "单季度 (Q4) 创造广告收益",
-                    body: "作为 Meta 营销专家，通过优化广告主投放策略使转化率提升 185.71%，在 2023 年 Q4 创造了 612,458 美元收益，并荣获 CNX SBG Rockstar 奖项。"
-                }
-            }
-        };
 
-        const skillDetails = {
-            qms: {
-                en: { title: "Meta QMS", desc: "Used daily for high-volume quality audits, tagging compliance violations, and generating data-driven feedback reports for regional leads." },
-                zh: { title: "Meta QMS", desc: "每日用于高强度服务质量审计，精准标记政策违规项，并为区域主管生成数据驱动的反馈报告。" }
-            },
-            zendesk: {
-                en: { title: "Zendesk", desc: "Expert in managing multi-channel customer inquiries, tracking SLA resolution metrics, and setting up macro workflows." },
-                zh: { title: "Zendesk", desc: "熟练掌握多渠道工单管理，监控 SLA 解决时效，并配置高效的宏指令（Macros）流程。" }
-            },
-            ads_mgr: {
-                en: { title: "Meta Ads Manager", desc: "Audited and optimized 150+ advertiser accounts per quarter across campaign strategy, pixel integration, and ROAS scaling." },
-                zh: { title: "Meta Ads Manager", desc: "每季度审计并优化 150+ 广告主账户，涵盖广告系列策略、Pixel 像素追踪及 ROAS 转化提效。" }
-            },
-            tableau: {
-                en: { title: "Tableau", desc: "Analyzed weekly QA trend dashboards to identify agent knowledge gaps and root-cause compliance red flags." },
-                zh: { title: "Tableau", desc: "分析每周 QA 趋势看板，精准识别团队的知识盲区及合规风险的根本原因。" }
-            },
-            excel: {
-                en: { title: "Microsoft Excel", desc: "Utilized Pivot Tables, VLOOKUP, and conditional formatting to build weekly pulse reports and performance scorecards." },
-                zh: { title: "Microsoft Excel", desc: "熟练运用透视表、VLOOKUP 及条件格式，构建每周 QA 脉冲报告与绩效评估计分卡。" }
-            },
-            qa_audit: {
-                en: { title: "QA Audit & Compliance", desc: "Evaluated 250+ tickets weekly across 7+ global markets ensuring 100% adherence to brand & regional guidelines." },
-                zh: { title: "QA 质量审计与合规", desc: "每周跨 7+ 全球市场评估 250+ 笔业务，确保 100% 严格符合品牌与区域合规标准。" }
-            },
-            calibration: {
-                en: { title: "Calibration Alignment", desc: "Facilitated multi-stakeholder calibration sessions to maintain 90%+ scoring consistency across QA, TL, and operations." },
-                zh: { title: "标定一致性 (Calibration)", desc: "主持多方参与的标定会议，确保 QA、团队主管与运营团队之间的评分一致性保持在 90% 以上。" }
-            },
-            rca: {
-                en: { title: "Root Cause Analysis (RCA)", desc: "Applied 5-Whys and data categorizations to identify systematic operational breakdowns and prevent recurring errors." },
-                zh: { title: "根本原因分析 (RCA)", desc: "运用 5-Whys 及归因分类法深入剖析失误根源，制定长期预防措施并重构 SOP。" }
-            },
-            coaching: {
-                en: { title: "Performance Coaching", desc: "Delivered structured 1-on-1 feedback sessions that improved underperforming agents' scores by 15-20% within 4 weeks." },
-                zh: { title: "绩效一对一辅导", desc: "提供结构化的 1对1 反馈与辅导，帮助低分专员在 4 周内实现 15-20% 的大幅成绩提升。" }
-            },
-            process: {
-                en: { title: "Process & SOP Standardization", desc: "Drafted clear SOP playbooks and workflow documentation across APAC and global operations." },
-                zh: { title: "流程与 SOP 标准化", desc: "撰写并更新清晰的 SOP 操作手册与运营流程文档，覆盖亚太及全球多个服务区域。" }
-            },
-            csat: {
-                en: { title: "Operational Metrics & CSAT", desc: "Analyzed performance trends and feedback to implement corrective action plans, directly improving quality and satisfaction metrics." },
-                zh: { title: "运营指标与满意度优化", desc: "深入分析绩效趋势与负面反馈，制定纠偏行动计划，直接提升整体质量与运营满意度。" }
-            },
-            ops: {
-                en: { title: "Cross-Functional Governance", desc: "Partnered with operational leads and regional stakeholders to streamline cross-functional workflows and maintain service quality." },
-                zh: { title: "跨部门运营治理", desc: "对接运营主管与各区域利益相关者，串联跨部门业务流程并确保整体服务质量。" }
-            }
-        };
 
-        function openModal(id) {
-            const data = modalData[id][currentLang];
-            const contentDiv = document.getElementById('modalContent');
-            contentDiv.innerHTML = `
-                <div class="modal-title">${data.title}</div>
-                <div class="modal-subtitle">${data.subtitle}</div>
-                <div class="modal-body">${data.body}</div>
-            `;
-            document.getElementById('modalOverlay').classList.add('active');
-        }
+<main class="container">
 
-        function openSkillDetail(skillKey) {
-            const skill = skillDetails[skillKey] ? skillDetails[skillKey][currentLang] : { title: "Skill Overview", desc: "Hands-on experience in high-performing operations." };
-            const contentDiv = document.getElementById('modalContent');
-            contentDiv.innerHTML = `
-                <div class="modal-title">${skill.title}</div>
-                <div class="modal-body" style="margin-top:0.8rem; font-size:1rem;">${skill.desc}</div>
-            `;
-            document.getElementById('modalOverlay').classList.add('active');
-        }
 
-        function closeModal(e) {
-            if (e.target.id === 'modalOverlay') {
-                document.getElementById('modalOverlay').classList.remove('active');
-            }
-        }
+<!-- =======================================================
+     HERO
+======================================================= -->
 
-        function closeModalForce() {
-            document.getElementById('modalOverlay').classList.remove('active');
-        }
+<section class="hero">
 
-        function toggleLanguage() {
-            const enElements = document.querySelectorAll('.lang-en');
-            const zhElements = document.querySelectorAll('.lang-zh');
-            const langBtn = document.querySelector('.lang-btn');
+    <div
+        class="profile-container"
+        onclick="profileEasterEgg()">
 
-            if (currentLang === 'zh') {
-                zhElements.forEach(el => el.classList.add('lang-hide'));
-                enElements.forEach(el => el.classList.remove('lang-hide'));
-                langBtn.textContent = '中文';
-                currentLang = 'en';
-            } else {
-                enElements.forEach(el => el.classList.add('lang-hide'));
-                zhElements.forEach(el => el.classList.remove('lang-hide'));
-                langBtn.textContent = 'English';
-                currentLang = 'zh';
-            }
-        }
+        <div
+            class="profile-bubble"
+            id="profileBubble">
+            Hi! 👋
+        </div>
 
-        function switchTab(tabId) {
-            document.querySelectorAll('.tab-content').forEach(content => {
-                content.classList.remove('active');
-            });
-            
-            document.querySelectorAll('.tab-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
+        <div class="profile-image-frame">
 
-            document.getElementById(tabId).classList.add('active');
-            
-            const tabButtons = document.querySelectorAll('.tab-btn');
-            if (tabId === 'experience') tabButtons[0].classList.add('active');
-            if (tabId === 'about') tabButtons[1].classList.add('active');
-            if (tabId === 'skills') tabButtons[2].classList.add('active');
-            if (tabId === 'education') tabButtons[3].classList.add('active');
-        }
+            <img
+                src="./profile.jpg"
+                alt="Maia Mak"
+                class="profile-img"
+                onerror="imageFallback(this)"
+            >
 
-        function triggerProfileEasterEgg() {
-            const bubble = document.getElementById('profileBubble');
-            const messages = currentLang === 'zh' 
-                ? ["你好呀！👋", "喵呜！🐱", "欢迎来到我的作品集！✨", "祝你拥有美好的每一天！🌸"]
-                : ["Hi there! 👋", "Meow! 🐱", "Welcome! ✨", "Enjoy my portfolio! 🌸"];
-            const randomMsg = messages[Math.floor(Math.random() * messages.length)];
-            bubble.textContent = randomMsg;
-            bubble.style.opacity = '1';
-            bubble.style.transform = 'translateX(-50%) scale(1.1)';
-            setTimeout(() => {
-                bubble.style.opacity = '';
-                bubble.style.transform = '';
-            }, 1800);
-        }
+        </div>
 
-        function animateCounters() {
-            const counters = document.querySelectorAll('.counter');
-            counters.forEach(counter => {
-                const target = +counter.getAttribute('data-target');
-                const duration = 1200; 
-                const stepTime = 20; 
-                const steps = duration / stepTime;
-                const increment = target / steps;
-                let current = 0;
+        <div class="profile-badge">
+            ✨
+        </div>
 
-                const timer = setInterval(() => {
-                    current += increment;
-                    if (current >= target) {
-                        counter.textContent = target;
-                        clearInterval(timer);
-                    } else {
-                        counter.textContent = Math.ceil(current);
-                    }
-                }, stepTime);
-            });
-        }
+    </div>
 
-        window.addEventListener('scroll', () => {
-            const backToTopBtn = document.getElementById('backToTopBtn');
-            if (window.scrollY > 300) {
-                backToTopBtn.classList.add('show');
-            } else {
-                backToTopBtn.classList.remove('show');
-            }
+
+    <div>
+
+        <h1>
+            Maia Mak Ke Xin
+            <span style="font-size:.55em;">
+                麦可欣
+            </span>
+        </h1>
+
+        <h2 class="lang-en">
+            Regional QA Lead |
+            Operations & Quality Governance Specialist 🚀
+        </h2>
+
+        <h2 class="lang-zh lang-hide">
+            区域质量保证负责人 |
+            运营优化与合规风控专家 🚀
+        </h2>
+
+
+        <div class="bio-statement lang-en">
+
+            “I build quality systems that turn
+            operational data into measurable improvement.”
+
+        </div>
+
+        <div class="bio-statement lang-zh lang-hide">
+
+            “以精准的合规标准与高标准的品质把控为核心，
+            赋能跨国团队，交付卓越的运营品质。”
+
+        </div>
+
+
+        <p class="hero-description lang-en">
+
+            Regional QA professional overseeing
+            high-volume audits and operational
+            performance across 7+ global markets.
+
+            Experienced in process standardization,
+            compliance risk mitigation,
+            data-driven performance analysis,
+            performance coaching and
+            cross-functional governance.
+
+        </p>
+
+        <p class="hero-description lang-zh lang-hide">
+
+            深耕区域 QA 质量管理领域，
+            主导覆盖 7+ 全球市场的高强度服务质量审计
+            与运营绩效优化。
+
+            擅长流程标准化、合规风控、
+            数据驱动绩效分析、绩效辅导
+            及跨部门协同治理。
+
+        </p>
+
+
+        <div class="contact-info">
+
+            <span class="contact-pill">
+                📍 Selangor, Malaysia
+            </span>
+
+            <a
+                href="tel:+60193906809"
+                class="contact-pill">
+                📞 +60 19-390 6809
+            </a>
+
+            <a
+                href="mailto:kexin0410@gmail.com"
+                class="contact-pill">
+                ✉️ kexin0410@gmail.com
+            </a>
+
+            <a
+                href="https://www.linkedin.com/in/maia-mak-ke-xin-19969a1a8/"
+                target="_blank"
+                class="contact-pill linkedin">
+                🔗 LinkedIn
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =======================================================
+     IMPACT SNAPSHOT
+======================================================= -->
+
+<section id="impact">
+
+    <div class="section-header">
+
+        <div class="eyebrow">
+            Impact Snapshot
+        </div>
+
+        <h2>
+            Results that speak before I do.
+        </h2>
+
+        <p>
+            Four numbers. Four measurable outcomes.
+            Click any one to see the context.
+        </p>
+
+    </div>
+
+
+    <div class="impact-grid">
+
+
+        <div
+            class="impact-card"
+            onclick="openMetric('qa')">
+
+            <div class="impact-number">
+                80% → 95%+
+            </div>
+
+            <div class="impact-title">
+                Tenured Agent QA Score Uplift
+            </div>
+
+            <span class="impact-click">
+                Click for context ✨
+            </span>
+
+        </div>
+
+
+        <div
+            class="impact-card"
+            onclick="openMetric('risk')">
+
+            <div class="impact-number">
+                −80%
+            </div>
+
+            <div class="impact-title">
+                Policy Violation Red Flags
+            </div>
+
+            <span class="impact-click">
+                Click for context ✨
+            </span>
+
+        </div>
+
+
+        <div
+            class="impact-card"
+            onclick="openMetric('calibration')">
+
+            <div class="impact-number">
+                90%+
+            </div>
+
+            <div class="impact-title">
+                Scoring Calibration Alignment
+            </div>
+
+            <span class="impact-click">
+                Click for context ✨
+            </span>
+
+        </div>
+
+
+        <div
+            class="impact-card"
+            onclick="openMetric('revenue')">
+
+            <div class="impact-number">
+                $612K+
+            </div>
+
+            <div class="impact-title">
+                Q4 Revenue Generated
+            </div>
+
+            <span class="impact-click">
+                Click for context ✨
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =======================================================
+     HOW I CREATE IMPACT
+======================================================= -->
+
+<section class="method-section">
+
+    <div class="section-header">
+
+        <div class="eyebrow">
+            How I Create Impact
+        </div>
+
+        <h2>
+            I don't just find problems.
+            I build the system behind the solution.
+        </h2>
+
+        <p class="method-intro">
+
+            This is where my QA, operations and commercial
+            experience come together — turning observations
+            into repeatable improvements.
+
+        </p>
+
+    </div>
+
+
+    <div class="method-grid">
+
+
+        <!-- QUALITY -->
+
+        <article
+            class="method-card"
+            onclick="openMethod('quality')">
+
+            <div class="method-icon">
+                🔍
+            </div>
+
+            <h3>
+                Quality Systems
+            </h3>
+
+            <p>
+
+                Build structured QA mechanisms that
+                identify performance gaps,
+                standardize evaluation and
+                improve consistency across markets.
+
+            </p>
+
+            <span class="method-link">
+                SEE MY APPROACH →
+            </span>
+
+        </article>
+
+
+
+        <!-- RISK -->
+
+        <article
+            class="method-card"
+            onclick="openMethod('risk')">
+
+            <div class="method-icon">
+                🛡️
+            </div>
+
+            <h3>
+                Risk & Compliance
+            </h3>
+
+            <p>
+
+                Translate policy requirements into
+                practical SOPs, calibration routines
+                and coaching mechanisms that reduce
+                operational risk.
+
+            </p>
+
+            <span class="method-link">
+                SEE MY APPROACH →
+            </span>
+
+        </article>
+
+
+
+        <!-- DATA -->
+
+        <article
+            class="method-card"
+            onclick="openMethod('data')">
+
+            <div class="method-icon">
+                📊
+            </div>
+
+            <h3>
+                Data → Action
+            </h3>
+
+            <p>
+
+                Use operational data to identify trends,
+                diagnose root causes and turn performance
+                insights into measurable action plans.
+
+            </p>
+
+            <span class="method-link">
+                SEE MY APPROACH →
+            </span>
+
+        </article>
+
+    </div>
+
+
+
+    <!-- PROCESS -->
+
+    <div class="process-box">
+
+        <div class="eyebrow">
+            My Operating Framework
+        </div>
+
+        <h3 style="margin-bottom:15px;">
+            Identify → Analyze → Calibrate →
+            Coach → Standardize → Measure
+        </h3>
+
+
+        <div class="process-flow">
+
+            <div class="process-step">
+                <small>01</small>
+                <strong>Identify</strong>
+            </div>
+
+            <div class="process-step">
+                <small>02</small>
+                <strong>Analyze</strong>
+            </div>
+
+            <div class="process-step">
+                <small>03</small>
+                <strong>Calibrate</strong>
+            </div>
+
+            <div class="process-step">
+                <small>04</small>
+                <strong>Coach</strong>
+            </div>
+
+            <div class="process-step">
+                <small>05</small>
+                <strong>Standardize</strong>
+            </div>
+
+            <div class="process-step">
+                <small>06</small>
+                <strong>Measure</strong>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =======================================================
+     TABS
+======================================================= -->
+
+<div class="tabs">
+
+    <button
+        class="tab-button active"
+        onclick="switchTab('experience',this)">
+        💼 Experience
+    </button>
+
+    <button
+        class="tab-button"
+        onclick="switchTab('about',this)">
+        🐱 About & Hobbies
+    </button>
+
+    <button
+        class="tab-button"
+        onclick="switchTab('skills',this)">
+        ⚡ Skills & Tools
+    </button>
+
+    <button
+        class="tab-button"
+        onclick="switchTab('education',this)">
+        🎓 Education
+    </button>
+
+</div>
+
+
+
+<!-- =======================================================
+     EXPERIENCE
+======================================================= -->
+
+<section
+    id="experience"
+    class="tab-panel active">
+
+
+    <!-- HEYTEA -->
+
+    <div class="job-card">
+
+        <div class="job-header">
+
+            <div>
+
+                <div class="job-title">
+                    Quality Assurance Specialist
+                    — HEYTEA 喜茶 🧋
+                </div>
+
+                <div class="job-company">
+                    Concentrix, KL Malaysia
+                </div>
+
+            </div>
+
+            <span class="job-date">
+                July 2026 – Present
+            </span>
+
+        </div>
+
+
+        <ul>
+
+            <li>
+                Lead quality assurance and service
+                compliance operations across USA,
+                Canada, APAC and Greater China.
+            </li>
+
+            <li>
+                Conduct 50+ quality evaluations daily /
+                250+ weekly across 7+ global markets.
+            </li>
+
+            <li>
+                Uplifted tenured-agent QA performance
+                from an 80% baseline to above 95%
+                through RCA and structured coaching.
+            </li>
+
+            <li>
+                Maintained 90%+ calibration alignment
+                across QA and leadership.
+            </li>
+
+        </ul>
+
+    </div>
+
+
+
+    <!-- META QA -->
+
+    <div class="job-card">
+
+        <div class="job-header">
+
+            <div>
+
+                <div class="job-title">
+                    Sr. Quality Evaluator
+                    — META 🔍
+                </div>
+
+                <div class="job-company">
+                    Concentrix, KL Malaysia
+                </div>
+
+            </div>
+
+            <span class="job-date">
+                Oct 2024 – June 2026
+            </span>
+
+        </div>
+
+
+        <ul>
+
+            <li>
+                Led QA across Meta's SEA and
+                Traditional Mandarin markets covering
+                Sales, Technical and Creative operations.
+            </li>
+
+            <li>
+                Conducted 80+ audits per month using
+                internal QMS tools.
+            </li>
+
+            <li>
+                Improved tenured-agent QA scores
+                from 65% to 80%.
+            </li>
+
+            <li>
+                Improved new-hire QA performance
+                from 50% to 75–85%.
+            </li>
+
+            <li>
+                Reduced policy violation red flags
+                by 80%.
+            </li>
+
+            <li>
+                Maintained 85%+ calibration alignment
+                across regional stakeholders.
+            </li>
+
+        </ul>
+
+    </div>
+
+
+
+    <!-- SALES -->
+
+    <div class="job-card">
+
+        <div class="job-header">
+
+            <div>
+
+                <div class="job-title">
+                    Sales Advisor II
+                    — META Marketing Pro 📈
+                </div>
+
+                <div class="job-company">
+                    Concentrix, KL Malaysia
+                </div>
+
+            </div>
+
+            <span class="job-date">
+                Feb 2023 – Oct 2024
+            </span>
+
+        </div>
+
+
+        <ul>
+
+            <li>
+                Generated USD 612,458 in Q4 2023
+                revenue through advertiser account
+                and campaign optimization.
+            </li>
+
+            <li>
+                Increased client conversion rates
+                by 185.71%.
+            </li>
+
+            <li>
+                Reduced cost per result by 64.28%.
+            </li>
+
+            <li>
+                Managed 150+ advertiser accounts
+                per quarter.
+            </li>
+
+            <li>
+                Recognized as CNX SBG Rockstar
+                — Q4 2023.
+            </li>
+
+        </ul>
+
+    </div>
+
+</section>
+
+
+
+<!-- =======================================================
+     ABOUT
+======================================================= -->
+
+<section
+    id="about"
+    class="tab-panel">
+
+
+    <h3 style="margin-bottom:10px;">
+        🐾 The human behind the QA brain
+    </h3>
+
+    <p style="color:var(--muted); margin-bottom:18px;">
+
+        Fine Arts background + QA brain +
+        three cats + one Animal Crossing island.
+
+        This is the part of the portfolio where
+        the corporate mask comes off. 😌
+
+    </p>
+
+
+    <ul class="personal-list">
+
+        <li>
+            🐱 <strong>Cat Enthusiast:</strong>
+            Proud cat mom of Bubur, Keera & Ollie.
+        </li>
+
+        <li>
+            🎮 <strong>Animal Crossing:</strong>
+            Island design, layout planning and
+            online island visits.
+        </li>
+
+        <li>
+            🏸 <strong>Badminton:</strong>
+            Staying active and energetic with friends.
+        </li>
+
+        <li>
+            🎨 <strong>Creative Mind:</strong>
+            Fine Arts background with strong
+            visual-detail orientation.
+        </li>
+
+    </ul>
+
+
+
+    <!-- ACNH -->
+
+    <div class="gallery-box">
+
+        <div class="gallery-title">
+            🎮 Animal Crossing Island Showcase
+        </div>
+
+
+        <div class="acnh-gallery">
+
+
+            <div
+                class="gallery-item"
+                onclick="openImage('./acnh1.jpg','Animal Crossing Island 01')">
+
+                <img
+                    src="./acnh1.jpg"
+                    alt="Animal Crossing Island 01"
+                    onerror="imageFallback(this)"
+                >
+
+            </div>
+
+
+            <div
+                class="gallery-item"
+                onclick="openImage('./acnh2.jpg','Animal Crossing Island 02')">
+
+                <img
+                    src="./acnh2.jpg"
+                    alt="Animal Crossing Island 02"
+                    onerror="imageFallback(this)"
+                >
+
+            </div>
+
+
+            <div
+                class="gallery-item"
+                onclick="openImage('./acnh3.jpg','Animal Crossing Island 03')">
+
+                <img
+                    src="./acnh3.jpg"
+                    alt="Animal Crossing Island 03"
+                    onerror="imageFallback(this)"
+                >
+
+            </div>
+
+
+            <div
+                class="gallery-item"
+                onclick="openImage('./acnh4.jpg','Animal Crossing Island 04')">
+
+                <img
+                    src="./acnh4.jpg"
+                    alt="Animal Crossing Island 04"
+                    onerror="imageFallback(this)"
+                >
+
+            </div>
+
+
+            <div
+                class="gallery-item"
+                onclick="openImage('./acnh5.jpg','Animal Crossing Island 05')">
+
+                <img
+                    src="./acnh5.jpg"
+                    alt="Animal Crossing Island 05"
+                    onerror="imageFallback(this)"
+                >
+
+            </div>
+
+
+            <div
+                class="gallery-item"
+                onclick="openImage('./acnh6.jpg','Animal Crossing Island 06')">
+
+                <img
+                    src="./acnh6.jpg"
+                    alt="Animal Crossing Island 06"
+                    onerror="imageFallback(this)"
+                >
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+    <!-- CATS -->
+
+    <div class="cat-card">
+
+        <div
+            class="cat-image-frame"
+            onclick="openImage('./cats.jpg','Bubur, Keera & Ollie')">
+
+            <img
+                src="./cats.jpg"
+                alt="Bubur, Keera and Ollie"
+                onerror="imageFallback(this)"
+            >
+
+        </div>
+
+
+        <h3 style="margin-top:18px;">
+            Meet Bubur, Keera & Ollie 🐾
+        </h3>
+
+
+        <ul class="cat-list">
+
+            <li>
+                🐄 <strong>Bubur</strong>
+                | 9–10-year-old cow cat,
+                the senior gentleman.
+            </li>
+
+            <li>
+                🐯 <strong>Keera</strong>
+                | 4-year-old tabby,
+                clingy, curious and easily scared.
+            </li>
+
+            <li>
+                🦁 <strong>Ollie</strong>
+                | 1-year-old orange baby
+                who somehow loves being held upside down.
+            </li>
+
+        </ul>
+
+    </div>
+
+</section>
+
+
+
+<!-- =======================================================
+     SKILLS
+======================================================= -->
+
+<section
+    id="skills"
+    class="tab-panel">
+
+
+    <div class="skill-section">
+
+        <h3>
+            Quality Governance & Compliance 🔍
+        </h3>
+
+        <div class="tags">
+
+            <span
+                class="tag"
+                onclick="openSkill('QA Audit & Compliance')">
+                QA Audit & Compliance
+            </span>
+
+            <span
+                class="tag"
+                onclick="openSkill('Calibration Alignment')">
+                Calibration Alignment
+            </span>
+
+            <span
+                class="tag"
+                onclick="openSkill('Root Cause Analysis')">
+                Root Cause Analysis
+            </span>
+
+            <span
+                class="tag"
+                onclick="openSkill('Operational Metrics')">
+                Operational Metrics
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <div class="skill-section">
+
+        <h3>
+            Process & Operational Excellence ⚡
+        </h3>
+
+        <div class="tags">
+
+            <span
+                class="tag"
+                onclick="openSkill('Performance Coaching')">
+                Performance Coaching
+            </span>
+
+            <span
+                class="tag"
+                onclick="openSkill('SOP Standardization')">
+                SOP Standardization
+            </span>
+
+            <span
+                class="tag"
+                onclick="openSkill('Cross Functional Governance')">
+                Cross-Functional Governance
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <div class="skill-section">
+
+        <h3>
+            Tools & Systems 🛠️
+        </h3>
+
+        <div class="tags">
+
+            <span
+                class="tag"
+                onclick="openSkill('Meta QMS')">
+                Meta QMS
+            </span>
+
+            <span
+                class="tag"
+                onclick="openSkill('Zendesk')">
+                Zendesk
+            </span>
+
+            <span
+                class="tag"
+                onclick="openSkill('Meta Ads Manager')">
+                Meta Ads Manager
+            </span>
+
+            <span
+                class="tag"
+                onclick="openSkill('Tableau')">
+                Tableau
+            </span>
+
+            <span
+                class="tag"
+                onclick="openSkill('Microsoft Excel')">
+                Microsoft Excel
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =======================================================
+     EDUCATION
+======================================================= -->
+
+<section
+    id="education"
+    class="tab-panel">
+
+
+    <div class="edu-card">
+
+        <strong>
+            Diploma in Fine Arts 🎨
+        </strong>
+
+        <p>
+            CGPA 3.60 / 4.0
+        </p>
+
+        <p>
+            Malaysian Institute of Art,
+            Kuala Lumpur
+        </p>
+
+        <p>
+            Aug 2014 – Apr 2018
+        </p>
+
+    </div>
+
+
+    <div class="edu-card">
+
+        <strong>
+            Languages 🗣️
+        </strong>
+
+        <p>
+            English · Mandarin · Malay · Cantonese
+        </p>
+
+    </div>
+
+
+    <div class="edu-card">
+
+        <strong>
+            Recognition 🏆
+        </strong>
+
+        <p>
+            CNX SBG Rockstar — Q4 2023
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =======================================================
+     CTA
+======================================================= -->
+
+<section class="cta">
+
+    <h2>
+        Let's build better operations together. ✨
+    </h2>
+
+    <p>
+        Open for Regional QA,
+        Operations Leadership and
+        Quality Governance opportunities.
+    </p>
+
+    <a
+        href="mailto:kexin0410@gmail.com"
+        class="cta-button">
+
+        ✉️ Get In Touch
+
+    </a>
+
+</section>
+
+
+</main>
+
+
+
+<!-- =======================================================
+     BACK TO TOP
+======================================================= -->
+
+<button
+    class="back-top"
+    id="backTop"
+    onclick="scrollTopPage()">
+
+    ↑
+
+</button>
+
+
+
+<!-- =======================================================
+     MODAL
+======================================================= -->
+
+<div
+    class="modal-overlay"
+    id="modalOverlay"
+    onclick="closeModal(event)">
+
+
+    <div class="modal">
+
+        <button
+            class="modal-close"
+            onclick="closeModalForce()">
+
+            ✕
+
+        </button>
+
+
+        <div id="modalContent"></div>
+
+    </div>
+
+</div>
+
+
+
+<script>
+
+/* =========================================================
+   LANGUAGE
+========================================================= */
+
+let currentLanguage = "en";
+
+
+function toggleLanguage() {
+
+    currentLanguage =
+        currentLanguage === "en"
+        ? "zh"
+        : "en";
+
+
+    document
+        .querySelectorAll(".lang-en")
+        .forEach(element => {
+
+            element.classList.toggle(
+                "lang-hide",
+                currentLanguage !== "en"
+            );
+
         });
 
-        function scrollToTop() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
+
+    document
+        .querySelectorAll(".lang-zh")
+        .forEach(element => {
+
+            element.classList.toggle(
+                "lang-hide",
+                currentLanguage !== "zh"
+            );
+
+        });
+
+
+    document.querySelector(".lang-btn").textContent =
+        currentLanguage === "en"
+        ? "中文"
+        : "English";
+
+}
+
+
+
+/* =========================================================
+   PROFILE EASTER EGG
+========================================================= */
+
+function profileEasterEgg() {
+
+    const bubble =
+        document.getElementById(
+            "profileBubble"
+        );
+
+
+    const messages = [
+
+        "Hi! 👋",
+
+        "Welcome to my portfolio! ✨",
+
+        "You found the secret button! 👀",
+
+        "Meow! 🐱",
+
+        "QA brain activated. 🔍"
+
+    ];
+
+
+    bubble.textContent =
+        messages[
+            Math.floor(
+                Math.random()
+                *
+                messages.length
+            )
+        ];
+
+
+    bubble.classList.add("show");
+
+
+    setTimeout(() => {
+
+        bubble.classList.remove("show");
+
+    }, 1800);
+
+}
+
+
+
+/* =========================================================
+   IMAGE FALLBACK
+========================================================= */
+
+function imageFallback(image) {
+
+    image.style.display = "none";
+
+    const parent =
+        image.parentElement;
+
+
+    if (
+        parent
+        &&
+        !parent.querySelector(".image-missing")
+    ) {
+
+        const message =
+            document.createElement("div");
+
+
+        message.className =
+            "image-missing";
+
+
+        message.style.cssText = `
+            width:100%;
+            height:100%;
+            min-height:160px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            text-align:center;
+            padding:20px;
+            color:#64748b;
+            background:#f8fafc;
+            font-size:.85rem;
+            font-weight:700;
+        `;
+
+
+        message.innerHTML =
+            "📷 Image not found<br><small>Please check the filename.</small>";
+
+
+        parent.appendChild(message);
+
+    }
+
+}
+
+
+
+/* =========================================================
+   METRIC MODALS
+========================================================= */
+
+const metrics = {
+
+    qa: {
+
+        title:
+            "80% → 95%+",
+
+        subtitle:
+            "Tenured Agent QA Score Uplift",
+
+        body: `
+
+            <div class="modal-stat">
+                80% → 95%+
+            </div>
+
+            <h3>
+                The challenge
+            </h3>
+
+            <p>
+                Tenured-agent QA performance
+                needed a sustainable improvement,
+                rather than a one-time score increase.
+            </p>
+
+            <h3>
+                My approach
+            </h3>
+
+            <p>
+                Used root-cause analysis,
+                structured coaching,
+                SOP reinforcement,
+                calibration and performance alignment.
+            </p>
+
+            <h3>
+                Outcome
+            </h3>
+
+            <p>
+                Improved tenured-agent QA performance
+                from an 80% baseline to above 95%
+                in the HEYTEA operation.
+            </p>
+
+        `
+    },
+
+
+    risk: {
+
+        title:
+            "−80%",
+
+        subtitle:
+            "Policy Violation Red Flags",
+
+        body: `
+
+            <div class="modal-stat">
+                −80%
+            </div>
+
+            <h3>
+                The challenge
+            </h3>
+
+            <p>
+                Frequent policy updates created
+                recurring compliance gaps.
+            </p>
+
+            <h3>
+                My approach
+            </h3>
+
+            <p>
+                Identified critical gaps,
+                delivered targeted SOP refreshers,
+                quizzes and calibration syncs.
+            </p>
+
+            <h3>
+                Outcome
+            </h3>
+
+            <p>
+                Reduced major policy violation
+                red flags by 80%.
+            </p>
+
+        `
+    },
+
+
+    calibration: {
+
+        title:
+            "90%+",
+
+        subtitle:
+            "Scoring Calibration Alignment",
+
+        body: `
+
+            <div class="modal-stat">
+                90%+
+            </div>
+
+            <h3>
+                Why it matters
+            </h3>
+
+            <p>
+                A QA system only works when different
+                evaluators interpret the same standard
+                consistently.
+            </p>
+
+            <h3>
+                My approach
+            </h3>
+
+            <p>
+                Facilitated calibration sessions
+                between QA, team leaders and
+                operational stakeholders.
+            </p>
+
+            <h3>
+                Outcome
+            </h3>
+
+            <p>
+                Maintained 90%+ scoring alignment
+                across the HEYTEA operation.
+            </p>
+
+        `
+    },
+
+
+    revenue: {
+
+        title:
+            "$612K+",
+
+        subtitle:
+            "Q4 Revenue Generated",
+
+        body: `
+
+            <div class="modal-stat">
+                $612,458
+            </div>
+
+            <h3>
+                Scope
+            </h3>
+
+            <p>
+                Managed 150+ advertiser accounts
+                per quarter across $1K–$50K
+                budget tiers.
+            </p>
+
+            <h3>
+                Performance
+            </h3>
+
+            <p>
+                Increased conversion rate by
+                185.71% while reducing cost per
+                result by 64.28%.
+            </p>
+
+            <h3>
+                Recognition
+            </h3>
+
+            <p>
+                CNX SBG Rockstar — Q4 2023.
+            </p>
+
+        `
+    }
+
+};
+
+
+
+function openMetric(key) {
+
+    const data =
+        metrics[key];
+
+
+    document.getElementById(
+        "modalContent"
+    ).innerHTML = `
+
+        <h2>
+            ${data.title}
+        </h2>
+
+        <p>
+            <strong>
+                ${data.subtitle}
+            </strong>
+        </p>
+
+        ${data.body}
+
+    `;
+
+
+    openModal();
+
+}
+
+
+
+/* =========================================================
+   HOW I CREATE IMPACT MODALS
+========================================================= */
+
+const methods = {
+
+    quality: {
+
+        title:
+            "🔍 Quality Systems",
+
+        body: `
+
+            <h3>
+                01 — Identify
+            </h3>
+
+            <p>
+                Start with evaluation data,
+                recurring errors and performance trends.
+            </p>
+
+            <h3>
+                02 — Analyze
+            </h3>
+
+            <p>
+                Use RCA to separate isolated mistakes
+                from systematic process or knowledge gaps.
+            </p>
+
+            <h3>
+                03 — Calibrate
+            </h3>
+
+            <p>
+                Align QA, team leaders and stakeholders
+                around the same evaluation standard.
+            </p>
+
+            <h3>
+                04 — Improve
+            </h3>
+
+            <p>
+                Turn findings into coaching,
+                SOP reinforcement and measurable
+                corrective actions.
+            </p>
+
+        `
+    },
+
+
+    risk: {
+
+        title:
+            "🛡️ Risk & Compliance",
+
+        body: `
+
+            <h3>
+                Policy → Practice
+            </h3>
+
+            <p>
+                I focus on translating policy requirements
+                into something operational teams can
+                actually apply.
+            </p>
+
+            <h3>
+                My mechanism
+            </h3>
+
+            <p>
+                SOP refreshers → targeted quizzes →
+                calibration → coaching →
+                monitoring.
+            </p>
+
+            <h3>
+                Why this works
+            </h3>
+
+            <p>
+                Instead of simply telling agents
+                what went wrong, the process creates
+                a repeatable mechanism to prevent
+                the same issue from happening again.
+            </p>
+
+        `
+    },
+
+
+    data: {
+
+        title:
+            "📊 Data → Action",
+
+        body: `
+
+            <h3>
+                Observe
+            </h3>
+
+            <p>
+                Look at QA scores, compliance trends,
+                operational metrics and customer feedback.
+            </p>
+
+            <h3>
+                Diagnose
+            </h3>
+
+            <p>
+                Find the pattern behind the number.
+                A low score is a signal —
+                not the root cause.
+            </p>
+
+            <h3>
+                Act
+            </h3>
+
+            <p>
+                Convert the insight into coaching,
+                process changes, SOP updates or
+                stakeholder alignment.
+            </p>
+
+            <h3>
+                Measure
+            </h3>
+
+            <p>
+                Re-check the same metric to confirm
+                whether the intervention actually worked.
+            </p>
+
+        `
+    }
+
+};
+
+
+
+function openMethod(key) {
+
+    const data =
+        methods[key];
+
+
+    document.getElementById(
+        "modalContent"
+    ).innerHTML = `
+
+        <h2>
+            ${data.title}
+        </h2>
+
+        ${data.body}
+
+    `;
+
+
+    openModal();
+
+}
+
+
+
+/* =========================================================
+   SKILL MODALS
+========================================================= */
+
+const skillDescriptions = {
+
+    "QA Audit & Compliance":
+        "High-volume QA evaluation, compliance monitoring and quality governance across global markets.",
+
+    "Calibration Alignment":
+        "Facilitating calibration sessions to maintain consistent scoring across QA, team leaders and operations.",
+
+    "Root Cause Analysis":
+        "Using structured RCA to distinguish recurring systemic issues from isolated performance errors.",
+
+    "Operational Metrics":
+        "Using QA trends, performance metrics and feedback to build corrective action plans.",
+
+    "Performance Coaching":
+        "Structured 1-on-1 coaching designed around observable performance gaps and measurable outcomes.",
+
+    "SOP Standardization":
+        "Building and reinforcing standardized workflows and SOP documentation across regional operations.",
+
+    "Cross Functional Governance":
+        "Working with QA, operations, leadership and regional stakeholders to align quality expectations.",
+
+    "Meta QMS":
+        "Internal quality management environment used for audit coverage, evaluation and quality tracking.",
+
+    "Zendesk":
+        "Customer support workflow and service operation environment.",
+
+    "Meta Ads Manager":
+        "Advertiser account, campaign and performance optimization experience.",
+
+    "Tableau":
+        "Dashboard-based operational and performance analysis.",
+
+    "Microsoft Excel":
+        "Performance reporting, data organization, scorecards and operational analysis."
+
+};
+
+
+
+function openSkill(skill) {
+
+    document.getElementById(
+        "modalContent"
+    ).innerHTML = `
+
+        <h2>
+            ${skill}
+        </h2>
+
+        <p style="margin-top:15px;">
+            ${skillDescriptions[skill]
+                || "Professional capability developed through regional QA, operations and commercial experience."
+            }
+        </p>
+
+    `;
+
+
+    openModal();
+
+}
+
+
+
+/* =========================================================
+   IMAGE LIGHTBOX
+========================================================= */
+
+function openImage(src, title) {
+
+    document.getElementById(
+        "modalContent"
+    ).innerHTML = `
+
+        <h2>
+            ${title}
+        </h2>
+
+        <img
+            src="${src}"
+            alt="${title}"
+            class="modal-image"
+            onerror="imageFallback(this)"
+        >
+
+    `;
+
+
+    openModal();
+
+}
+
+
+
+/* =========================================================
+   MODAL CONTROLS
+========================================================= */
+
+function openModal() {
+
+    document
+        .getElementById("modalOverlay")
+        .classList.add("active");
+
+}
+
+
+function closeModal(event) {
+
+    if (
+        event.target.id
+        === "modalOverlay"
+    ) {
+
+        closeModalForce();
+
+    }
+
+}
+
+
+function closeModalForce() {
+
+    document
+        .getElementById("modalOverlay")
+        .classList.remove("active");
+
+}
+
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (
+            event.key
+            === "Escape"
+        ) {
+
+            closeModalForce();
+
         }
 
-        window.addEventListener('DOMContentLoaded', () => {
-            animateCounters();
-            // 預設顯示中文，隱藏英文
-            document.querySelectorAll('.lang-en').forEach(el => el.classList.add('lang-hide'));
+    }
+);
+
+
+
+/* =========================================================
+   TABS
+========================================================= */
+
+function switchTab(
+    tabId,
+    button
+) {
+
+    document
+        .querySelectorAll(".tab-panel")
+        .forEach(panel => {
+
+            panel.classList.remove(
+                "active"
+            );
+
         });
-    </script>
+
+
+    document
+        .querySelectorAll(".tab-button")
+        .forEach(btn => {
+
+            btn.classList.remove(
+                "active"
+            );
+
+        });
+
+
+    document
+        .getElementById(tabId)
+        .classList.add("active");
+
+
+    button.classList.add("active");
+
+}
+
+
+
+/* =========================================================
+   BACK TO TOP
+========================================================= */
+
+window.addEventListener(
+    "scroll",
+    function() {
+
+        const button =
+            document.getElementById(
+                "backTop"
+            );
+
+
+        if (
+            window.scrollY
+            > 350
+        ) {
+
+            button.classList.add(
+                "show"
+            );
+
+        } else {
+
+            button.classList.remove(
+                "show"
+            );
+
+        }
+
+    }
+);
+
+
+function scrollTopPage() {
+
+    window.scrollTo({
+
+        top: 0,
+
+        behavior: "smooth"
+
+    });
+
+}
+
+</script>
+
 </body>
 </html>
