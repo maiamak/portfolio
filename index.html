@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maia Mak Ke Xin | 互动个人作品集</title>
+
+    <!-- 5. 社群分享卡片 (Open Graph Meta Tags) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://maiamak.github.io/portfolio/">
+    <meta property="og:title" content="Maia Mak | Regional QA & Training Lead Portfolio">
+    <meta property="og:description" content="Explore Maia's interactive portfolio showcasing QA audit impacts, team coaching frameworks, and operational excellence.">
+    <meta property="og:image" content="profile.jpg">
+
     <style>
         :root {
             --primary: #6366f1;
@@ -229,6 +237,18 @@
             color: var(--primary);
             font-weight: 600;
             margin-bottom: 1rem;
+        }
+
+        /* 1. 自我介紹宣言 (Bio Statement) */
+        .bio-statement {
+            background: rgba(255, 255, 255, 0.6);
+            border-left: 3px solid var(--accent);
+            padding: 0.75rem 1rem;
+            border-radius: 0 12px 12px 0;
+            font-size: 0.92rem;
+            color: var(--text-main);
+            margin-bottom: 1rem;
+            font-style: italic;
         }
 
         .contact-info {
@@ -619,6 +639,83 @@
             box-shadow: 0 4px 12px rgba(236, 72, 153, 0.25);
         }
 
+        /* 4. 頁尾聯絡專區 (Footer CTA) */
+        .footer-cta {
+            margin-top: 3rem;
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            padding: 2.5rem 1.5rem;
+            border: 2px solid white;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .footer-cta h2 {
+            font-size: 1.5rem;
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-cta p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .cta-btn {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            padding: 0.75rem 1.8rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 6px 18px rgba(236, 72, 153, 0.25);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 24px rgba(236, 72, 153, 0.35);
+        }
+
+        /* 3. 懸浮回到頂部按鈕 (Floating Back to Top) */
+        .back-to-top {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 48px;
+            height: 48px;
+            background: #ffffff;
+            color: var(--primary);
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            z-index: 99;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .back-to-top:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-4px);
+        }
+
         .lang-hide { display: none !important; }
 
         @media (max-width: 640px) {
@@ -658,7 +755,6 @@
         <div class="nav-container">
             <div class="logo">Maia Mak 🌸</div>
             <div class="nav-actions">
-                <!-- 已更新：指向 resume.pdf 並觸發強制下載 -->
                 <a href="resume.pdf" download="Maia_Mak_Resume.pdf" target="_blank" class="download-btn">
                     📄 <span class="lang-en lang-hide">PDF Resume</span><span class="lang-zh">下载简历</span>
                 </a>
@@ -681,6 +777,14 @@
                 <h2 class="lang-en lang-hide">Regional QA & Training Lead | Operations & Compliance Specialist 🚀</h2>
                 <h2 class="lang-zh">区域质量保证 (QA) 与培训专家 | 运营优化与合规风控专家 🚀</h2>
                 
+                <!-- 1. 自我介紹宣言 (Bio Statement) -->
+                <div class="bio-statement lang-en lang-hide">
+                    "Passionate QA & Training Lead bridging compliance precision with human-centric coaching to help regional teams deliver exceptional customer experiences."
+                </div>
+                <div class="bio-statement lang-zh">
+                    “以精準的合規標准與具共情力的輔導機制為核心，賦能跨國團隊，交付高質量的客戶服務體驗。”
+                </div>
+
                 <p class="lang-en lang-hide">Regional QA & Training Lead overseeing high-volume audits and operational performance across 7+ global markets. Experienced in process standardization, compliance risk mitigation, data-driven performance coaching, and cross-functional team enablement.</p>
                 <p class="lang-zh">深耕区域 QA 与培训领域，主导覆盖 7+ 全球市场的高强度服务质量审计与运营绩效优化。擅长流程标准化、合规风控降本增效、数据驱动的 1对1 赋能培训及跨部门协同交付。</p>
 
@@ -693,10 +797,10 @@
             </div>
         </section>
 
-        <!-- HIGHLIGHT METRICS -->
+        <!-- HIGHLIGHT METRICS (3. 動態數字計數) -->
         <div class="metric-grid">
             <div class="metric-card" onclick="openModal('m1')">
-                <div class="metric-value">80% ➔ &gt;95%</div>
+                <div class="metric-value">80% ➔ &gt;<span class="counter" data-target="95">0</span>%</div>
                 <div class="metric-label lang-en lang-hide">Tenured Agent QA Score Uplift</div>
                 <div class="metric-label lang-zh">资深专员 QA 成绩提升</div>
                 <span class="click-hint lang-en lang-hide">Click for details ✨</span>
@@ -950,7 +1054,21 @@
                 <p style="color: var(--text-muted); margin-top: 0.25rem;" class="lang-zh">英文、中文（普通话）、马来文、粤语（广东话）</p>
             </div>
         </div>
+
+        <!-- 4. 頁尾聯絡專區 (Footer CTA Section) -->
+        <section class="footer-cta">
+            <h2 class="lang-en lang-hide">Let's Build Exceptional CX Together! ✨</h2>
+            <h2 class="lang-zh">期待與您一同打造卓越的客戶體驗！✨</h2>
+            <p class="lang-en lang-hide">Open for Regional QA, Operations Leadership, and Training enablement opportunities.</p>
+            <p class="lang-zh">目前尋求區域 QA 質量管理、營運主管及培訓賦能相關職位機會。</p>
+            <a href="mailto:kexin0410@gmail.com" class="cta-btn">
+                ✉️ <span class="lang-en lang-hide">Get In Touch</span><span class="lang-zh">即刻聯繫我</span>
+            </a>
+        </section>
     </main>
+
+    <!-- 3. 懸浮回到頂部按鈕 -->
+    <button class="back-to-top" id="backToTopBtn" onclick="scrollToTop()">⬆️</button>
 
     <!-- POPUP MODALS -->
     <div id="modalOverlay" class="modal-overlay" onclick="closeModal(event)">
@@ -1151,11 +1269,12 @@
             }, 1800);
         }
 
+        /* 3. 數字動態滾動計數 (Counter Animation) */
         function animateCounters() {
             const counters = document.querySelectorAll('.counter');
             counters.forEach(counter => {
                 const target = +counter.getAttribute('data-target');
-                const duration = 1000; 
+                const duration = 1200; 
                 const stepTime = 20; 
                 const steps = duration / stepTime;
                 const increment = target / steps;
@@ -1170,6 +1289,23 @@
                         counter.textContent = Math.ceil(current);
                     }
                 }, stepTime);
+            });
+        }
+
+        /* 3. 滾動監聽 (Back to Top 按鈕顯示/隱藏) */
+        window.addEventListener('scroll', () => {
+            const backToTopBtn = document.getElementById('backToTopBtn');
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
             });
         }
 
