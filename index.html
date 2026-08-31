@@ -22,12 +22,12 @@
             --primary: #6366f1;
             --primary-dark: #4f46e5;
             --purple: #8b5cf6;
-            --accent: #ec4899;
-            --pink: #fbcfe8;
+            --accent: #475569;
+            --pink: #dbe4f0;
 
             --bg-1: #f0f4ff;
-            --bg-2: #fae8ff;
-            --bg-3: #fff1f2;
+            --bg-2: #eef2ff;
+            --bg-3: #f8fafc;
 
             --white: rgba(255,255,255,0.90);
             --white-solid: #ffffff;
@@ -39,7 +39,7 @@
 
             --shadow:
                 0 20px 45px rgba(99,102,241,0.10),
-                0 10px 20px rgba(236,72,153,0.07);
+                0 10px 20px rgba(71,85,105,0.06);
 
             --radius: 26px;
         }
@@ -79,7 +79,7 @@
                 ),
                 radial-gradient(
                     circle at 95% 40%,
-                    rgba(244,114,182,0.28),
+                    rgba(148,163,184,0.20),
                     transparent 25%
                 ),
                 linear-gradient(
@@ -134,7 +134,7 @@
             height: 330px;
             right: -100px;
             bottom: 5%;
-            background: #f472b6;
+            background: #94a3b8;
             animation-delay: -3s;
         }
 
@@ -320,7 +320,7 @@
             border: 5px solid white;
 
             box-shadow:
-                0 12px 35px rgba(236,72,153,0.25);
+                0 12px 35px rgba(71,85,105,0.18);
 
             transition: 0.45s ease;
         }
@@ -405,6 +405,18 @@
             margin-bottom: 0.4rem;
         }
 
+        /* 中文名字：縮小、低調、不使用粉紅色 */
+        .chinese-name {
+            display: inline-block;
+            margin-left: 0.45rem;
+            font-size: 0.48em;
+            font-weight: 600;
+            color: #64748b;
+            letter-spacing: 0.04em;
+            vertical-align: 0.18em;
+            -webkit-text-fill-color: #64748b;
+        }
+
         .hero h2 {
             font-size: clamp(1rem, 2vw, 1.3rem);
 
@@ -474,7 +486,7 @@
             border-color: var(--pink);
 
             box-shadow:
-                0 7px 18px rgba(236,72,153,0.12);
+                0 7px 18px rgba(71,85,105,0.10);
         }
 
         .linkedin-pill {
@@ -588,7 +600,7 @@
             background:
                 radial-gradient(
                     circle,
-                    rgba(236,72,153,0.14),
+                    rgba(71,85,105,0.10),
                     transparent 70%
                 );
 
@@ -604,7 +616,7 @@
             border-color: var(--pink);
 
             box-shadow:
-                0 20px 40px rgba(236,72,153,0.16);
+                0 20px 40px rgba(71,85,105,0.12);
         }
 
         .metric-value {
@@ -644,7 +656,7 @@
 
             border-radius: 999px;
 
-            background: #fce7f3;
+            background: #f1f5f9;
 
             color: var(--accent);
 
@@ -819,7 +831,7 @@
             background:
                 linear-gradient(
                     135deg,
-                    #fce7f3,
+                    #f1f5f9,
                     #ede9fe
                 );
 
@@ -983,7 +995,7 @@
         }
 
         .job-badge {
-            background: #fce7f3;
+            background: #f1f5f9;
 
             color: var(--accent);
 
@@ -1116,7 +1128,7 @@
 
             padding: 1rem;
 
-            background: #fdf2f8;
+            background: #f8fafc;
 
             border: 1px solid var(--pink);
 
@@ -1216,12 +1228,6 @@
             box-shadow:
                 0 8px 25px rgba(0,0,0,0.04);
         }
-
-        /*
-            IMPORTANT:
-            Do NOT force the cat image into a fixed height.
-            This preserves the vertical portrait ratio.
-        */
 
         .cat-group-img {
             display: block;
@@ -1325,7 +1331,7 @@
                 linear-gradient(
                     135deg,
                     rgba(255,255,255,0.95),
-                    rgba(253,242,248,0.95)
+                    rgba(248,250,252,0.95)
                 );
 
             border: 2px solid white;
@@ -1372,7 +1378,7 @@
                 );
 
             box-shadow:
-                0 8px 25px rgba(236,72,153,0.22);
+                0 8px 25px rgba(71,85,105,0.16);
 
             transition: 0.3s ease;
         }
@@ -1575,7 +1581,7 @@
                 linear-gradient(
                     135deg,
                     #f5f3ff,
-                    #fdf2f8
+                    #f8fafc
                 );
 
             border: 1px solid var(--pink);
@@ -1818,6 +1824,11 @@
                 font-size: 2rem;
             }
 
+            .chinese-name {
+                font-size: 0.42em;
+                margin-left: 0.3rem;
+            }
+
             .tab-content {
                 padding: 1rem;
             }
@@ -1831,25 +1842,18 @@
     </style>
 </head>
 
-
 <body>
 
-    <!-- BACKGROUND -->
     <div class="shape shape-1"></div>
     <div class="shape shape-2"></div>
     <div class="shape shape-3"></div>
-
-
-    <!-- =========================================================
-         NAVIGATION
-    ========================================================== -->
 
     <header class="header">
 
         <div class="nav-container">
 
             <div class="logo">
-                Maia Mak 🌸
+                Maia Mak
             </div>
 
             <div class="nav-actions">
@@ -1883,13 +1887,7 @@
 
     </header>
 
-
     <main class="container">
-
-
-        <!-- =====================================================
-             HERO
-        ====================================================== -->
 
         <section class="hero">
 
@@ -1917,14 +1915,11 @@
 
             </div>
 
-
             <div>
 
                 <h1>
                     Maia Mak Ke Xin
-                    <span style="color:var(--accent)">
-                        麦可欣
-                    </span>
+                    <span class="chinese-name">麦可欣</span>
                 </h1>
 
                 <h2 class="lang-en lang-hide">
@@ -1937,7 +1932,6 @@
                     运营优化与合规风控专家 🚀
                 </h2>
 
-
                 <div class="bio lang-en lang-hide">
                     "Passionate Regional QA Specialist bridging
                     compliance precision with operational excellence
@@ -1948,7 +1942,6 @@
                     “以精准的合规标准与高标准的品质把控为核心，
                     赋能跨国团队，交付卓越的运营品质。”
                 </div>
-
 
                 <p class="hero-description lang-en lang-hide">
                     Regional QA Lead overseeing high-volume audits
@@ -1963,7 +1956,6 @@
                     高强度服务质量审计与运营绩效优化。擅长流程标准化、
                     合规风控降本增效、数据驱动的绩效分析及跨部门协同交付。
                 </p>
-
 
                 <div class="contact-info">
 
@@ -1999,12 +1991,6 @@
 
         </section>
 
-
-
-        <!-- =====================================================
-             IMPACT NUMBERS
-        ====================================================== -->
-
         <section class="section-heading">
 
             <div class="eyebrow">
@@ -2025,11 +2011,7 @@
 
         </section>
 
-
         <div class="metric-grid">
-
-
-            <!-- METRIC 1 -->
 
             <div
                 class="metric-card"
@@ -2064,9 +2046,6 @@
 
             </div>
 
-
-            <!-- METRIC 2 -->
-
             <div
                 class="metric-card"
                 onclick="openModal('m2')"
@@ -2098,9 +2077,6 @@
                 </span>
 
             </div>
-
-
-            <!-- METRIC 3 -->
 
             <div
                 class="metric-card"
@@ -2134,9 +2110,6 @@
                 </span>
 
             </div>
-
-
-            <!-- METRIC 4 -->
 
             <div
                 class="metric-card"
@@ -2172,12 +2145,6 @@
 
         </div>
 
-
-
-        <!-- =====================================================
-             HOW I DID IT
-        ====================================================== -->
-
         <section
             class="case-study-section"
             id="case-studies"
@@ -2207,11 +2174,7 @@
 
             </div>
 
-
             <div class="case-grid">
-
-
-                <!-- CASE 1 -->
 
                 <article class="case-card">
 
@@ -2237,7 +2200,6 @@
                         改善资深专员的质量表现。
                     </p>
 
-
                     <div class="process-line">
 
                         <div class="process-step">
@@ -2262,11 +2224,9 @@
 
                     </div>
 
-
                     <div class="case-result">
                         80% → 95%+
                     </div>
-
 
                     <button
                         class="case-button"
@@ -2284,10 +2244,6 @@
                     </button>
 
                 </article>
-
-
-
-                <!-- CASE 2 -->
 
                 <article class="case-card">
 
@@ -2313,7 +2269,6 @@
                         Quiz 与 Calibration 降低重复违规。
                     </p>
 
-
                     <div class="process-line">
 
                         <div class="process-step">
@@ -2338,11 +2293,9 @@
 
                     </div>
 
-
                     <div class="case-result">
                         −80%
                     </div>
-
 
                     <button
                         class="case-button"
@@ -2360,10 +2313,6 @@
                     </button>
 
                 </article>
-
-
-
-                <!-- CASE 3 -->
 
                 <article class="case-card">
 
@@ -2389,7 +2338,6 @@
                         Pixel 到整体账户表现进行优化。
                     </p>
 
-
                     <div class="process-line">
 
                         <div class="process-step">
@@ -2414,11 +2362,9 @@
 
                     </div>
 
-
                     <div class="case-result">
                         $612K+
                     </div>
-
 
                     <button
                         class="case-button"
@@ -2440,2201 +2386,3 @@
             </div>
 
         </section>
-
-
-
-        <!-- =====================================================
-             EXPERIENCE / ABOUT / SKILLS / EDUCATION
-        ====================================================== -->
-
-        <section class="tabs-section">
-
-            <div class="tab-menu">
-
-                <button
-                    class="tab-btn active"
-                    onclick="switchTab('experience', this)"
-                >
-                    💼
-                    <span class="lang-en lang-hide">
-                        Experience
-                    </span>
-
-                    <span class="lang-zh">
-                        工作经历
-                    </span>
-                </button>
-
-
-                <button
-                    class="tab-btn"
-                    onclick="switchTab('about', this)"
-                >
-                    🐱
-                    <span class="lang-en lang-hide">
-                        About & Hobbies
-                    </span>
-
-                    <span class="lang-zh">
-                        关于我 & 个人爱好
-                    </span>
-                </button>
-
-
-                <button
-                    class="tab-btn"
-                    onclick="switchTab('skills', this)"
-                >
-                    ⚡
-                    <span class="lang-en lang-hide">
-                        Skills & Tools
-                    </span>
-
-                    <span class="lang-zh">
-                        技能与工具
-                    </span>
-                </button>
-
-
-                <button
-                    class="tab-btn"
-                    onclick="switchTab('education', this)"
-                >
-                    🎓
-                    <span class="lang-en lang-hide">
-                        Education
-                    </span>
-
-                    <span class="lang-zh">
-                        教育与语言
-                    </span>
-                </button>
-
-            </div>
-
-
-
-            <!-- =================================================
-                 EXPERIENCE
-            ================================================== -->
-
-            <div
-                id="experience"
-                class="tab-content active"
-            >
-
-
-                <!-- HEYTEA -->
-
-                <div class="job-card">
-
-                    <div class="job-header">
-
-                        <div>
-
-                            <div class="job-title lang-en lang-hide">
-                                Quality Assurance Specialist
-                                (HEYTEA 喜茶) 🧋
-                            </div>
-
-                            <div class="job-title lang-zh">
-                                质量分析师
-                                (喜茶 HEYTEA) 🧋
-                            </div>
-
-                            <div class="job-company">
-                                Concentrix, KL Malaysia
-                            </div>
-
-                        </div>
-
-                        <span class="job-badge">
-                            July 2026 - Present
-                        </span>
-
-                    </div>
-
-
-                    <ul class="lang-en lang-hide">
-
-                        <li>
-                            Lead quality assurance and service compliance
-                            operations for HEYTEA's global operations
-                            across USA, CAD, APAC and Greater China.
-                        </li>
-
-                        <li>
-                            Conduct 50+ quality evaluations daily
-                            and 250+ weekly across 7+ global markets
-                            with zero SLA breach.
-                        </li>
-
-                        <li>
-                            Uplifted tenured agent QA performance
-                            from an 80% baseline to above 95%
-                            through RCA and structured coaching.
-                        </li>
-
-                        <li>
-                            Maintained 90%+ calibration alignment
-                            across QA and leadership teams.
-                        </li>
-
-                    </ul>
-
-
-                    <ul class="lang-zh">
-
-                        <li>
-                            主导喜茶涵盖美国、加拿大、亚太区
-                            及大中华区的全球服务质量保证与合规监管。
-                        </li>
-
-                        <li>
-                            每日执行 50+ 笔、每周 250+ 笔跨区域服务质量评估，
-                            保持零 SLA 违规。
-                        </li>
-
-                        <li>
-                            通过 RCA 与结构化质量辅导，
-                            将资深客服专员 QA 成绩从 80% 提升至 95% 以上。
-                        </li>
-
-                        <li>
-                            主持标定会议，保持 QA 团队与管理层
-                            90% 以上的评估一致性。
-                        </li>
-
-                    </ul>
-
-
-                    <div class="impact-box">
-
-                        <div class="impact-item">
-                            <strong>
-                                Before
-                            </strong>
-
-                            <br>
-
-                            <span class="lang-en lang-hide">
-                                Baseline QA score: 80%
-                            </span>
-
-                            <span class="lang-zh">
-                                QA 基线：80%
-                            </span>
-                        </div>
-
-
-                        <div class="impact-item">
-                            <strong>
-                                After
-                            </strong>
-
-                            <br>
-
-                            <span class="lang-en lang-hide">
-                                QA score pushed above 95%
-                            </span>
-
-                            <span class="lang-zh">
-                                QA 成绩提升至 95%+
-                            </span>
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- META QA -->
-
-                <div class="job-card">
-
-                    <div class="job-header">
-
-                        <div>
-
-                            <div class="job-title lang-en lang-hide">
-                                Sr. Quality Evaluator (META) 🔍
-                            </div>
-
-                            <div class="job-title lang-zh">
-                                高级质量评估师 (META) 🔍
-                            </div>
-
-                            <div class="job-company">
-                                Concentrix, KL Malaysia
-                            </div>
-
-                        </div>
-
-                        <span class="job-badge">
-                            Oct 2024 - June 2026
-                        </span>
-
-                    </div>
-
-
-                    <ul class="lang-en lang-hide">
-
-                        <li>
-                            Led QA across Meta's SEA and Traditional
-                            Mandarin markets covering Sales, Technical
-                            and Creative operations.
-                        </li>
-
-                        <li>
-                            Conducted 80+ audits per month using
-                            internal QMS tools.
-                        </li>
-
-                        <li>
-                            Uplifted tenured agent QA scores from
-                            65% to 80% and new hire scores from
-                            50% to 75–85%.
-                        </li>
-
-                        <li>
-                            Reduced policy violation red flags by 80%.
-                        </li>
-
-                        <li>
-                            Maintained 85%+ calibration alignment.
-                        </li>
-
-                    </ul>
-
-
-                    <ul class="lang-zh">
-
-                        <li>
-                            负责 Meta 东南亚及繁体中文市场的销售、
-                            技术与广告创意运营 QA。
-                        </li>
-
-                        <li>
-                            每月使用内部 QMS 完成 80+ 深度审计。
-                        </li>
-
-                        <li>
-                            通过结构化辅导，将资深团队成绩
-                            从 65% 提升至 80%。
-                        </li>
-
-                        <li>
-                            通过识别合规漏洞与 SOP 强化，
-                            将政策违规红旗率降低 80%。
-                        </li>
-
-                        <li>
-                            跨区域团队评分一致性维持在 85%+。
-                        </li>
-
-                    </ul>
-
-
-                    <div class="impact-box">
-
-                        <div class="impact-item">
-                            <strong>
-                                Risk
-                            </strong>
-
-                            <br>
-
-                            <span class="lang-en lang-hide">
-                                Frequent policy update gaps
-                            </span>
-
-                            <span class="lang-zh">
-                                政策更新导致合规风险
-                            </span>
-                        </div>
-
-
-                        <div class="impact-item">
-                            <strong>
-                                Solution
-                            </strong>
-
-                            <br>
-
-                            <span class="lang-en lang-hide">
-                                SOP refreshers + quizzes + calibration
-                            </span>
-
-                            <span class="lang-zh">
-                                SOP 强化 + Quiz + Calibration
-                            </span>
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- META SALES -->
-
-                <div class="job-card">
-
-                    <div class="job-header">
-
-                        <div>
-
-                            <div class="job-title lang-en lang-hide">
-                                Sales Advisor II
-                                (META Marketing Pro) 📈
-                            </div>
-
-                            <div class="job-title lang-zh">
-                                高级销售顾问
-                                (META 营销专家) 📈
-                            </div>
-
-                            <div class="job-company">
-                                Concentrix, KL Malaysia
-                            </div>
-
-                        </div>
-
-                        <span class="job-badge">
-                            Feb 2023 - Oct 2024
-                        </span>
-
-                    </div>
-
-
-                    <ul class="lang-en lang-hide">
-
-                        <li>
-                            Generated USD 612,458 in Q4 2023 revenue
-                            through advertiser account and campaign optimization.
-                        </li>
-
-                        <li>
-                            Increased client conversion rates by 185.71%.
-                        </li>
-
-                        <li>
-                            Reduced cost per result by 64.28%.
-                        </li>
-
-                        <li>
-                            Managed 150+ advertiser accounts per quarter
-                            across budget tiers from $1K–$50K.
-                        </li>
-
-                        <li>
-                            Recognized as CNX SBG Rockstar in Q4 2023.
-                        </li>
-
-                    </ul>
-
-
-                    <ul class="lang-zh">
-
-                        <li>
-                            2023 年 Q4 通过优化广告主投放策略
-                            与账户结构创造 USD 612,458 收益。
-                        </li>
-
-                        <li>
-                            客户转化率提升 185.71%。
-                        </li>
-
-                        <li>
-                            单次结果成本降低 64.28%。
-                        </li>
-
-                        <li>
-                            每季度管理 150+ 广告主账户。
-                        </li>
-
-                        <li>
-                            荣获 2023 Q4 CNX SBG Rockstar。
-                        </li>
-
-                    </ul>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- =================================================
-                 ABOUT
-            ================================================== -->
-
-            <div
-                id="about"
-                class="tab-content"
-            >
-
-                <div class="job-card">
-
-                    <div class="job-title lang-en lang-hide">
-                        🐾 Life & Hobbies | Personal Highlights
-                    </div>
-
-                    <div class="job-title lang-zh">
-                        🐾 生活乐趣 & 个人爱好
-                    </div>
-
-
-                    <ul class="about-list lang-en lang-hide">
-
-                        <li>
-                            🐱
-                            <strong>Cat Enthusiast:</strong>
-                            Proud cat mom of 3 adorable boys:
-                            Bubur, Keera & Ollie.
-                        </li>
-
-                        <li>
-                            🎮
-                            <strong>Animal Crossing Mayor:</strong>
-                            Passionate Animal Crossing:
-                            New Horizons player.
-                        </li>
-
-                        <li>
-                            🏸
-                            <strong>Badminton Player:</strong>
-                            Love staying active and energetic.
-                        </li>
-
-                        <li>
-                            🎨
-                            <strong>Creative Mind:</strong>
-                            Fine Arts background with a strong
-                            eye for visual details.
-                        </li>
-
-                    </ul>
-
-
-                    <ul class="about-list lang-zh">
-
-                        <li>
-                            🐱
-                            <strong>资深猫奴：</strong>
-                            家有 3 只猫儿子：
-                            Bubur、Keera 和 Ollie。
-                        </li>
-
-                        <li>
-                            🎮
-                            <strong>无人岛岛主：</strong>
-                            Animal Crossing: New Horizons
-                            Switch 玩家。
-                        </li>
-
-                        <li>
-                            🏸
-                            <strong>羽毛球爱好者：</strong>
-                            喜欢通过运动保持活力。
-                        </li>
-
-                        <li>
-                            🎨
-                            <strong>美学灵魂：</strong>
-                            纯美术背景培养了对细节与视觉的敏感度。
-                        </li>
-
-                    </ul>
-
-
-
-                    <!-- =================================================
-                         ANIMAL CROSSING
-                         acnh1.jpg intentionally removed
-                    ================================================== -->
-
-                    <div class="acnh-box">
-
-                        <div class="acnh-title">
-
-                            <span class="lang-en lang-hide">
-                                🎮 Animal Crossing Island Showcase
-                            </span>
-
-                            <span class="lang-zh">
-                                🎮 动森无人岛日常与岛建展示
-                            </span>
-
-                        </div>
-
-
-                        <div class="acnh-gallery">
-
-
-                            <!-- acnh1 REMOVED -->
-
-                            <div
-                                class="acnh-item"
-                                onclick="openImage('acnh2.jpg')"
-                            >
-
-                                <img
-                                    src="acnh2.jpg"
-                                    alt="Animal Crossing island room 2"
-                                >
-
-                                <div class="image-zoom">
-                                    🔍
-                                </div>
-
-                            </div>
-
-
-                            <div
-                                class="acnh-item"
-                                onclick="openImage('acnh3.jpg')"
-                            >
-
-                                <img
-                                    src="acnh3.jpg"
-                                    alt="Animal Crossing island room 3"
-                                >
-
-                                <div class="image-zoom">
-                                    🔍
-                                </div>
-
-                            </div>
-
-
-                            <div
-                                class="acnh-item"
-                                onclick="openImage('acnh4.jpg')"
-                            >
-
-                                <img
-                                    src="acnh4.jpg"
-                                    alt="Animal Crossing island room 4"
-                                >
-
-                                <div class="image-zoom">
-                                    🔍
-                                </div>
-
-                            </div>
-
-
-                            <div
-                                class="acnh-item"
-                                onclick="openImage('acnh5.jpg')"
-                            >
-
-                                <img
-                                    src="acnh5.jpg"
-                                    alt="Animal Crossing island room 5"
-                                >
-
-                                <div class="image-zoom">
-                                    🔍
-                                </div>
-
-                            </div>
-
-
-                            <div
-                                class="acnh-item"
-                                onclick="openImage('acnh6.jpg')"
-                            >
-
-                                <img
-                                    src="acnh6.jpg"
-                                    alt="Animal Crossing island room 6"
-                                >
-
-                                <div class="image-zoom">
-                                    🔍
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-
-                    <!-- =================================================
-                         CATS
-                    ================================================== -->
-
-                    <div class="cat-group-card">
-
-                        <img
-                            src="cats.jpg"
-                            alt="Bubur, Keera and Ollie"
-                            class="cat-group-img"
-                            onclick="openImage('cats.jpg')"
-                        >
-
-
-                        <div class="lang-en lang-hide">
-
-                            <strong
-                                style="
-                                    color:var(--primary);
-                                    font-size:1.2rem;
-                                    display:block;
-                                    margin-top:1rem;
-                                "
-                            >
-                                Meet Bubur, Keera & Ollie 🐾
-                            </strong>
-
-
-                            <ul class="cat-intro-list">
-
-                                <li>
-                                    🐄
-                                    <strong>Bubur</strong>
-                                    |
-                                    9–10-year-old cow cat,
-                                    the senior gentleman.
-                                </li>
-
-                                <li>
-                                    🐯
-                                    <strong>Keera</strong>
-                                    |
-                                    4-year-old tabby,
-                                    clingy, curious and easily scared.
-                                </li>
-
-                                <li>
-                                    🦁
-                                    <strong>Ollie</strong>
-                                    |
-                                    1-year-old orange baby,
-                                    the youngest boy.
-                                </li>
-
-                            </ul>
-
-                            <div class="cat-summary">
-                                Three boys. One little family. 🐾✨
-                            </div>
-
-                        </div>
-
-
-                        <div class="lang-zh">
-
-                            <strong
-                                style="
-                                    color:var(--primary);
-                                    font-size:1.2rem;
-                                    display:block;
-                                    margin-top:1rem;
-                                "
-                            >
-                                认识一下 Bubur、Keera 和 Ollie 🐾
-                            </strong>
-
-
-                            <ul class="cat-intro-list">
-
-                                <li>
-                                    🐄
-                                    <strong>Bubur</strong>
-                                    |
-                                    9–10 岁的奶牛猫，
-                                    家里的资深大叔。
-                                </li>
-
-                                <li>
-                                    🐯
-                                    <strong>Keera</strong>
-                                    |
-                                    4 岁虎斑猫，
-                                    黏人、好奇又胆小。
-                                </li>
-
-                                <li>
-                                    🦁
-                                    <strong>Ollie</strong>
-                                    |
-                                    1 岁橘猫宝宝，
-                                    家里最小。
-                                </li>
-
-                            </ul>
-
-                            <div class="cat-summary">
-                                三个男孩子，一个小小的家。🐾✨
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- =================================================
-                 SKILLS
-            ================================================== -->
-
-            <div
-                id="skills"
-                class="tab-content"
-            >
-
-
-                <div class="skill-group">
-
-                    <div class="skill-title">
-                        QA Quality Governance & Compliance 🔍
-                    </div>
-
-                    <div class="tag-group">
-
-                        <button
-                            class="tag"
-                            onclick="openSkillDetail('qa_audit')"
-                        >
-                            QA Audit & Compliance 🔍
-                        </button>
-
-                        <button
-                            class="tag"
-                            onclick="openSkillDetail('calibration')"
-                        >
-                            Calibration Alignment 🎯
-                        </button>
-
-                        <button
-                            class="tag"
-                            onclick="openSkillDetail('rca')"
-                        >
-                            Root Cause Analysis 🧩
-                        </button>
-
-                        <button
-                            class="tag"
-                            onclick="openSkillDetail('csat')"
-                        >
-                            Operational Metrics 📊
-                        </button>
-
-                    </div>
-
-                </div>
-
-
-                <div class="skill-group">
-
-                    <div class="skill-title">
-                        Process & Operational Excellence ⚡
-                    </div>
-
-                    <div class="tag-group">
-
-                        <button
-                            class="tag"
-                            onclick="openSkillDetail('coaching')"
-                        >
-                            Performance Coaching 🗣️
-                        </button>
-
-                        <button
-                            class="tag"
-                            onclick="openSkillDetail('process')"
-                        >
-                            SOP Standardization ⚡
-                        </button>
-
-                        <button
-                            class="tag"
-                            onclick="openSkillDetail('ops')"
-                        >
-                            Cross-Functional Governance 🤝
-                        </button>
-
-                    </div>
-
-                </div>
-
-
-                <div class="skill-group">
-
-                    <div class="skill-title">
-                        Tools & Systems 🛠️
-                    </div>
-
-                    <div class="tag-group">
-
-                        <button
-                            class="tag"
-                            onclick="openSkillDetail('qms')"
-                        >
-                            Meta QMS
-                        </button>
-
-                        <button
-                            class="tag"
-                            onclick="openSkillDetail('zendesk')"
-                        >
-                            Zendesk
-                        </button>
-
-                        <button
-                            class="tag"
-                            onclick="openSkillDetail('ads_mgr')"
-                        >
-                            Meta Ads Manager
-                        </button>
-
-                        <button
-                            class="tag"
-                            onclick="openSkillDetail('tableau')"
-                        >
-                            Tableau
-                        </button>
-
-                        <button
-                            class="tag"
-                            onclick="openSkillDetail('excel')"
-                        >
-                            Microsoft Excel
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- =================================================
-                 EDUCATION
-            ================================================== -->
-
-            <div
-                id="education"
-                class="tab-content"
-            >
-
-                <div class="education-card">
-
-                    <strong class="lang-en lang-hide">
-                        Diploma in Fine Arts
-                        (CGPA 3.60/4.0) 🎨
-                    </strong>
-
-                    <strong class="lang-zh">
-                        纯美术文凭
-                        (CGPA 3.60/4.0) 🎨
-                    </strong>
-
-                    <p>
-                        Malaysian Institute of Art,
-                        Kuala Lumpur
-                        (Aug 2014 - Apr 2018)
-                    </p>
-
-                </div>
-
-
-                <div class="education-card">
-
-                    <strong>
-                        Languages 🗣️
-                    </strong>
-
-                    <p class="lang-en lang-hide">
-                        English, Mandarin, Malay, Cantonese
-                    </p>
-
-                    <p class="lang-zh">
-                        英文、中文（普通话）、
-                        马来文、粤语（广东话）
-                    </p>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =====================================================
-             FOOTER CTA
-        ====================================================== -->
-
-        <section class="footer-cta">
-
-            <h2 class="lang-en lang-hide">
-                Let's Connect & Drive Operational Excellence! ✨
-            </h2>
-
-            <h2 class="lang-zh">
-                期待与您一同打造卓越的质量管理与运营服务！✨
-            </h2>
-
-
-            <p class="lang-en lang-hide">
-                Open for Regional QA, Operations Leadership,
-                and Quality Governance opportunities.
-            </p>
-
-            <p class="lang-zh">
-                目前寻求区域 QA 质量管理、
-                营运主管及合规风控相关职位机会。
-            </p>
-
-
-            <a
-                href="mailto:kexin0410@gmail.com"
-                class="cta-btn"
-            >
-                ✉️
-
-                <span class="lang-en lang-hide">
-                    Get In Touch
-                </span>
-
-                <span class="lang-zh">
-                    即刻联系我
-                </span>
-
-            </a>
-
-        </section>
-
-
-    </main>
-
-
-
-    <!-- =========================================================
-         BACK TO TOP
-    ========================================================== -->
-
-    <button
-        class="back-to-top"
-        id="backToTopBtn"
-        onclick="scrollToTop()"
-    >
-        ↑
-    </button>
-
-
-
-    <!-- =========================================================
-         MODAL
-    ========================================================== -->
-
-    <div
-        class="modal-overlay"
-        id="modalOverlay"
-        onclick="closeModal(event)"
-    >
-
-        <div class="modal-card">
-
-            <button
-                class="modal-close"
-                onclick="closeModalForce()"
-            >
-                ✕
-            </button>
-
-            <div id="modalContent"></div>
-
-        </div>
-
-    </div>
-
-
-
-    <!-- =========================================================
-         IMAGE LIGHTBOX
-    ========================================================== -->
-
-    <div
-        class="lightbox"
-        id="lightbox"
-        onclick="closeImage(event)"
-    >
-
-        <button
-            class="lightbox-close"
-            onclick="closeImageForce()"
-        >
-            ✕
-        </button>
-
-        <img
-            id="lightboxImage"
-            src=""
-            alt="Expanded portfolio image"
-        >
-
-    </div>
-
-
-
-    <!-- =========================================================
-         JAVASCRIPT
-    ========================================================== -->
-
-    <script>
-
-        /* =========================================================
-           LANGUAGE
-        ========================================================== */
-
-        let currentLang = "zh";
-
-
-        function toggleLanguage() {
-
-            const en =
-                document.querySelectorAll(".lang-en");
-
-            const zh =
-                document.querySelectorAll(".lang-zh");
-
-            const button =
-                document.querySelector(".language-btn");
-
-
-            if (currentLang === "zh") {
-
-                zh.forEach(el =>
-                    el.classList.add("lang-hide")
-                );
-
-                en.forEach(el =>
-                    el.classList.remove("lang-hide")
-                );
-
-                currentLang = "en";
-
-                button.textContent = "中文";
-
-            } else {
-
-                en.forEach(el =>
-                    el.classList.add("lang-hide")
-                );
-
-                zh.forEach(el =>
-                    el.classList.remove("lang-hide")
-                );
-
-                currentLang = "zh";
-
-                button.textContent = "English";
-            }
-
-        }
-
-
-
-        /* =========================================================
-           METRIC MODALS
-        ========================================================== */
-
-        const modalData = {
-
-            m1: {
-
-                en: {
-                    title: "80% → >95%",
-                    subtitle: "Tenured Agent QA Score Uplift",
-
-                    body: `
-                        Across HEYTEA and Meta operations,
-                        I used structured coaching, RCA and
-                        performance alignment to identify the
-                        specific behaviors driving low QA scores.
-
-                        <br><br>
-
-                        Instead of treating the score as the problem,
-                        I broke the score down into recurring error
-                        categories, identified knowledge gaps and
-                        created targeted coaching actions.
-                    `
-                },
-
-                zh: {
-                    title: "80% → >95%",
-                    subtitle: "资深专员 QA 成绩提升",
-
-                    body: `
-                        在喜茶和 Meta 项目中，我通过结构化辅导、
-                        RCA 与绩效对齐，找出影响 QA 成绩的具体行为。
-
-                        <br><br>
-
-                        我不是单纯要求专员“提高分数”，
-                        而是先拆解错误类型、找出知识缺口，
-                        再针对问题进行辅导与追踪。
-                    `
-                }
-
-            },
-
-
-            m2: {
-
-                en: {
-                    title: "−80%",
-                    subtitle: "Policy Violation Red Flags Reduction",
-
-                    body: `
-                        I identified recurring compliance gaps,
-                        mapped them back to policy knowledge gaps,
-                        then reinforced the relevant SOP areas.
-
-                        <br><br>
-
-                        Weekly quizzes and calibration sessions
-                        were used to make sure the correction was
-                        understood consistently across the team.
-                    `
-                },
-
-                zh: {
-                    title: "−80%",
-                    subtitle: "违规政策风险降低",
-
-                    body: `
-                        我先找出重复出现的政策违规模式，
-                        再将问题追溯到政策理解与 SOP 知识缺口。
-
-                        <br><br>
-
-                        之后通过每周 SOP Quiz、
-                        针对性宣导以及 Calibration，
-                        确保团队真正理解并执行。
-                    `
-                }
-
-            },
-
-
-            m3: {
-
-                en: {
-                    title: "90%+",
-                    subtitle: "Scoring Calibration Alignment",
-
-                    body: `
-                        I facilitated calibration sessions between
-                        QA, team leaders and management to align
-                        scoring interpretation across different
-                        markets.
-
-                        <br><br>
-
-                        The goal was not simply to achieve a number,
-                        but to create a shared definition of quality.
-                    `
-                },
-
-                zh: {
-                    title: "90%+",
-                    subtitle: "QA 团队评分标定一致性",
-
-                    body: `
-                        我主持 QA、TL 与管理层之间的 Calibration，
-                        对齐不同市场对于评分标准的理解。
-
-                        <br><br>
-
-                        重点不是单纯追求数字，
-                        而是建立团队对于“什么叫高质量”的共同标准。
-                    `
-                }
-
-            },
-
-
-            m4: {
-
-                en: {
-                    title: "$612K+",
-                    subtitle: "Q4 Revenue Generated",
-
-                    body: `
-                        As a Meta Marketing Pro, I optimized
-                        advertiser campaigns and account structures
-                        across more than 150 advertiser accounts.
-
-                        <br><br>
-
-                        The work contributed to a 185.71% increase
-                        in client conversion rates and
-                        USD 612,458 in Q4 revenue.
-                    `
-                },
-
-                zh: {
-                    title: "$612K+",
-                    subtitle: "Q4 单季度创造广告收益",
-
-                    body: `
-                        作为 Meta 营销专家，我针对 150+ 广告主账户
-                        优化广告策略、账户结构与整体投放表现。
-
-                        <br><br>
-
-                        最终帮助客户转化率提升 185.71%，
-                        并在 2023 Q4 创造 USD 612,458 收益。
-                    `
-                }
-
-            }
-
-        };
-
-
-
-        /* =========================================================
-           CASE STUDY DATA
-        ========================================================== */
-
-        const caseStudies = {
-
-            case1: {
-
-                en: {
-
-                    title:
-                        "Turning an 80% QA baseline into 95%+",
-
-                    subtitle:
-                        "Quality Performance Improvement",
-
-                    problem:
-                        "Tenured agents were operating around an 80% QA baseline, indicating recurring quality gaps.",
-
-                    diagnosis:
-                        "I used RCA to identify recurring error patterns, knowledge gaps and behavior-level issues instead of treating the score as a single problem.",
-
-                    action:
-                        "Built targeted 1-on-1 coaching, feedback loops, SOP reinforcement and calibration alignment.",
-
-                    result:
-                        "QA performance was pushed from an 80% baseline to above 95%."
-                },
-
-
-                zh: {
-
-                    title:
-                        "从 80% QA 基线提升至 95%+",
-
-                    subtitle:
-                        "质量表现改善项目",
-
-                    problem:
-                        "资深专员 QA 成绩长期约在 80% 基线，说明存在重复性的质量问题。",
-
-                    diagnosis:
-                        "通过 RCA 拆解错误类型、知识缺口与行为问题，而不是简单地把“低分”当成问题本身。",
-
-                    action:
-                        "设计针对性的 1 对 1 Coaching、Feedback Loop、SOP 强化以及 Calibration。",
-
-                    result:
-                        "最终将 QA 表现从 80% 基线提升至 95% 以上。"
-                }
-
-            },
-
-
-            case2: {
-
-                en: {
-
-                    title:
-                        "Reducing policy risk by 80%",
-
-                    subtitle:
-                        "Compliance Risk Mitigation",
-
-                    problem:
-                        "Frequent policy updates created recurring compliance gaps and policy violation red flags.",
-
-                    diagnosis:
-                        "Mapped recurring violations back to specific policy knowledge and SOP interpretation gaps.",
-
-                    action:
-                        "Introduced targeted SOP refreshers, weekly quizzes and calibration sessions to reinforce consistent interpretation.",
-
-                    result:
-                        "Policy violation red flags were reduced by 80%."
-                },
-
-
-                zh: {
-
-                    title:
-                        "将政策违规风险降低 80%",
-
-                    subtitle:
-                        "合规风控优化",
-
-                    problem:
-                        "政策频繁更新导致团队出现重复性的合规缺口与违规红旗。",
-
-                    diagnosis:
-                        "把重复出现的违规案例追溯到具体的政策知识与 SOP 理解缺口。",
-
-                    action:
-                        "通过针对性的 SOP Refresh、每周 Quiz 与 Calibration 强化团队理解。",
-
-                    result:
-                        "最终将政策违规红旗率降低 80%。"
-                }
-
-            },
-
-
-            case3: {
-
-                en: {
-
-                    title:
-                        "From campaign optimization to $612K+",
-
-                    subtitle:
-                        "Commercial & Performance Optimization",
-
-                    problem:
-                        "Advertiser accounts had opportunities across campaign structure, performance and conversion efficiency.",
-
-                    diagnosis:
-                        "Reviewed account structure, campaign strategy, Pixel setup and performance signals across 150+ advertiser accounts.",
-
-                    action:
-                        "Recommended campaign optimization, performance improvements and account-level strategy adjustments.",
-
-                    result:
-                        "Generated USD 612,458 in Q4 revenue and increased client conversion rates by 185.71%."
-                },
-
-
-                zh: {
-
-                    title:
-                        "从广告优化到 $612K+ Q4 收益",
-
-                    subtitle:
-                        "商业表现与广告优化",
-
-                    problem:
-                        "广告主账户在 Campaign Structure、Performance 与 Conversion Efficiency 上存在提升空间。",
-
-                    diagnosis:
-                        "分析 150+ 广告主账户的广告结构、投放策略、Pixel 与表现数据。",
-
-                    action:
-                        "根据账户表现提出 Campaign 优化、Performance 改善与账户层级策略调整。",
-
-                    result:
-                        "2023 Q4 创造 USD 612,458 收益，并帮助客户转化率提升 185.71%。"
-                }
-
-            }
-
-        };
-
-
-
-        /* =========================================================
-           OPEN NORMAL MODAL
-        ========================================================== */
-
-        function openModal(id) {
-
-            const data =
-                modalData[id][currentLang];
-
-            const content =
-                document.getElementById("modalContent");
-
-
-            content.innerHTML = `
-
-                <div class="modal-title">
-                    ${data.title}
-                </div>
-
-                <div class="modal-subtitle">
-                    ${data.subtitle}
-                </div>
-
-                <div class="modal-body">
-                    ${data.body}
-                </div>
-
-            `;
-
-
-            document
-                .getElementById("modalOverlay")
-                .classList.add("active");
-
-        }
-
-
-
-        /* =========================================================
-           OPEN CASE STUDY
-        ========================================================== */
-
-        function openCaseStudy(id) {
-
-            const data =
-                caseStudies[id][currentLang];
-
-
-            const problemLabel =
-                currentLang === "zh"
-                    ? "问题"
-                    : "Problem";
-
-            const diagnosisLabel =
-                currentLang === "zh"
-                    ? "分析"
-                    : "Diagnosis";
-
-            const actionLabel =
-                currentLang === "zh"
-                    ? "行动"
-                    : "Action";
-
-            const resultLabel =
-                currentLang === "zh"
-                    ? "成果"
-                    : "Result";
-
-
-            document.getElementById("modalContent").innerHTML = `
-
-                <div class="modal-title">
-                    ${data.title}
-                </div>
-
-                <div class="modal-subtitle">
-                    ${data.subtitle}
-                </div>
-
-
-                <div class="modal-process">
-
-                    <div class="modal-step">
-
-                        <div class="modal-step-label">
-                            ${problemLabel}
-                        </div>
-
-                        <div class="modal-step-text">
-                            ${data.problem}
-                        </div>
-
-                    </div>
-
-
-                    <div class="modal-step">
-
-                        <div class="modal-step-label">
-                            ${diagnosisLabel}
-                        </div>
-
-                        <div class="modal-step-text">
-                            ${data.diagnosis}
-                        </div>
-
-                    </div>
-
-
-                    <div class="modal-step">
-
-                        <div class="modal-step-label">
-                            ${actionLabel}
-                        </div>
-
-                        <div class="modal-step-text">
-                            ${data.action}
-                        </div>
-
-                    </div>
-
-
-                    <div class="modal-step">
-
-                        <div class="modal-step-label">
-                            ${resultLabel}
-                        </div>
-
-                        <div class="modal-step-text">
-                            ${data.result}
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <div class="modal-result">
-
-                    ✨
-                    ${data.result}
-
-                </div>
-
-            `;
-
-
-            document
-                .getElementById("modalOverlay")
-                .classList.add("active");
-
-        }
-
-
-
-        /* =========================================================
-           SKILL DETAILS
-        ========================================================== */
-
-        const skillDetails = {
-
-            qa_audit: {
-
-                en: {
-                    title: "QA Audit & Compliance",
-                    desc:
-                        "Evaluated 250+ tickets weekly across 7+ global markets while ensuring adherence to brand, process and regional guidelines."
-                },
-
-                zh: {
-                    title: "QA 质量审计与合规",
-                    desc:
-                        "每周跨 7+ 全球市场评估 250+ 笔业务，确保严格符合品牌、流程与区域合规标准。"
-                }
-
-            },
-
-
-            calibration: {
-
-                en: {
-                    title: "Calibration Alignment",
-                    desc:
-                        "Facilitated calibration sessions between QA, team leaders and operations to maintain consistent scoring interpretation."
-                },
-
-                zh: {
-                    title: "标定一致性 Calibration",
-                    desc:
-                        "主持 QA、团队主管与运营之间的标定会议，确保团队对评分标准拥有一致理解。"
-                }
-
-            },
-
-
-            rca: {
-
-                en: {
-                    title: "Root Cause Analysis",
-                    desc:
-                        "Used 5-Whys, error categorization and trend analysis to identify systemic operational issues and prevent recurring errors."
-                },
-
-                zh: {
-                    title: "根本原因分析 RCA",
-                    desc:
-                        "运用 5-Whys、错误分类与趋势分析找出系统性问题，并制定长期预防措施。"
-                }
-
-            },
-
-
-            csat: {
-
-                en: {
-                    title: "Operational Metrics & CSAT",
-                    desc:
-                        "Analyzed quality and feedback trends to identify corrective actions that improved operational performance."
-                },
-
-                zh: {
-                    title: "运营指标与满意度",
-                    desc:
-                        "分析质量与客户反馈趋势，制定针对性的纠偏行动计划。"
-                }
-
-            },
-
-
-            coaching: {
-
-                en: {
-                    title: "Performance Coaching",
-                    desc:
-                        "Delivered structured 1-on-1 coaching and feedback sessions focused on specific behavior and knowledge gaps."
-                },
-
-                zh: {
-                    title: "绩效一对一辅导",
-                    desc:
-                        "提供结构化的一对一反馈与辅导，针对具体行为及知识缺口进行改善。"
-                }
-
-            },
-
-
-            process: {
-
-                en: {
-                    title: "Process & SOP Standardization",
-                    desc:
-                        "Created and reinforced clear SOP workflows across regional and global operations."
-                },
-
-                zh: {
-                    title: "流程与 SOP 标准化",
-                    desc:
-                        "建立并强化跨区域及全球运营的 SOP 与工作流程。"
-                }
-
-            },
-
-
-            ops: {
-
-                en: {
-                    title: "Cross-Functional Governance",
-                    desc:
-                        "Worked with QA, operations, team leaders and regional stakeholders to align workflows and quality standards."
-                },
-
-                zh: {
-                    title: "跨部门运营治理",
-                    desc:
-                        "与 QA、运营、TL 及区域利益相关者协作，对齐流程与质量标准。"
-                }
-
-            },
-
-
-            qms: {
-
-                en: {
-                    title: "Meta QMS",
-                    desc:
-                        "Used for high-volume quality audits, compliance tagging and data-driven feedback."
-                },
-
-                zh: {
-                    title: "Meta QMS",
-                    desc:
-                        "用于高强度质量审计、政策违规标记及数据驱动的反馈。"
-                }
-
-            },
-
-
-            zendesk: {
-
-                en: {
-                    title: "Zendesk",
-                    desc:
-                        "Experienced in multi-channel customer inquiry management, SLA monitoring and workflow macros."
-                },
-
-                zh: {
-                    title: "Zendesk",
-                    desc:
-                        "熟悉多渠道客户工单管理、SLA 监控及 Macro 工作流程。"
-                }
-
-            },
-
-
-            ads_mgr: {
-
-                en: {
-                    title: "Meta Ads Manager",
-                    desc:
-                        "Optimized 150+ advertiser accounts across campaign strategy, Pixel implementation and performance."
-                },
-
-                zh: {
-                    title: "Meta Ads Manager",
-                    desc:
-                        "每季度优化 150+ 广告主账户，涵盖 Campaign、Pixel 与 Performance。"
-                }
-
-            },
-
-
-            tableau: {
-
-                en: {
-                    title: "Tableau",
-                    desc:
-                        "Used dashboards and trend analysis to identify knowledge gaps and operational risks."
-                },
-
-                zh: {
-                    title: "Tableau",
-                    desc:
-                        "通过 Dashboard 与趋势分析识别知识缺口及运营风险。"
-                }
-
-            },
-
-
-            excel: {
-
-                en: {
-                    title: "Microsoft Excel",
-                    desc:
-                        "Used Pivot Tables, VLOOKUP and conditional formatting for reporting and performance scorecards."
-                },
-
-                zh: {
-                    title: "Microsoft Excel",
-                    desc:
-                        "熟练使用 Pivot Table、VLOOKUP 与条件格式建立报告及绩效 Scorecard。"
-                }
-
-            }
-
-        };
-
-
-
-        function openSkillDetail(key) {
-
-            const skill =
-                skillDetails[key][currentLang];
-
-
-            document.getElementById("modalContent").innerHTML = `
-
-                <div class="modal-title">
-                    ${skill.title}
-                </div>
-
-                <div class="modal-body">
-                    ${skill.desc}
-                </div>
-
-            `;
-
-
-            document
-                .getElementById("modalOverlay")
-                .classList.add("active");
-
-        }
-
-
-
-        /* =========================================================
-           CLOSE MODAL
-        ========================================================== */
-
-        function closeModal(event) {
-
-            if (
-                event.target.id === "modalOverlay"
-            ) {
-
-                document
-                    .getElementById("modalOverlay")
-                    .classList.remove("active");
-
-            }
-
-        }
-
-
-        function closeModalForce() {
-
-            document
-                .getElementById("modalOverlay")
-                .classList.remove("active");
-
-        }
-
-
-
-        /* =========================================================
-           TABS
-        ========================================================== */
-
-        function switchTab(tabId, clickedButton) {
-
-            document
-                .querySelectorAll(".tab-content")
-                .forEach(content => {
-
-                    content.classList.remove("active");
-
-                });
-
-
-            document
-                .querySelectorAll(".tab-btn")
-                .forEach(button => {
-
-                    button.classList.remove("active");
-
-                });
-
-
-            document
-                .getElementById(tabId)
-                .classList.add("active");
-
-
-            if (clickedButton) {
-
-                clickedButton.classList.add("active");
-
-            }
-
-        }
-
-
-
-        /* =========================================================
-           PROFILE EASTER EGG
-        ========================================================== */
-
-        function triggerProfileEasterEgg() {
-
-            const bubble =
-                document.getElementById("profileBubble");
-
-
-            const messages =
-                currentLang === "zh"
-
-                    ? [
-                        "你好呀！👋",
-                        "喵呜！🐱",
-                        "欢迎来到我的作品集！✨",
-                        "谢谢你来看我的 portfolio！🌸"
-                    ]
-
-                    : [
-                        "Hi there! 👋",
-                        "Meow! 🐱",
-                        "Welcome! ✨",
-                        "Thanks for visiting! 🌸"
-                    ];
-
-
-            const random =
-                messages[
-                    Math.floor(
-                        Math.random() * messages.length
-                    )
-                ];
-
-
-            bubble.textContent = random;
-
-            bubble.style.opacity = "1";
-
-            bubble.style.transform =
-                "translateX(-50%) scale(1.08)";
-
-
-            setTimeout(() => {
-
-                bubble.style.opacity = "";
-
-                bubble.style.transform = "";
-
-            }, 1800);
-
-        }
-
-
-
-        /* =========================================================
-           COUNTER ANIMATION
-        ========================================================== */
-
-        function animateCounter(counter) {
-
-            const target =
-                Number(
-                    counter.getAttribute("data-target")
-                );
-
-
-            const duration = 1600;
-
-            const startTime =
-                performance.now();
-
-
-            function update(currentTime) {
-
-                const elapsed =
-                    currentTime - startTime;
-
-
-                const progress =
-                    Math.min(
-                        elapsed / duration,
-                        1
-                    );
-
-
-                /*
-                    Ease-out animation:
-                    fast at the beginning,
-                    slows down near the target.
-                */
-
-                const eased =
-                    1 -
-                    Math.pow(
-                        1 - progress,
-                        3
-                    );
-
-
-                const current =
-                    Math.floor(
-                        target * eased
-                    );
-
-
-                counter.textContent =
-                    current.toLocaleString();
-
-
-                if (progress < 1) {
-
-                    requestAnimationFrame(update);
-
-                } else {
-
-                    counter.textContent =
-                        target.toLocaleString();
-
-                }
-
-            }
-
-
-            requestAnimationFrame(update);
-
-        }
-
-
-
-        /* =========================================================
-           COUNTER OBSERVER
-        ========================================================== */
-
-        const counterObserver =
-            new IntersectionObserver(
-
-                entries => {
-
-                    entries.forEach(entry => {
-
-                        if (
-                            entry.isIntersecting &&
-                            !entry.target.dataset.animated
-                        ) {
-
-                            entry.target.dataset.animated =
-                                "true";
-
-                            animateCounter(
-                                entry.target
-                            );
-
-                        }
-
-                    });
-
-                },
-
-                {
-                    threshold: 0.6
-                }
-
-            );
-
-
-        document
-            .querySelectorAll(".counter")
-            .forEach(counter => {
-
-                counterObserver.observe(counter);
-
-            });
-
-
-
-        /* =========================================================
-           IMAGE LIGHTBOX
-        ========================================================== */
-
-        function openImage(src) {
-
-            const lightbox =
-                document.getElementById("lightbox");
-
-            const image =
-                document.getElementById("lightboxImage");
-
-
-            image.src = src;
-
-            lightbox.classList.add("active");
-
-        }
-
-
-        function closeImage(event) {
-
-            if (
-                event.target.id === "lightbox"
-            ) {
-
-                closeImageForce();
-
-            }
-
-        }
-
-
-        function closeImageForce() {
-
-            document
-                .getElementById("lightbox")
-                .classList.remove("active");
-
-        }
-
-
-
-        /* =========================================================
-           BACK TO TOP
-        ========================================================== */
-
-        window.addEventListener(
-            "scroll",
-            () => {
-
-                const button =
-                    document.getElementById(
-                        "backToTopBtn"
-                    );
-
-
-                if (
-                    window.scrollY > 400
-                ) {
-
-                    button.classList.add("show");
-
-                } else {
-
-                    button.classList.remove("show");
-
-                }
-
-            }
-        );
-
-
-        function scrollToTop() {
-
-            window.scrollTo({
-
-                top: 0,
-
-                behavior: "smooth"
-
-            });
-
-        }
-
-
-
-        /* =========================================================
-           ESC KEY
-        ========================================================== */
-
-        document.addEventListener(
-            "keydown",
-            event => {
-
-                if (
-                    event.key === "Escape"
-                ) {
-
-                    closeModalForce();
-
-                    closeImageForce();
-
-                }
-
-            }
-        );
-
-
-
-        /* =========================================================
-           INITIAL LANGUAGE
-        ========================================================== */
-
-        document.addEventListener(
-            "DOMContentLoaded",
-            () => {
-
-                document
-                    .querySelectorAll(".lang-en")
-                    .forEach(el =>
-                        el.classList.add("lang-hide")
-                    );
-
-                document
-                    .querySelectorAll(".lang-zh")
-                    .forEach(el =>
-                        el.classList.remove("lang-hide")
-                    );
-
-            }
-        );
-
-    </script>
-
-</body>
-</html>
