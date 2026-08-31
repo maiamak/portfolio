@@ -1,2388 +1,3255 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Maia Mak Ke Xin | Interactive Portfolio</title>
-
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://maiamak.github.io/portfolio/">
-    <meta property="og:title" content="Maia Mak | Regional QA & Operations Lead Portfolio">
-    <meta property="og:description" content="Interactive portfolio showcasing QA, compliance, operational excellence and business impact.">
-    <meta property="og:image" content="profile.jpg">
-
-    <style>
-
-        /* =========================================================
-           ROOT
-        ========================================================= */
-
-        :root {
-            --primary: #6366f1;
-            --primary-dark: #4f46e5;
-            --purple: #8b5cf6;
-            --accent: #475569;
-            --pink: #dbe4f0;
-
-            --bg-1: #f0f4ff;
-            --bg-2: #eef2ff;
-            --bg-3: #f8fafc;
-
-            --white: rgba(255,255,255,0.90);
-            --white-solid: #ffffff;
-
-            --text: #1e293b;
-            --muted: #64748b;
-
-            --border: rgba(226,232,240,0.9);
-
-            --shadow:
-                0 20px 45px rgba(99,102,241,0.10),
-                0 10px 20px rgba(71,85,105,0.06);
-
-            --radius: 26px;
-        }
-
-
-        /* =========================================================
-           RESET
-        ========================================================= */
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family:
-                -apple-system,
-                BlinkMacSystemFont,
-                "Segoe UI",
-                Roboto,
-                Helvetica,
-                Arial,
-                sans-serif;
-
-            color: var(--text);
-
-            background:
-                radial-gradient(
-                    circle at 5% 5%,
-                    rgba(192,132,252,0.35),
-                    transparent 25%
-                ),
-                radial-gradient(
-                    circle at 95% 40%,
-                    rgba(148,163,184,0.20),
-                    transparent 25%
-                ),
-                linear-gradient(
-                    135deg,
-                    var(--bg-1),
-                    var(--bg-2),
-                    var(--bg-3)
-                );
-
-            background-attachment: fixed;
-
-            min-height: 100vh;
-            line-height: 1.65;
-            overflow-x: hidden;
-            padding-bottom: 60px;
-        }
-
-        button,
-        a {
-            font-family: inherit;
-        }
-
-        button {
-            cursor: pointer;
-        }
-
-
-        /* =========================================================
-           FLOATING BACKGROUND
-        ========================================================= */
-
-        .shape {
-            position: fixed;
-            border-radius: 50%;
-            filter: blur(70px);
-            pointer-events: none;
-            z-index: -1;
-            opacity: 0.45;
-            animation: float 9s ease-in-out infinite alternate;
-        }
-
-        .shape-1 {
-            width: 280px;
-            height: 280px;
-            top: -80px;
-            left: -80px;
-            background: #c084fc;
-        }
-
-        .shape-2 {
-            width: 330px;
-            height: 330px;
-            right: -100px;
-            bottom: 5%;
-            background: #94a3b8;
-            animation-delay: -3s;
-        }
-
-        .shape-3 {
-            width: 220px;
-            height: 220px;
-            right: 30%;
-            top: 45%;
-            background: #818cf8;
-            opacity: 0.18;
-            animation-delay: -5s;
-        }
-
-        @keyframes float {
-            from {
-                transform: translate3d(0,0,0) rotate(0deg);
-            }
-
-            to {
-                transform: translate3d(0,25px,0) rotate(8deg);
-            }
-        }
-
-
-        /* =========================================================
-           HEADER
-        ========================================================= */
-
-        .header {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-
-            background: rgba(255,255,255,0.72);
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
-
-            border-bottom: 1px solid rgba(255,255,255,0.7);
-        }
-
-        .nav-container {
-            max-width: 1180px;
-            margin: auto;
-
-            padding: 0.85rem 1.5rem;
-
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-            gap: 1rem;
-        }
-
-        .logo {
-            font-size: 1.25rem;
-            font-weight: 900;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Maia Mak Ke Xin | Interactive Portfolio</title>
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://maiamak.github.io/portfolio/">
+<meta property="og:title" content="Maia Mak | Regional QA & Operations Lead Portfolio">
+<meta property="og:description" content="Interactive portfolio showcasing QA, compliance, operational excellence and business impact.">
+<meta property="og:image" content="profile.jpg">
+
+<style>
+:root{
+    --primary:#6366f1;
+    --primary-dark:#4f46e5;
+    --purple:#8b5cf6;
+    --accent:#475569;
+
+    --bg:#f8fafc;
+    --bg2:#eef2ff;
+
+    --white:rgba(255,255,255,.90);
+    --solid:#fff;
+
+    --text:#1e293b;
+    --muted:#64748b;
+    --border:#e2e8f0;
+
+    --shadow:0 18px 45px rgba(51,65,85,.10);
+    --radius:26px;
+}
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+    color:var(--text);
+    line-height:1.65;
+    min-height:100vh;
+    overflow-x:hidden;
+
+    background:
+        radial-gradient(circle at 5% 5%,rgba(129,140,248,.18),transparent 27%),
+        radial-gradient(circle at 95% 40%,rgba(148,163,184,.16),transparent 28%),
+        linear-gradient(135deg,#f8fafc,#eef2ff,#f8fafc);
+
+    background-attachment:fixed;
+}
+
+button,a{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+img{
+    max-width:100%;
+}
+
+/* =========================
+   BACKGROUND
+========================= */
+
+.shape{
+    position:fixed;
+    border-radius:50%;
+    filter:blur(80px);
+    pointer-events:none;
+    z-index:-1;
+    opacity:.28;
+    animation:float 9s ease-in-out infinite alternate;
+}
+
+.shape1{
+    width:300px;
+    height:300px;
+    left:-100px;
+    top:-80px;
+    background:#818cf8;
+}
+
+.shape2{
+    width:350px;
+    height:350px;
+    right:-120px;
+    bottom:5%;
+    background:#94a3b8;
+    animation-delay:-3s;
+}
+
+@keyframes float{
+    from{transform:translateY(0)}
+    to{transform:translateY(28px)}
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.header{
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:rgba(255,255,255,.76);
+    backdrop-filter:blur(18px);
+    border-bottom:1px solid rgba(226,232,240,.8);
+}
+
+.nav{
+    width:min(1180px,calc(100% - 30px));
+    margin:auto;
+    min-height:68px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:1rem;
+}
+
+.logo{
+    font-weight:900;
+    font-size:1.1rem;
+    color:#334155;
+}
+
+.nav-actions{
+    display:flex;
+    gap:.6rem;
+    align-items:center;
+}
+
+.nav-btn,
+.lang-btn{
+    border:1px solid var(--border);
+    border-radius:999px;
+    padding:.55rem .95rem;
+    text-decoration:none;
+    font-size:.8rem;
+    font-weight:800;
+    transition:.25s;
+}
+
+.nav-btn{
+    background:white;
+    color:#475569;
+}
+
+.lang-btn{
+    border:none;
+    color:white;
+    background:linear-gradient(135deg,var(--primary),var(--purple));
+}
+
+.nav-btn:hover,
+.lang-btn:hover{
+    transform:translateY(-2px);
+}
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container{
+    width:min(1180px,calc(100% - 30px));
+    margin:auto;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    margin-top:2rem;
+    padding:2.5rem;
+
+    display:grid;
+    grid-template-columns:auto 1fr;
+    gap:2rem;
+    align-items:center;
+
+    background:var(--white);
+    border:1px solid rgba(255,255,255,.95);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+
+    animation:fadeUp .7s ease both;
+}
+
+.profile-wrap{
+    width:170px;
+    height:170px;
+    position:relative;
+    cursor:pointer;
+}
+
+.profile{
+    width:170px;
+    height:170px;
+    border-radius:50%;
+    object-fit:cover;
+    border:5px solid white;
+    box-shadow:0 12px 30px rgba(51,65,85,.16);
+    transition:.4s;
+}
+
+.profile-wrap:hover .profile{
+    transform:scale(1.04) rotate(2deg);
+}
+
+.profile-badge{
+    position:absolute;
+    right:5px;
+    bottom:5px;
+
+    width:38px;
+    height:38px;
+    border-radius:50%;
+
+    display:grid;
+    place-items:center;
+
+    background:white;
+    box-shadow:0 5px 15px rgba(0,0,0,.12);
+}
+
+.profile-message{
+    position:absolute;
+    top:-42px;
+    left:50%;
+    transform:translateX(-50%) translateY(5px);
+
+    background:#334155;
+    color:white;
+
+    padding:.4rem .7rem;
+    border-radius:10px;
+
+    font-size:.72rem;
+    font-weight:800;
+    white-space:nowrap;
+
+    opacity:0;
+    transition:.25s;
+    pointer-events:none;
+}
+
+.profile-message.show{
+    opacity:1;
+    transform:translateX(-50%) translateY(0);
+}
+
+.hero h1{
+    font-size:clamp(2rem,4vw,3.2rem);
+    line-height:1.05;
+    margin-bottom:.45rem;
+}
+
+/* 中文名字：刻意低調 */
+.chinese-name{
+    display:inline-block;
+    margin-left:.4rem;
+
+    font-size:.42em;
+    font-weight:500;
+    letter-spacing:.04em;
+
+    color:#64748b;
+    vertical-align:.18em;
+}
+
+.hero h2{
+    font-size:clamp(1rem,2vw,1.25rem);
+    color:var(--primary);
+    margin-bottom:1rem;
+}
+
+.bio{
+    margin-bottom:1rem;
+    padding:.8rem 1rem;
+
+    border-left:3px solid #94a3b8;
+    border-radius:0 12px 12px 0;
+
+    background:rgba(248,250,252,.8);
+
+    color:var(--muted);
+    font-style:italic;
+}
+
+.description{
+    max-width:850px;
+    color:var(--muted);
+}
+
+.contact{
+    display:flex;
+    flex-wrap:wrap;
+    gap:.55rem;
+    margin-top:1.2rem;
+}
+
+.pill{
+    display:inline-flex;
+    align-items:center;
+    gap:.3rem;
+
+    padding:.42rem .75rem;
+
+    border:1px solid var(--border);
+    border-radius:999px;
+
+    background:white;
+    color:#64748b;
+
+    font-size:.8rem;
+    text-decoration:none;
+
+    transition:.25s;
+}
+
+.pill:hover{
+    transform:translateY(-2px);
+    color:#334155;
+    border-color:#94a3b8;
+}
+
+.linkedin{
+    background:#0077b5;
+    color:white;
+    border-color:#0077b5;
+}
+
+/* =========================
+   SECTION
+========================= */
+
+.section-heading{
+    margin-top:4rem;
+    margin-bottom:1.3rem;
+}
+
+.eyebrow{
+    margin-bottom:.3rem;
+
+    color:#64748b;
+
+    font-size:.75rem;
+    font-weight:900;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+}
+
+.section-heading h2{
+    font-size:clamp(1.8rem,4vw,2.6rem);
+    line-height:1.15;
+}
+
+.section-heading p{
+    margin-top:.5rem;
+    color:var(--muted);
+}
+
+/* =========================
+   IMPACT
+========================= */
+
+#impact{
+    scroll-margin-top:95px;
+}
+
+.metric-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:1rem;
+}
+
+.metric-card{
+    min-height:220px;
+    padding:1.4rem;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    background:rgba(255,255,255,.92);
+    border:1px solid rgba(226,232,240,.9);
+    border-radius:24px;
+
+    box-shadow:var(--shadow);
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.metric-card:hover{
+    transform:translateY(-7px);
+    border-color:#cbd5e1;
+    box-shadow:0 22px 45px rgba(51,65,85,.13);
+}
+
+.metric-value{
+    margin-bottom:.7rem;
+
+    font-size:clamp(2rem,4vw,3rem);
+    font-weight:950;
+    line-height:1;
+
+    background:linear-gradient(135deg,#4f46e5,#475569);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+    font-variant-numeric:tabular-nums;
+}
+
+.metric-label{
+    color:var(--muted);
+    font-size:.9rem;
+    font-weight:700;
+}
+
+.hint{
+    margin-top:.9rem;
+    padding:.3rem .7rem;
+
+    background:#f1f5f9;
+    border-radius:999px;
+
+    color:#64748b;
+    font-size:.68rem;
+    font-weight:900;
+}
+
+/* =========================
+   CASE STUDIES
+========================= */
+
+#case-studies{
+    scroll-margin-top:90px;
+}
+
+.case-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:1.1rem;
+}
+
+.case-card{
+    padding:1.5rem;
+
+    background:rgba(255,255,255,.92);
+    border:1px solid var(--border);
+    border-radius:24px;
+
+    box-shadow:var(--shadow);
+
+    transition:.3s;
+}
+
+.case-card:hover{
+    transform:translateY(-6px);
+}
+
+.case-number{
+    margin-bottom:.7rem;
+
+    color:#64748b;
+    font-size:.72rem;
+    font-weight:900;
+    letter-spacing:.15em;
+}
+
+.case-card h3{
+    margin-bottom:.6rem;
+    font-size:1.25rem;
+    line-height:1.25;
+}
+
+.case-card > p{
+    margin-bottom:1.1rem;
+    color:var(--muted);
+    font-size:.9rem;
+}
+
+.process{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:.35rem;
+    margin-bottom:1rem;
+}
+
+.process div{
+    padding:.45rem .25rem;
+
+    text-align:center;
+
+    border:1px solid var(--border);
+    border-radius:9px;
+
+    background:#f8fafc;
+
+    color:#64748b;
+    font-size:.65rem;
+    font-weight:800;
+}
+
+.process span{
+    display:block;
+    color:var(--primary);
+    font-size:.6rem;
+}
+
+.case-result{
+    margin-bottom:.8rem;
+
+    font-size:1.6rem;
+    font-weight:950;
+
+    color:#4f46e5;
+}
+
+.case-btn{
+    width:100%;
+    padding:.72rem;
+
+    border:1px solid #e2e8f0;
+    border-radius:13px;
+
+    background:#f8fafc;
+    color:#475569;
+
+    font-weight:900;
+
+    transition:.25s;
+}
+
+.case-btn:hover{
+    color:white;
+    background:#475569;
+    transform:translateY(-2px);
+}
+
+/* =========================
+   TABS
+========================= */
+
+.tabs{
+    margin-top:4rem;
+}
+
+.tab-menu{
+    display:flex;
+    gap:.55rem;
+    overflow-x:auto;
+    padding-bottom:.8rem;
+}
+
+.tab-btn{
+    flex:none;
+
+    padding:.65rem .95rem;
+
+    border:1px solid var(--border);
+    border-radius:999px;
+
+    background:white;
+    color:#64748b;
+
+    font-weight:800;
+
+    transition:.25s;
+}
+
+.tab-btn:hover{
+    transform:translateY(-2px);
+}
+
+.tab-btn.active{
+    color:white;
+    border-color:transparent;
+    background:linear-gradient(135deg,var(--primary),var(--purple));
+}
+
+.tab-content{
+    display:none;
+
+    padding:1.5rem;
+
+    background:rgba(255,255,255,.92);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+
+    box-shadow:var(--shadow);
+}
+
+.tab-content.active{
+    display:block;
+    animation:fadeUp .35s ease;
+}
+
+/* =========================
+   EXPERIENCE
+========================= */
+
+.job{
+    padding:1.3rem;
+    margin-bottom:1rem;
+
+    border:1px solid var(--border);
+    border-radius:18px;
+
+    background:#fff;
+
+    transition:.25s;
+}
+
+.job:hover{
+    transform:translateY(-3px);
+    box-shadow:0 12px 25px rgba(51,65,85,.08);
+}
+
+.job-header{
+    display:flex;
+    justify-content:space-between;
+    gap:1rem;
+    flex-wrap:wrap;
+
+    margin-bottom:.8rem;
+}
+
+.job-title{
+    font-weight:900;
+    font-size:1.08rem;
+}
+
+.company{
+    color:var(--primary);
+    font-weight:800;
+    font-size:.88rem;
+}
+
+.date{
+    padding:.2rem .6rem;
+
+    border-radius:999px;
+
+    background:#f1f5f9;
+    color:#64748b;
+
+    font-size:.7rem;
+    font-weight:900;
+}
+
+.job ul{
+    padding-left:1.2rem;
+    color:var(--muted);
+    font-size:.9rem;
+}
+
+.job li{
+    margin-bottom:.4rem;
+}
+
+.impact-box{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:.65rem;
+
+    margin-top:1rem;
+}
+
+.impact-item{
+    padding:.8rem;
+
+    border:1px solid var(--border);
+    border-radius:12px;
+
+    background:#f8fafc;
+
+    color:#64748b;
+    font-size:.82rem;
+}
+
+.impact-item strong{
+    color:#4f46e5;
+}
+
+/* =========================
+   ABOUT
+========================= */
+
+.about-list{
+    padding-left:1.2rem;
+    color:var(--muted);
+}
+
+.about-list li{
+    margin-bottom:.45rem;
+}
+
+.acnh-box{
+    margin-top:1.5rem;
+    padding:1rem;
+
+    border:1px solid var(--border);
+    border-radius:18px;
+
+    background:#f8fafc;
+}
+
+.acnh-title{
+    margin-bottom:.8rem;
+    font-weight:900;
+    color:#475569;
+}
+
+.acnh-gallery{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:.7rem;
+}
+
+.acnh-item{
+    position:relative;
+    overflow:hidden;
+
+    aspect-ratio:16/9;
+
+    border-radius:14px;
+    background:#111;
+
+    cursor:zoom-in;
+}
+
+.acnh-item img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    transition:.35s;
+}
+
+.acnh-item:hover img{
+    transform:scale(1.05);
+    filter:brightness(.8);
+}
+
+.zoom-icon{
+    position:absolute;
+    right:10px;
+    bottom:10px;
+
+    width:35px;
+    height:35px;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:50%;
+    background:rgba(255,255,255,.9);
+
+    pointer-events:none;
+}
+
+/* =========================
+   CATS
+========================= */
+
+.cat-card{
+    margin-top:1.5rem;
+    padding:1rem;
+
+    border:1px solid var(--border);
+    border-radius:20px;
+
+    background:white;
+}
+
+/* 不裁切直式照片 */
+.cat-img{
+    display:block;
+
+    width:min(100%,430px);
+    height:auto;
+
+    margin:auto;
+
+    object-fit:contain;
+
+    border-radius:16px;
+    border:1px solid var(--border);
+
+    cursor:zoom-in;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.07);
+}
+
+.cat-list{
+    list-style:none;
+    margin-top:1rem;
+}
+
+.cat-list li{
+    margin-bottom:.65rem;
+    color:var(--muted);
+    font-size:.9rem;
+}
+
+.cat-summary{
+    margin-top:1rem;
+    text-align:center;
+    font-weight:900;
+    color:#4f46e5;
+}
+
+/* =========================
+   SKILLS
+========================= */
+
+.skill-group{
+    margin-bottom:1.4rem;
+}
+
+.skill-title{
+    margin-bottom:.6rem;
+    color:#4f46e5;
+    font-weight:900;
+}
+
+.tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:.5rem;
+}
+
+.tag{
+    padding:.5rem .8rem;
+
+    border:1px solid var(--border);
+    border-radius:999px;
+
+    background:white;
+
+    font-size:.78rem;
+    font-weight:700;
+
+    transition:.25s;
+}
+
+.tag:hover{
+    color:white;
+    background:#475569;
+    border-color:#475569;
+    transform:translateY(-2px);
+}
+
+/* =========================
+   EDUCATION
+========================= */
+
+.edu{
+    padding:1.1rem;
+    margin-bottom:.8rem;
+
+    border:1px solid var(--border);
+    border-radius:16px;
+
+    background:white;
+}
+
+.edu strong{
+    display:block;
+    margin-bottom:.2rem;
+}
+
+.edu p{
+    color:var(--muted);
+    font-size:.88rem;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer{
+    margin:4rem 0 2rem;
+    padding:2.8rem 1.5rem;
+
+    text-align:center;
+
+    background:rgba(255,255,255,.92);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+
+    box-shadow:var(--shadow);
+}
+
+.footer h2{
+    margin-bottom:.4rem;
+    font-size:clamp(1.6rem,4vw,2.3rem);
+}
+
+.footer p{
+    margin-bottom:1.2rem;
+    color:var(--muted);
+}
+
+.cta{
+    display:inline-block;
+
+    padding:.75rem 1.4rem;
+
+    border-radius:999px;
+
+    color:white;
+    background:linear-gradient(135deg,#4f46e5,#475569);
+
+    text-decoration:none;
+    font-weight:900;
+
+    transition:.25s;
+}
+
+.cta:hover{
+    transform:translateY(-3px);
+}
+
+/* =========================
+   MODAL
+========================= */
+
+.modal{
+    position:fixed;
+    inset:0;
+    z-index:1000;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-            background:
-                linear-gradient(
-                    135deg,
-                    var(--primary),
-                    var(--accent)
-                );
+    padding:1rem;
+
+    background:rgba(15,23,42,.55);
+    backdrop-filter:blur(8px);
+
+    opacity:0;
+    pointer-events:none;
 
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+    transition:.25s;
+}
 
-            white-space: nowrap;
-        }
+.modal.active{
+    opacity:1;
+    pointer-events:auto;
+}
 
-        .nav-actions {
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-        }
+.modal-card{
+    position:relative;
 
-        .nav-btn {
-            border: 1px solid var(--border);
-            background: rgba(255,255,255,0.85);
+    width:min(720px,100%);
+    max-height:88vh;
+    overflow-y:auto;
 
-            color: var(--primary);
+    padding:1.8rem;
+
+    background:white;
+    border-radius:24px;
 
-            padding: 0.55rem 0.95rem;
-            border-radius: 999px;
+    box-shadow:0 30px 80px rgba(0,0,0,.25);
 
-            font-weight: 700;
-            font-size: 0.82rem;
+    transform:translateY(15px) scale(.97);
+    transition:.3s;
+}
 
-            text-decoration: none;
+.modal.active .modal-card{
+    transform:none;
+}
 
-            transition:
-                transform 0.25s ease,
-                box-shadow 0.25s ease,
-                background 0.25s ease;
-        }
+.close{
+    position:absolute;
+    right:1rem;
+    top:1rem;
 
-        .nav-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(99,102,241,0.15);
-        }
+    width:38px;
+    height:38px;
 
-        .language-btn {
-            border: none;
+    border:none;
+    border-radius:50%;
 
-            background:
-                linear-gradient(
-                    135deg,
-                    var(--primary),
-                    var(--purple)
-                );
+    background:#f1f5f9;
+    color:#475569;
 
-            color: white;
+    font-weight:900;
+}
 
-            padding: 0.55rem 1rem;
-            border-radius: 999px;
+.modal-title{
+    padding-right:45px;
+    margin-bottom:.35rem;
 
-            font-weight: 800;
-            font-size: 0.82rem;
+    font-size:1.8rem;
+    line-height:1.15;
 
-            box-shadow:
-                0 6px 18px rgba(99,102,241,0.25);
+    color:#334155;
+}
 
-            transition: 0.25s ease;
-        }
+.modal-subtitle{
+    margin-bottom:1rem;
+    color:#4f46e5;
+    font-weight:900;
+}
 
-        .language-btn:hover {
-            transform: scale(1.05);
-        }
+.modal-body{
+    color:var(--muted);
+}
 
+.detail-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:.7rem;
 
-        /* =========================================================
-           MAIN
-        ========================================================= */
+    margin-top:1.2rem;
+}
 
-        .container {
-            width: min(1180px, calc(100% - 30px));
-            margin: auto;
-        }
+.detail{
+    padding:.9rem;
 
+    border:1px solid var(--border);
+    border-radius:14px;
 
-        /* =========================================================
-           HERO
-        ========================================================= */
+    background:#f8fafc;
+}
 
-        .hero {
-            margin-top: 2rem;
+.detail strong{
+    display:block;
+    margin-bottom:.25rem;
 
-            display: grid;
-            grid-template-columns: auto 1fr;
-            align-items: center;
+    color:#4f46e5;
 
-            gap: 2rem;
+    font-size:.72rem;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+}
 
-            padding: 2.5rem;
+.result-box{
+    margin-top:1rem;
+    padding:1rem;
 
-            background: var(--white);
-            backdrop-filter: blur(15px);
+    border:1px solid #dbe4f0;
+    border-radius:14px;
 
-            border: 2px solid rgba(255,255,255,0.9);
-            border-radius: var(--radius);
+    background:#eef2ff;
 
-            box-shadow: var(--shadow);
+    color:#334155;
+    font-weight:800;
+}
 
-            animation: fadeUp 0.8s ease both;
-        }
+/* =========================
+   LIGHTBOX
+========================= */
 
-        .profile-container {
-            position: relative;
-            width: 170px;
-            height: 170px;
+.lightbox{
+    position:fixed;
+    inset:0;
+    z-index:2000;
 
-            cursor: pointer;
-        }
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-        .profile-img {
-            width: 170px;
-            height: 170px;
+    padding:1.5rem;
 
-            object-fit: cover;
+    background:rgba(15,23,42,.9);
 
-            border-radius: 50%;
+    opacity:0;
+    pointer-events:none;
 
-            border: 5px solid white;
+    transition:.25s;
+}
 
-            box-shadow:
-                0 12px 35px rgba(71,85,105,0.18);
+.lightbox.active{
+    opacity:1;
+    pointer-events:auto;
+}
 
-            transition: 0.45s ease;
-        }
+.lightbox img{
+    max-width:95vw;
+    max-height:90vh;
 
-        .profile-container:hover .profile-img {
-            transform:
-                scale(1.05)
-                rotate(3deg);
-        }
+    object-fit:contain;
 
-        .profile-badge {
-            position: absolute;
-            right: 5px;
-            bottom: 5px;
+    border-radius:14px;
 
-            width: 38px;
-            height: 38px;
+    box-shadow:0 30px 80px rgba(0,0,0,.4);
+}
 
-            display: grid;
-            place-items: center;
+.lightbox-close{
+    position:absolute;
+    top:20px;
+    right:20px;
 
-            background: white;
-            border-radius: 50%;
+    width:44px;
+    height:44px;
 
-            box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+    border:none;
+    border-radius:50%;
 
-            animation: bounce 2s infinite;
-        }
+    background:white;
 
-        .easter-egg-bubble {
-            position: absolute;
+    font-size:1.2rem;
+    font-weight:900;
+}
 
-            top: -42px;
-            left: 50%;
+/* =========================
+   BACK TO TOP
+========================= */
 
-            transform:
-                translateX(-50%)
-                scale(0.8);
+.top{
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    z-index:90;
 
-            opacity: 0;
+    width:46px;
+    height:46px;
 
-            background: var(--text);
-            color: white;
+    border:1px solid var(--border);
+    border-radius:50%;
 
-            padding: 0.45rem 0.8rem;
+    background:white;
+    color:#4f46e5;
 
-            border-radius: 12px;
+    box-shadow:0 8px 20px rgba(0,0,0,.1);
 
-            white-space: nowrap;
+    opacity:0;
+    pointer-events:none;
 
-            font-size: 0.75rem;
-            font-weight: 700;
+    transition:.25s;
+}
 
-            pointer-events: none;
+.top.show{
+    opacity:1;
+    pointer-events:auto;
+}
 
-            transition: 0.3s ease;
+/* =========================
+   LANGUAGE
+========================= */
 
-            z-index: 5;
-        }
+.lang-hide{
+    display:none!important;
+}
 
-        .profile-container:hover .easter-egg-bubble {
-            opacity: 1;
+/* =========================
+   ANIMATION
+========================= */
 
-            transform:
-                translateX(-50%)
-                scale(1);
-        }
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+    to{
+        opacity:1;
+        transform:none;
+    }
+}
 
-        @keyframes bounce {
-            0%,100% {
-                transform: translateY(0);
-            }
+/* =========================
+   MOBILE
+========================= */
 
-            50% {
-                transform: translateY(-5px);
-            }
-        }
+@media(max-width:950px){
 
-        .hero h1 {
-            font-size: clamp(2rem, 4vw, 3.25rem);
-            line-height: 1.1;
-            margin-bottom: 0.4rem;
-        }
+    .metric-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
 
-        /* 中文名字：縮小、低調、不使用粉紅色 */
-        .chinese-name {
-            display: inline-block;
-            margin-left: 0.45rem;
-            font-size: 0.48em;
-            font-weight: 600;
-            color: #64748b;
-            letter-spacing: 0.04em;
-            vertical-align: 0.18em;
-            -webkit-text-fill-color: #64748b;
-        }
+    .case-grid{
+        grid-template-columns:1fr;
+    }
+}
 
-        .hero h2 {
-            font-size: clamp(1rem, 2vw, 1.3rem);
+@media(max-width:720px){
 
-            color: var(--primary);
+    .hero{
+        grid-template-columns:1fr;
+        text-align:center;
+        padding:1.5rem;
+    }
 
-            margin-bottom: 1.1rem;
-        }
+    .profile-wrap{
+        margin:auto;
+    }
 
-        .bio {
-            background: rgba(255,255,255,0.7);
+    .contact{
+        justify-content:center;
+    }
 
-            border-left: 4px solid var(--accent);
+    .impact-box,
+    .detail-grid{
+        grid-template-columns:1fr;
+    }
+}
 
-            padding: 0.85rem 1rem;
+@media(max-width:560px){
 
-            border-radius:
-                0 14px 14px 0;
+    .container,
+    .nav{
+        width:calc(100% - 20px);
+    }
 
-            margin-bottom: 1rem;
+    .metric-grid{
+        grid-template-columns:1fr;
+    }
 
-            color: var(--muted);
+    .acnh-gallery{
+        grid-template-columns:1fr;
+    }
 
-            font-style: italic;
-        }
+    .process{
+        grid-template-columns:repeat(2,1fr);
+    }
 
-        .hero-description {
-            color: var(--muted);
-            max-width: 850px;
-        }
+    .hero h1{
+        font-size:2rem;
+    }
 
-        .contact-info {
-            display: flex;
-            flex-wrap: wrap;
+    .chinese-name{
+        font-size:.38em;
+        margin-left:.2rem;
+    }
 
-            gap: 0.6rem;
+    .nav-btn{
+        display:none;
+    }
 
-            margin-top: 1.25rem;
-        }
-
-        .contact-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.35rem;
-
-            padding: 0.45rem 0.8rem;
-
-            background: white;
-
-            border: 1px solid var(--border);
-
-            border-radius: 999px;
-
-            color: var(--muted);
-
-            text-decoration: none;
-
-            font-size: 0.82rem;
-
-            transition: 0.25s ease;
-        }
-
-        .contact-pill:hover {
-            transform: translateY(-2px);
-
-            color: var(--accent);
-
-            border-color: var(--pink);
-
-            box-shadow:
-                0 7px 18px rgba(71,85,105,0.10);
-        }
-
-        .linkedin-pill {
-            color: white;
-
-            background: #0077b5;
-
-            border-color: #0077b5;
-        }
-
-        .linkedin-pill:hover {
-            color: white;
-            background: #005582;
-        }
-
-
-        /* =========================================================
-           SECTION TITLES
-        ========================================================= */
-
-        .section-heading {
-            margin-top: 4rem;
-            margin-bottom: 1.4rem;
-        }
-
-        .eyebrow {
-            color: var(--accent);
-
-            text-transform: uppercase;
-
-            letter-spacing: 0.18em;
-
-            font-size: 0.8rem;
-
-            font-weight: 900;
-
-            margin-bottom: 0.35rem;
-        }
-
-        .section-heading h2 {
-            font-size: clamp(1.8rem, 4vw, 2.6rem);
-            line-height: 1.15;
-        }
-
-        .section-heading p {
-            margin-top: 0.55rem;
-
-            color: var(--muted);
-
-            font-size: 1rem;
-        }
-
-
-        /* =========================================================
-           METRICS
-        ========================================================= */
-
-        .metric-grid {
-            display: grid;
-
-            grid-template-columns:
-                repeat(4, 1fr);
-
-            gap: 1rem;
-
-            margin-top: 2rem;
-        }
-
-        .metric-card {
-            position: relative;
-
-            min-height: 225px;
-
-            padding: 1.7rem 1rem;
-
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-
-            text-align: center;
-
-            background: var(--white);
-
-            border: 2px solid white;
-
-            border-radius: 24px;
-
-            box-shadow: var(--shadow);
-
-            cursor: pointer;
-
-            overflow: hidden;
-
-            transition:
-                transform 0.35s cubic-bezier(.34,1.56,.64,1),
-                box-shadow 0.35s ease,
-                border-color 0.35s ease;
-        }
-
-        .metric-card::before {
-            content: "";
-
-            position: absolute;
-
-            width: 130px;
-            height: 130px;
-
-            border-radius: 50%;
-
-            background:
-                radial-gradient(
-                    circle,
-                    rgba(71,85,105,0.10),
-                    transparent 70%
-                );
-
-            top: -50px;
-            right: -50px;
-        }
-
-        .metric-card:hover {
-            transform:
-                translateY(-8px)
-                scale(1.02);
-
-            border-color: var(--pink);
-
-            box-shadow:
-                0 20px 40px rgba(71,85,105,0.12);
-        }
-
-        .metric-value {
-            font-size: clamp(2.1rem, 4vw, 3.2rem);
-
-            font-weight: 950;
-
-            line-height: 1;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    var(--primary),
-                    var(--accent)
-                );
-
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-
-            margin-bottom: 0.7rem;
-        }
-
-        .metric-label {
-            color: var(--muted);
-
-            font-weight: 700;
-
-            font-size: 0.92rem;
-
-            max-width: 220px;
-        }
-
-        .click-hint {
-            margin-top: 1rem;
-
-            padding: 0.35rem 0.75rem;
-
-            border-radius: 999px;
-
-            background: #f1f5f9;
-
-            color: var(--accent);
-
-            font-size: 0.72rem;
-
-            font-weight: 900;
-        }
-
-        .counter {
-            display: inline-block;
-
-            min-width: 1ch;
-
-            font-variant-numeric: tabular-nums;
-
-            animation: counterGlow 1.5s ease;
-        }
-
-        @keyframes counterGlow {
-            0% {
-                filter: blur(4px);
-                opacity: 0.3;
-            }
-
-            100% {
-                filter: blur(0);
-                opacity: 1;
-            }
-        }
-
-
-        /* =========================================================
-           HOW I DID IT
-        ========================================================= */
-
-        .case-study-section {
-            margin-top: 4.5rem;
-        }
-
-        .case-grid {
-            display: grid;
-
-            grid-template-columns:
-                repeat(3, 1fr);
-
-            gap: 1.2rem;
-        }
-
-        .case-card {
-            position: relative;
-
-            background: rgba(255,255,255,0.9);
-
-            border: 2px solid white;
-
-            border-radius: 26px;
-
-            padding: 1.5rem;
-
-            box-shadow: var(--shadow);
-
-            overflow: hidden;
-
-            transition:
-                transform 0.35s ease,
-                box-shadow 0.35s ease;
-        }
-
-        .case-card:hover {
-            transform: translateY(-7px);
-
-            box-shadow:
-                0 25px 50px rgba(99,102,241,0.15);
-        }
-
-        .case-number {
-            color: var(--accent);
-
-            font-weight: 900;
-
-            font-size: 0.75rem;
-
-            letter-spacing: 0.16em;
-
-            text-transform: uppercase;
-
-            margin-bottom: 0.8rem;
-        }
-
-        .case-card h3 {
-            font-size: 1.35rem;
-
-            line-height: 1.2;
-
-            margin-bottom: 0.7rem;
-        }
-
-        .case-card > p {
-            color: var(--muted);
-
-            font-size: 0.9rem;
-
-            margin-bottom: 1.25rem;
-        }
-
-        .process-line {
-            display: grid;
-
-            grid-template-columns:
-                repeat(4, 1fr);
-
-            gap: 0.35rem;
-
-            margin-bottom: 1.25rem;
-        }
-
-        .process-step {
-            padding: 0.5rem 0.3rem;
-
-            border-radius: 10px;
-
-            text-align: center;
-
-            background: #f8fafc;
-
-            border: 1px solid var(--border);
-
-            font-size: 0.68rem;
-
-            font-weight: 800;
-
-            color: var(--muted);
-        }
-
-        .process-step span {
-            display: block;
-
-            color: var(--primary);
-
-            font-size: 0.62rem;
-
-            margin-bottom: 0.1rem;
-        }
-
-        .case-result {
-            font-size: 1.6rem;
-
-            font-weight: 950;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    var(--primary),
-                    var(--accent)
-                );
-
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-
-            margin-bottom: 0.8rem;
-        }
-
-        .case-button {
-            width: 100%;
-
-            padding: 0.75rem;
-
-            border: none;
-
-            border-radius: 14px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #f1f5f9,
-                    #ede9fe
-                );
-
-            color: var(--accent);
-
-            font-weight: 900;
-
-            transition: 0.25s ease;
-        }
-
-        .case-button:hover {
-            transform: translateY(-2px);
-
-            background:
-                linear-gradient(
-                    135deg,
-                    var(--primary),
-                    var(--accent)
-                );
-
-            color: white;
-        }
-
-
-        /* =========================================================
-           TABS
-        ========================================================= */
-
-        .tabs-section {
-            margin-top: 4rem;
-        }
-
-        .tab-menu {
-            display: flex;
-
-            gap: 0.65rem;
-
-            overflow-x: auto;
-
-            padding: 0.25rem 0.1rem 0.8rem;
-
-            scrollbar-width: thin;
-        }
-
-        .tab-btn {
-            border: 1px solid var(--border);
-
-            background: rgba(255,255,255,0.8);
-
-            color: var(--muted);
-
-            padding: 0.7rem 1rem;
-
-            border-radius: 999px;
-
-            font-weight: 800;
-
-            white-space: nowrap;
-
-            transition: 0.25s ease;
-        }
-
-        .tab-btn:hover {
-            color: var(--primary);
-
-            transform: translateY(-2px);
-        }
-
-        .tab-btn.active {
-            color: white;
-
-            border-color: transparent;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    var(--primary),
-                    var(--purple)
-                );
-
-            box-shadow:
-                0 7px 18px rgba(99,102,241,0.25);
-        }
-
-        .tab-content {
-            display: none;
-
-            background: var(--white);
-
-            border: 2px solid white;
-
-            border-radius: var(--radius);
-
-            padding: 1.5rem;
-
-            box-shadow: var(--shadow);
-
-            animation: fadeUp 0.4s ease;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-
-        /* =========================================================
-           EXPERIENCE
-        ========================================================= */
-
-        .job-card {
-            background: rgba(255,255,255,0.72);
-
-            border: 1px solid var(--border);
-
-            border-radius: 20px;
-
-            padding: 1.4rem;
-
-            margin-bottom: 1rem;
-
-            transition: 0.3s ease;
-        }
-
-        .job-card:hover {
-            background: white;
-
-            border-color: var(--pink);
-
-            transform: translateY(-3px);
-
-            box-shadow:
-                0 12px 25px rgba(99,102,241,0.08);
-        }
-
-        .job-header {
-            display: flex;
-
-            justify-content: space-between;
-
-            align-items: flex-start;
-
-            gap: 1rem;
-
-            flex-wrap: wrap;
-
-            margin-bottom: 0.8rem;
-        }
-
-        .job-title {
-            font-size: 1.1rem;
-
-            font-weight: 900;
-        }
-
-        .job-company {
-            color: var(--primary);
-
-            font-size: 0.9rem;
-
-            font-weight: 800;
-        }
-
-        .job-badge {
-            background: #f1f5f9;
-
-            color: var(--accent);
-
-            border-radius: 999px;
-
-            padding: 0.25rem 0.7rem;
-
-            font-size: 0.72rem;
-
-            font-weight: 900;
-        }
-
-        .job-card ul {
-            padding-left: 1.25rem;
-
-            color: var(--muted);
-
-            font-size: 0.9rem;
-        }
-
-        .job-card li {
-            margin-bottom: 0.45rem;
-        }
-
-        .impact-box {
-            margin-top: 1rem;
-
-            display: grid;
-
-            grid-template-columns: 1fr 1fr;
-
-            gap: 0.7rem;
-        }
-
-        .impact-item {
-            padding: 0.9rem;
-
-            border-radius: 14px;
-
-            background: #f8fafc;
-
-            border: 1px solid var(--border);
-
-            font-size: 0.84rem;
-
-            color: var(--muted);
-        }
-
-        .impact-item strong {
-            color: var(--primary);
-        }
-
-
-        /* =========================================================
-           SKILLS
-        ========================================================= */
-
-        .skill-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .skill-title {
-            color: var(--primary);
-
-            font-weight: 900;
-
-            margin-bottom: 0.7rem;
-        }
-
-        .tag-group {
-            display: flex;
-
-            flex-wrap: wrap;
-
-            gap: 0.55rem;
-        }
-
-        .tag {
-            border: 1px solid var(--border);
-
-            background: white;
-
-            color: var(--text);
-
-            padding: 0.55rem 0.9rem;
-
-            border-radius: 999px;
-
-            font-size: 0.8rem;
-
-            font-weight: 700;
-
-            transition: 0.25s ease;
-        }
-
-        .tag:hover {
-            color: white;
-
-            border-color: transparent;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    var(--primary),
-                    var(--accent)
-                );
-
-            transform: translateY(-2px) scale(1.03);
-        }
-
-
-        /* =========================================================
-           ABOUT / ANIMAL CROSSING
-        ========================================================= */
-
-        .about-list {
-            padding-left: 1.2rem;
-
-            color: var(--muted);
-
-            margin-bottom: 1rem;
-        }
-
-        .about-list li {
-            margin-bottom: 0.45rem;
-        }
-
-        .acnh-box {
-            margin-top: 1.5rem;
-
-            padding: 1rem;
-
-            background: #f8fafc;
-
-            border: 1px solid var(--pink);
-
-            border-radius: 20px;
-        }
-
-        .acnh-title {
-            color: var(--accent);
-
-            font-weight: 900;
-
-            margin-bottom: 0.9rem;
-        }
-
-        .acnh-gallery {
-            display: grid;
-
-            grid-template-columns:
-                repeat(2, 1fr);
-
-            gap: 0.8rem;
-        }
-
-        .acnh-item {
-            position: relative;
-
-            overflow: hidden;
-
-            border-radius: 16px;
-
-            background: #111;
-
-            cursor: pointer;
-
-            aspect-ratio: 16 / 9;
-        }
-
-        .acnh-item img {
-            width: 100%;
-            height: 100%;
-
-            object-fit: cover;
-
-            display: block;
-
-            transition:
-                transform 0.4s ease,
-                filter 0.4s ease;
-        }
-
-        .acnh-item:hover img {
-            transform: scale(1.06);
-
-            filter: brightness(0.78);
-        }
-
-        .image-zoom {
-            position: absolute;
-
-            right: 12px;
-            bottom: 12px;
-
-            width: 40px;
-            height: 40px;
-
-            display: grid;
-            place-items: center;
-
-            border-radius: 50%;
-
-            background: rgba(255,255,255,0.9);
-
-            box-shadow:
-                0 5px 15px rgba(0,0,0,0.15);
-
-            font-size: 1rem;
-
-            pointer-events: none;
-        }
-
-
-        /* =========================================================
-           CATS
-        ========================================================= */
-
-        .cat-group-card {
-            margin-top: 1.5rem;
-
-            padding: 1.25rem;
-
-            background: white;
-
-            border-radius: 22px;
-
-            border: 1px solid var(--border);
-
-            box-shadow:
-                0 8px 25px rgba(0,0,0,0.04);
-        }
-
-        .cat-group-img {
-            display: block;
-
-            width: 100%;
-
-            height: auto;
-
-            max-height: none;
-
-            object-fit: contain;
-
-            object-position: center;
-
-            border-radius: 18px;
-
-            border: 1px solid var(--border);
-
-            box-shadow:
-                0 8px 20px rgba(0,0,0,0.08);
-
-            cursor: pointer;
-
-            transition: 0.35s ease;
-        }
-
-        .cat-group-img:hover {
-            transform: scale(1.01);
-        }
-
-        .cat-intro-list {
-            list-style: none;
-
-            padding: 0;
-
-            margin-top: 1rem;
-        }
-
-        .cat-intro-list li {
-            margin-bottom: 0.8rem;
-
-            color: var(--muted);
-
-            font-size: 0.9rem;
-        }
-
-        .cat-summary {
-            text-align: center;
-
-            margin-top: 1rem;
-
-            color: var(--primary);
-
-            font-weight: 900;
-        }
-
-
-        /* =========================================================
-           EDUCATION
-        ========================================================= */
-
-        .education-card {
-            padding: 1.2rem;
-
-            background: white;
-
-            border-radius: 18px;
-
-            border: 1px solid var(--border);
-
-            margin-bottom: 1rem;
-        }
-
-        .education-card strong {
-            display: block;
-
-            font-size: 1rem;
-
-            margin-bottom: 0.2rem;
-        }
-
-        .education-card p {
-            color: var(--muted);
-
-            font-size: 0.88rem;
-        }
-
-
-        /* =========================================================
-           FOOTER
-        ========================================================= */
-
-        .footer-cta {
-            margin-top: 4rem;
-
-            padding: 3rem 1.5rem;
-
-            text-align: center;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(255,255,255,0.95),
-                    rgba(248,250,252,0.95)
-                );
-
-            border: 2px solid white;
-
-            border-radius: var(--radius);
-
-            box-shadow: var(--shadow);
-        }
-
-        .footer-cta h2 {
-            font-size: clamp(1.6rem,4vw,2.4rem);
-
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-cta p {
-            color: var(--muted);
-
-            margin-bottom: 1.3rem;
-        }
-
-        .cta-btn {
-            display: inline-flex;
-
-            align-items: center;
-
-            gap: 0.4rem;
-
-            padding: 0.8rem 1.5rem;
-
-            color: white;
-
-            text-decoration: none;
-
-            border-radius: 999px;
-
-            font-weight: 900;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    var(--primary),
-                    var(--accent)
-                );
-
-            box-shadow:
-                0 8px 25px rgba(71,85,105,0.16);
-
-            transition: 0.3s ease;
-        }
-
-        .cta-btn:hover {
-            transform:
-                translateY(-3px)
-                scale(1.03);
-        }
-
-
-        /* =========================================================
-           MODAL
-        ========================================================= */
-
-        .modal-overlay {
-            position: fixed;
-
-            inset: 0;
-
-            z-index: 1000;
-
-            display: flex;
-
-            justify-content: center;
-
-            align-items: center;
-
-            padding: 1rem;
-
-            background: rgba(15,23,42,0.48);
-
-            backdrop-filter: blur(10px);
-
-            opacity: 0;
-
-            pointer-events: none;
-
-            transition: opacity 0.3s ease;
-        }
-
-        .modal-overlay.active {
-            opacity: 1;
-
-            pointer-events: auto;
-        }
-
-        .modal-card {
-            width: min(720px, 100%);
-
-            max-height: 90vh;
-
-            overflow-y: auto;
-
-            background: white;
-
-            border-radius: 26px;
-
-            padding: 2rem;
-
-            box-shadow:
-                0 30px 80px rgba(0,0,0,0.25);
-
-            position: relative;
-
-            transform:
-                translateY(20px)
-                scale(0.95);
-
-            transition:
-                transform 0.35s
-                cubic-bezier(.34,1.56,.64,1);
-        }
-
-        .modal-overlay.active .modal-card {
-            transform:
-                translateY(0)
-                scale(1);
-        }
-
-        .modal-close {
-            position: absolute;
-
-            top: 1rem;
-            right: 1rem;
-
-            width: 38px;
-            height: 38px;
-
-            border: none;
-
-            border-radius: 50%;
-
-            background: #f1f5f9;
-
-            color: var(--muted);
-
-            font-weight: 900;
-
-            font-size: 1rem;
-
-            transition: 0.25s ease;
-        }
-
-        .modal-close:hover {
-            background: var(--accent);
-
-            color: white;
-
-            transform: rotate(8deg);
-        }
-
-        .modal-title {
-            padding-right: 45px;
-
-            font-size: 2rem;
-
-            line-height: 1.1;
-
-            font-weight: 950;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    var(--primary),
-                    var(--accent)
-                );
-
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-
-            margin-bottom: 0.4rem;
-        }
-
-        .modal-subtitle {
-            font-size: 1rem;
-
-            font-weight: 900;
-
-            margin-bottom: 1.4rem;
-        }
-
-        .modal-body {
-            color: var(--muted);
-
-            font-size: 0.95rem;
-        }
-
-        .modal-process {
-            display: grid;
-
-            grid-template-columns:
-                repeat(4, 1fr);
-
-            gap: 0.6rem;
-
-            margin: 1.3rem 0;
-        }
-
-        .modal-step {
-            padding: 0.8rem;
-
-            background: #f8fafc;
-
-            border: 1px solid var(--border);
-
-            border-radius: 14px;
-        }
-
-        .modal-step-label {
-            font-size: 0.68rem;
-
-            text-transform: uppercase;
-
-            letter-spacing: 0.1em;
-
-            color: var(--accent);
-
-            font-weight: 900;
-
-            margin-bottom: 0.25rem;
-        }
-
-        .modal-step-text {
-            color: var(--text);
-
-            font-size: 0.78rem;
-
-            font-weight: 700;
-        }
-
-        .modal-result {
-            margin-top: 1rem;
-
-            padding: 1rem;
-
-            border-radius: 16px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #f5f3ff,
-                    #f8fafc
-                );
-
-            border: 1px solid var(--pink);
-
-            color: var(--text);
-
-            font-weight: 800;
-        }
-
-
-        /* =========================================================
-           IMAGE LIGHTBOX
-        ========================================================= */
-
-        .lightbox {
-            position: fixed;
-
-            inset: 0;
-
-            z-index: 2000;
-
-            background: rgba(15,23,42,0.85);
-
-            backdrop-filter: blur(10px);
-
-            display: flex;
-
-            justify-content: center;
-
-            align-items: center;
-
-            padding: 1.5rem;
-
-            opacity: 0;
-
-            pointer-events: none;
-
-            transition: 0.3s ease;
-        }
-
-        .lightbox.active {
-            opacity: 1;
-
-            pointer-events: auto;
-        }
-
-        .lightbox img {
-            max-width: 95vw;
-
-            max-height: 90vh;
-
-            object-fit: contain;
-
-            border-radius: 16px;
-
-            box-shadow:
-                0 30px 80px rgba(0,0,0,0.35);
-        }
-
-        .lightbox-close {
-            position: absolute;
-
-            top: 20px;
-            right: 20px;
-
-            width: 44px;
-            height: 44px;
-
-            border: none;
-
-            border-radius: 50%;
-
-            background: white;
-
-            color: var(--text);
-
-            font-weight: 900;
-
-            font-size: 1.2rem;
-        }
-
-
-        /* =========================================================
-           BACK TO TOP
-        ========================================================= */
-
-        .back-to-top {
-            position: fixed;
-
-            right: 22px;
-            bottom: 22px;
-
-            width: 48px;
-            height: 48px;
-
-            border: 1px solid var(--border);
-
-            border-radius: 50%;
-
-            background: white;
-
-            color: var(--primary);
-
-            box-shadow:
-                0 8px 22px rgba(0,0,0,0.12);
-
-            font-size: 1.1rem;
-
-            opacity: 0;
-
-            pointer-events: none;
-
-            transition: 0.3s ease;
-
-            z-index: 90;
-        }
-
-        .back-to-top.show {
-            opacity: 1;
-
-            pointer-events: auto;
-        }
-
-        .back-to-top:hover {
-            background: var(--primary);
-
-            color: white;
-
-            transform: translateY(-4px);
-        }
-
-
-        /* =========================================================
-           LANGUAGE
-        ========================================================= */
-
-        .lang-hide {
-            display: none !important;
-        }
-
-
-        /* =========================================================
-           ANIMATIONS
-        ========================================================= */
-
-        @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(25px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-
-        /* =========================================================
-           RESPONSIVE
-        ========================================================= */
-
-        @media (max-width: 950px) {
-
-            .metric-grid {
-                grid-template-columns:
-                    repeat(2, 1fr);
-            }
-
-            .case-grid {
-                grid-template-columns:
-                    1fr;
-            }
-
-        }
-
-        @media (max-width: 720px) {
-
-            .hero {
-                grid-template-columns: 1fr;
-
-                text-align: center;
-
-                padding: 1.5rem;
-            }
-
-            .profile-container {
-                margin: auto;
-            }
-
-            .contact-info {
-                justify-content: center;
-            }
-
-            .impact-box {
-                grid-template-columns: 1fr;
-            }
-
-            .modal-process {
-                grid-template-columns:
-                    repeat(2, 1fr);
-            }
-
-        }
-
-        @media (max-width: 560px) {
-
-            .container {
-                width: min(100% - 20px, 1180px);
-            }
-
-            .metric-grid {
-                grid-template-columns:
-                    1fr;
-            }
-
-            .metric-card {
-                min-height: 190px;
-            }
-
-            .acnh-gallery {
-                grid-template-columns:
-                    1fr;
-            }
-
-            .nav-container {
-                padding:
-                    0.7rem 0.7rem;
-            }
-
-            .logo {
-                font-size: 1rem;
-            }
-
-            .nav-btn {
-                display: none;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .chinese-name {
-                font-size: 0.42em;
-                margin-left: 0.3rem;
-            }
-
-            .tab-content {
-                padding: 1rem;
-            }
-
-            .modal-card {
-                padding: 1.4rem;
-            }
-
-        }
-
-    </style>
+    .tab-content{
+        padding:1rem;
+    }
+}
+</style>
 </head>
 
 <body>
 
-    <div class="shape shape-1"></div>
-    <div class="shape shape-2"></div>
-    <div class="shape shape-3"></div>
+<div class="shape shape1"></div>
+<div class="shape shape2"></div>
 
-    <header class="header">
+<header class="header">
+    <div class="nav">
 
-        <div class="nav-container">
+        <div class="logo">Maia Mak</div>
 
-            <div class="logo">
-                Maia Mak
+        <div class="nav-actions">
+
+            <a href="resume.pdf"
+               download="Maia_Mak_Resume.pdf"
+               class="nav-btn">
+
+                📄
+                <span class="lang-en lang-hide">PDF Resume</span>
+                <span class="lang-zh">下载简历</span>
+            </a>
+
+            <button class="lang-btn" id="languageButton"
+                    onclick="toggleLanguage()">
+                English
+            </button>
+
+        </div>
+
+    </div>
+</header>
+
+<main class="container">
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+    <div class="profile-wrap" onclick="profileClick()">
+
+        <div class="profile-message" id="profileMessage">
+            Hi! 👋
+        </div>
+
+        <img src="profile.jpg"
+             alt="Maia Mak"
+             class="profile">
+
+        <span class="profile-badge">✨</span>
+
+    </div>
+
+    <div>
+
+        <h1>
+            Maia Mak Ke Xin
+            <span class="chinese-name">麦可欣</span>
+        </h1>
+
+        <h2 class="lang-en lang-hide">
+            Regional QA Lead | Operations & Quality Governance Specialist
+        </h2>
+
+        <h2 class="lang-zh">
+            区域质量保证 (QA) 负责人 | 运营优化与合规风控专家
+        </h2>
+
+        <div class="bio lang-en lang-hide">
+            “Passionate Regional QA Specialist bridging compliance precision
+            with operational excellence to ensure high organizational standards.”
+        </div>
+
+        <div class="bio lang-zh">
+            “以精准的合规标准与高标准的品质把控为核心，
+            赋能跨国团队，交付卓越的运营品质。”
+        </div>
+
+        <p class="description lang-en lang-hide">
+            Regional QA Lead overseeing high-volume audits and operational
+            performance across 7+ global markets. Experienced in process
+            standardization, compliance risk mitigation, data-driven
+            performance analysis and cross-functional operational governance.
+        </p>
+
+        <p class="description lang-zh">
+            深耕区域 QA 质量管理领域，主导覆盖 7+ 全球市场的高强度服务质量审计
+            与运营绩效优化。擅长流程标准化、合规风控、数据驱动绩效分析及跨部门协同交付。
+        </p>
+
+        <div class="contact">
+
+            <span class="pill">
+                📍 Selangor, Malaysia
+            </span>
+
+            <a href="tel:+60193906809" class="pill">
+                📞 +60 19-390 6809
+            </a>
+
+            <a href="mailto:kexin0410@gmail.com" class="pill">
+                ✉️ kexin0410@gmail.com
+            </a>
+
+            <a href="https://www.linkedin.com/in/maia-mak-ke-xin-19969a1a8/"
+               target="_blank"
+               class="pill linkedin">
+                🔗 LinkedIn
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================
+     IMPACT
+========================= -->
+
+<section id="impact">
+
+    <div class="section-heading">
+
+        <div class="eyebrow">Impact at a glance</div>
+
+        <h2 class="lang-en lang-hide">
+            Results that speak before I do.
+        </h2>
+
+        <h2 class="lang-zh">
+            用成果说话。
+        </h2>
+
+        <p class="lang-en lang-hide">
+            Four measurable outcomes. Click any number to see the context.
+        </p>
+
+        <p class="lang-zh">
+            四个可以量化的成果。点击数字查看背后的故事。
+        </p>
+
+    </div>
+
+    <div class="metric-grid">
+
+        <div class="metric-card" onclick="openMetric('m1')">
+
+            <div class="metric-value">
+                80% → <span class="counter" data-target="95">0</span>%+
             </div>
 
-            <div class="nav-actions">
+            <div class="metric-label lang-en lang-hide">
+                Tenured Agent QA Score Uplift
+            </div>
 
-                <a
-                    href="resume.pdf"
-                    download="Maia_Mak_Resume.pdf"
-                    target="_blank"
-                    class="nav-btn"
-                >
-                    📄
-                    <span class="lang-en lang-hide">
-                        PDF Resume
-                    </span>
+            <div class="metric-label lang-zh">
+                资深专员 QA 成绩提升
+            </div>
 
-                    <span class="lang-zh">
-                        下载简历
-                    </span>
-                </a>
-
-                <button
-                    class="language-btn"
-                    onclick="toggleLanguage()"
-                >
-                    English
-                </button>
-
+            <div class="hint">
+                <span class="lang-en lang-hide">Click for context →</span>
+                <span class="lang-zh">点击查看详情 →</span>
             </div>
 
         </div>
 
-    </header>
+        <div class="metric-card" onclick="openMetric('m2')">
 
-    <main class="container">
-
-        <section class="hero">
-
-            <div
-                class="profile-container"
-                onclick="triggerProfileEasterEgg()"
-            >
-
-                <div
-                    class="easter-egg-bubble"
-                    id="profileBubble"
-                >
-                    点我点我！✨
-                </div>
-
-                <img
-                    src="profile.jpg"
-                    alt="Maia Mak"
-                    class="profile-img"
-                >
-
-                <span class="profile-badge">
-                    ✨
-                </span>
-
+            <div class="metric-value">
+                −<span class="counter" data-target="80">0</span>%
             </div>
 
-            <div>
-
-                <h1>
-                    Maia Mak Ke Xin
-                    <span class="chinese-name">麦可欣</span>
-                </h1>
-
-                <h2 class="lang-en lang-hide">
-                    Regional QA Lead |
-                    Operations & Quality Governance Specialist 🚀
-                </h2>
-
-                <h2 class="lang-zh">
-                    区域质量保证 (QA) 负责人 |
-                    运营优化与合规风控专家 🚀
-                </h2>
-
-                <div class="bio lang-en lang-hide">
-                    "Passionate Regional QA Specialist bridging
-                    compliance precision with operational excellence
-                    to ensure high organizational standards."
-                </div>
-
-                <div class="bio lang-zh">
-                    “以精准的合规标准与高标准的品质把控为核心，
-                    赋能跨国团队，交付卓越的运营品质。”
-                </div>
-
-                <p class="hero-description lang-en lang-hide">
-                    Regional QA Lead overseeing high-volume audits
-                    and operational performance across 7+ global markets.
-                    Experienced in process standardization, compliance
-                    risk mitigation, data-driven performance analysis,
-                    and cross-functional operational governance.
-                </p>
-
-                <p class="hero-description lang-zh">
-                    深耕区域 QA 质量管理领域，主导覆盖 7+ 全球市场的
-                    高强度服务质量审计与运营绩效优化。擅长流程标准化、
-                    合规风控降本增效、数据驱动的绩效分析及跨部门协同交付。
-                </p>
-
-                <div class="contact-info">
-
-                    <span class="contact-pill">
-                        📍 Selangor, Malaysia
-                    </span>
-
-                    <a
-                        href="tel:+60193906809"
-                        class="contact-pill"
-                    >
-                        📞 +60 19-390 6809
-                    </a>
-
-                    <a
-                        href="mailto:kexin0410@gmail.com"
-                        class="contact-pill"
-                    >
-                        ✉️ kexin0410@gmail.com
-                    </a>
-
-                    <a
-                        href="https://www.linkedin.com/in/maia-mak-ke-xin-19969a1a8/"
-                        target="_blank"
-                        class="contact-pill linkedin-pill"
-                    >
-                        🔗 LinkedIn
-                    </a>
-
-                </div>
-
+            <div class="metric-label lang-en lang-hide">
+                Policy Violation Red Flags
             </div>
 
-        </section>
-
-        <section class="section-heading">
-
-            <div class="eyebrow">
-                Impact at a glance
+            <div class="metric-label lang-zh">
+                违规政策风险降低
             </div>
 
-            <h2>
-                Results that speak before I do.
-            </h2>
+            <div class="hint">
+                <span class="lang-en lang-hide">Click for context →</span>
+                <span class="lang-zh">点击查看详情 →</span>
+            </div>
+
+        </div>
+
+        <div class="metric-card" onclick="openMetric('m3')">
+
+            <div class="metric-value">
+                <span class="counter" data-target="90">0</span>%+
+            </div>
+
+            <div class="metric-label lang-en lang-hide">
+                Scoring Calibration Alignment
+            </div>
+
+            <div class="metric-label lang-zh">
+                QA 团队评分标定一致性
+            </div>
+
+            <div class="hint">
+                <span class="lang-en lang-hide">Click for context →</span>
+                <span class="lang-zh">点击查看详情 →</span>
+            </div>
+
+        </div>
+
+        <div class="metric-card" onclick="openMetric('m4')">
+
+            <div class="metric-value">
+                $<span class="counter" data-target="612">0</span>K+
+            </div>
+
+            <div class="metric-label lang-en lang-hide">
+                Q4 Revenue Generated
+            </div>
+
+            <div class="metric-label lang-zh">
+                Q4 单季度创造广告收益
+            </div>
+
+            <div class="hint">
+                <span class="lang-en lang-hide">Click for context →</span>
+                <span class="lang-zh">点击查看详情 →</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================
+     HOW I DID IT
+========================= -->
+
+<section id="case-studies">
+
+    <div class="section-heading">
+
+        <div class="eyebrow">
+            Selected Case Studies
+        </div>
+
+        <h2 class="lang-en lang-hide">
+            Don't just read my results. Explore how I got there.
+        </h2>
+
+        <h2 class="lang-zh">
+            不只看成果，看看我是怎么做到的。
+        </h2>
+
+        <p class="lang-en lang-hide">
+            Problem → Diagnosis → Action → Measurable Outcome
+        </p>
+
+        <p class="lang-zh">
+            问题 → 分析 → 行动 → 成果
+        </p>
+
+    </div>
+
+    <div class="case-grid">
+
+        <!-- CASE 1 -->
+
+        <article class="case-card">
+
+            <div class="case-number">01 / QUALITY</div>
+
+            <h3 class="lang-en lang-hide">
+                Turning an 80% QA baseline into 95%+
+            </h3>
+
+            <h3 class="lang-zh">
+                从 80% QA 基线提升至 95%+
+            </h3>
 
             <p class="lang-en lang-hide">
-                Four measurable outcomes. Click any number to see the context.
+                Targeted coaching, root-cause analysis and performance
+                alignment for tenured agents.
             </p>
 
             <p class="lang-zh">
-                四个可以量化的成果。点击任何数字，看看背后的故事。
+                通过针对性辅导、根因分析与绩效对齐，
+                改善资深专员的质量表现。
             </p>
 
-        </section>
-
-        <div class="metric-grid">
-
-            <div
-                class="metric-card"
-                onclick="openModal('m1')"
-            >
-
-                <div class="metric-value">
-                    80% →
-                    &gt;<span
-                        class="counter"
-                        data-target="95"
-                    >0</span>%
-                </div>
-
-                <div class="metric-label lang-en lang-hide">
-                    Tenured Agent QA Score Uplift
-                </div>
-
-                <div class="metric-label lang-zh">
-                    资深专员 QA 成绩提升
-                </div>
-
-                <span class="click-hint">
-                    <span class="lang-en lang-hide">
-                        Click for context ✨
-                    </span>
-
-                    <span class="lang-zh">
-                        点击查看详情 ✨
-                    </span>
-                </span>
-
+            <div class="process">
+                <div><span>01</span>Problem</div>
+                <div><span>02</span>Diagnose</div>
+                <div><span>03</span>Action</div>
+                <div><span>04</span>Result</div>
             </div>
 
-            <div
-                class="metric-card"
-                onclick="openModal('m2')"
-            >
-
-                <div class="metric-value">
-                    −<span
-                        class="counter"
-                        data-target="80"
-                    >0</span>%
-                </div>
-
-                <div class="metric-label lang-en lang-hide">
-                    Policy Violation Red Flags
-                </div>
-
-                <div class="metric-label lang-zh">
-                    违规政策风险降低
-                </div>
-
-                <span class="click-hint">
-                    <span class="lang-en lang-hide">
-                        Click for context ✨
-                    </span>
-
-                    <span class="lang-zh">
-                        点击查看详情 ✨
-                    </span>
-                </span>
-
+            <div class="case-result">
+                80% → 95%+
             </div>
 
-            <div
-                class="metric-card"
-                onclick="openModal('m3')"
-            >
+            <button class="case-btn" onclick="openCase('case1')">
+                <span class="lang-en lang-hide">SEE HOW I DID IT →</span>
+                <span class="lang-zh">看我是怎么做到的 →</span>
+            </button>
 
-                <div class="metric-value">
-                    <span
-                        class="counter"
-                        data-target="90"
-                    >0</span>%
-                    +
-                </div>
+        </article>
 
-                <div class="metric-label lang-en lang-hide">
-                    Scoring Calibration Alignment
-                </div>
+        <!-- CASE 2 -->
 
-                <div class="metric-label lang-zh">
-                    QA 团队评分标定一致性
-                </div>
+        <article class="case-card">
 
-                <span class="click-hint">
-                    <span class="lang-en lang-hide">
-                        Click for context ✨
-                    </span>
+            <div class="case-number">02 / COMPLIANCE</div>
 
-                    <span class="lang-zh">
-                        点击查看详情 ✨
-                    </span>
-                </span>
+            <h3 class="lang-en lang-hide">
+                Reducing policy risk by 80%
+            </h3>
 
+            <h3 class="lang-zh">
+                将政策违规风险降低 80%
+            </h3>
+
+            <p class="lang-en lang-hide">
+                Identified recurring compliance gaps and reinforced
+                SOP knowledge through targeted alignment.
+            </p>
+
+            <p class="lang-zh">
+                找出重复发生的合规漏洞，通过 SOP 强化、
+                Quiz 与 Calibration 降低违规风险。
+            </p>
+
+            <div class="process">
+                <div><span>01</span>Risk</div>
+                <div><span>02</span>RCA</div>
+                <div><span>03</span>SOP</div>
+                <div><span>04</span>Impact</div>
             </div>
 
-            <div
-                class="metric-card"
-                onclick="openModal('m4')"
-            >
+            <div class="case-result">
+                −80%
+            </div>
 
-                <div class="metric-value">
-                    $<span
-                        class="counter"
-                        data-target="612"
-                    >0</span>K+
+            <button class="case-btn" onclick="openCase('case2')">
+                <span class="lang-en lang-hide">SEE HOW I DID IT →</span>
+                <span class="lang-zh">看我是怎么做到的 →</span>
+            </button>
+
+        </article>
+
+        <!-- CASE 3 -->
+
+        <article class="case-card">
+
+            <div class="case-number">03 / CALIBRATION</div>
+
+            <h3 class="lang-en lang-hide">
+                Building 90%+ scoring alignment
+            </h3>
+
+            <h3 class="lang-zh">
+                将评分一致性提升至 90%+
+            </h3>
+
+            <p class="lang-en lang-hide">
+                Reduced scoring interpretation gaps through structured
+                calibration and clearer decision standards.
+            </p>
+
+            <p class="lang-zh">
+                通过结构化 Calibration 与明确评分判断标准，
+                降低 QA 团队之间的评分理解差异。
+            </p>
+
+            <div class="process">
+                <div><span>01</span>Gap</div>
+                <div><span>02</span>Review</div>
+                <div><span>03</span>Align</div>
+                <div><span>04</span>Measure</div>
+            </div>
+
+            <div class="case-result">
+                90%+
+            </div>
+
+            <button class="case-btn" onclick="openCase('case3')">
+                <span class="lang-en lang-hide">SEE HOW I DID IT →</span>
+                <span class="lang-zh">看我是怎么做到的 →</span>
+            </button>
+
+        </article>
+
+        <!-- CASE 4 -->
+
+        <article class="case-card">
+
+            <div class="case-number">04 / COMMERCIAL</div>
+
+            <h3 class="lang-en lang-hide">
+                From campaign optimization to $612K+ Q4 revenue
+            </h3>
+
+            <h3 class="lang-zh">
+                从广告优化到 $612K+ Q4 收益
+            </h3>
+
+            <p class="lang-en lang-hide">
+                Optimized 150+ advertiser accounts across campaign strategy,
+                Pixel implementation and performance.
+            </p>
+
+            <p class="lang-zh">
+                管理 150+ 广告主账户，从广告策略、Pixel
+                到整体账户表现进行优化。
+            </p>
+
+            <div class="process">
+                <div><span>01</span>Audit</div>
+                <div><span>02</span>Strategy</div>
+                <div><span>03</span>Optimize</div>
+                <div><span>04</span>Scale</div>
+            </div>
+
+            <div class="case-result">
+                $612K+
+            </div>
+
+            <button class="case-btn" onclick="openCase('case4')">
+                <span class="lang-en lang-hide">SEE HOW I DID IT →</span>
+                <span class="lang-zh">看我是怎么做到的 →</span>
+            </button>
+
+        </article>
+
+    </div>
+
+</section>
+
+<!-- =========================
+     TABS
+========================= -->
+
+<section class="tabs">
+
+    <div class="tab-menu">
+
+        <button class="tab-btn active"
+                onclick="switchTab('experience',this)">
+            💼
+            <span class="lang-en lang-hide">Experience</span>
+            <span class="lang-zh">工作经历</span>
+        </button>
+
+        <button class="tab-btn"
+                onclick="switchTab('about',this)">
+            🐱
+            <span class="lang-en lang-hide">About & Hobbies</span>
+            <span class="lang-zh">关于我 & 爱好</span>
+        </button>
+
+        <button class="tab-btn"
+                onclick="switchTab('skills',this)">
+            ⚡
+            <span class="lang-en lang-hide">Skills & Tools</span>
+            <span class="lang-zh">技能与工具</span>
+        </button>
+
+        <button class="tab-btn"
+                onclick="switchTab('education',this)">
+            🎓
+            <span class="lang-en lang-hide">Education</span>
+            <span class="lang-zh">教育与语言</span>
+        </button>
+
+    </div>
+
+<!-- =========================
+     EXPERIENCE
+========================= -->
+
+<div id="experience" class="tab-content active">
+
+    <div class="job">
+
+        <div class="job-header">
+
+            <div>
+                <div class="job-title">
+                    Quality Assurance Specialist
                 </div>
 
-                <div class="metric-label lang-en lang-hide">
-                    Q4 Revenue Generated
+                <div class="company">
+                    HEYTEA · Concentrix · Kuala Lumpur, Malaysia
+                </div>
+            </div>
+
+            <span class="date">
+                July 2026 – Present
+            </span>
+
+        </div>
+
+        <ul class="lang-en lang-hide">
+            <li>
+                Conduct high-volume quality audits and performance evaluation
+                across customer service operations.
+            </li>
+            <li>
+                Identify quality, compliance and process gaps through structured
+                root-cause analysis.
+            </li>
+            <li>
+                Partner with operational stakeholders to improve service
+                consistency and quality governance.
+            </li>
+            <li>
+                Support coaching, process alignment and continuous improvement
+                initiatives based on audit findings.
+            </li>
+        </ul>
+
+        <ul class="lang-zh">
+            <li>
+                负责客户服务运营的高强度质量审核与绩效评估。
+            </li>
+            <li>
+                通过结构化根因分析识别质量、合规与流程漏洞。
+            </li>
+            <li>
+                与运营相关团队协作，提升服务一致性及质量治理水平。
+            </li>
+            <li>
+                根据审核结果推动辅导、流程对齐及持续改善项目。
+            </li>
+        </ul>
+
+    </div>
+
+    <div class="job">
+
+        <div class="job-header">
+
+            <div>
+                <div class="job-title">
+                    Senior Quality Evaluator
                 </div>
 
-                <div class="metric-label lang-zh">
-                    Q4 单季度创造广告收益
+                <div class="company">
+                    Meta Program
                 </div>
+            </div>
 
-                <span class="click-hint">
-                    <span class="lang-en lang-hide">
-                        Click for context ✨
-                    </span>
+            <span class="date">
+                Oct 2024 – June 2026
+            </span>
 
-                    <span class="lang-zh">
-                        点击查看详情 ✨
-                    </span>
-                </span>
+        </div>
 
+        <ul class="lang-en lang-hide">
+            <li>
+                Evaluated service quality, policy compliance and operational
+                execution across multiple markets.
+            </li>
+            <li>
+                Conducted root-cause analysis on recurring quality and
+                compliance defects.
+            </li>
+            <li>
+                Delivered targeted coaching and actionable feedback to improve
+                agent performance.
+            </li>
+            <li>
+                Facilitated calibration sessions to align scoring standards
+                across QA and operational stakeholders.
+            </li>
+            <li>
+                Supported SOP reinforcement and policy knowledge initiatives
+                to reduce recurring compliance risk.
+            </li>
+        </ul>
+
+        <ul class="lang-zh">
+            <li>
+                负责多个市场的服务质量、政策合规及运营执行审核。
+            </li>
+            <li>
+                针对重复发生的质量及合规问题进行根因分析。
+            </li>
+            <li>
+                通过针对性辅导及可执行反馈改善专员表现。
+            </li>
+            <li>
+                主导 Calibration，确保 QA 与运营团队评分标准一致。
+            </li>
+            <li>
+                推动 SOP 与政策知识强化，降低重复合规风险。
+            </li>
+        </ul>
+
+        <div class="impact-box">
+
+            <div class="impact-item">
+                <strong>95%+</strong><br>
+                Tenured agent QA performance
+            </div>
+
+            <div class="impact-item">
+                <strong>−80%</strong><br>
+                Policy violation red flags
+            </div>
+
+            <div class="impact-item">
+                <strong>90%+</strong><br>
+                Calibration alignment
+            </div>
+
+            <div class="impact-item">
+                <strong>7+ Markets</strong><br>
+                Cross-market quality exposure
             </div>
 
         </div>
 
-        <section
-            class="case-study-section"
-            id="case-studies"
-        >
+    </div>
 
-            <div class="section-heading">
+    <div class="job">
 
-                <div class="eyebrow">
-                    Selected Case Studies
+        <div class="job-header">
+
+            <div>
+                <div class="job-title">
+                    Sales Advisor II / Marketing Pro
                 </div>
 
-                <h2>
-                    Don't just read my results.
-                    Explore how I got there.
-                </h2>
-
-                <p class="lang-en lang-hide">
-                    Click a project to see the thinking behind the result:
-                    problem → diagnosis → action → measurable outcome.
-                </p>
-
-                <p class="lang-zh">
-                    不只是看我的成果，
-                    直接看看我是怎么做到的：
-                    问题 → 分析 → 行动 → 成果。
-                </p>
-
+                <div class="company">
+                    Meta Program
+                </div>
             </div>
 
-            <div class="case-grid">
+            <span class="date">
+                Feb 2023 – Oct 2024
+            </span>
 
-                <article class="case-card">
+        </div>
 
-                    <div class="case-number">
-                        01 / QUALITY
-                    </div>
+        <ul class="lang-en lang-hide">
+            <li>
+                Managed and optimized 150+ advertiser accounts.
+            </li>
+            <li>
+                Advised advertisers on campaign structure, performance strategy,
+                targeting and optimization.
+            </li>
+            <li>
+                Supported Meta Pixel implementation and conversion optimization.
+            </li>
+            <li>
+                Used performance data to identify opportunities for account
+                growth and improved campaign outcomes.
+            </li>
+        </ul>
 
-                    <h3 class="lang-en lang-hide">
-                        Turning an 80% QA baseline into 95%+
-                    </h3>
+        <ul class="lang-zh">
+            <li>
+                管理并优化 150+ 广告主账户。
+            </li>
+            <li>
+                为广告主提供广告结构、表现策略、受众定位及优化建议。
+            </li>
+            <li>
+                支持 Meta Pixel 设置及转化优化。
+            </li>
+            <li>
+                通过表现数据识别账户增长机会并改善广告成效。
+            </li>
+        </ul>
 
-                    <h3 class="lang-zh">
-                        从 80% QA 基线提升至 95%+
-                    </h3>
+        <div class="impact-box">
 
-                    <p class="lang-en lang-hide">
-                        Targeted coaching, RCA, calibration and
-                        performance alignment for tenured agents.
-                    </p>
-
-                    <p class="lang-zh">
-                        通过针对性辅导、RCA、Calibration 与绩效对齐，
-                        改善资深专员的质量表现。
-                    </p>
-
-                    <div class="process-line">
-
-                        <div class="process-step">
-                            <span>01</span>
-                            Problem
-                        </div>
-
-                        <div class="process-step">
-                            <span>02</span>
-                            Diagnose
-                        </div>
-
-                        <div class="process-step">
-                            <span>03</span>
-                            Action
-                        </div>
-
-                        <div class="process-step">
-                            <span>04</span>
-                            Result
-                        </div>
-
-                    </div>
-
-                    <div class="case-result">
-                        80% → 95%+
-                    </div>
-
-                    <button
-                        class="case-button"
-                        onclick="openCaseStudy('case1')"
-                    >
-
-                        <span class="lang-en lang-hide">
-                            SEE HOW I DID IT →
-                        </span>
-
-                        <span class="lang-zh">
-                            看我是怎么做到的 →
-                        </span>
-
-                    </button>
-
-                </article>
-
-                <article class="case-card">
-
-                    <div class="case-number">
-                        02 / COMPLIANCE
-                    </div>
-
-                    <h3 class="lang-en lang-hide">
-                        Reducing policy risk by 80%
-                    </h3>
-
-                    <h3 class="lang-zh">
-                        将政策违规风险降低 80%
-                    </h3>
-
-                    <p class="lang-en lang-hide">
-                        Identified compliance gaps and reinforced
-                        SOP knowledge through targeted alignment.
-                    </p>
-
-                    <p class="lang-zh">
-                        找出关键合规漏洞，再通过 SOP 强化、
-                        Quiz 与 Calibration 降低重复违规。
-                    </p>
-
-                    <div class="process-line">
-
-                        <div class="process-step">
-                            <span>01</span>
-                            Risk
-                        </div>
-
-                        <div class="process-step">
-                            <span>02</span>
-                            RCA
-                        </div>
-
-                        <div class="process-step">
-                            <span>03</span>
-                            SOP
-                        </div>
-
-                        <div class="process-step">
-                            <span>04</span>
-                            Impact
-                        </div>
-
-                    </div>
-
-                    <div class="case-result">
-                        −80%
-                    </div>
-
-                    <button
-                        class="case-button"
-                        onclick="openCaseStudy('case2')"
-                    >
-
-                        <span class="lang-en lang-hide">
-                            SEE HOW I DID IT →
-                        </span>
-
-                        <span class="lang-zh">
-                            看我是怎么做到的 →
-                        </span>
-
-                    </button>
-
-                </article>
-
-                <article class="case-card">
-
-                    <div class="case-number">
-                        03 / COMMERCIAL
-                    </div>
-
-                    <h3 class="lang-en lang-hide">
-                        From campaign optimization to $612K Q4 revenue
-                    </h3>
-
-                    <h3 class="lang-zh">
-                        从广告优化到 $612K Q4 收益
-                    </h3>
-
-                    <p class="lang-en lang-hide">
-                        Optimized 150+ advertiser accounts across
-                        campaign strategy, Pixel and performance.
-                    </p>
-
-                    <p class="lang-zh">
-                        管理 150+ 广告主账户，从广告策略、
-                        Pixel 到整体账户表现进行优化。
-                    </p>
-
-                    <div class="process-line">
-
-                        <div class="process-step">
-                            <span>01</span>
-                            Audit
-                        </div>
-
-                        <div class="process-step">
-                            <span>02</span>
-                            Strategy
-                        </div>
-
-                        <div class="process-step">
-                            <span>03</span>
-                            Optimize
-                        </div>
-
-                        <div class="process-step">
-                            <span>04</span>
-                            Scale
-                        </div>
-
-                    </div>
-
-                    <div class="case-result">
-                        $612K+
-                    </div>
-
-                    <button
-                        class="case-button"
-                        onclick="openCaseStudy('case3')"
-                    >
-
-                        <span class="lang-en lang-hide">
-                            SEE HOW I DID IT →
-                        </span>
-
-                        <span class="lang-zh">
-                            看我是怎么做到的 →
-                        </span>
-
-                    </button>
-
-                </article>
-
+            <div class="impact-item">
+                <strong>$612,458</strong><br>
+                Q4 revenue generated
             </div>
 
-        </section>
+            <div class="impact-item">
+                <strong>185.71%</strong><br>
+                Conversion increase
+            </div>
+
+            <div class="impact-item">
+                <strong>150+</strong><br>
+                Advertiser accounts
+            </div>
+
+            <div class="impact-item">
+                <strong>Performance</strong><br>
+                Data-driven account strategy
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- =========================
+     ABOUT
+========================= -->
+
+<div id="about" class="tab-content">
+
+    <div class="section-heading" style="margin-top:0">
+
+        <div class="eyebrow">
+            Beyond the dashboard
+        </div>
+
+        <h2 class="lang-en lang-hide">
+            A little more about me.
+        </h2>
+
+        <h2 class="lang-zh">
+            工作以外的我。
+        </h2>
+
+    </div>
+
+    <ul class="about-list lang-en lang-hide">
+        <li>
+            🎨 Fine Arts background — I enjoy visual thinking, design and
+            creative problem-solving.
+        </li>
+        <li>
+            🎮 Animal Crossing is one of my favorite ways to unwind and build
+            tiny worlds.
+        </li>
+        <li>
+            🐱 Proud cat parent to Bubur, Keera and Ollie.
+        </li>
+        <li>
+            📊 I genuinely enjoy turning messy information into structured,
+            understandable systems.
+        </li>
+    </ul>
+
+    <ul class="about-list lang-zh">
+        <li>
+            🎨 Fine Arts 美术背景，让我习惯以视觉、结构与创意方式解决问题。
+        </li>
+        <li>
+            🎮 Animal Crossing 是我最喜欢的放松方式之一，也很喜欢打造自己的小世界。
+        </li>
+        <li>
+            🐱 家里有三只猫：Bubur、Keera 和 Ollie。
+        </li>
+        <li>
+            📊 我很享受把复杂、混乱的信息整理成清楚且可执行的系统。
+        </li>
+    </ul>
+
+    <div class="acnh-box">
+
+        <div class="acnh-title">
+            🎮 Animal Crossing
+        </div>
+
+        <!-- acnh1 已移除 -->
+
+        <div class="acnh-gallery">
+
+            <div class="acnh-item" onclick="openImage('acnh2.jpg')">
+                <img src="acnh2.jpg" alt="Animal Crossing 2">
+                <div class="zoom-icon">🔍</div>
+            </div>
+
+            <div class="acnh-item" onclick="openImage('acnh3.jpg')">
+                <img src="acnh3.jpg" alt="Animal Crossing 3">
+                <div class="zoom-icon">🔍</div>
+            </div>
+
+            <div class="acnh-item" onclick="openImage('acnh4.jpg')">
+                <img src="acnh4.jpg" alt="Animal Crossing 4">
+                <div class="zoom-icon">🔍</div>
+            </div>
+
+            <div class="acnh-item" onclick="openImage('acnh5.jpg')">
+                <img src="acnh5.jpg" alt="Animal Crossing 5">
+                <div class="zoom-icon">🔍</div>
+            </div>
+
+            <div class="acnh-item" onclick="openImage('acnh6.jpg')">
+                <img src="acnh6.jpg" alt="Animal Crossing 6">
+                <div class="zoom-icon">🔍</div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="cat-card">
+
+        <div class="acnh-title">
+            🐱 Meet the Cats
+        </div>
+
+        <img src="cats.jpg"
+             alt="Bubur, Keera and Ollie"
+             class="cat-img"
+             onclick="openImage('cats.jpg')">
+
+        <ul class="cat-list">
+
+            <li>
+                🖤🤍 <strong>Bubur</strong> — 9–10 years old,
+                the senior cow cat of the family.
+            </li>
+
+            <li>
+                🤎 <strong>Keera</strong> — 4 years old,
+                our tabby.
+            </li>
+
+            <li>
+                🧡 <strong>Ollie</strong> — 1 year old,
+                the orange baby of the group.
+            </li>
+
+        </ul>
+
+        <div class="cat-summary">
+            Three cats. Three personalities. One very full house. 🐾
+        </div>
+
+    </div>
+
+</div>
+
+<!-- =========================
+     SKILLS
+========================= -->
+
+<div id="skills" class="tab-content">
+
+    <div class="skill-group">
+
+        <div class="skill-title">
+            Quality Assurance & Governance
+        </div>
+
+        <div class="tags">
+            <span class="tag">Quality Auditing</span>
+            <span class="tag">Quality Governance</span>
+            <span class="tag">Root Cause Analysis</span>
+            <span class="tag">Calibration</span>
+            <span class="tag">Compliance Monitoring</span>
+            <span class="tag">SOP Standardization</span>
+            <span class="tag">Quality Frameworks</span>
+            <span class="tag">Risk Identification</span>
+        </div>
+
+    </div>
+
+    <div class="skill-group">
+
+        <div class="skill-title">
+            Operations & Performance
+        </div>
+
+        <div class="tags">
+            <span class="tag">Performance Analysis</span>
+            <span class="tag">Operational Excellence</span>
+            <span class="tag">Process Improvement</span>
+            <span class="tag">Coaching</span>
+            <span class="tag">Stakeholder Management</span>
+            <span class="tag">Cross-functional Collaboration</span>
+            <span class="tag">Continuous Improvement</span>
+        </div>
+
+    </div>
+
+    <div class="skill-group">
+
+        <div class="skill-title">
+            Data & Business
+        </div>
+
+        <div class="tags">
+            <span class="tag">Data Analysis</span>
+            <span class="tag">Performance Reporting</span>
+            <span class="tag">Meta Ads</span>
+            <span class="tag">Campaign Optimization</span>
+            <span class="tag">Meta Pixel</span>
+            <span class="tag">Conversion Optimization</span>
+            <span class="tag">Account Strategy</span>
+        </div>
+
+    </div>
+
+    <div class="skill-group">
+
+        <div class="skill-title">
+            Working Style
+        </div>
+
+        <div class="tags">
+            <span class="tag">Analytical Thinking</span>
+            <span class="tag">Problem Solving</span>
+            <span class="tag">Communication</span>
+            <span class="tag">Attention to Detail</span>
+            <span class="tag">Adaptability</span>
+            <span class="tag">Multicultural Collaboration</span>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- =========================
+     EDUCATION
+========================= -->
+
+<div id="education" class="tab-content">
+
+    <div class="edu">
+
+        <strong>
+            Diploma in Fine Arts
+        </strong>
+
+        <p>
+            Malaysian Institute of Art
+        </p>
+
+        <p>
+            August 2014 – April 2018
+        </p>
+
+        <p>
+            CGPA: 3.60 / 4.00
+        </p>
+
+    </div>
+
+    <div class="edu">
+
+        <strong class="lang-en lang-hide">
+            Languages
+        </strong>
+
+        <strong class="lang-zh">
+            语言能力
+        </strong>
+
+        <p>
+            English · Mandarin · Malay · Cantonese
+        </p>
+
+    </div>
+
+</div>
+
+</section>
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<section class="footer">
+
+    <div class="eyebrow">
+        Let's connect
+    </div>
+
+    <h2 class="lang-en lang-hide">
+        Quality is more than a score.
+    </h2>
+
+    <h2 class="lang-zh">
+        质量不只是一个分数。
+    </h2>
+
+    <p class="lang-en lang-hide">
+        Open to Regional QA, Operations Leadership and
+        Quality Governance opportunities.
+    </p>
+
+    <p class="lang-zh">
+        期待 Regional QA、运营管理及 Quality Governance
+        相关职业机会。
+    </p>
+
+    <a href="mailto:kexin0410@gmail.com" class="cta">
+        ✉️
+        <span class="lang-en lang-hide">Get in touch</span>
+        <span class="lang-zh">联系我</span>
+    </a>
+
+</section>
+
+</main>
+
+<!-- =========================
+     MODAL
+========================= -->
+
+<div class="modal" id="modal" onclick="overlayClose(event)">
+
+    <div class="modal-card">
+
+        <button class="close" onclick="closeModal()">✕</button>
+
+        <h2 class="modal-title" id="modalTitle"></h2>
+
+        <div class="modal-subtitle" id="modalSubtitle"></div>
+
+        <div class="modal-body" id="modalBody"></div>
+
+    </div>
+
+</div>
+
+<!-- =========================
+     LIGHTBOX
+========================= -->
+
+<div class="lightbox"
+     id="lightbox"
+     onclick="closeLightbox(event)">
+
+    <button class="lightbox-close"
+            onclick="forceCloseLightbox()">
+        ✕
+    </button>
+
+    <img id="lightboxImage" src="" alt="Expanded image">
+
+</div>
+
+<button class="top"
+        id="topButton"
+        onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    ↑
+</button>
+
+<script>
+
+/* =========================
+   LANGUAGE
+========================= */
+
+let currentLanguage = "zh";
+
+function toggleLanguage(){
+
+    const zh = document.querySelectorAll(".lang-zh");
+    const en = document.querySelectorAll(".lang-en");
+    const button = document.getElementById("languageButton");
+
+    if(currentLanguage === "zh"){
+
+        zh.forEach(el => el.classList.add("lang-hide"));
+        en.forEach(el => el.classList.remove("lang-hide"));
+
+        currentLanguage = "en";
+        button.textContent = "中文";
+
+    }else{
+
+        en.forEach(el => el.classList.add("lang-hide"));
+        zh.forEach(el => el.classList.remove("lang-hide"));
+
+        currentLanguage = "zh";
+        button.textContent = "English";
+
+    }
+}
+
+/* =========================
+   TABS
+========================= */
+
+function switchTab(id,button){
+
+    document.querySelectorAll(".tab-content")
+        .forEach(tab => tab.classList.remove("active"));
+
+    document.querySelectorAll(".tab-btn")
+        .forEach(btn => btn.classList.remove("active"));
+
+    document.getElementById(id).classList.add("active");
+
+    button.classList.add("active");
+}
+
+/* =========================
+   PROFILE EASTER EGG
+========================= */
+
+let profileTimeout;
+
+function profileClick(){
+
+    const message = document.getElementById("profileMessage");
+
+    const zhMessages = [
+        "嗨！👋",
+        "你找到彩蛋了 ✨",
+        "谢谢你来看我的 Portfolio!",
+        "QA mode: ON 🔍",
+        "猫猫批准这个 Portfolio 🐱"
+    ];
+
+    const enMessages = [
+        "Hi! 👋",
+        "You found the easter egg ✨",
+        "Thanks for visiting!",
+        "QA mode: ON 🔍",
+        "The cats approve 🐱"
+    ];
+
+    const messages =
+        currentLanguage === "zh"
+        ? zhMessages
+        : enMessages;
+
+    message.textContent =
+        messages[Math.floor(Math.random()*messages.length)];
+
+    message.classList.add("show");
+
+    clearTimeout(profileTimeout);
+
+    profileTimeout = setTimeout(()=>{
+        message.classList.remove("show");
+    },1800);
+}
+
+/* =========================
+   COUNTER ANIMATION
+========================= */
+
+const counters =
+    document.querySelectorAll(".counter");
+
+const counterObserver =
+    new IntersectionObserver(entries=>{
+
+        entries.forEach(entry=>{
+
+            if(!entry.isIntersecting) return;
+
+            const counter = entry.target;
+
+            if(counter.dataset.animated === "true")
+                return;
+
+            counter.dataset.animated = "true";
+
+            const target =
+                Number(counter.dataset.target);
+
+            const duration = 1500;
+            const start = performance.now();
+
+            function animate(now){
+
+                const progress =
+                    Math.min((now-start)/duration,1);
+
+                const eased =
+                    1-Math.pow(1-progress,3);
+
+                counter.textContent =
+                    Math.floor(target*eased);
+
+                if(progress<1){
+
+                    requestAnimationFrame(animate);
+
+                }else{
+
+                    counter.textContent=target;
+
+                }
+            }
+
+            requestAnimationFrame(animate);
+
+        });
+
+    },{
+        threshold:.45
+    });
+
+counters.forEach(counter=>
+    counterObserver.observe(counter)
+);
+
+/* =========================
+   MODAL DATA
+========================= */
+
+const metrics = {
+
+    m1:{
+        en:{
+            title:"80% → 95%+",
+            subtitle:"Tenured Agent QA Score Uplift",
+            body:`
+                <p>
+                    The opportunity was not simply to increase a score,
+                    but to understand why experienced agents were still
+                    repeating specific quality defects.
+                </p>
+
+                <div class="detail-grid">
+
+                    <div class="detail">
+                        <strong>Problem</strong>
+                        Tenured agents were performing around an 80% QA baseline.
+                    </div>
+
+                    <div class="detail">
+                        <strong>Diagnosis</strong>
+                        Reviewed recurring error patterns, knowledge gaps
+                        and behavior-level issues.
+                    </div>
+
+                    <div class="detail">
+                        <strong>Action</strong>
+                        Used targeted coaching, feedback loops,
+                        SOP reinforcement and calibration.
+                    </div>
+
+                    <div class="detail">
+                        <strong>Result</strong>
+                        Performance improved to above 95%.
+                    </div>
+
+                </div>
+
+                <div class="result-box">
+                    Result: 80% baseline → 95%+ QA performance.
+                </div>
+            `
+        },
+
+        zh:{
+            title:"80% → 95%+",
+            subtitle:"资深专员 QA 成绩提升",
+            body:`
+                <p>
+                    我的重点并不只是把分数提高，而是找出为什么经验丰富的专员
+                    仍然会重复出现特定质量问题。
+                </p>
+
+                <div class="detail-grid">
+
+                    <div class="detail">
+                        <strong>问题</strong>
+                        资深专员 QA 表现约维持在 80% 基线。
+                    </div>
+
+                    <div class="detail">
+                        <strong>分析</strong>
+                        分析重复错误模式、知识缺口及行为层面的根因。
+                    </div>
+
+                    <div class="detail">
+                        <strong>行动</strong>
+                        进行针对性 1-on-1 Coaching、Feedback Loop、
+                        SOP 强化及 Calibration。
+                    </div>
+
+                    <div class="detail">
+                        <strong>成果</strong>
+                        QA 表现提升至 95% 以上。
+                    </div>
+
+                </div>
+
+                <div class="result-box">
+                    成果：从约 80% QA 基线提升至 95%+。
+                </div>
+            `
+        }
+    },
+
+    m2:{
+        en:{
+            title:"−80%",
+            subtitle:"Policy Violation Red Flags",
+            body:`
+                <p>
+                    Repeated policy violations were treated as a system
+                    and knowledge-alignment issue rather than isolated mistakes.
+                </p>
+
+                <div class="detail-grid">
+
+                    <div class="detail">
+                        <strong>Problem</strong>
+                        Recurring policy red flags created avoidable
+                        compliance exposure.
+                    </div>
+
+                    <div class="detail">
+                        <strong>Diagnosis</strong>
+                        Mapped recurring violations against SOP and
+                        policy interpretation gaps.
+                    </div>
+
+                    <div class="detail">
+                        <strong>Action</strong>
+                        Reinforced SOP knowledge using refreshers,
+                        weekly quizzes and calibration.
+                    </div>
+
+                    <div class="detail">
+                        <strong>Result</strong>
+                        Policy violation red flags reduced by 80%.
+                    </div>
+
+                </div>
+
+                <div class="result-box">
+                    Result: 80% reduction in recurring policy red flags.
+                </div>
+            `
+        },
+
+        zh:{
+            title:"−80%",
+            subtitle:"违规政策风险降低",
+            body:`
+                <p>
+                    我没有把重复违规单纯视为个人失误，而是从知识对齐、
+                    SOP 理解及流程层面寻找原因。
+                </p>
+
+                <div class="detail-grid">
+
+                    <div class="detail">
+                        <strong>问题</strong>
+                        重复出现的政策违规增加了不必要的合规风险。
+                    </div>
+
+                    <div class="detail">
+                        <strong>分析</strong>
+                        将违规类型与 SOP、政策理解缺口进行对应分析。
+                    </div>
+
+                    <div class="detail">
+                        <strong>行动</strong>
+                        通过 SOP Refresh、Weekly Quiz 及 Calibration
+                        强化团队知识。
+                    </div>
+
+                    <div class="detail">
+                        <strong>成果</strong>
+                        违规政策 Red Flag 降低 80%。
+                    </div>
+
+                </div>
+
+                <div class="result-box">
+                    成果：重复政策违规风险降低 80%。
+                </div>
+            `
+        }
+    },
+
+    m3:{
+        en:{
+            title:"90%+",
+            subtitle:"Scoring Calibration Alignment",
+            body:`
+                <p>
+                    Consistent scoring matters because QA decisions need
+                    to remain defensible across reviewers and stakeholders.
+                </p>
+
+                <div class="detail-grid">
+
+                    <div class="detail">
+                        <strong>Problem</strong>
+                        Different interpretations could create scoring variance.
+                    </div>
+
+                    <div class="detail">
+                        <strong>Diagnosis</strong>
+                        Reviewed disagreement patterns and ambiguous rubric areas.
+                    </div>
+
+                    <div class="detail">
+                        <strong>Action</strong>
+                        Facilitated calibration, documented decision standards
+                        and aligned examples.
+                    </div>
+
+                    <div class="detail">
+                        <strong>Result</strong>
+                        Maintained 90%+ scoring alignment.
+                    </div>
+
+                </div>
+
+                <div class="result-box">
+                    Result: 90%+ calibration alignment.
+                </div>
+            `
+        },
+
+        zh:{
+            title:"90%+",
+            subtitle:"QA 团队评分标定一致性",
+            body:`
+                <p>
+                    QA 评分不仅需要准确，也必须确保不同审核人员及相关团队
+                    对评分标准有一致理解。
+                </p>
+
+                <div class="detail-grid">
+
+                    <div class="detail">
+                        <strong>问题</strong>
+                        不同人员对评分标准的理解可能产生评分差异。
+                    </div>
+
+                    <div class="detail">
+                        <strong>分析</strong>
+                        分析评分分歧模式及 Rubric 中容易产生歧义的部分。
+                    </div>
+
+                    <div class="detail">
+                        <strong>行动</strong>
+                        主导 Calibration、明确判断标准并整理评分案例。
+                    </div>
+
+                    <div class="detail">
+                        <strong>成果</strong>
+                        评分一致性维持在 90%+。
+                    </div>
+
+                </div>
+
+                <div class="result-box">
+                    成果：Calibration Alignment 达到 90%+。
+                </div>
+            `
+        }
+    },
+
+    m4:{
+        en:{
+            title:"$612K+",
+            subtitle:"Q4 Revenue Generated",
+            body:`
+                <p>
+                    Before moving deeper into QA, my commercial experience
+                    gave me direct exposure to advertiser growth and
+                    performance optimization.
+                </p>
+
+                <div class="detail-grid">
+
+                    <div class="detail">
+                        <strong>Scope</strong>
+                        Managed and supported 150+ advertiser accounts.
+                    </div>
+
+                    <div class="detail">
+                        <strong>Analysis</strong>
+                        Reviewed campaign structure, performance,
+                        Pixel and conversion opportunities.
+                    </div>
+
+                    <div class="detail">
+                        <strong>Action</strong>
+                        Provided campaign and account optimization strategies.
+                    </div>
+
+                    <div class="detail">
+                        <strong>Result</strong>
+                        Generated USD 612,458 Q4 revenue.
+                    </div>
+
+                </div>
+
+                <div class="result-box">
+                    Result: $612K+ Q4 revenue and 185.71% conversion increase.
+                </div>
+            `
+        },
+
+        zh:{
+            title:"$612K+",
+            subtitle:"Q4 单季度创造广告收益",
+            body:`
+                <p>
+                    在深入 QA 领域之前，我的商业及广告优化经验让我能够直接理解
+                    客户增长、广告表现及转化优化。
+                </p>
+
+                <div class="detail-grid">
+
+                    <div class="detail">
+                        <strong>范围</strong>
+                        管理及支持 150+ 广告主账户。
+                    </div>
+
+                    <div class="detail">
+                        <strong>分析</strong>
+                        分析 Campaign Structure、表现、Pixel
+                        及转化机会。
+                    </div>
+
+                    <div class="detail">
+                        <strong>行动</strong>
+                        提供广告及账户层面的优化策略。
+                    </div>
+
+                    <div class="detail">
+                        <strong>成果</strong>
+                        Q4 创造 USD 612,458 收益。
+                    </div>
+
+                </div>
+
+                <div class="result-box">
+                    成果：$612K+ Q4 收益，并实现 185.71% 转化增长。
+                </div>
+            `
+        }
+    }
+};
+
+/* =========================
+   CASE STUDIES
+========================= */
+
+const cases = {
+
+    case1:{
+        en:{
+            title:"Quality Improvement",
+            subtitle:"How I moved QA performance from 80% to 95%+",
+            body:`
+                <div class="detail-grid">
+
+                    <div class="detail">
+                        <strong>01 · Problem</strong>
+                        Tenured agents were still showing recurring quality
+                        defects despite their experience.
+                    </div>
+
+                    <div class="detail">
+                        <strong>02 · Diagnosis</strong>
+                        I broke the defects down by recurring pattern,
+                        knowledge gap and behavior-level root cause.
+                    </div>
+
+                    <div class="detail">
+                        <strong>03 · Action</strong>
+                        Instead of generic coaching, I used targeted
+                        1-on-1 feedback, SOP reinforcement and calibration.
+                    </div>
+
+                    <div class="detail">
+                        <strong>04 · Result</strong>
+                        The approach helped move QA performance from
+                        approximately 80% to above 95%.
+                    </div>
+
+                </div>
+
+                <div class="result-box">
+                    The key was not “more coaching” — it was more precise coaching.
+                </div>
+            `
+        },
+
+        zh:{
+            title:"质量提升",
+            subtitle:"我是如何把 QA 表现从 80% 提升至 95%+",
+            body:`
+                <div class="detail-grid">
+
+                    <div class="detail">
+                        <strong>01 · 问题</strong>
+                        即使是资深专员，仍然会重复出现部分质量问题。
+                    </div>
+
+                    <div class="detail">
+                        <strong>02 · 分析</strong>
+                        我将问题拆分成重复错误模式、知识缺口及行为层面的根因。
+                    </div>
+
+                    <div class="detail">
+                        <strong>03 · 行动</strong>
+                        不使用泛泛而谈的 Coaching，而是针对具体问题进行
+                        1-on-1 Feedback、SOP 强化及 Calibration。
+                    </div>
+
+                    <div class="detail">
+                        <strong>04 · 成果</strong>
+                        QA 表现从约 80% 提升至 95% 以上。
+                    </div>
+
+                </div>
+
+                <div class="result-box">
+                    关键不是「做更多 Coaching」，而是让 Coaching 更精准。
+                </div>
+            `
+        }
+    },
+
+    case2:{
+        en:{
+            title:"Compliance Risk Reduction",
+            subtitle:"How I reduced recurring policy red flags by 80%",
+            body:`
+                <div class="detail-grid">
+
+                    <div class="detail">
+                        <strong>01 · Problem</strong>
+                        Policy updates and interpretation gaps were creating
+                        repeated compliance red flags.
+                    </div>
+
+                    <div class="detail">
+                        <strong>02 · Diagnosis</strong>
+                        I categorized the recurring violations and linked
+                        them back to SOP and policy knowledge gaps.
+                    </div>
+
+                    <div class="detail">
+                        <strong>03 · Action</strong>
+                        Introduced focused SOP refreshers, weekly quizzes
+                        and calibration discussions.
+                    </div>
+
+                    <div class="detail">
+                        <strong>04 · Result</strong>
+                        Recurring policy violation red flags fell by 80%.
+                    </div>
+
+                </div>
+
+                <div class="result-box">
+                    Compliance improved by turning audit findings into
+                    preventive learning actions.
+                </div>
+            `
+        },
+
+        zh:{
+            title:"合规风险改善",
+            subtitle:"我是如何将重复政策违规风险降低 80%",
+            body:`
+                <div class="detail-grid">
+
+                    <div class="detail">
+                        <strong>01 · 问题</strong>
+                        政策更新及理解差异导致部分违规问题重复发生。
+                    </div>
+
+                    <div class="detail">
+                        <strong>02 · 分析</strong>
+                        我将重复违规分类，再对应至 SOP 与政策知识缺口。
+                    </div>
+
+                    <div class="detail">
+                        <strong>03 · 行动</strong>
+                        推动针对性 SOP Refresh、Weekly Quiz
+                        以及 Calibration Discussion。
+                    </div>
+
+                    <div class="detail">
+                        <strong>04 · 成果</strong>
+                        重复 Policy Red Flag 降低 80%。
+                    </div>
+
+                </div>
+
+                <div class="result-box">
+                    我把审核结果从「发现问题」转化成「预防问题再次发生」。
+                </div>
+            `
+        }
+    },
+
+    case3:{
+        en:{
+            title:"Calibration Alignment",
+            subtitle:"How I built 90%+ scoring consistency",
+            body:`
+                <div class="detail-grid">
+
+                    <div class="detail">
+                        <strong>01 · Gap</strong>
+                        Reviewers could interpret the same scoring criteria
+                        differently.
+                    </div>
+
+                    <div class="detail">
+                        <strong>02 · Review</strong>
+                        I reviewed disagreement patterns and identified
+                        ambiguous decision points.
+                    </div>
+
+                    <div class="detail">
+                        <strong>03 · Align</strong>
+                        Calibration sessions were used to clarify standards,
+                        examples and decision logic.
+                    </div>
+
+                    <div class="detail">
+                        <strong>04 · Measure</strong>
+                        Scoring alignment was maintained at 90%+.
+                    </div>
+
+                </div>
+
+                <div class="result-box">
+                    Strong QA governance depends on consistent interpretation,
+                    not just individual accuracy.
+                </div>
+            `
+        },
+
+        zh:{
+            title:"评分一致性",
+            subtitle:"我是如何建立 90%+ Calibration Alignment",
+            body:`
+                <div class="detail-grid">
+
+                    <div class="detail">
+                        <strong>01 · 差异</strong>
+                        不同审核人员可能对相同评分标准有不同理解。
+                    </div>
+
+                    <div class="detail">
+                        <strong>02 · Review</strong>
+                        我分析评分分歧，找出容易产生歧义的判断点。
+                    </div>
+
+                    <div class="detail">
+                        <strong>03 · 对齐</strong>
+                        通过 Calibration 明确标准、案例及判断逻辑。
+                    </div>
+
+                    <div class="detail">
+                        <strong>04 · 衡量</strong>
+                        最终维持 90%+ 的评分一致性。
+                    </div>
+
+                </div>
+
+                <div class="result-box">
+                    好的 QA Governance 不只是个人评分准确，
+                    更重要的是整个团队对标准有一致理解。
+                </div>
+            `
+        }
+    },
+
+    case4:{
+        en:{
+            title:"Commercial Growth",
+            subtitle:"How optimization contributed to $612K+ Q4 revenue",
+            body:`
+                <div class="detail-grid">
+
+                    <div class="detail">
+                        <strong>01 · Audit</strong>
+                        Reviewed advertiser accounts for campaign,
+                        tracking and conversion opportunities.
+                    </div>
+
+                    <div class="detail">
+                        <strong>02 · Strategy</strong>
+                        Prioritized improvements based on performance data
+                        and advertiser objectives.
+                    </div>
+
+                    <div class="detail">
+                        <strong>03 · Optimize</strong>
+                        Improved campaign structure, targeting,
+                        Pixel usage and account strategy.
+                    </div>
+
+                    <div class="detail">
+                        <strong>04 · Scale</strong>
+                        Supported 150+ accounts and generated
+                        USD 612,458 Q4 revenue.
+                    </div>
+
+                </div>
+
+                <div class="result-box">
+                    Commercial impact: $612K+ Q4 revenue with
+                    185.71% conversion growth.
+                </div>
+            `
+        },
+
+        zh:{
+            title:"商业增长",
+            subtitle:"我是如何通过优化创造 $612K+ Q4 收益",
+            body:`
+                <div class="detail-grid">
+
+                    <div class="detail">
+                        <strong>01 · Audit</strong>
+                        检查广告账户中的 Campaign、Tracking
+                        及 Conversion 优化机会。
+                    </div>
+
+                    <div class="detail">
+                        <strong>02 · Strategy</strong>
+                        根据表现数据及广告主目标确定优化优先级。
+                    </div>
+
+                    <div class="detail">
+                        <strong>03 · Optimize</strong>
+                        优化 Campaign Structure、Targeting、
+                        Pixel 及账户策略。
+                    </div>
+
+                    <div class="detail">
+                        <strong>04 · Scale</strong>
+                        支持 150+ 广告主账户，并在 Q4 创造
+                        USD 612,458 收益。
+                    </div>
+
+                </div>
+
+                <div class="result-box">
+                    商业成果：$612K+ Q4 收益，并实现 185.71% 转化增长。
+                </div>
+            `
+        }
+    }
+};
+
+/* =========================
+   OPEN MODALS
+========================= */
+
+function renderModal(data){
+
+    const content =
+        currentLanguage === "zh"
+        ? data.zh
+        : data.en;
+
+    document.getElementById("modalTitle")
+        .textContent = content.title;
+
+    document.getElementById("modalSubtitle")
+        .textContent = content.subtitle;
+
+    document.getElementById("modalBody")
+        .innerHTML = content.body;
+
+    document.getElementById("modal")
+        .classList.add("active");
+
+    document.body.style.overflow="hidden";
+}
+
+function openMetric(id){
+    renderModal(metrics[id]);
+}
+
+function openCase(id){
+    renderModal(cases[id]);
+}
+
+function closeModal(){
+
+    document.getElementById("modal")
+        .classList.remove("active");
+
+    document.body.style.overflow="";
+}
+
+function overlayClose(event){
+
+    if(event.target.id==="modal"){
+        closeModal();
+    }
+}
+
+/* =========================
+   IMAGE LIGHTBOX
+========================= */
+
+function openImage(src){
+
+    const lightbox =
+        document.getElementById("lightbox");
+
+    const image =
+        document.getElementById("lightboxImage");
+
+    image.src=src;
+
+    lightbox.classList.add("active");
+
+    document.body.style.overflow="hidden";
+}
+
+function closeLightbox(event){
+
+    if(event.target.id==="lightbox"){
+        forceCloseLightbox();
+    }
+}
+
+function forceCloseLightbox(){
+
+    document.getElementById("lightbox")
+        .classList.remove("active");
+
+    document.body.style.overflow="";
+}
+
+/* =========================
+   ESCAPE
+========================= */
+
+document.addEventListener("keydown",event=>{
+
+    if(event.key==="Escape"){
+
+        closeModal();
+        forceCloseLightbox();
+
+    }
+});
+
+/* =========================
+   BACK TO TOP
+========================= */
+
+const topButton =
+    document.getElementById("topButton");
+
+window.addEventListener("scroll",()=>{
+
+    if(window.scrollY>600){
+
+        topButton.classList.add("show");
+
+    }else{
+
+        topButton.classList.remove("show");
+
+    }
+
+});
+
+/* =========================
+   HASH SUPPORT
+   https://.../#impact
+========================= */
+
+window.addEventListener("load",()=>{
+
+    if(window.location.hash){
+
+        const target =
+            document.querySelector(window.location.hash);
+
+        if(target){
+
+            setTimeout(()=>{
+
+                target.scrollIntoView({
+                    behavior:"smooth",
+                    block:"start"
+                });
+
+            },150);
+
+        }
+    }
+});
+
+</script>
+
+</body>
+</html>
