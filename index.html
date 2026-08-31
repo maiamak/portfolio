@@ -8,30 +8,53 @@
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://maiamak.github.io/portfolio/">
-<meta property="og:title" content="Maia Mak | Regional QA & Operations Lead Portfolio">
+<meta property="og:title" content="Maia Mak | Regional QA & Operations Portfolio">
 <meta property="og:description" content="Interactive portfolio showcasing QA, compliance, operational excellence and business impact.">
 <meta property="og:image" content="profile.jpg">
 
 <style>
+/* =========================================================
+   ROOT
+========================================================= */
+
 :root{
     --primary:#6366f1;
     --primary-dark:#4f46e5;
-    --purple:#8b5cf6;
-    --accent:#475569;
-
-    --bg:#f8fafc;
-    --bg2:#eef2ff;
-
-    --white:rgba(255,255,255,.90);
-    --solid:#fff;
+    --violet:#8b5cf6;
+    --blue:#60a5fa;
+    --sky:#7dd3fc;
 
     --text:#1e293b;
     --muted:#64748b;
-    --border:#e2e8f0;
+    --soft-text:#94a3b8;
 
-    --shadow:0 18px 45px rgba(51,65,85,.10);
+    --bg1:#f6f7ff;
+    --bg2:#eef2ff;
+    --bg3:#f8fafc;
+
+    --white:#ffffff;
+    --glass:rgba(255,255,255,.86);
+
+    --border:#e2e8f0;
+    --border-purple:#c7d2fe;
+
+    --soft-purple:#eef2ff;
+    --soft-violet:#f5f3ff;
+    --soft-blue:#eff6ff;
+
+    --shadow:
+        0 18px 45px rgba(79,70,229,.09),
+        0 8px 18px rgba(51,65,85,.06);
+
+    --shadow-hover:
+        0 22px 55px rgba(99,102,241,.16);
+
     --radius:26px;
 }
+
+/* =========================================================
+   RESET
+========================================================= */
 
 *{
     box-sizing:border-box;
@@ -44,21 +67,49 @@ html{
 }
 
 body{
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
-    color:var(--text);
-    line-height:1.65;
     min-height:100vh;
     overflow-x:hidden;
 
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+
+    color:var(--text);
+    line-height:1.65;
+
     background:
-        radial-gradient(circle at 5% 5%,rgba(129,140,248,.18),transparent 27%),
-        radial-gradient(circle at 95% 40%,rgba(148,163,184,.16),transparent 28%),
-        linear-gradient(135deg,#f8fafc,#eef2ff,#f8fafc);
+        radial-gradient(
+            circle at 5% 8%,
+            rgba(129,140,248,.26),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 95% 38%,
+            rgba(96,165,250,.16),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 45% 90%,
+            rgba(139,92,246,.10),
+            transparent 28%
+        ),
+        linear-gradient(
+            135deg,
+            var(--bg1),
+            var(--bg2),
+            var(--bg3)
+        );
 
     background-attachment:fixed;
 }
 
-button,a{
+button,
+a{
     font:inherit;
 }
 
@@ -70,9 +121,14 @@ img{
     max-width:100%;
 }
 
-/* =========================
-   BACKGROUND
-========================= */
+::selection{
+    background:#c7d2fe;
+    color:#312e81;
+}
+
+/* =========================================================
+   FLOATING BACKGROUND
+========================================================= */
 
 .shape{
     position:fixed;
@@ -80,107 +136,153 @@ img{
     filter:blur(80px);
     pointer-events:none;
     z-index:-1;
-    opacity:.28;
-    animation:float 9s ease-in-out infinite alternate;
+    opacity:.30;
+    animation:floatShape 9s ease-in-out infinite alternate;
 }
 
-.shape1{
-    width:300px;
-    height:300px;
+.shape-1{
+    width:320px;
+    height:320px;
     left:-100px;
-    top:-80px;
+    top:-100px;
     background:#818cf8;
 }
 
-.shape2{
-    width:350px;
-    height:350px;
-    right:-120px;
-    bottom:5%;
-    background:#94a3b8;
+.shape-2{
+    width:380px;
+    height:380px;
+    right:-140px;
+    bottom:2%;
+    background:#60a5fa;
     animation-delay:-3s;
 }
 
-@keyframes float{
-    from{transform:translateY(0)}
-    to{transform:translateY(28px)}
+.shape-3{
+    width:230px;
+    height:230px;
+    right:32%;
+    top:42%;
+    background:#8b5cf6;
+    opacity:.13;
+    animation-delay:-5s;
 }
 
-/* =========================
+@keyframes floatShape{
+    from{
+        transform:translate3d(0,0,0) rotate(0deg);
+    }
+
+    to{
+        transform:translate3d(0,28px,0) rotate(8deg);
+    }
+}
+
+/* =========================================================
    HEADER
-========================= */
+========================================================= */
 
 .header{
     position:sticky;
     top:0;
     z-index:100;
-    background:rgba(255,255,255,.76);
+
+    background:rgba(255,255,255,.74);
     backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+
     border-bottom:1px solid rgba(226,232,240,.8);
 }
 
-.nav{
+.nav-container{
     width:min(1180px,calc(100% - 30px));
-    margin:auto;
     min-height:68px;
+    margin:auto;
 
     display:flex;
-    justify-content:space-between;
     align-items:center;
+    justify-content:space-between;
     gap:1rem;
 }
 
 .logo{
-    font-weight:900;
-    font-size:1.1rem;
+    display:flex;
+    align-items:center;
+    gap:.4rem;
+
     color:#334155;
+    font-size:1.08rem;
+    font-weight:950;
+    letter-spacing:-.02em;
+}
+
+.logo-dot{
+    width:9px;
+    height:9px;
+    border-radius:50%;
+    background:linear-gradient(135deg,var(--primary),var(--blue));
+    box-shadow:0 0 0 5px rgba(99,102,241,.08);
 }
 
 .nav-actions{
     display:flex;
-    gap:.6rem;
     align-items:center;
+    gap:.6rem;
 }
 
 .nav-btn,
 .lang-btn{
-    border:1px solid var(--border);
-    border-radius:999px;
     padding:.55rem .95rem;
-    text-decoration:none;
+
+    border-radius:999px;
+
     font-size:.8rem;
-    font-weight:800;
-    transition:.25s;
+    font-weight:850;
+
+    text-decoration:none;
+
+    transition:
+        transform .25s cubic-bezier(.34,1.56,.64,1),
+        box-shadow .25s ease;
 }
 
 .nav-btn{
-    background:white;
     color:#475569;
+    background:white;
+    border:1px solid var(--border);
 }
 
 .lang-btn{
     border:none;
     color:white;
-    background:linear-gradient(135deg,var(--primary),var(--purple));
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--violet)
+        );
+
+    box-shadow:
+        0 8px 20px rgba(99,102,241,.22);
 }
 
 .nav-btn:hover,
 .lang-btn:hover{
-    transform:translateY(-2px);
+    transform:translateY(-2px) scale(1.03);
 }
 
-/* =========================
+/* =========================================================
    CONTAINER
-========================= */
+========================================================= */
 
 .container{
     width:min(1180px,calc(100% - 30px));
     margin:auto;
 }
 
-/* =========================
+/* =========================================================
    HERO
-========================= */
+========================================================= */
 
 .hero{
     margin-top:2rem;
@@ -188,36 +290,68 @@ img{
 
     display:grid;
     grid-template-columns:auto 1fr;
-    gap:2rem;
     align-items:center;
+    gap:2rem;
 
-    background:var(--white);
-    border:1px solid rgba(255,255,255,.95);
+    position:relative;
+    overflow:hidden;
+
+    background:var(--glass);
+    backdrop-filter:blur(15px);
+
+    border:2px solid rgba(255,255,255,.9);
     border-radius:var(--radius);
+
     box-shadow:var(--shadow);
 
-    animation:fadeUp .7s ease both;
+    animation:fadeUp .8s ease both;
 }
 
-.profile-wrap{
+.hero::after{
+    content:"";
+    position:absolute;
+    width:220px;
+    height:220px;
+    right:-85px;
+    top:-90px;
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(99,102,241,.11),
+            transparent 70%
+        );
+
+    pointer-events:none;
+}
+
+.profile-container{
+    position:relative;
     width:170px;
     height:170px;
-    position:relative;
     cursor:pointer;
 }
 
-.profile{
+.profile-img{
     width:170px;
     height:170px;
-    border-radius:50%;
+
+    display:block;
     object-fit:cover;
+
+    border-radius:50%;
     border:5px solid white;
-    box-shadow:0 12px 30px rgba(51,65,85,.16);
-    transition:.4s;
+
+    box-shadow:
+        0 14px 35px rgba(79,70,229,.15);
+
+    transition:
+        transform .45s cubic-bezier(.34,1.56,.64,1);
 }
 
-.profile-wrap:hover .profile{
-    transform:scale(1.04) rotate(2deg);
+.profile-container:hover .profile-img{
+    transform:scale(1.05) rotate(3deg);
 }
 
 .profile-badge{
@@ -225,160 +359,216 @@ img{
     right:5px;
     bottom:5px;
 
-    width:38px;
-    height:38px;
-    border-radius:50%;
+    width:40px;
+    height:40px;
 
     display:grid;
     place-items:center;
 
     background:white;
-    box-shadow:0 5px 15px rgba(0,0,0,.12);
+    border-radius:50%;
+
+    box-shadow:0 6px 16px rgba(0,0,0,.12);
+
+    animation:bounce 2s ease-in-out infinite;
 }
 
-.profile-message{
+@keyframes bounce{
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-5px);
+    }
+}
+
+.profile-bubble{
     position:absolute;
-    top:-42px;
+
+    top:-44px;
     left:50%;
-    transform:translateX(-50%) translateY(5px);
 
-    background:#334155;
+    transform:
+        translateX(-50%)
+        translateY(7px)
+        scale(.9);
+
+    padding:.42rem .75rem;
+
     color:white;
+    background:#334155;
 
-    padding:.4rem .7rem;
-    border-radius:10px;
+    border-radius:12px;
 
     font-size:.72rem;
     font-weight:800;
     white-space:nowrap;
 
     opacity:0;
-    transition:.25s;
     pointer-events:none;
+
+    transition:.28s cubic-bezier(.34,1.56,.64,1);
+
+    z-index:5;
 }
 
-.profile-message.show{
+.profile-bubble.show{
     opacity:1;
-    transform:translateX(-50%) translateY(0);
+
+    transform:
+        translateX(-50%)
+        translateY(0)
+        scale(1);
 }
 
 .hero h1{
+    margin-bottom:.4rem;
+
     font-size:clamp(2rem,4vw,3.2rem);
     line-height:1.05;
-    margin-bottom:.45rem;
+    letter-spacing:-.04em;
 }
 
-/* 中文名字：刻意低調 */
+/* 中文名字刻意低調 */
 .chinese-name{
     display:inline-block;
-    margin-left:.4rem;
+
+    margin-left:.35rem;
+
+    color:#64748b;
 
     font-size:.42em;
     font-weight:500;
     letter-spacing:.04em;
 
-    color:#64748b;
-    vertical-align:.18em;
+    vertical-align:.2em;
 }
 
 .hero h2{
-    font-size:clamp(1rem,2vw,1.25rem);
-    color:var(--primary);
     margin-bottom:1rem;
+
+    color:var(--primary);
+
+    font-size:clamp(1rem,2vw,1.25rem);
+    font-weight:800;
 }
 
 .bio{
     margin-bottom:1rem;
-    padding:.8rem 1rem;
-
-    border-left:3px solid #94a3b8;
-    border-radius:0 12px 12px 0;
-
-    background:rgba(248,250,252,.8);
+    padding:.85rem 1rem;
 
     color:var(--muted);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(238,242,255,.85),
+            rgba(248,250,252,.9)
+        );
+
+    border-left:4px solid var(--primary);
+    border-radius:0 14px 14px 0;
+
     font-style:italic;
 }
 
-.description{
+.hero-description{
     max-width:850px;
     color:var(--muted);
 }
 
-.contact{
+.contact-info{
     display:flex;
     flex-wrap:wrap;
     gap:.55rem;
+
     margin-top:1.2rem;
 }
 
-.pill{
+.contact-pill{
     display:inline-flex;
     align-items:center;
-    gap:.3rem;
+    gap:.35rem;
 
-    padding:.42rem .75rem;
+    padding:.45rem .8rem;
+
+    color:#64748b;
+    background:white;
 
     border:1px solid var(--border);
     border-radius:999px;
 
-    background:white;
-    color:#64748b;
-
     font-size:.8rem;
     text-decoration:none;
 
-    transition:.25s;
+    transition:
+        transform .22s cubic-bezier(.34,1.56,.64,1),
+        border-color .22s ease,
+        box-shadow .22s ease;
 }
 
-.pill:hover{
-    transform:translateY(-2px);
-    color:#334155;
-    border-color:#94a3b8;
+.contact-pill:hover{
+    transform:translateY(-3px);
+
+    color:#4f46e5;
+    border-color:#c7d2fe;
+
+    box-shadow:0 8px 18px rgba(99,102,241,.12);
 }
 
-.linkedin{
-    background:#0077b5;
+.linkedin-pill{
     color:white;
+    background:#0077b5;
     border-color:#0077b5;
 }
 
-/* =========================
-   SECTION
-========================= */
+.linkedin-pill:hover{
+    color:white;
+    background:#005582;
+    border-color:#005582;
+}
+
+/* =========================================================
+   SECTION HEADING
+========================================================= */
 
 .section-heading{
     margin-top:4rem;
-    margin-bottom:1.3rem;
+    margin-bottom:1.4rem;
 }
 
 .eyebrow{
-    margin-bottom:.3rem;
+    margin-bottom:.35rem;
 
-    color:#64748b;
+    color:#6366f1;
+
+    text-transform:uppercase;
+    letter-spacing:.18em;
 
     font-size:.75rem;
-    font-weight:900;
-    letter-spacing:.18em;
-    text-transform:uppercase;
+    font-weight:950;
 }
 
 .section-heading h2{
-    font-size:clamp(1.8rem,4vw,2.6rem);
+    font-size:clamp(1.8rem,4vw,2.65rem);
     line-height:1.15;
+    letter-spacing:-.035em;
 }
 
 .section-heading p{
-    margin-top:.5rem;
+    margin-top:.55rem;
+
     color:var(--muted);
+    font-size:.98rem;
 }
 
-/* =========================
+/* =========================================================
    IMPACT
-========================= */
+========================================================= */
 
 #impact{
-    scroll-margin-top:95px;
+    scroll-margin-top:90px;
 }
 
 .metric-grid{
@@ -388,41 +578,100 @@ img{
 }
 
 .metric-card{
-    min-height:220px;
-    padding:1.4rem;
+    position:relative;
+    overflow:hidden;
+
+    min-height:225px;
+
+    padding:1.6rem 1rem;
 
     display:flex;
     flex-direction:column;
-    align-items:center;
     justify-content:center;
+    align-items:center;
 
     text-align:center;
 
-    background:rgba(255,255,255,.92);
-    border:1px solid rgba(226,232,240,.9);
+    background:rgba(255,255,255,.9);
+
+    border:2px solid white;
     border-radius:24px;
 
     box-shadow:var(--shadow);
 
     cursor:pointer;
 
+    transition:
+        transform .35s cubic-bezier(.34,1.56,.64,1),
+        box-shadow .35s ease,
+        border-color .35s ease;
+}
+
+.metric-card::before{
+    content:"";
+
+    position:absolute;
+
+    width:140px;
+    height:140px;
+
+    right:-55px;
+    top:-55px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(99,102,241,.13),
+            transparent 70%
+        );
+}
+
+.metric-card::after{
+    content:"✦";
+
+    position:absolute;
+    top:18px;
+    right:20px;
+
+    color:#a5b4fc;
+
+    font-size:1rem;
+
+    opacity:.65;
+
     transition:.3s;
 }
 
 .metric-card:hover{
-    transform:translateY(-7px);
-    border-color:#cbd5e1;
-    box-shadow:0 22px 45px rgba(51,65,85,.13);
+    transform:
+        translateY(-8px)
+        scale(1.02);
+
+    border-color:#c7d2fe;
+
+    box-shadow:var(--shadow-hover);
+}
+
+.metric-card:hover::after{
+    transform:rotate(25deg) scale(1.3);
 }
 
 .metric-value{
     margin-bottom:.7rem;
 
-    font-size:clamp(2rem,4vw,3rem);
+    font-size:clamp(2rem,4vw,3.1rem);
     font-weight:950;
     line-height:1;
 
-    background:linear-gradient(135deg,#4f46e5,#475569);
+    background:
+        linear-gradient(
+            135deg,
+            #4f46e5,
+            #7c3aed
+        );
+
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
 
@@ -430,26 +679,37 @@ img{
 }
 
 .metric-label{
+    max-width:220px;
+
     color:var(--muted);
+
     font-size:.9rem;
-    font-weight:700;
+    font-weight:750;
 }
 
-.hint{
+.click-hint{
     margin-top:.9rem;
-    padding:.3rem .7rem;
+    padding:.32rem .7rem;
 
-    background:#f1f5f9;
+    color:#6366f1;
+    background:#eef2ff;
+
     border-radius:999px;
 
-    color:#64748b;
     font-size:.68rem;
     font-weight:900;
+
+    transition:.25s;
 }
 
-/* =========================
+.metric-card:hover .click-hint{
+    transform:translateY(-1px);
+    background:#e0e7ff;
+}
+
+/* =========================================================
    CASE STUDIES
-========================= */
+========================================================= */
 
 #case-studies{
     scroll-margin-top:90px;
@@ -462,139 +722,217 @@ img{
 }
 
 .case-card{
+    position:relative;
+    overflow:hidden;
+
     padding:1.5rem;
 
-    background:rgba(255,255,255,.92);
-    border:1px solid var(--border);
+    background:rgba(255,255,255,.91);
+
+    border:2px solid white;
     border-radius:24px;
 
     box-shadow:var(--shadow);
 
-    transition:.3s;
+    transition:
+        transform .35s cubic-bezier(.34,1.56,.64,1),
+        box-shadow .35s ease;
+}
+
+.case-card::before{
+    content:"";
+
+    position:absolute;
+    width:150px;
+    height:150px;
+
+    right:-70px;
+    bottom:-80px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(139,92,246,.09),
+            transparent 70%
+        );
 }
 
 .case-card:hover{
-    transform:translateY(-6px);
+    transform:translateY(-7px) rotate(-.2deg);
+    box-shadow:var(--shadow-hover);
+}
+
+.case-card:nth-child(even):hover{
+    transform:translateY(-7px) rotate(.2deg);
 }
 
 .case-number{
     margin-bottom:.7rem;
 
-    color:#64748b;
+    color:#6366f1;
+
     font-size:.72rem;
-    font-weight:900;
-    letter-spacing:.15em;
+    font-weight:950;
+    letter-spacing:.16em;
+    text-transform:uppercase;
 }
 
 .case-card h3{
-    margin-bottom:.6rem;
-    font-size:1.25rem;
+    margin-bottom:.65rem;
+
+    font-size:1.28rem;
     line-height:1.25;
 }
 
 .case-card > p{
-    margin-bottom:1.1rem;
+    margin-bottom:1.15rem;
+
     color:var(--muted);
     font-size:.9rem;
 }
 
-.process{
+.process-line{
     display:grid;
     grid-template-columns:repeat(4,1fr);
     gap:.35rem;
+
     margin-bottom:1rem;
 }
 
-.process div{
-    padding:.45rem .25rem;
+.process-step{
+    padding:.48rem .25rem;
 
     text-align:center;
 
-    border:1px solid var(--border);
-    border-radius:9px;
-
     background:#f8fafc;
 
+    border:1px solid var(--border);
+    border-radius:10px;
+
     color:#64748b;
+
     font-size:.65rem;
     font-weight:800;
 }
 
-.process span{
+.process-step span{
     display:block;
-    color:var(--primary);
-    font-size:.6rem;
+
+    margin-bottom:.08rem;
+
+    color:#6366f1;
+
+    font-size:.58rem;
+    font-weight:950;
 }
 
 .case-result{
     margin-bottom:.8rem;
 
+    color:#4f46e5;
+
     font-size:1.6rem;
     font-weight:950;
-
-    color:#4f46e5;
 }
 
-.case-btn{
+.case-button{
     width:100%;
+
     padding:.72rem;
 
-    border:1px solid #e2e8f0;
+    border:1px solid #dbe3ef;
     border-radius:13px;
 
-    background:#f8fafc;
-    color:#475569;
+    color:#4f46e5;
+
+    background:
+        linear-gradient(
+            135deg,
+            #eef2ff,
+            #f5f3ff
+        );
 
     font-weight:900;
 
-    transition:.25s;
+    transition:
+        transform .25s cubic-bezier(.34,1.56,.64,1),
+        background .25s ease,
+        color .25s ease;
 }
 
-.case-btn:hover{
+.case-button:hover{
+    transform:translateY(-3px);
+
     color:white;
-    background:#475569;
-    transform:translateY(-2px);
+
+    background:
+        linear-gradient(
+            135deg,
+            #6366f1,
+            #8b5cf6
+        );
 }
 
-/* =========================
+/* =========================================================
    TABS
-========================= */
+========================================================= */
 
-.tabs{
+.tabs-section{
     margin-top:4rem;
 }
 
 .tab-menu{
     display:flex;
-    gap:.55rem;
+    gap:.6rem;
+
     overflow-x:auto;
-    padding-bottom:.8rem;
+
+    padding:.25rem .1rem .8rem;
+
+    scrollbar-width:thin;
 }
 
 .tab-btn{
     flex:none;
 
-    padding:.65rem .95rem;
+    padding:.68rem 1rem;
+
+    color:#64748b;
+    background:rgba(255,255,255,.9);
 
     border:1px solid var(--border);
     border-radius:999px;
 
-    background:white;
-    color:#64748b;
+    font-weight:850;
 
-    font-weight:800;
-
-    transition:.25s;
+    transition:
+        transform .25s cubic-bezier(.34,1.56,.64,1),
+        box-shadow .25s ease,
+        background .25s ease,
+        color .25s ease;
 }
 
 .tab-btn:hover{
-    transform:translateY(-2px);
+    color:#4f46e5;
+    transform:translateY(-3px);
+    box-shadow:0 8px 18px rgba(99,102,241,.11);
 }
 
 .tab-btn.active{
     color:white;
     border-color:transparent;
-    background:linear-gradient(135deg,var(--primary),var(--purple));
+
+    background:
+        linear-gradient(
+            135deg,
+            #6366f1,
+            #8b5cf6
+        );
+
+    box-shadow:
+        0 8px 20px rgba(99,102,241,.24);
 }
 
 .tab-content{
@@ -602,8 +940,9 @@ img{
 
     padding:1.5rem;
 
-    background:rgba(255,255,255,.92);
-    border:1px solid var(--border);
+    background:rgba(255,255,255,.9);
+
+    border:2px solid white;
     border-radius:var(--radius);
 
     box-shadow:var(--shadow);
@@ -611,89 +950,103 @@ img{
 
 .tab-content.active{
     display:block;
-    animation:fadeUp .35s ease;
+    animation:fadeUp .4s ease;
 }
 
-/* =========================
+/* =========================================================
    EXPERIENCE
-========================= */
+========================================================= */
 
-.job{
-    padding:1.3rem;
+.job-card{
     margin-bottom:1rem;
+    padding:1.35rem;
+
+    background:rgba(255,255,255,.78);
 
     border:1px solid var(--border);
-    border-radius:18px;
+    border-radius:19px;
 
-    background:#fff;
-
-    transition:.25s;
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease,
+        border-color .3s ease;
 }
 
-.job:hover{
+.job-card:last-child{
+    margin-bottom:0;
+}
+
+.job-card:hover{
     transform:translateY(-3px);
-    box-shadow:0 12px 25px rgba(51,65,85,.08);
+
+    background:white;
+    border-color:#c7d2fe;
+
+    box-shadow:0 14px 30px rgba(79,70,229,.08);
 }
 
 .job-header{
     display:flex;
     justify-content:space-between;
-    gap:1rem;
+    align-items:flex-start;
     flex-wrap:wrap;
+    gap:1rem;
 
     margin-bottom:.8rem;
 }
 
 .job-title{
-    font-weight:900;
     font-size:1.08rem;
+    font-weight:950;
 }
 
-.company{
-    color:var(--primary);
-    font-weight:800;
+.job-company{
+    color:#6366f1;
+
     font-size:.88rem;
+    font-weight:850;
 }
 
-.date{
-    padding:.2rem .6rem;
+.job-badge{
+    padding:.25rem .7rem;
+
+    color:#6366f1;
+    background:#eef2ff;
 
     border-radius:999px;
-
-    background:#f1f5f9;
-    color:#64748b;
 
     font-size:.7rem;
     font-weight:900;
 }
 
-.job ul{
-    padding-left:1.2rem;
+.job-card ul{
+    padding-left:1.25rem;
+
     color:var(--muted);
     font-size:.9rem;
 }
 
-.job li{
-    margin-bottom:.4rem;
+.job-card li{
+    margin-bottom:.45rem;
 }
 
 .impact-box{
     display:grid;
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:1fr 1fr;
     gap:.65rem;
 
     margin-top:1rem;
 }
 
 .impact-item{
-    padding:.8rem;
-
-    border:1px solid var(--border);
-    border-radius:12px;
-
-    background:#f8fafc;
+    padding:.85rem;
 
     color:#64748b;
+    background:#f8fafc;
+
+    border:1px solid var(--border);
+    border-radius:13px;
+
     font-size:.82rem;
 }
 
@@ -701,39 +1054,47 @@ img{
     color:#4f46e5;
 }
 
-/* =========================
+/* =========================================================
    ABOUT
-========================= */
+========================================================= */
 
 .about-list{
-    padding-left:1.2rem;
+    padding-left:1.25rem;
+
     color:var(--muted);
 }
 
 .about-list li{
-    margin-bottom:.45rem;
+    margin-bottom:.55rem;
 }
 
 .acnh-box{
     margin-top:1.5rem;
     padding:1rem;
 
-    border:1px solid var(--border);
-    border-radius:18px;
+    background:
+        linear-gradient(
+            135deg,
+            #f8fafc,
+            #eef2ff
+        );
 
-    background:#f8fafc;
+    border:1px solid #dbe3ef;
+    border-radius:20px;
 }
 
 .acnh-title{
-    margin-bottom:.8rem;
-    font-weight:900;
-    color:#475569;
+    margin-bottom:.85rem;
+
+    color:#4f46e5;
+
+    font-weight:950;
 }
 
 .acnh-gallery{
     display:grid;
     grid-template-columns:repeat(2,1fr);
-    gap:.7rem;
+    gap:.75rem;
 }
 
 .acnh-item{
@@ -742,8 +1103,9 @@ img{
 
     aspect-ratio:16/9;
 
-    border-radius:14px;
     background:#111;
+
+    border-radius:15px;
 
     cursor:zoom-in;
 }
@@ -751,201 +1113,416 @@ img{
 .acnh-item img{
     width:100%;
     height:100%;
-    object-fit:cover;
+
     display:block;
-    transition:.35s;
+    object-fit:cover;
+
+    transition:
+        transform .4s cubic-bezier(.34,1.56,.64,1),
+        filter .4s ease;
 }
 
 .acnh-item:hover img{
-    transform:scale(1.05);
+    transform:scale(1.06);
     filter:brightness(.8);
 }
 
-.zoom-icon{
+.image-zoom{
     position:absolute;
+
     right:10px;
     bottom:10px;
 
-    width:35px;
-    height:35px;
+    width:38px;
+    height:38px;
 
     display:grid;
     place-items:center;
 
+    background:rgba(255,255,255,.92);
+
     border-radius:50%;
-    background:rgba(255,255,255,.9);
+
+    box-shadow:0 6px 16px rgba(0,0,0,.15);
 
     pointer-events:none;
+
+    transition:.3s;
 }
 
-/* =========================
+.acnh-item:hover .image-zoom{
+    transform:rotate(8deg) scale(1.08);
+}
+
+/* =========================================================
    CATS
-========================= */
+========================================================= */
 
-.cat-card{
+.cat-group-card{
     margin-top:1.5rem;
-    padding:1rem;
-
-    border:1px solid var(--border);
-    border-radius:20px;
+    padding:1.25rem;
 
     background:white;
+
+    border:1px solid var(--border);
+    border-radius:22px;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.04);
 }
 
-/* 不裁切直式照片 */
-.cat-img{
+.cat-group-img{
     display:block;
 
     width:min(100%,430px);
     height:auto;
+    max-height:none;
 
     margin:auto;
 
     object-fit:contain;
+    object-position:center;
 
-    border-radius:16px;
+    border-radius:18px;
     border:1px solid var(--border);
+
+    box-shadow:
+        0 9px 24px rgba(51,65,85,.08);
 
     cursor:zoom-in;
 
-    box-shadow:0 8px 20px rgba(0,0,0,.07);
+    transition:
+        transform .35s cubic-bezier(.34,1.56,.64,1);
 }
 
-.cat-list{
+.cat-group-img:hover{
+    transform:scale(1.015) rotate(.3deg);
+}
+
+.cat-intro-list{
     list-style:none;
+    padding:0;
     margin-top:1rem;
 }
 
-.cat-list li{
-    margin-bottom:.65rem;
+.cat-intro-list li{
+    margin-bottom:.7rem;
+
     color:var(--muted);
     font-size:.9rem;
 }
 
 .cat-summary{
     margin-top:1rem;
+
+    color:#4f46e5;
+
     text-align:center;
     font-weight:900;
-    color:#4f46e5;
 }
 
-/* =========================
+/* =========================================================
    SKILLS
-========================= */
+========================================================= */
+
+.skills-intro{
+    margin-bottom:1.7rem;
+    padding:.9rem 1rem;
+
+    color:#64748b;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(99,102,241,.09),
+            rgba(96,165,250,.07)
+        );
+
+    border:1px solid rgba(99,102,241,.12);
+    border-radius:16px;
+
+    font-size:.87rem;
+    font-weight:700;
+}
+
+.skills-sparkle{
+    display:inline-block;
+    margin-right:.3rem;
+
+    animation:sparkleBounce 1.8s ease-in-out infinite;
+}
+
+@keyframes sparkleBounce{
+    0%,100%{
+        transform:translateY(0) rotate(0deg);
+    }
+
+    50%{
+        transform:translateY(-4px) rotate(12deg);
+    }
+}
 
 .skill-group{
-    margin-bottom:1.4rem;
+    margin-bottom:2rem;
+}
+
+.skill-group:last-child{
+    margin-bottom:0;
 }
 
 .skill-title{
-    margin-bottom:.6rem;
+    display:flex;
+    align-items:center;
+    gap:.3rem;
+
+    margin-bottom:.75rem;
+
     color:#4f46e5;
-    font-weight:900;
+
+    font-size:1rem;
+    font-weight:950;
 }
 
-.tags{
+.tag-group{
     display:flex;
     flex-wrap:wrap;
-    gap:.5rem;
+    gap:.58rem;
 }
 
 .tag{
-    padding:.5rem .8rem;
+    position:relative;
 
-    border:1px solid var(--border);
+    appearance:none;
+    -webkit-appearance:none;
+
+    padding:.57rem .92rem;
+
+    color:#1e293b;
+    background:rgba(255,255,255,.94);
+
+    border:1px solid #dbe3ef;
     border-radius:999px;
 
-    background:white;
+    font-size:.79rem;
+    font-weight:760;
 
-    font-size:.78rem;
-    font-weight:700;
+    cursor:pointer;
 
-    transition:.25s;
+    transition:
+        transform .22s cubic-bezier(.34,1.56,.64,1),
+        box-shadow .22s ease,
+        background .22s ease,
+        color .22s ease,
+        border-color .22s ease;
+}
+
+.tag::after{
+    content:"↗";
+
+    display:inline-block;
+
+    margin-left:.32rem;
+
+    color:#818cf8;
+
+    font-size:.68rem;
+
+    opacity:0;
+
+    transform:translate(-3px,3px);
+
+    transition:.2s;
 }
 
 .tag:hover{
     color:white;
-    background:#475569;
-    border-color:#475569;
-    transform:translateY(-2px);
+
+    border-color:transparent;
+
+    background:
+        linear-gradient(
+            135deg,
+            #6366f1,
+            #8b5cf6
+        );
+
+    transform:
+        translateY(-4px)
+        rotate(-1deg)
+        scale(1.025);
+
+    box-shadow:
+        0 10px 22px rgba(99,102,241,.19);
 }
 
-/* =========================
+.tag:nth-child(even):hover{
+    transform:
+        translateY(-4px)
+        rotate(1deg)
+        scale(1.025);
+}
+
+.tag:hover::after{
+    color:white;
+
+    opacity:1;
+
+    transform:translate(0,0);
+}
+
+.tag:active{
+    transform:
+        translateY(-1px)
+        scale(.98);
+}
+
+.tool-tag{
+    background:
+        linear-gradient(
+            135deg,
+            #eef2ff,
+            #ffffff
+        );
+
+    border-color:#c7d2fe;
+}
+
+/* =========================================================
    EDUCATION
-========================= */
+========================================================= */
 
-.edu{
-    padding:1.1rem;
-    margin-bottom:.8rem;
-
-    border:1px solid var(--border);
-    border-radius:16px;
+.education-card{
+    margin-bottom:1rem;
+    padding:1.2rem;
 
     background:white;
+
+    border:1px solid var(--border);
+    border-radius:18px;
 }
 
-.edu strong{
+.education-card:last-child{
+    margin-bottom:0;
+}
+
+.education-card strong{
     display:block;
+
     margin-bottom:.2rem;
+
+    font-size:1rem;
 }
 
-.edu p{
+.education-card p{
     color:var(--muted);
+
     font-size:.88rem;
 }
 
-/* =========================
+/* =========================================================
    FOOTER
-========================= */
+========================================================= */
 
-.footer{
+.footer-cta{
     margin:4rem 0 2rem;
-    padding:2.8rem 1.5rem;
+    padding:3rem 1.5rem;
 
     text-align:center;
 
-    background:rgba(255,255,255,.92);
-    border:1px solid var(--border);
+    position:relative;
+    overflow:hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.95),
+            rgba(238,242,255,.92)
+        );
+
+    border:2px solid white;
     border-radius:var(--radius);
 
     box-shadow:var(--shadow);
 }
 
-.footer h2{
-    margin-bottom:.4rem;
-    font-size:clamp(1.6rem,4vw,2.3rem);
+.footer-cta::before{
+    content:"✦";
+    position:absolute;
+
+    left:8%;
+    top:18%;
+
+    color:#a5b4fc;
+    font-size:1.5rem;
+
+    animation:bounce 2.4s ease-in-out infinite;
 }
 
-.footer p{
-    margin-bottom:1.2rem;
+.footer-cta::after{
+    content:"✧";
+    position:absolute;
+
+    right:9%;
+    bottom:18%;
+
+    color:#93c5fd;
+    font-size:1.7rem;
+
+    animation:bounce 2.8s ease-in-out infinite reverse;
+}
+
+.footer-cta h2{
+    margin-bottom:.5rem;
+
+    font-size:clamp(1.6rem,4vw,2.35rem);
+}
+
+.footer-cta p{
+    margin-bottom:1.25rem;
+
     color:var(--muted);
 }
 
-.cta{
-    display:inline-block;
+.cta-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:.4rem;
 
-    padding:.75rem 1.4rem;
-
-    border-radius:999px;
+    padding:.78rem 1.45rem;
 
     color:white;
-    background:linear-gradient(135deg,#4f46e5,#475569);
+
+    background:
+        linear-gradient(
+            135deg,
+            #6366f1,
+            #8b5cf6
+        );
+
+    border-radius:999px;
 
     text-decoration:none;
     font-weight:900;
 
-    transition:.25s;
+    box-shadow:
+        0 9px 24px rgba(99,102,241,.22);
+
+    transition:
+        transform .28s cubic-bezier(.34,1.56,.64,1),
+        box-shadow .28s ease;
 }
 
-.cta:hover{
-    transform:translateY(-3px);
+.cta-btn:hover{
+    transform:translateY(-4px) scale(1.04);
+
+    box-shadow:
+        0 14px 30px rgba(99,102,241,.26);
 }
 
-/* =========================
+/* =========================================================
    MODAL
-========================= */
+========================================================= */
 
-.modal{
+.modal-overlay{
     position:fixed;
     inset:0;
     z-index:1000;
@@ -956,16 +1533,16 @@ img{
 
     padding:1rem;
 
-    background:rgba(15,23,42,.55);
-    backdrop-filter:blur(8px);
+    background:rgba(15,23,42,.5);
+    backdrop-filter:blur(10px);
 
     opacity:0;
     pointer-events:none;
 
-    transition:.25s;
+    transition:opacity .3s ease;
 }
 
-.modal.active{
+.modal-overlay.active{
     opacity:1;
     pointer-events:auto;
 }
@@ -974,28 +1551,38 @@ img{
     position:relative;
 
     width:min(720px,100%);
-    max-height:88vh;
+    max-height:90vh;
+
     overflow-y:auto;
 
-    padding:1.8rem;
+    padding:2rem;
 
     background:white;
-    border-radius:24px;
 
-    box-shadow:0 30px 80px rgba(0,0,0,.25);
+    border-radius:26px;
 
-    transform:translateY(15px) scale(.97);
-    transition:.3s;
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.25);
+
+    transform:
+        translateY(18px)
+        scale(.96);
+
+    transition:
+        transform .35s cubic-bezier(.34,1.56,.64,1);
 }
 
-.modal.active .modal-card{
-    transform:none;
+.modal-overlay.active .modal-card{
+    transform:
+        translateY(0)
+        scale(1);
 }
 
-.close{
+.modal-close{
     position:absolute;
-    right:1rem;
+
     top:1rem;
+    right:1rem;
 
     width:38px;
     height:38px;
@@ -1003,30 +1590,49 @@ img{
     border:none;
     border-radius:50%;
 
+    color:#64748b;
     background:#f1f5f9;
-    color:#475569;
 
-    font-weight:900;
+    font-weight:950;
+
+    transition:.25s;
+}
+
+.modal-close:hover{
+    transform:rotate(8deg) scale(1.05);
+
+    color:white;
+    background:#6366f1;
 }
 
 .modal-title{
-    padding-right:45px;
+    padding-right:48px;
     margin-bottom:.35rem;
 
-    font-size:1.8rem;
-    line-height:1.15;
-
     color:#334155;
+
+    font-size:1.85rem;
+    line-height:1.15;
+    font-weight:950;
 }
 
 .modal-subtitle{
     margin-bottom:1rem;
-    color:#4f46e5;
+
+    color:#6366f1;
+
+    font-size:.95rem;
     font-weight:900;
 }
 
 .modal-body{
     color:var(--muted);
+
+    font-size:.94rem;
+}
+
+.modal-body p{
+    margin-bottom:.6rem;
 }
 
 .detail-grid{
@@ -1037,42 +1643,51 @@ img{
     margin-top:1.2rem;
 }
 
-.detail{
+.detail-item{
     padding:.9rem;
+
+    background:#f8fafc;
 
     border:1px solid var(--border);
     border-radius:14px;
-
-    background:#f8fafc;
 }
 
-.detail strong{
+.detail-label{
     display:block;
+
     margin-bottom:.25rem;
 
-    color:#4f46e5;
+    color:#6366f1;
 
-    font-size:.72rem;
+    font-size:.7rem;
+    font-weight:950;
     letter-spacing:.08em;
     text-transform:uppercase;
+}
+
+.detail-text{
+    color:#334155;
+
+    font-size:.82rem;
+    font-weight:650;
 }
 
 .result-box{
     margin-top:1rem;
     padding:1rem;
 
-    border:1px solid #dbe4f0;
-    border-radius:14px;
-
+    color:#334155;
     background:#eef2ff;
 
-    color:#334155;
-    font-weight:800;
+    border:1px solid #c7d2fe;
+    border-radius:14px;
+
+    font-weight:850;
 }
 
-/* =========================
+/* =========================================================
    LIGHTBOX
-========================= */
+========================================================= */
 
 .lightbox{
     position:fixed;
@@ -1085,12 +1700,13 @@ img{
 
     padding:1.5rem;
 
-    background:rgba(15,23,42,.9);
+    background:rgba(15,23,42,.88);
+    backdrop-filter:blur(10px);
 
     opacity:0;
     pointer-events:none;
 
-    transition:.25s;
+    transition:.3s ease;
 }
 
 .lightbox.active{
@@ -1104,13 +1720,15 @@ img{
 
     object-fit:contain;
 
-    border-radius:14px;
+    border-radius:16px;
 
-    box-shadow:0 30px 80px rgba(0,0,0,.4);
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.4);
 }
 
 .lightbox-close{
     position:absolute;
+
     top:20px;
     right:20px;
 
@@ -1120,70 +1738,89 @@ img{
     border:none;
     border-radius:50%;
 
+    color:#334155;
     background:white;
 
-    font-size:1.2rem;
-    font-weight:900;
+    font-size:1.1rem;
+    font-weight:950;
 }
 
-/* =========================
+/* =========================================================
    BACK TO TOP
-========================= */
+========================================================= */
 
-.top{
+.back-to-top{
     position:fixed;
-    right:20px;
-    bottom:20px;
-    z-index:90;
 
-    width:46px;
-    height:46px;
+    right:22px;
+    bottom:22px;
+
+    width:48px;
+    height:48px;
+
+    display:grid;
+    place-items:center;
+
+    color:#4f46e5;
+    background:white;
 
     border:1px solid var(--border);
     border-radius:50%;
 
-    background:white;
-    color:#4f46e5;
-
-    box-shadow:0 8px 20px rgba(0,0,0,.1);
+    box-shadow:
+        0 8px 22px rgba(0,0,0,.12);
 
     opacity:0;
     pointer-events:none;
 
-    transition:.25s;
+    transition:
+        transform .28s cubic-bezier(.34,1.56,.64,1),
+        opacity .28s ease,
+        background .28s ease,
+        color .28s ease;
+
+    z-index:90;
 }
 
-.top.show{
+.back-to-top.show{
     opacity:1;
     pointer-events:auto;
 }
 
-/* =========================
+.back-to-top:hover{
+    transform:translateY(-5px);
+
+    color:white;
+    background:#6366f1;
+}
+
+/* =========================================================
    LANGUAGE
-========================= */
+========================================================= */
 
 .lang-hide{
     display:none!important;
 }
 
-/* =========================
+/* =========================================================
    ANIMATION
-========================= */
+========================================================= */
 
 @keyframes fadeUp{
     from{
         opacity:0;
-        transform:translateY(20px);
+        transform:translateY(22px);
     }
+
     to{
         opacity:1;
-        transform:none;
+        transform:translateY(0);
     }
 }
 
-/* =========================
-   MOBILE
-========================= */
+/* =========================================================
+   RESPONSIVE
+========================================================= */
 
 @media(max-width:950px){
 
@@ -1200,15 +1837,17 @@ img{
 
     .hero{
         grid-template-columns:1fr;
-        text-align:center;
+
         padding:1.5rem;
+
+        text-align:center;
     }
 
-    .profile-wrap{
+    .profile-container{
         margin:auto;
     }
 
-    .contact{
+    .contact-info{
         justify-content:center;
     }
 
@@ -1221,7 +1860,7 @@ img{
 @media(max-width:560px){
 
     .container,
-    .nav{
+    .nav-container{
         width:calc(100% - 20px);
     }
 
@@ -1229,12 +1868,24 @@ img{
         grid-template-columns:1fr;
     }
 
+    .metric-card{
+        min-height:190px;
+    }
+
     .acnh-gallery{
         grid-template-columns:1fr;
     }
 
-    .process{
+    .process-line{
         grid-template-columns:repeat(2,1fr);
+    }
+
+    .nav-btn{
+        display:none;
+    }
+
+    .logo{
+        font-size:.95rem;
     }
 
     .hero h1{
@@ -1246,12 +1897,12 @@ img{
         margin-left:.2rem;
     }
 
-    .nav-btn{
-        display:none;
-    }
-
     .tab-content{
         padding:1rem;
+    }
+
+    .modal-card{
+        padding:1.4rem;
     }
 }
 </style>
@@ -1259,54 +1910,79 @@ img{
 
 <body>
 
-<div class="shape shape1"></div>
-<div class="shape shape2"></div>
+<div class="shape shape-1"></div>
+<div class="shape shape-2"></div>
+<div class="shape shape-3"></div>
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
 
 <header class="header">
-    <div class="nav">
 
-        <div class="logo">Maia Mak</div>
+    <div class="nav-container">
+
+        <div class="logo">
+            <span class="logo-dot"></span>
+            Maia Mak
+        </div>
 
         <div class="nav-actions">
 
-            <a href="resume.pdf"
-               download="Maia_Mak_Resume.pdf"
-               class="nav-btn">
-
+            <a
+                href="resume.pdf"
+                download="Maia_Mak_Resume.pdf"
+                target="_blank"
+                class="nav-btn"
+            >
                 📄
                 <span class="lang-en lang-hide">PDF Resume</span>
                 <span class="lang-zh">下载简历</span>
             </a>
 
-            <button class="lang-btn" id="languageButton"
-                    onclick="toggleLanguage()">
+            <button
+                class="lang-btn"
+                id="languageButton"
+                onclick="toggleLanguage()"
+            >
                 English
             </button>
 
         </div>
 
     </div>
+
 </header>
 
 <main class="container">
 
-<!-- =========================
+<!-- =========================================================
      HERO
-========================= -->
+========================================================= -->
 
 <section class="hero">
 
-    <div class="profile-wrap" onclick="profileClick()">
+    <div
+        class="profile-container"
+        onclick="triggerProfileEasterEgg()"
+    >
 
-        <div class="profile-message" id="profileMessage">
-            Hi! 👋
+        <div
+            class="profile-bubble"
+            id="profileBubble"
+        >
+            点我点我！✨
         </div>
 
-        <img src="profile.jpg"
-             alt="Maia Mak"
-             class="profile">
+        <img
+            src="profile.jpg"
+            alt="Maia Mak"
+            class="profile-img"
+        >
 
-        <span class="profile-badge">✨</span>
+        <span class="profile-badge">
+            ✨
+        </span>
 
     </div>
 
@@ -1314,15 +1990,17 @@ img{
 
         <h1>
             Maia Mak Ke Xin
-            <span class="chinese-name">麦可欣</span>
+            <span class="chinese-name">
+                麦可欣
+            </span>
         </h1>
 
         <h2 class="lang-en lang-hide">
-            Regional QA Lead | Operations & Quality Governance Specialist
+            Regional QA Lead | Operations & Quality Governance Specialist 🚀
         </h2>
 
         <h2 class="lang-zh">
-            区域质量保证 (QA) 负责人 | 运营优化与合规风控专家
+            区域质量保证 (QA) 负责人 | 运营优化与合规风控专家 🚀
         </h2>
 
         <div class="bio lang-en lang-hide">
@@ -1335,35 +2013,44 @@ img{
             赋能跨国团队，交付卓越的运营品质。”
         </div>
 
-        <p class="description lang-en lang-hide">
+        <p class="hero-description lang-en lang-hide">
             Regional QA Lead overseeing high-volume audits and operational
             performance across 7+ global markets. Experienced in process
             standardization, compliance risk mitigation, data-driven
             performance analysis and cross-functional operational governance.
         </p>
 
-        <p class="description lang-zh">
+        <p class="hero-description lang-zh">
             深耕区域 QA 质量管理领域，主导覆盖 7+ 全球市场的高强度服务质量审计
-            与运营绩效优化。擅长流程标准化、合规风控、数据驱动绩效分析及跨部门协同交付。
+            与运营绩效优化。擅长流程标准化、合规风控降本增效、数据驱动的绩效分析
+            及跨部门协同交付。
         </p>
 
-        <div class="contact">
+        <div class="contact-info">
 
-            <span class="pill">
+            <span class="contact-pill">
                 📍 Selangor, Malaysia
             </span>
 
-            <a href="tel:+60193906809" class="pill">
+            <a
+                href="tel:+60193906809"
+                class="contact-pill"
+            >
                 📞 +60 19-390 6809
             </a>
 
-            <a href="mailto:kexin0410@gmail.com" class="pill">
+            <a
+                href="mailto:kexin0410@gmail.com"
+                class="contact-pill"
+            >
                 ✉️ kexin0410@gmail.com
             </a>
 
-            <a href="https://www.linkedin.com/in/maia-mak-ke-xin-19969a1a8/"
-               target="_blank"
-               class="pill linkedin">
+            <a
+                href="https://www.linkedin.com/in/maia-mak-ke-xin-19969a1a8/"
+                target="_blank"
+                class="contact-pill linkedin-pill"
+            >
                 🔗 LinkedIn
             </a>
 
@@ -1373,15 +2060,17 @@ img{
 
 </section>
 
-<!-- =========================
+<!-- =========================================================
      IMPACT
-========================= -->
+========================================================= -->
 
 <section id="impact">
 
     <div class="section-heading">
 
-        <div class="eyebrow">Impact at a glance</div>
+        <div class="eyebrow">
+            Impact at a glance
+        </div>
 
         <h2 class="lang-en lang-hide">
             Results that speak before I do.
@@ -1396,17 +2085,23 @@ img{
         </p>
 
         <p class="lang-zh">
-            四个可以量化的成果。点击数字查看背后的故事。
+            四个可以量化的成果。点击数字，看看背后的故事。
         </p>
 
     </div>
 
     <div class="metric-grid">
 
-        <div class="metric-card" onclick="openMetric('m1')">
+        <!-- METRIC 1 -->
+
+        <div
+            class="metric-card"
+            onclick="openMetric('m1')"
+        >
 
             <div class="metric-value">
-                80% → <span class="counter" data-target="95">0</span>%+
+                80% →
+                <span class="counter" data-target="95">0</span>%+
             </div>
 
             <div class="metric-label lang-en lang-hide">
@@ -1417,14 +2112,24 @@ img{
                 资深专员 QA 成绩提升
             </div>
 
-            <div class="hint">
-                <span class="lang-en lang-hide">Click for context →</span>
-                <span class="lang-zh">点击查看详情 →</span>
+            <div class="click-hint">
+                <span class="lang-en lang-hide">
+                    Click for context →
+                </span>
+
+                <span class="lang-zh">
+                    点击查看详情 →
+                </span>
             </div>
 
         </div>
 
-        <div class="metric-card" onclick="openMetric('m2')">
+        <!-- METRIC 2 -->
+
+        <div
+            class="metric-card"
+            onclick="openMetric('m2')"
+        >
 
             <div class="metric-value">
                 −<span class="counter" data-target="80">0</span>%
@@ -1438,14 +2143,24 @@ img{
                 违规政策风险降低
             </div>
 
-            <div class="hint">
-                <span class="lang-en lang-hide">Click for context →</span>
-                <span class="lang-zh">点击查看详情 →</span>
+            <div class="click-hint">
+                <span class="lang-en lang-hide">
+                    Click for context →
+                </span>
+
+                <span class="lang-zh">
+                    点击查看详情 →
+                </span>
             </div>
 
         </div>
 
-        <div class="metric-card" onclick="openMetric('m3')">
+        <!-- METRIC 3 -->
+
+        <div
+            class="metric-card"
+            onclick="openMetric('m3')"
+        >
 
             <div class="metric-value">
                 <span class="counter" data-target="90">0</span>%+
@@ -1459,14 +2174,24 @@ img{
                 QA 团队评分标定一致性
             </div>
 
-            <div class="hint">
-                <span class="lang-en lang-hide">Click for context →</span>
-                <span class="lang-zh">点击查看详情 →</span>
+            <div class="click-hint">
+                <span class="lang-en lang-hide">
+                    Click for context →
+                </span>
+
+                <span class="lang-zh">
+                    点击查看详情 →
+                </span>
             </div>
 
         </div>
 
-        <div class="metric-card" onclick="openMetric('m4')">
+        <!-- METRIC 4 -->
+
+        <div
+            class="metric-card"
+            onclick="openMetric('m4')"
+        >
 
             <div class="metric-value">
                 $<span class="counter" data-target="612">0</span>K+
@@ -1480,9 +2205,14 @@ img{
                 Q4 单季度创造广告收益
             </div>
 
-            <div class="hint">
-                <span class="lang-en lang-hide">Click for context →</span>
-                <span class="lang-zh">点击查看详情 →</span>
+            <div class="click-hint">
+                <span class="lang-en lang-hide">
+                    Click for context →
+                </span>
+
+                <span class="lang-zh">
+                    点击查看详情 →
+                </span>
             </div>
 
         </div>
@@ -1491,9 +2221,9 @@ img{
 
 </section>
 
-<!-- =========================
+<!-- =========================================================
      HOW I DID IT
-========================= -->
+========================================================= -->
 
 <section id="case-studies">
 
@@ -1527,7 +2257,9 @@ img{
 
         <article class="case-card">
 
-            <div class="case-number">01 / QUALITY</div>
+            <div class="case-number">
+                01 / QUALITY
+            </div>
 
             <h3 class="lang-en lang-hide">
                 Turning an 80% QA baseline into 95%+
@@ -1538,29 +2270,54 @@ img{
             </h3>
 
             <p class="lang-en lang-hide">
-                Targeted coaching, root-cause analysis and performance
-                alignment for tenured agents.
+                Targeted coaching, RCA, calibration and performance alignment
+                for tenured agents.
             </p>
 
             <p class="lang-zh">
-                通过针对性辅导、根因分析与绩效对齐，
+                通过针对性辅导、RCA、Calibration 与绩效对齐，
                 改善资深专员的质量表现。
             </p>
 
-            <div class="process">
-                <div><span>01</span>Problem</div>
-                <div><span>02</span>Diagnose</div>
-                <div><span>03</span>Action</div>
-                <div><span>04</span>Result</div>
+            <div class="process-line">
+
+                <div class="process-step">
+                    <span>01</span>
+                    Problem
+                </div>
+
+                <div class="process-step">
+                    <span>02</span>
+                    Diagnose
+                </div>
+
+                <div class="process-step">
+                    <span>03</span>
+                    Action
+                </div>
+
+                <div class="process-step">
+                    <span>04</span>
+                    Result
+                </div>
+
             </div>
 
             <div class="case-result">
                 80% → 95%+
             </div>
 
-            <button class="case-btn" onclick="openCase('case1')">
-                <span class="lang-en lang-hide">SEE HOW I DID IT →</span>
-                <span class="lang-zh">看我是怎么做到的 →</span>
+            <button
+                class="case-button"
+                onclick="openCaseStudy('case1')"
+            >
+                <span class="lang-en lang-hide">
+                    SEE HOW I DID IT →
+                </span>
+
+                <span class="lang-zh">
+                    看我是怎么做到的 →
+                </span>
             </button>
 
         </article>
@@ -1569,7 +2326,9 @@ img{
 
         <article class="case-card">
 
-            <div class="case-number">02 / COMPLIANCE</div>
+            <div class="case-number">
+                02 / COMPLIANCE
+            </div>
 
             <h3 class="lang-en lang-hide">
                 Reducing policy risk by 80%
@@ -1580,29 +2339,54 @@ img{
             </h3>
 
             <p class="lang-en lang-hide">
-                Identified recurring compliance gaps and reinforced
-                SOP knowledge through targeted alignment.
+                Identified compliance gaps and reinforced SOP knowledge
+                through targeted alignment.
             </p>
 
             <p class="lang-zh">
-                找出重复发生的合规漏洞，通过 SOP 强化、
-                Quiz 与 Calibration 降低违规风险。
+                找出关键合规漏洞，再通过 SOP 强化、
+                Quiz 与 Calibration 降低重复违规。
             </p>
 
-            <div class="process">
-                <div><span>01</span>Risk</div>
-                <div><span>02</span>RCA</div>
-                <div><span>03</span>SOP</div>
-                <div><span>04</span>Impact</div>
+            <div class="process-line">
+
+                <div class="process-step">
+                    <span>01</span>
+                    Risk
+                </div>
+
+                <div class="process-step">
+                    <span>02</span>
+                    RCA
+                </div>
+
+                <div class="process-step">
+                    <span>03</span>
+                    SOP
+                </div>
+
+                <div class="process-step">
+                    <span>04</span>
+                    Impact
+                </div>
+
             </div>
 
             <div class="case-result">
                 −80%
             </div>
 
-            <button class="case-btn" onclick="openCase('case2')">
-                <span class="lang-en lang-hide">SEE HOW I DID IT →</span>
-                <span class="lang-zh">看我是怎么做到的 →</span>
+            <button
+                class="case-button"
+                onclick="openCaseStudy('case2')"
+            >
+                <span class="lang-en lang-hide">
+                    SEE HOW I DID IT →
+                </span>
+
+                <span class="lang-zh">
+                    看我是怎么做到的 →
+                </span>
             </button>
 
         </article>
@@ -1611,7 +2395,9 @@ img{
 
         <article class="case-card">
 
-            <div class="case-number">03 / CALIBRATION</div>
+            <div class="case-number">
+                03 / CALIBRATION
+            </div>
 
             <h3 class="lang-en lang-hide">
                 Building 90%+ scoring alignment
@@ -1631,20 +2417,45 @@ img{
                 降低 QA 团队之间的评分理解差异。
             </p>
 
-            <div class="process">
-                <div><span>01</span>Gap</div>
-                <div><span>02</span>Review</div>
-                <div><span>03</span>Align</div>
-                <div><span>04</span>Measure</div>
+            <div class="process-line">
+
+                <div class="process-step">
+                    <span>01</span>
+                    Gap
+                </div>
+
+                <div class="process-step">
+                    <span>02</span>
+                    Review
+                </div>
+
+                <div class="process-step">
+                    <span>03</span>
+                    Align
+                </div>
+
+                <div class="process-step">
+                    <span>04</span>
+                    Measure
+                </div>
+
             </div>
 
             <div class="case-result">
                 90%+
             </div>
 
-            <button class="case-btn" onclick="openCase('case3')">
-                <span class="lang-en lang-hide">SEE HOW I DID IT →</span>
-                <span class="lang-zh">看我是怎么做到的 →</span>
+            <button
+                class="case-button"
+                onclick="openCaseStudy('case3')"
+            >
+                <span class="lang-en lang-hide">
+                    SEE HOW I DID IT →
+                </span>
+
+                <span class="lang-zh">
+                    看我是怎么做到的 →
+                </span>
             </button>
 
         </article>
@@ -1653,7 +2464,9 @@ img{
 
         <article class="case-card">
 
-            <div class="case-number">04 / COMMERCIAL</div>
+            <div class="case-number">
+                04 / COMMERCIAL
+            </div>
 
             <h3 class="lang-en lang-hide">
                 From campaign optimization to $612K+ Q4 revenue
@@ -1665,7 +2478,7 @@ img{
 
             <p class="lang-en lang-hide">
                 Optimized 150+ advertiser accounts across campaign strategy,
-                Pixel implementation and performance.
+                Pixel and performance.
             </p>
 
             <p class="lang-zh">
@@ -1673,20 +2486,45 @@ img{
                 到整体账户表现进行优化。
             </p>
 
-            <div class="process">
-                <div><span>01</span>Audit</div>
-                <div><span>02</span>Strategy</div>
-                <div><span>03</span>Optimize</div>
-                <div><span>04</span>Scale</div>
+            <div class="process-line">
+
+                <div class="process-step">
+                    <span>01</span>
+                    Audit
+                </div>
+
+                <div class="process-step">
+                    <span>02</span>
+                    Strategy
+                </div>
+
+                <div class="process-step">
+                    <span>03</span>
+                    Optimize
+                </div>
+
+                <div class="process-step">
+                    <span>04</span>
+                    Scale
+                </div>
+
             </div>
 
             <div class="case-result">
                 $612K+
             </div>
 
-            <button class="case-btn" onclick="openCase('case4')">
-                <span class="lang-en lang-hide">SEE HOW I DID IT →</span>
-                <span class="lang-zh">看我是怎么做到的 →</span>
+            <button
+                class="case-button"
+                onclick="openCaseStudy('case4')"
+            >
+                <span class="lang-en lang-hide">
+                    SEE HOW I DID IT →
+                </span>
+
+                <span class="lang-zh">
+                    看我是怎么做到的 →
+                </span>
             </button>
 
         </article>
@@ -1695,177 +2533,174 @@ img{
 
 </section>
 
-<!-- =========================
+<!-- =========================================================
      TABS
-========================= -->
+========================================================= -->
 
-<section class="tabs">
+<section class="tabs-section">
 
     <div class="tab-menu">
 
-        <button class="tab-btn active"
-                onclick="switchTab('experience',this)">
+        <button
+            class="tab-btn active"
+            onclick="switchTab('experience',this)"
+        >
             💼
-            <span class="lang-en lang-hide">Experience</span>
-            <span class="lang-zh">工作经历</span>
+            <span class="lang-en lang-hide">
+                Experience
+            </span>
+
+            <span class="lang-zh">
+                工作经历
+            </span>
         </button>
 
-        <button class="tab-btn"
-                onclick="switchTab('about',this)">
+        <button
+            class="tab-btn"
+            onclick="switchTab('about',this)"
+        >
             🐱
-            <span class="lang-en lang-hide">About & Hobbies</span>
-            <span class="lang-zh">关于我 & 爱好</span>
+            <span class="lang-en lang-hide">
+                About & Hobbies
+            </span>
+
+            <span class="lang-zh">
+                关于我 & 个人爱好
+            </span>
         </button>
 
-        <button class="tab-btn"
-                onclick="switchTab('skills',this)">
+        <button
+            class="tab-btn"
+            onclick="switchTab('skills',this)"
+        >
             ⚡
-            <span class="lang-en lang-hide">Skills & Tools</span>
-            <span class="lang-zh">技能与工具</span>
+            <span class="lang-en lang-hide">
+                Skills & Tools
+            </span>
+
+            <span class="lang-zh">
+                技能与工具
+            </span>
         </button>
 
-        <button class="tab-btn"
-                onclick="switchTab('education',this)">
+        <button
+            class="tab-btn"
+            onclick="switchTab('education',this)"
+        >
             🎓
-            <span class="lang-en lang-hide">Education</span>
-            <span class="lang-zh">教育与语言</span>
+            <span class="lang-en lang-hide">
+                Education
+            </span>
+
+            <span class="lang-zh">
+                教育与语言
+            </span>
         </button>
 
     </div>
 
-<!-- =========================
+<!-- =========================================================
      EXPERIENCE
-========================= -->
+========================================================= -->
 
-<div id="experience" class="tab-content active">
+<div
+    id="experience"
+    class="tab-content active"
+>
 
-    <div class="job">
+    <!-- HEYTEA -->
+
+    <div class="job-card">
 
         <div class="job-header">
 
             <div>
-                <div class="job-title">
-                    Quality Assurance Specialist
+
+                <div class="job-title lang-en lang-hide">
+                    Quality Assurance Specialist (HEYTEA 喜茶) 🧋
                 </div>
 
-                <div class="company">
-                    HEYTEA · Concentrix · Kuala Lumpur, Malaysia
+                <div class="job-title lang-zh">
+                    质量分析师 (喜茶 HEYTEA) 🧋
                 </div>
+
+                <div class="job-company">
+                    Concentrix, Kuala Lumpur, Malaysia
+                </div>
+
             </div>
 
-            <span class="date">
+            <span class="job-badge">
                 July 2026 – Present
             </span>
 
         </div>
 
         <ul class="lang-en lang-hide">
+
             <li>
-                Conduct high-volume quality audits and performance evaluation
-                across customer service operations.
+                Lead quality assurance and service compliance operations
+                for HEYTEA's global operations across USA, Canada,
+                APAC markets and Greater China.
             </li>
+
             <li>
-                Identify quality, compliance and process gaps through structured
-                root-cause analysis.
+                Conduct 50+ quality evaluations daily and 250+ weekly
+                across 7+ global markets with zero SLA breach.
             </li>
+
             <li>
-                Partner with operational stakeholders to improve service
-                consistency and quality governance.
+                Uplifted tenured agent QA performance from an 80%
+                baseline to above 95% through root-cause analysis
+                and structured quality coaching.
             </li>
+
             <li>
-                Support coaching, process alignment and continuous improvement
-                initiatives based on audit findings.
+                Maintained 90%+ calibration alignment across QA
+                and leadership teams to improve scoring consistency.
             </li>
+
         </ul>
 
         <ul class="lang-zh">
-            <li>
-                负责客户服务运营的高强度质量审核与绩效评估。
-            </li>
-            <li>
-                通过结构化根因分析识别质量、合规与流程漏洞。
-            </li>
-            <li>
-                与运营相关团队协作，提升服务一致性及质量治理水平。
-            </li>
-            <li>
-                根据审核结果推动辅导、流程对齐及持续改善项目。
-            </li>
-        </ul>
 
-    </div>
+            <li>
+                主导喜茶 HEYTEA 涵盖美国、加拿大、亚太区及大中华区
+                的全球服务质量保证与合规监管。
+            </li>
 
-    <div class="job">
+            <li>
+                每日执行 50+ 笔、每周 250+ 笔跨区域服务质量评估，
+                覆盖 7+ 全球市场，并保持零 SLA 违规。
+            </li>
 
-        <div class="job-header">
+            <li>
+                通过根本原因分析 RCA 与结构化质量辅导，
+                将资深专员 QA 成绩从约 80% 提升至 95% 以上。
+            </li>
 
-            <div>
-                <div class="job-title">
-                    Senior Quality Evaluator
-                </div>
+            <li>
+                主持标定会议并维持 QA 与管理团队 90%+
+                的评分一致性。
+            </li>
 
-                <div class="company">
-                    Meta Program
-                </div>
-            </div>
-
-            <span class="date">
-                Oct 2024 – June 2026
-            </span>
-
-        </div>
-
-        <ul class="lang-en lang-hide">
-            <li>
-                Evaluated service quality, policy compliance and operational
-                execution across multiple markets.
-            </li>
-            <li>
-                Conducted root-cause analysis on recurring quality and
-                compliance defects.
-            </li>
-            <li>
-                Delivered targeted coaching and actionable feedback to improve
-                agent performance.
-            </li>
-            <li>
-                Facilitated calibration sessions to align scoring standards
-                across QA and operational stakeholders.
-            </li>
-            <li>
-                Supported SOP reinforcement and policy knowledge initiatives
-                to reduce recurring compliance risk.
-            </li>
-        </ul>
-
-        <ul class="lang-zh">
-            <li>
-                负责多个市场的服务质量、政策合规及运营执行审核。
-            </li>
-            <li>
-                针对重复发生的质量及合规问题进行根因分析。
-            </li>
-            <li>
-                通过针对性辅导及可执行反馈改善专员表现。
-            </li>
-            <li>
-                主导 Calibration，确保 QA 与运营团队评分标准一致。
-            </li>
-            <li>
-                推动 SOP 与政策知识强化，降低重复合规风险。
-            </li>
         </ul>
 
         <div class="impact-box">
 
             <div class="impact-item">
-                <strong>95%+</strong><br>
-                Tenured agent QA performance
+                <strong>250+ / week</strong><br>
+                Quality evaluations
             </div>
 
             <div class="impact-item">
-                <strong>−80%</strong><br>
-                Policy violation red flags
+                <strong>7+ Markets</strong><br>
+                Regional coverage
+            </div>
+
+            <div class="impact-item">
+                <strong>95%+</strong><br>
+                Tenured QA performance
             </div>
 
             <div class="impact-item">
@@ -1873,87 +2708,221 @@ img{
                 Calibration alignment
             </div>
 
+        </div>
+
+    </div>
+
+    <!-- META QA -->
+
+    <div class="job-card">
+
+        <div class="job-header">
+
+            <div>
+
+                <div class="job-title lang-en lang-hide">
+                    Senior Quality Evaluator (META) 🔍
+                </div>
+
+                <div class="job-title lang-zh">
+                    高级质量评估师 (META) 🔍
+                </div>
+
+                <div class="job-company">
+                    Concentrix, Kuala Lumpur, Malaysia
+                </div>
+
+            </div>
+
+            <span class="job-badge">
+                Oct 2024 – June 2026
+            </span>
+
+        </div>
+
+        <ul class="lang-en lang-hide">
+
+            <li>
+                Led QA across Meta's SEA and Traditional Mandarin markets
+                covering Sales, Technical and Creative operations.
+            </li>
+
+            <li>
+                Conducted 80+ audits per month using internal QMS tools
+                for consistent quality coverage and process compliance.
+            </li>
+
+            <li>
+                Uplifted tenured agent QA scores from 65% to 80%
+                and new hire scores from 50% to 75–85%
+                through structured performance frameworks.
+            </li>
+
+            <li>
+                Reduced policy violation red flags by 80%
+                by identifying compliance gaps and delivering
+                targeted SOP refreshers.
+            </li>
+
+            <li>
+                Maintained 85%+ calibration alignment across regional
+                stakeholders.
+            </li>
+
+        </ul>
+
+        <ul class="lang-zh">
+
+            <li>
+                负责 Meta 东南亚及繁体中文市场的销售、技术及广告创意运营
+                QA 质量监管与合规审核。
+            </li>
+
+            <li>
+                每月使用内部 QMS 系统完成 80+ 深度审计，
+                确保业务流程及质量标准一致。
+            </li>
+
+            <li>
+                通过结构化辅导，将资深团队 QA 成绩从 65%
+                提升至 80%，新员工从 50% 提升至 75–85%。
+            </li>
+
+            <li>
+                通过识别合规风险漏洞及针对性 SOP 强化，
+                将政策违规 Red Flag 降低 80%。
+            </li>
+
+            <li>
+                主持跨团队 Calibration，
+                维持 85%+ 的评分对齐度。
+            </li>
+
+        </ul>
+
+        <div class="impact-box">
+
             <div class="impact-item">
-                <strong>7+ Markets</strong><br>
-                Cross-market quality exposure
+                <strong>−80%</strong><br>
+                Policy red flags
+            </div>
+
+            <div class="impact-item">
+                <strong>80+ / month</strong><br>
+                Deep quality audits
+            </div>
+
+            <div class="impact-item">
+                <strong>65% → 80%</strong><br>
+                Tenured performance
+            </div>
+
+            <div class="impact-item">
+                <strong>50% → 75–85%</strong><br>
+                New hire performance
             </div>
 
         </div>
 
     </div>
 
-    <div class="job">
+    <!-- META SALES -->
+
+    <div class="job-card">
 
         <div class="job-header">
 
             <div>
-                <div class="job-title">
-                    Sales Advisor II / Marketing Pro
+
+                <div class="job-title lang-en lang-hide">
+                    Sales Advisor II (META Marketing Pro) 📈
                 </div>
 
-                <div class="company">
-                    Meta Program
+                <div class="job-title lang-zh">
+                    高级销售顾问 (META 营销专家) 📈
                 </div>
+
+                <div class="job-company">
+                    Concentrix, Kuala Lumpur, Malaysia
+                </div>
+
             </div>
 
-            <span class="date">
+            <span class="job-badge">
                 Feb 2023 – Oct 2024
             </span>
 
         </div>
 
         <ul class="lang-en lang-hide">
+
             <li>
-                Managed and optimized 150+ advertiser accounts.
+                Generated USD 612,458 in Q4 2023 revenue by optimizing
+                advertiser ad account performance and campaign strategies.
             </li>
+
             <li>
-                Advised advertisers on campaign structure, performance strategy,
-                targeting and optimization.
+                Increased client conversion rates by 185.71%
+                while reducing cost per result by 64.28%.
             </li>
+
             <li>
-                Supported Meta Pixel implementation and conversion optimization.
+                Managed 150+ advertiser accounts per quarter
+                across varying budget tiers from approximately
+                USD 1K to USD 50K.
             </li>
+
             <li>
-                Used performance data to identify opportunities for account
-                growth and improved campaign outcomes.
+                Recognized as CNX SBG Rockstar in Q4 2023
+                for outstanding revenue contribution and client satisfaction.
             </li>
+
         </ul>
 
         <ul class="lang-zh">
+
             <li>
-                管理并优化 150+ 广告主账户。
+                在 2023 年 Q4 通过优化广告主投放策略及账户结构，
+                创造 USD 612,458 广告收益。
             </li>
+
             <li>
-                为广告主提供广告结构、表现策略、受众定位及优化建议。
+                将客户转化率提升 185.71%，
+                同时将 Cost per Result 降低 64.28%。
             </li>
+
             <li>
-                支持 Meta Pixel 设置及转化优化。
+                每季度管理 150+ 广告主账户，
+                预算范围约 USD 1K 至 USD 50K。
             </li>
+
             <li>
-                通过表现数据识别账户增长机会并改善广告成效。
+                因卓越业绩表现与客户满意度，
+                荣获 2023 Q4 CNX SBG Rockstar。
             </li>
+
         </ul>
 
         <div class="impact-box">
 
             <div class="impact-item">
                 <strong>$612,458</strong><br>
-                Q4 revenue generated
+                Q4 revenue
             </div>
 
             <div class="impact-item">
-                <strong>185.71%</strong><br>
-                Conversion increase
+                <strong>+185.71%</strong><br>
+                Conversion rate
+            </div>
+
+            <div class="impact-item">
+                <strong>−64.28%</strong><br>
+                Cost per result
             </div>
 
             <div class="impact-item">
                 <strong>150+</strong><br>
                 Advertiser accounts
-            </div>
-
-            <div class="impact-item">
-                <strong>Performance</strong><br>
-                Data-driven account strategy
             </div>
 
         </div>
@@ -1962,11 +2931,14 @@ img{
 
 </div>
 
-<!-- =========================
+<!-- =========================================================
      ABOUT
-========================= -->
+========================================================= -->
 
-<div id="about" class="tab-content">
+<div
+    id="about"
+    class="tab-content"
+>
 
     <div class="section-heading" style="margin-top:0">
 
@@ -1985,209 +2957,587 @@ img{
     </div>
 
     <ul class="about-list lang-en lang-hide">
+
         <li>
-            🎨 Fine Arts background — I enjoy visual thinking, design and
-            creative problem-solving.
+            🐱 <strong>Cat Enthusiast:</strong>
+            Proud cat mom of three boys — Bubur, Keera and Ollie.
         </li>
+
         <li>
-            🎮 Animal Crossing is one of my favorite ways to unwind and build
-            tiny worlds.
+            🎮 <strong>Animal Crossing Mayor:</strong>
+            I love island design, custom layout planning and
+            building tiny virtual worlds.
         </li>
+
         <li>
-            🐱 Proud cat parent to Bubur, Keera and Ollie.
+            🏸 <strong>Badminton Player:</strong>
+            One of my favorite ways to stay active and recharge.
         </li>
+
         <li>
-            📊 I genuinely enjoy turning messy information into structured,
-            understandable systems.
+            🎨 <strong>Creative Mind:</strong>
+            My Fine Arts background shaped my visual thinking,
+            attention to detail and creative problem-solving.
         </li>
+
     </ul>
 
     <ul class="about-list lang-zh">
+
         <li>
-            🎨 Fine Arts 美术背景，让我习惯以视觉、结构与创意方式解决问题。
+            🐱 <strong>资深猫奴：</strong>
+            家有三个猫儿子 Bubur、Keera 和 Ollie。
         </li>
+
         <li>
-            🎮 Animal Crossing 是我最喜欢的放松方式之一，也很喜欢打造自己的小世界。
+            🎮 <strong>无人岛岛主：</strong>
+            喜欢 Animal Crossing 岛建设计、布局规划以及打造自己的小世界。
         </li>
+
         <li>
-            🐱 家里有三只猫：Bubur、Keera 和 Ollie。
+            🏸 <strong>羽毛球爱好者：</strong>
+            喜欢通过羽毛球保持活力，也很享受团队配合。
         </li>
+
         <li>
-            📊 我很享受把复杂、混乱的信息整理成清楚且可执行的系统。
+            🎨 <strong>美术背景：</strong>
+            Fine Arts 训练培养了我的视觉思维、细节敏感度及创意解决问题能力。
         </li>
+
     </ul>
+
+    <!-- ANIMAL CROSSING -->
 
     <div class="acnh-box">
 
-        <div class="acnh-title">
-            🎮 Animal Crossing
+        <div class="acnh-title lang-en lang-hide">
+            🎮 Animal Crossing Island Showcase
         </div>
 
-        <!-- acnh1 已移除 -->
+        <div class="acnh-title lang-zh">
+            🎮 动森无人岛日常与岛建展示
+        </div>
 
         <div class="acnh-gallery">
 
-            <div class="acnh-item" onclick="openImage('acnh2.jpg')">
-                <img src="acnh2.jpg" alt="Animal Crossing 2">
-                <div class="zoom-icon">🔍</div>
+            <!-- acnh1 intentionally removed -->
+
+            <div
+                class="acnh-item"
+                onclick="openImage('acnh2.jpg')"
+            >
+                <img
+                    src="acnh2.jpg"
+                    alt="Animal Crossing 2"
+                >
+                <div class="image-zoom">🔍</div>
             </div>
 
-            <div class="acnh-item" onclick="openImage('acnh3.jpg')">
-                <img src="acnh3.jpg" alt="Animal Crossing 3">
-                <div class="zoom-icon">🔍</div>
+            <div
+                class="acnh-item"
+                onclick="openImage('acnh3.jpg')"
+            >
+                <img
+                    src="acnh3.jpg"
+                    alt="Animal Crossing 3"
+                >
+                <div class="image-zoom">🔍</div>
             </div>
 
-            <div class="acnh-item" onclick="openImage('acnh4.jpg')">
-                <img src="acnh4.jpg" alt="Animal Crossing 4">
-                <div class="zoom-icon">🔍</div>
+            <div
+                class="acnh-item"
+                onclick="openImage('acnh4.jpg')"
+            >
+                <img
+                    src="acnh4.jpg"
+                    alt="Animal Crossing 4"
+                >
+                <div class="image-zoom">🔍</div>
             </div>
 
-            <div class="acnh-item" onclick="openImage('acnh5.jpg')">
-                <img src="acnh5.jpg" alt="Animal Crossing 5">
-                <div class="zoom-icon">🔍</div>
+            <div
+                class="acnh-item"
+                onclick="openImage('acnh5.jpg')"
+            >
+                <img
+                    src="acnh5.jpg"
+                    alt="Animal Crossing 5"
+                >
+                <div class="image-zoom">🔍</div>
             </div>
 
-            <div class="acnh-item" onclick="openImage('acnh6.jpg')">
-                <img src="acnh6.jpg" alt="Animal Crossing 6">
-                <div class="zoom-icon">🔍</div>
+            <div
+                class="acnh-item"
+                onclick="openImage('acnh6.jpg')"
+            >
+                <img
+                    src="acnh6.jpg"
+                    alt="Animal Crossing 6"
+                >
+                <div class="image-zoom">🔍</div>
             </div>
 
         </div>
 
     </div>
 
-    <div class="cat-card">
+    <!-- CATS -->
 
-        <div class="acnh-title">
-            🐱 Meet the Cats
+    <div class="cat-group-card">
+
+        <img
+            src="cats.jpg"
+            alt="Bubur, Keera and Ollie"
+            class="cat-group-img"
+            onclick="openImage('cats.jpg')"
+        >
+
+        <div class="lang-en lang-hide">
+
+            <ul class="cat-intro-list">
+
+                <li>
+                    🐄 <strong>Bubur</strong> |
+                    9–10-year-old cow cat,
+                    the senior gentleman of the family.
+                </li>
+
+                <li>
+                    🐯 <strong>Keera</strong> |
+                    4-year-old tabby,
+                    clingy, curious, easily scared and loves butt pats.
+                </li>
+
+                <li>
+                    🦁 <strong>Ollie</strong> |
+                    1-year-old orange baby,
+                    the youngest boy who somehow loves being held upside down. 🙃
+                </li>
+
+            </ul>
+
+            <div class="cat-summary">
+                Three boys. One little family. 🐾✨
+            </div>
+
         </div>
 
-        <img src="cats.jpg"
-             alt="Bubur, Keera and Ollie"
-             class="cat-img"
-             onclick="openImage('cats.jpg')">
+        <div class="lang-zh">
 
-        <ul class="cat-list">
+            <ul class="cat-intro-list">
 
-            <li>
-                🖤🤍 <strong>Bubur</strong> — 9–10 years old,
-                the senior cow cat of the family.
-            </li>
+                <li>
+                    🐄 <strong>Bubur</strong> |
+                    9–10 岁的奶牛猫，是家里的资深大叔。
+                </li>
 
-            <li>
-                🤎 <strong>Keera</strong> — 4 years old,
-                our tabby.
-            </li>
+                <li>
+                    🐯 <strong>Keera</strong> |
+                    4 岁虎斑猫，黏人、好奇、胆小，而且超喜欢被拍屁股。
+                </li>
 
-            <li>
-                🧡 <strong>Ollie</strong> — 1 year old,
-                the orange baby of the group.
-            </li>
+                <li>
+                    🦁 <strong>Ollie</strong> |
+                    1 岁橘猫宝宝，是家里最小的，
+                    而且莫名喜欢被倒着抱。🙃
+                </li>
 
-        </ul>
+            </ul>
 
-        <div class="cat-summary">
-            Three cats. Three personalities. One very full house. 🐾
+            <div class="cat-summary">
+                三个男孩子，一个小小的家。🐾✨
+            </div>
+
         </div>
 
     </div>
 
 </div>
 
-<!-- =========================
-     SKILLS
-========================= -->
+<!-- =========================================================
+     SKILLS & TOOLS
+========================================================= -->
 
-<div id="skills" class="tab-content">
+<div
+    id="skills"
+    class="tab-content"
+>
+
+    <div class="skills-intro">
+
+        <span class="skills-sparkle">
+            ✨
+        </span>
+
+        <span class="lang-en lang-hide">
+            Click any skill or tool to see how I use it in real work.
+        </span>
+
+        <span class="lang-zh">
+            点击任何技能或工具，看看我是怎么在实际工作中运用它的。
+        </span>
+
+    </div>
+
+    <!-- QUALITY -->
 
     <div class="skill-group">
 
         <div class="skill-title">
-            Quality Assurance & Governance
+            🛡️ Quality Assurance & Governance
         </div>
 
-        <div class="tags">
-            <span class="tag">Quality Auditing</span>
-            <span class="tag">Quality Governance</span>
-            <span class="tag">Root Cause Analysis</span>
-            <span class="tag">Calibration</span>
-            <span class="tag">Compliance Monitoring</span>
-            <span class="tag">SOP Standardization</span>
-            <span class="tag">Quality Frameworks</span>
-            <span class="tag">Risk Identification</span>
+        <div class="tag-group">
+
+            <button
+                class="tag"
+                onclick="openSkill('qa_audit')"
+            >
+                Quality Auditing
+            </button>
+
+            <button
+                class="tag"
+                onclick="openSkill('governance')"
+            >
+                Quality Governance
+            </button>
+
+            <button
+                class="tag"
+                onclick="openSkill('rca')"
+            >
+                Root Cause Analysis
+            </button>
+
+            <button
+                class="tag"
+                onclick="openSkill('calibration')"
+            >
+                Calibration
+            </button>
+
+            <button
+                class="tag"
+                onclick="openSkill('compliance')"
+            >
+                Compliance Monitoring
+            </button>
+
+            <button
+                class="tag"
+                onclick="openSkill('sop')"
+            >
+                SOP Standardization
+            </button>
+
+            <button
+                class="tag"
+                onclick="openSkill('framework')"
+            >
+                Quality Frameworks
+            </button>
+
+            <button
+                class="tag"
+                onclick="openSkill('risk')"
+            >
+                Risk Identification
+            </button>
+
         </div>
 
     </div>
 
+    <!-- OPERATIONS -->
+
     <div class="skill-group">
 
         <div class="skill-title">
-            Operations & Performance
+            🚀 Operations & Performance
         </div>
 
-        <div class="tags">
-            <span class="tag">Performance Analysis</span>
-            <span class="tag">Operational Excellence</span>
-            <span class="tag">Process Improvement</span>
-            <span class="tag">Coaching</span>
-            <span class="tag">Stakeholder Management</span>
-            <span class="tag">Cross-functional Collaboration</span>
-            <span class="tag">Continuous Improvement</span>
+        <div class="tag-group">
+
+            <button
+                class="tag"
+                onclick="openSkill('performance')"
+            >
+                Performance Analysis
+            </button>
+
+            <button
+                class="tag"
+                onclick="openSkill('operational')"
+            >
+                Operational Excellence
+            </button>
+
+            <button
+                class="tag"
+                onclick="openSkill('process')"
+            >
+                Process Improvement
+            </button>
+
+            <button
+                class="tag"
+                onclick="openSkill('coaching')"
+            >
+                Coaching
+            </button>
+
+            <button
+                class="tag"
+                onclick="openSkill('stakeholder')"
+            >
+                Stakeholder Management
+            </button>
+
+            <button
+                class="tag"
+                onclick="openSkill('collaboration')"
+            >
+                Cross-functional Collaboration
+            </button>
+
+            <button
+                class="tag"
+                onclick="openSkill('continuous')"
+            >
+                Continuous Improvement
+            </button>
+
         </div>
 
     </div>
 
+    <!-- DATA -->
+
     <div class="skill-group">
 
         <div class="skill-title">
-            Data & Business
+            📊 Data & Business
         </div>
 
-        <div class="tags">
-            <span class="tag">Data Analysis</span>
-            <span class="tag">Performance Reporting</span>
-            <span class="tag">Meta Ads</span>
-            <span class="tag">Campaign Optimization</span>
-            <span class="tag">Meta Pixel</span>
-            <span class="tag">Conversion Optimization</span>
-            <span class="tag">Account Strategy</span>
+        <div class="tag-group">
+
+            <button
+                class="tag"
+                onclick="openSkill('data_analysis')"
+            >
+                Data Analysis
+            </button>
+
+            <button
+                class="tag"
+                onclick="openSkill('reporting')"
+            >
+                Performance Reporting
+            </button>
+
+            <button
+                class="tag"
+                onclick="openSkill('meta_ads')"
+            >
+                Meta Ads
+            </button>
+
+            <button
+                class="tag"
+                onclick="openSkill('campaign')"
+            >
+                Campaign Optimization
+            </button>
+
+            <button
+                class="tag"
+                onclick="openSkill('pixel')"
+            >
+                Meta Pixel
+            </button>
+
+            <button
+                class="tag"
+                onclick="openSkill('conversion')"
+            >
+                Conversion Optimization
+            </button>
+
+            <button
+                class="tag"
+                onclick="openSkill('account')"
+            >
+                Account Strategy
+            </button>
+
         </div>
 
     </div>
 
+    <!-- TOOLS -->
+
     <div class="skill-group">
 
         <div class="skill-title">
-            Working Style
+            🧰 Tools & Platforms
         </div>
 
-        <div class="tags">
-            <span class="tag">Analytical Thinking</span>
-            <span class="tag">Problem Solving</span>
-            <span class="tag">Communication</span>
-            <span class="tag">Attention to Detail</span>
-            <span class="tag">Adaptability</span>
-            <span class="tag">Multicultural Collaboration</span>
+        <div class="tag-group">
+
+            <button
+                class="tag tool-tag"
+                onclick="openSkill('qms')"
+            >
+                🔍 Meta QMS
+            </button>
+
+            <button
+                class="tag tool-tag"
+                onclick="openSkill('zendesk')"
+            >
+                🎧 Zendesk
+            </button>
+
+            <button
+                class="tag tool-tag"
+                onclick="openSkill('ads_manager')"
+            >
+                📣 Meta Ads Manager
+            </button>
+
+            <button
+                class="tag tool-tag"
+                onclick="openSkill('tableau')"
+            >
+                📈 Tableau
+            </button>
+
+            <button
+                class="tag tool-tag"
+                onclick="openSkill('excel')"
+            >
+                📗 Microsoft Excel
+            </button>
+
+            <button
+                class="tag tool-tag"
+                onclick="openSkill('google_sheets')"
+            >
+                📊 Google Sheets
+            </button>
+
+            <button
+                class="tag tool-tag"
+                onclick="openSkill('google_workspace')"
+            >
+                🌐 Google Workspace
+            </button>
+
+            <button
+                class="tag tool-tag"
+                onclick="openSkill('powerpoint')"
+            >
+                📽️ PowerPoint
+            </button>
+
+            <button
+                class="tag tool-tag"
+                onclick="openSkill('word')"
+            >
+                📘 Microsoft Word
+            </button>
+
+            <button
+                class="tag tool-tag"
+                onclick="openSkill('canva')"
+            >
+                🎨 Canva
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- WORKING STYLE -->
+
+    <div class="skill-group">
+
+        <div class="skill-title">
+            💡 Working Style
+        </div>
+
+        <div class="tag-group">
+
+            <button
+                class="tag"
+                onclick="openSkill('analytical')"
+            >
+                Analytical Thinking
+            </button>
+
+            <button
+                class="tag"
+                onclick="openSkill('problem_solving')"
+            >
+                Problem Solving
+            </button>
+
+            <button
+                class="tag"
+                onclick="openSkill('communication')"
+            >
+                Communication
+            </button>
+
+            <button
+                class="tag"
+                onclick="openSkill('detail')"
+            >
+                Attention to Detail
+            </button>
+
+            <button
+                class="tag"
+                onclick="openSkill('adaptability')"
+            >
+                Adaptability
+            </button>
+
+            <button
+                class="tag"
+                onclick="openSkill('multicultural')"
+            >
+                Multicultural Collaboration
+            </button>
+
         </div>
 
     </div>
 
 </div>
 
-<!-- =========================
+<!-- =========================================================
      EDUCATION
-========================= -->
+========================================================= -->
 
-<div id="education" class="tab-content">
+<div
+    id="education"
+    class="tab-content"
+>
 
-    <div class="edu">
+    <div class="education-card">
 
-        <strong>
-            Diploma in Fine Arts
+        <strong class="lang-en lang-hide">
+            Diploma in Fine Arts 🎨
+        </strong>
+
+        <strong class="lang-zh">
+            纯美术文凭 🎨
         </strong>
 
         <p>
-            Malaysian Institute of Art
+            Malaysian Institute of Art, Kuala Lumpur
         </p>
 
         <p>
@@ -2200,18 +3550,22 @@ img{
 
     </div>
 
-    <div class="edu">
+    <div class="education-card">
 
         <strong class="lang-en lang-hide">
-            Languages
+            Languages 🗣️
         </strong>
 
         <strong class="lang-zh">
-            语言能力
+            语言能力 🗣️
         </strong>
 
-        <p>
+        <p class="lang-en lang-hide">
             English · Mandarin · Malay · Cantonese
+        </p>
+
+        <p class="lang-zh">
+            英文 · 中文（普通话）· 马来文 · 粤语
         </p>
 
     </div>
@@ -2220,27 +3574,27 @@ img{
 
 </section>
 
-<!-- =========================
+<!-- =========================================================
      FOOTER
-========================= -->
+========================================================= -->
 
-<section class="footer">
+<section class="footer-cta">
 
     <div class="eyebrow">
         Let's connect
     </div>
 
     <h2 class="lang-en lang-hide">
-        Quality is more than a score.
+        Quality is more than a score. ✨
     </h2>
 
     <h2 class="lang-zh">
-        质量不只是一个分数。
+        质量不只是一个分数。✨
     </h2>
 
     <p class="lang-en lang-hide">
-        Open to Regional QA, Operations Leadership and
-        Quality Governance opportunities.
+        Open to Regional QA, Operations Leadership
+        and Quality Governance opportunities.
     </p>
 
     <p class="lang-zh">
@@ -2248,1006 +3602,1324 @@ img{
         相关职业机会。
     </p>
 
-    <a href="mailto:kexin0410@gmail.com" class="cta">
+    <a
+        href="mailto:kexin0410@gmail.com"
+        class="cta-btn"
+    >
         ✉️
-        <span class="lang-en lang-hide">Get in touch</span>
-        <span class="lang-zh">联系我</span>
+        <span class="lang-en lang-hide">
+            Get in touch
+        </span>
+
+        <span class="lang-zh">
+            联系我
+        </span>
     </a>
 
 </section>
 
 </main>
 
-<!-- =========================
-     MODAL
-========================= -->
+<!-- =========================================================
+     BACK TO TOP
+========================================================= -->
 
-<div class="modal" id="modal" onclick="overlayClose(event)">
+<button
+    class="back-to-top"
+    id="backToTop"
+    onclick="window.scrollTo({top:0,behavior:'smooth'})"
+>
+    ↑
+</button>
+
+<!-- =========================================================
+     MODAL
+========================================================= -->
+
+<div
+    class="modal-overlay"
+    id="modalOverlay"
+    onclick="closeModalByOverlay(event)"
+>
 
     <div class="modal-card">
 
-        <button class="close" onclick="closeModal()">✕</button>
+        <button
+            class="modal-close"
+            onclick="closeModal()"
+        >
+            ✕
+        </button>
 
-        <h2 class="modal-title" id="modalTitle"></h2>
+        <div
+            class="modal-title"
+            id="modalTitle"
+        ></div>
 
-        <div class="modal-subtitle" id="modalSubtitle"></div>
+        <div
+            class="modal-subtitle"
+            id="modalSubtitle"
+        ></div>
 
-        <div class="modal-body" id="modalBody"></div>
+        <div
+            class="modal-body"
+            id="modalBody"
+        ></div>
 
     </div>
 
 </div>
 
-<!-- =========================
+<!-- =========================================================
      LIGHTBOX
-========================= -->
+========================================================= -->
 
-<div class="lightbox"
-     id="lightbox"
-     onclick="closeLightbox(event)">
+<div
+    class="lightbox"
+    id="lightbox"
+    onclick="closeLightboxByOverlay(event)"
+>
 
-    <button class="lightbox-close"
-            onclick="forceCloseLightbox()">
+    <button
+        class="lightbox-close"
+        onclick="closeLightbox()"
+    >
         ✕
     </button>
 
-    <img id="lightboxImage" src="" alt="Expanded image">
+    <img
+        src=""
+        alt="Expanded image"
+        id="lightboxImage"
+    >
 
 </div>
 
-<button class="top"
-        id="topButton"
-        onclick="window.scrollTo({top:0,behavior:'smooth'})">
-    ↑
-</button>
-
 <script>
 
-/* =========================
-   LANGUAGE
-========================= */
+/* =========================================================
+   CURRENT LANGUAGE
+========================================================= */
 
 let currentLanguage = "zh";
 
+/* =========================================================
+   LANGUAGE SWITCHER
+========================================================= */
+
 function toggleLanguage(){
 
-    const zh = document.querySelectorAll(".lang-zh");
-    const en = document.querySelectorAll(".lang-en");
-    const button = document.getElementById("languageButton");
+    const zhElements =
+        document.querySelectorAll(".lang-zh");
+
+    const enElements =
+        document.querySelectorAll(".lang-en");
+
+    const button =
+        document.getElementById("languageButton");
 
     if(currentLanguage === "zh"){
 
-        zh.forEach(el => el.classList.add("lang-hide"));
-        en.forEach(el => el.classList.remove("lang-hide"));
+        zhElements.forEach(element=>{
+            element.classList.add("lang-hide");
+        });
+
+        enElements.forEach(element=>{
+            element.classList.remove("lang-hide");
+        });
 
         currentLanguage = "en";
+
         button.textContent = "中文";
 
     }else{
 
-        en.forEach(el => el.classList.add("lang-hide"));
-        zh.forEach(el => el.classList.remove("lang-hide"));
+        enElements.forEach(element=>{
+            element.classList.add("lang-hide");
+        });
+
+        zhElements.forEach(element=>{
+            element.classList.remove("lang-hide");
+        });
 
         currentLanguage = "zh";
+
         button.textContent = "English";
 
     }
 }
 
-/* =========================
+/* =========================================================
    TABS
-========================= */
+========================================================= */
 
-function switchTab(id,button){
+function switchTab(tabId,button){
 
-    document.querySelectorAll(".tab-content")
-        .forEach(tab => tab.classList.remove("active"));
+    document
+        .querySelectorAll(".tab-content")
+        .forEach(tab=>{
+            tab.classList.remove("active");
+        });
 
-    document.querySelectorAll(".tab-btn")
-        .forEach(btn => btn.classList.remove("active"));
+    document
+        .querySelectorAll(".tab-btn")
+        .forEach(tabButton=>{
+            tabButton.classList.remove("active");
+        });
 
-    document.getElementById(id).classList.add("active");
+    document
+        .getElementById(tabId)
+        .classList.add("active");
 
     button.classList.add("active");
 }
 
-/* =========================
+/* =========================================================
    PROFILE EASTER EGG
-========================= */
+========================================================= */
 
-let profileTimeout;
+let profileBubbleTimeout;
 
-function profileClick(){
+function triggerProfileEasterEgg(){
 
-    const message = document.getElementById("profileMessage");
+    const bubble =
+        document.getElementById("profileBubble");
 
     const zhMessages = [
-        "嗨！👋",
+        "你好呀！👋",
         "你找到彩蛋了 ✨",
-        "谢谢你来看我的 Portfolio!",
         "QA mode: ON 🔍",
-        "猫猫批准这个 Portfolio 🐱"
+        "欢迎来到我的 Portfolio!",
+        "猫猫批准这个 Portfolio 🐱",
+        "今天也要保持 95%+ 😎"
     ];
 
     const enMessages = [
-        "Hi! 👋",
+        "Hi there! 👋",
         "You found the easter egg ✨",
-        "Thanks for visiting!",
         "QA mode: ON 🔍",
-        "The cats approve 🐱"
+        "Welcome to my portfolio!",
+        "The cats approve 🐱",
+        "95%+ energy today 😎"
     ];
 
     const messages =
         currentLanguage === "zh"
-        ? zhMessages
-        : enMessages;
+            ? zhMessages
+            : enMessages;
 
-    message.textContent =
-        messages[Math.floor(Math.random()*messages.length)];
+    bubble.textContent =
+        messages[
+            Math.floor(
+                Math.random() * messages.length
+            )
+        ];
 
-    message.classList.add("show");
+    bubble.classList.add("show");
 
-    clearTimeout(profileTimeout);
+    clearTimeout(profileBubbleTimeout);
 
-    profileTimeout = setTimeout(()=>{
-        message.classList.remove("show");
-    },1800);
+    profileBubbleTimeout =
+        setTimeout(()=>{
+            bubble.classList.remove("show");
+        },1800);
 }
 
-/* =========================
-   COUNTER ANIMATION
-========================= */
+/* =========================================================
+   KPI COUNTERS
+========================================================= */
 
 const counters =
     document.querySelectorAll(".counter");
 
 const counterObserver =
-    new IntersectionObserver(entries=>{
+    new IntersectionObserver(
+        entries=>{
 
-        entries.forEach(entry=>{
+            entries.forEach(entry=>{
 
-            if(!entry.isIntersecting) return;
-
-            const counter = entry.target;
-
-            if(counter.dataset.animated === "true")
-                return;
-
-            counter.dataset.animated = "true";
-
-            const target =
-                Number(counter.dataset.target);
-
-            const duration = 1500;
-            const start = performance.now();
-
-            function animate(now){
-
-                const progress =
-                    Math.min((now-start)/duration,1);
-
-                const eased =
-                    1-Math.pow(1-progress,3);
-
-                counter.textContent =
-                    Math.floor(target*eased);
-
-                if(progress<1){
-
-                    requestAnimationFrame(animate);
-
-                }else{
-
-                    counter.textContent=target;
-
+                if(!entry.isIntersecting){
+                    return;
                 }
-            }
 
-            requestAnimationFrame(animate);
+                const counter =
+                    entry.target;
 
-        });
+                if(
+                    counter.dataset.animated
+                    === "true"
+                ){
+                    return;
+                }
 
-    },{
-        threshold:.45
-    });
+                counter.dataset.animated =
+                    "true";
 
-counters.forEach(counter=>
-    counterObserver.observe(counter)
-);
+                const target =
+                    Number(
+                        counter.dataset.target
+                    );
 
-/* =========================
-   MODAL DATA
-========================= */
+                const duration = 1500;
 
-const metrics = {
+                const startTime =
+                    performance.now();
+
+                function animateCounter(now){
+
+                    const progress =
+                        Math.min(
+                            (now - startTime)
+                            / duration,
+                            1
+                        );
+
+                    const eased =
+                        1
+                        - Math.pow(
+                            1 - progress,
+                            3
+                        );
+
+                    counter.textContent =
+                        Math.floor(
+                            target * eased
+                        );
+
+                    if(progress < 1){
+
+                        requestAnimationFrame(
+                            animateCounter
+                        );
+
+                    }else{
+
+                        counter.textContent =
+                            target;
+
+                    }
+                }
+
+                requestAnimationFrame(
+                    animateCounter
+                );
+
+            });
+
+        },
+        {
+            threshold:.45
+        }
+    );
+
+counters.forEach(counter=>{
+    counterObserver.observe(counter);
+});
+
+/* =========================================================
+   METRIC CONTENT
+========================================================= */
+
+const metricData = {
 
     m1:{
+
         en:{
             title:"80% → 95%+",
             subtitle:"Tenured Agent QA Score Uplift",
-            body:`
-                <p>
-                    The opportunity was not simply to increase a score,
-                    but to understand why experienced agents were still
-                    repeating specific quality defects.
-                </p>
+            intro:
+                "The opportunity was not simply to increase a score. I first needed to understand why experienced agents were still repeating specific quality defects.",
 
-                <div class="detail-grid">
+            problem:
+                "Tenured agents were performing around an 80% QA baseline.",
 
-                    <div class="detail">
-                        <strong>Problem</strong>
-                        Tenured agents were performing around an 80% QA baseline.
-                    </div>
+            diagnosis:
+                "Reviewed recurring error patterns, knowledge gaps and behavior-level issues.",
 
-                    <div class="detail">
-                        <strong>Diagnosis</strong>
-                        Reviewed recurring error patterns, knowledge gaps
-                        and behavior-level issues.
-                    </div>
+            action:
+                "Used targeted 1-on-1 coaching, feedback loops, SOP reinforcement and calibration.",
 
-                    <div class="detail">
-                        <strong>Action</strong>
-                        Used targeted coaching, feedback loops,
-                        SOP reinforcement and calibration.
-                    </div>
-
-                    <div class="detail">
-                        <strong>Result</strong>
-                        Performance improved to above 95%.
-                    </div>
-
-                </div>
-
-                <div class="result-box">
-                    Result: 80% baseline → 95%+ QA performance.
-                </div>
-            `
+            result:
+                "Performance improved to above 95%."
         },
 
         zh:{
             title:"80% → 95%+",
             subtitle:"资深专员 QA 成绩提升",
-            body:`
-                <p>
-                    我的重点并不只是把分数提高，而是找出为什么经验丰富的专员
-                    仍然会重复出现特定质量问题。
-                </p>
+            intro:
+                "重点并不是单纯把分数提高，而是先找出为什么经验丰富的专员仍然会重复出现特定质量问题。",
 
-                <div class="detail-grid">
+            problem:
+                "资深专员 QA 表现约维持在 80% 基线。",
 
-                    <div class="detail">
-                        <strong>问题</strong>
-                        资深专员 QA 表现约维持在 80% 基线。
-                    </div>
+            diagnosis:
+                "分析重复错误模式、知识缺口及行为层面的根因。",
 
-                    <div class="detail">
-                        <strong>分析</strong>
-                        分析重复错误模式、知识缺口及行为层面的根因。
-                    </div>
+            action:
+                "进行针对性 1-on-1 Coaching、Feedback Loop、SOP 强化及 Calibration。",
 
-                    <div class="detail">
-                        <strong>行动</strong>
-                        进行针对性 1-on-1 Coaching、Feedback Loop、
-                        SOP 强化及 Calibration。
-                    </div>
-
-                    <div class="detail">
-                        <strong>成果</strong>
-                        QA 表现提升至 95% 以上。
-                    </div>
-
-                </div>
-
-                <div class="result-box">
-                    成果：从约 80% QA 基线提升至 95%+。
-                </div>
-            `
+            result:
+                "QA 表现提升至 95% 以上。"
         }
     },
 
     m2:{
+
         en:{
             title:"−80%",
             subtitle:"Policy Violation Red Flags",
-            body:`
-                <p>
-                    Repeated policy violations were treated as a system
-                    and knowledge-alignment issue rather than isolated mistakes.
-                </p>
+            intro:
+                "Repeated policy violations were treated as a knowledge and system-alignment issue rather than isolated mistakes.",
 
-                <div class="detail-grid">
+            problem:
+                "Recurring red flags created avoidable compliance exposure.",
 
-                    <div class="detail">
-                        <strong>Problem</strong>
-                        Recurring policy red flags created avoidable
-                        compliance exposure.
-                    </div>
+            diagnosis:
+                "Mapped recurring violations against policy and SOP interpretation gaps.",
 
-                    <div class="detail">
-                        <strong>Diagnosis</strong>
-                        Mapped recurring violations against SOP and
-                        policy interpretation gaps.
-                    </div>
+            action:
+                "Used focused refreshers, weekly quizzes and calibration discussions.",
 
-                    <div class="detail">
-                        <strong>Action</strong>
-                        Reinforced SOP knowledge using refreshers,
-                        weekly quizzes and calibration.
-                    </div>
-
-                    <div class="detail">
-                        <strong>Result</strong>
-                        Policy violation red flags reduced by 80%.
-                    </div>
-
-                </div>
-
-                <div class="result-box">
-                    Result: 80% reduction in recurring policy red flags.
-                </div>
-            `
+            result:
+                "Policy violation red flags reduced by 80%."
         },
 
         zh:{
             title:"−80%",
             subtitle:"违规政策风险降低",
-            body:`
-                <p>
-                    我没有把重复违规单纯视为个人失误，而是从知识对齐、
-                    SOP 理解及流程层面寻找原因。
-                </p>
+            intro:
+                "我没有把重复违规单纯视为个人失误，而是从知识对齐、SOP 理解及流程层面寻找原因。",
 
-                <div class="detail-grid">
+            problem:
+                "重复出现的 Policy Red Flag 增加了不必要的合规风险。",
 
-                    <div class="detail">
-                        <strong>问题</strong>
-                        重复出现的政策违规增加了不必要的合规风险。
-                    </div>
+            diagnosis:
+                "将违规类型与 SOP 及政策理解缺口进行对应分析。",
 
-                    <div class="detail">
-                        <strong>分析</strong>
-                        将违规类型与 SOP、政策理解缺口进行对应分析。
-                    </div>
+            action:
+                "通过 SOP Refresh、Weekly Quiz 及 Calibration 强化知识。",
 
-                    <div class="detail">
-                        <strong>行动</strong>
-                        通过 SOP Refresh、Weekly Quiz 及 Calibration
-                        强化团队知识。
-                    </div>
-
-                    <div class="detail">
-                        <strong>成果</strong>
-                        违规政策 Red Flag 降低 80%。
-                    </div>
-
-                </div>
-
-                <div class="result-box">
-                    成果：重复政策违规风险降低 80%。
-                </div>
-            `
+            result:
+                "违规政策 Red Flag 降低 80%。"
         }
     },
 
     m3:{
+
         en:{
             title:"90%+",
             subtitle:"Scoring Calibration Alignment",
-            body:`
-                <p>
-                    Consistent scoring matters because QA decisions need
-                    to remain defensible across reviewers and stakeholders.
-                </p>
+            intro:
+                "Strong QA governance requires different reviewers to make consistent and defensible scoring decisions.",
 
-                <div class="detail-grid">
+            problem:
+                "Different interpretations could create scoring variance.",
 
-                    <div class="detail">
-                        <strong>Problem</strong>
-                        Different interpretations could create scoring variance.
-                    </div>
+            diagnosis:
+                "Reviewed disagreement patterns and ambiguous scoring criteria.",
 
-                    <div class="detail">
-                        <strong>Diagnosis</strong>
-                        Reviewed disagreement patterns and ambiguous rubric areas.
-                    </div>
+            action:
+                "Facilitated calibration sessions and clarified decision rules with examples.",
 
-                    <div class="detail">
-                        <strong>Action</strong>
-                        Facilitated calibration, documented decision standards
-                        and aligned examples.
-                    </div>
-
-                    <div class="detail">
-                        <strong>Result</strong>
-                        Maintained 90%+ scoring alignment.
-                    </div>
-
-                </div>
-
-                <div class="result-box">
-                    Result: 90%+ calibration alignment.
-                </div>
-            `
+            result:
+                "Maintained 90%+ scoring alignment."
         },
 
         zh:{
             title:"90%+",
             subtitle:"QA 团队评分标定一致性",
-            body:`
-                <p>
-                    QA 评分不仅需要准确，也必须确保不同审核人员及相关团队
-                    对评分标准有一致理解。
-                </p>
+            intro:
+                "QA 评分不仅需要准确，也必须确保不同审核人员及相关团队对评分标准有一致理解。",
 
-                <div class="detail-grid">
+            problem:
+                "不同人员对评分标准的理解可能产生评分差异。",
 
-                    <div class="detail">
-                        <strong>问题</strong>
-                        不同人员对评分标准的理解可能产生评分差异。
-                    </div>
+            diagnosis:
+                "分析评分分歧模式及容易产生歧义的评分标准。",
 
-                    <div class="detail">
-                        <strong>分析</strong>
-                        分析评分分歧模式及 Rubric 中容易产生歧义的部分。
-                    </div>
+            action:
+                "主持 Calibration，并通过案例明确判断逻辑。",
 
-                    <div class="detail">
-                        <strong>行动</strong>
-                        主导 Calibration、明确判断标准并整理评分案例。
-                    </div>
-
-                    <div class="detail">
-                        <strong>成果</strong>
-                        评分一致性维持在 90%+。
-                    </div>
-
-                </div>
-
-                <div class="result-box">
-                    成果：Calibration Alignment 达到 90%+。
-                </div>
-            `
+            result:
+                "评分一致性维持在 90%+。"
         }
     },
 
     m4:{
+
         en:{
             title:"$612K+",
             subtitle:"Q4 Revenue Generated",
-            body:`
-                <p>
-                    Before moving deeper into QA, my commercial experience
-                    gave me direct exposure to advertiser growth and
-                    performance optimization.
-                </p>
+            intro:
+                "My commercial experience gave me direct exposure to advertiser growth, campaign strategy and conversion optimization.",
 
-                <div class="detail-grid">
+            problem:
+                "Advertiser accounts had opportunities across campaign structure, performance and conversion tracking.",
 
-                    <div class="detail">
-                        <strong>Scope</strong>
-                        Managed and supported 150+ advertiser accounts.
-                    </div>
+            diagnosis:
+                "Reviewed campaign strategy, Meta Pixel implementation and performance signals across 150+ accounts.",
 
-                    <div class="detail">
-                        <strong>Analysis</strong>
-                        Reviewed campaign structure, performance,
-                        Pixel and conversion opportunities.
-                    </div>
+            action:
+                "Optimized campaign structure, account strategy and performance opportunities.",
 
-                    <div class="detail">
-                        <strong>Action</strong>
-                        Provided campaign and account optimization strategies.
-                    </div>
-
-                    <div class="detail">
-                        <strong>Result</strong>
-                        Generated USD 612,458 Q4 revenue.
-                    </div>
-
-                </div>
-
-                <div class="result-box">
-                    Result: $612K+ Q4 revenue and 185.71% conversion increase.
-                </div>
-            `
+            result:
+                "Generated USD 612,458 Q4 revenue and achieved 185.71% conversion growth."
         },
 
         zh:{
             title:"$612K+",
             subtitle:"Q4 单季度创造广告收益",
-            body:`
-                <p>
-                    在深入 QA 领域之前，我的商业及广告优化经验让我能够直接理解
-                    客户增长、广告表现及转化优化。
-                </p>
+            intro:
+                "我的广告业务经验让我能够直接理解客户增长、Campaign Strategy 及 Conversion Optimization。",
 
-                <div class="detail-grid">
+            problem:
+                "广告账户在 Campaign Structure、表现及 Conversion Tracking 方面存在增长机会。",
 
-                    <div class="detail">
-                        <strong>范围</strong>
-                        管理及支持 150+ 广告主账户。
-                    </div>
+            diagnosis:
+                "分析 150+ 广告账户的 Campaign、Meta Pixel 及表现数据。",
 
-                    <div class="detail">
-                        <strong>分析</strong>
-                        分析 Campaign Structure、表现、Pixel
-                        及转化机会。
-                    </div>
+            action:
+                "优化广告结构、账户策略及表现机会。",
 
-                    <div class="detail">
-                        <strong>行动</strong>
-                        提供广告及账户层面的优化策略。
-                    </div>
-
-                    <div class="detail">
-                        <strong>成果</strong>
-                        Q4 创造 USD 612,458 收益。
-                    </div>
-
-                </div>
-
-                <div class="result-box">
-                    成果：$612K+ Q4 收益，并实现 185.71% 转化增长。
-                </div>
-            `
+            result:
+                "Q4 创造 USD 612,458 收益，并实现 185.71% 转化增长。"
         }
     }
+
 };
 
-/* =========================
-   CASE STUDIES
-========================= */
+/* =========================================================
+   CASE STUDY CONTENT
+========================================================= */
 
-const cases = {
+const caseStudyData = {
 
     case1:{
+
         en:{
             title:"Quality Improvement",
             subtitle:"How I moved QA performance from 80% to 95%+",
-            body:`
-                <div class="detail-grid">
+            intro:
+                "Instead of treating low QA performance as a generic coaching problem, I broke it down into specific recurring behaviors.",
 
-                    <div class="detail">
-                        <strong>01 · Problem</strong>
-                        Tenured agents were still showing recurring quality
-                        defects despite their experience.
-                    </div>
+            problem:
+                "Experienced agents were still repeating several quality defects.",
 
-                    <div class="detail">
-                        <strong>02 · Diagnosis</strong>
-                        I broke the defects down by recurring pattern,
-                        knowledge gap and behavior-level root cause.
-                    </div>
+            diagnosis:
+                "I categorized defects by recurring pattern, knowledge gap and behavior-level root cause.",
 
-                    <div class="detail">
-                        <strong>03 · Action</strong>
-                        Instead of generic coaching, I used targeted
-                        1-on-1 feedback, SOP reinforcement and calibration.
-                    </div>
+            action:
+                "Used targeted 1-on-1 feedback, SOP reinforcement and calibration rather than generic coaching.",
 
-                    <div class="detail">
-                        <strong>04 · Result</strong>
-                        The approach helped move QA performance from
-                        approximately 80% to above 95%.
-                    </div>
-
-                </div>
-
-                <div class="result-box">
-                    The key was not “more coaching” — it was more precise coaching.
-                </div>
-            `
+            result:
+                "QA performance moved from approximately 80% to above 95%."
         },
 
         zh:{
             title:"质量提升",
             subtitle:"我是如何把 QA 表现从 80% 提升至 95%+",
-            body:`
-                <div class="detail-grid">
+            intro:
+                "我没有把低 QA 表现简单归类为「需要更多 Coaching」，而是把问题进一步拆解。",
 
-                    <div class="detail">
-                        <strong>01 · 问题</strong>
-                        即使是资深专员，仍然会重复出现部分质量问题。
-                    </div>
+            problem:
+                "即使是资深专员，仍然会重复出现部分质量问题。",
 
-                    <div class="detail">
-                        <strong>02 · 分析</strong>
-                        我将问题拆分成重复错误模式、知识缺口及行为层面的根因。
-                    </div>
+            diagnosis:
+                "将问题拆分成重复错误模式、知识缺口及行为层面的根因。",
 
-                    <div class="detail">
-                        <strong>03 · 行动</strong>
-                        不使用泛泛而谈的 Coaching，而是针对具体问题进行
-                        1-on-1 Feedback、SOP 强化及 Calibration。
-                    </div>
+            action:
+                "针对具体问题进行 1-on-1 Feedback、SOP 强化及 Calibration，而不是泛泛而谈。",
 
-                    <div class="detail">
-                        <strong>04 · 成果</strong>
-                        QA 表现从约 80% 提升至 95% 以上。
-                    </div>
-
-                </div>
-
-                <div class="result-box">
-                    关键不是「做更多 Coaching」，而是让 Coaching 更精准。
-                </div>
-            `
+            result:
+                "QA 表现从约 80% 提升至 95% 以上。"
         }
     },
 
     case2:{
+
         en:{
             title:"Compliance Risk Reduction",
             subtitle:"How I reduced recurring policy red flags by 80%",
-            body:`
-                <div class="detail-grid">
+            intro:
+                "The goal was to move from identifying policy violations after they happened to preventing them from happening again.",
 
-                    <div class="detail">
-                        <strong>01 · Problem</strong>
-                        Policy updates and interpretation gaps were creating
-                        repeated compliance red flags.
-                    </div>
+            problem:
+                "Policy changes and interpretation gaps caused recurring compliance issues.",
 
-                    <div class="detail">
-                        <strong>02 · Diagnosis</strong>
-                        I categorized the recurring violations and linked
-                        them back to SOP and policy knowledge gaps.
-                    </div>
+            diagnosis:
+                "I categorized recurring violations and mapped them back to specific policy and SOP knowledge gaps.",
 
-                    <div class="detail">
-                        <strong>03 · Action</strong>
-                        Introduced focused SOP refreshers, weekly quizzes
-                        and calibration discussions.
-                    </div>
+            action:
+                "Introduced focused SOP refreshers, weekly quizzes and calibration discussions.",
 
-                    <div class="detail">
-                        <strong>04 · Result</strong>
-                        Recurring policy violation red flags fell by 80%.
-                    </div>
-
-                </div>
-
-                <div class="result-box">
-                    Compliance improved by turning audit findings into
-                    preventive learning actions.
-                </div>
-            `
+            result:
+                "Recurring policy violation red flags fell by 80%."
         },
 
         zh:{
             title:"合规风险改善",
             subtitle:"我是如何将重复政策违规风险降低 80%",
-            body:`
-                <div class="detail-grid">
+            intro:
+                "目标不只是审核后发现违规，而是让同类型违规不要再次发生。",
 
-                    <div class="detail">
-                        <strong>01 · 问题</strong>
-                        政策更新及理解差异导致部分违规问题重复发生。
-                    </div>
+            problem:
+                "政策更新及理解差异导致部分合规问题重复发生。",
 
-                    <div class="detail">
-                        <strong>02 · 分析</strong>
-                        我将重复违规分类，再对应至 SOP 与政策知识缺口。
-                    </div>
+            diagnosis:
+                "将重复违规分类，再对应至具体的政策及 SOP 知识缺口。",
 
-                    <div class="detail">
-                        <strong>03 · 行动</strong>
-                        推动针对性 SOP Refresh、Weekly Quiz
-                        以及 Calibration Discussion。
-                    </div>
+            action:
+                "推动针对性 SOP Refresh、Weekly Quiz 及 Calibration Discussion。",
 
-                    <div class="detail">
-                        <strong>04 · 成果</strong>
-                        重复 Policy Red Flag 降低 80%。
-                    </div>
-
-                </div>
-
-                <div class="result-box">
-                    我把审核结果从「发现问题」转化成「预防问题再次发生」。
-                </div>
-            `
+            result:
+                "重复 Policy Red Flag 降低 80%。"
         }
     },
 
     case3:{
+
         en:{
             title:"Calibration Alignment",
             subtitle:"How I built 90%+ scoring consistency",
-            body:`
-                <div class="detail-grid">
+            intro:
+                "Consistent QA decisions require more than accurate individual reviewers. The team needs shared interpretation.",
 
-                    <div class="detail">
-                        <strong>01 · Gap</strong>
-                        Reviewers could interpret the same scoring criteria
-                        differently.
-                    </div>
+            problem:
+                "Reviewers could interpret the same scoring criteria differently.",
 
-                    <div class="detail">
-                        <strong>02 · Review</strong>
-                        I reviewed disagreement patterns and identified
-                        ambiguous decision points.
-                    </div>
+            diagnosis:
+                "Reviewed disagreement patterns and identified ambiguous decision points.",
 
-                    <div class="detail">
-                        <strong>03 · Align</strong>
-                        Calibration sessions were used to clarify standards,
-                        examples and decision logic.
-                    </div>
+            action:
+                "Used calibration sessions to clarify standards, examples and decision logic.",
 
-                    <div class="detail">
-                        <strong>04 · Measure</strong>
-                        Scoring alignment was maintained at 90%+.
-                    </div>
-
-                </div>
-
-                <div class="result-box">
-                    Strong QA governance depends on consistent interpretation,
-                    not just individual accuracy.
-                </div>
-            `
+            result:
+                "Scoring alignment was maintained at 90%+."
         },
 
         zh:{
             title:"评分一致性",
             subtitle:"我是如何建立 90%+ Calibration Alignment",
-            body:`
-                <div class="detail-grid">
+            intro:
+                "好的 QA Governance 不只是个人审核准确，更重要的是整个团队对标准有一致理解。",
 
-                    <div class="detail">
-                        <strong>01 · 差异</strong>
-                        不同审核人员可能对相同评分标准有不同理解。
-                    </div>
+            problem:
+                "不同审核人员可能对相同评分标准有不同理解。",
 
-                    <div class="detail">
-                        <strong>02 · Review</strong>
-                        我分析评分分歧，找出容易产生歧义的判断点。
-                    </div>
+            diagnosis:
+                "分析评分分歧，并找出容易产生歧义的判断点。",
 
-                    <div class="detail">
-                        <strong>03 · 对齐</strong>
-                        通过 Calibration 明确标准、案例及判断逻辑。
-                    </div>
+            action:
+                "通过 Calibration 明确标准、案例及判断逻辑。",
 
-                    <div class="detail">
-                        <strong>04 · 衡量</strong>
-                        最终维持 90%+ 的评分一致性。
-                    </div>
-
-                </div>
-
-                <div class="result-box">
-                    好的 QA Governance 不只是个人评分准确，
-                    更重要的是整个团队对标准有一致理解。
-                </div>
-            `
+            result:
+                "最终维持 90%+ 的评分一致性。"
         }
     },
 
     case4:{
+
         en:{
             title:"Commercial Growth",
             subtitle:"How optimization contributed to $612K+ Q4 revenue",
-            body:`
-                <div class="detail-grid">
+            intro:
+                "Campaign optimization started with identifying the right opportunities rather than simply increasing spend.",
 
-                    <div class="detail">
-                        <strong>01 · Audit</strong>
-                        Reviewed advertiser accounts for campaign,
-                        tracking and conversion opportunities.
-                    </div>
+            problem:
+                "Advertiser accounts had growth opportunities across campaign strategy and tracking.",
 
-                    <div class="detail">
-                        <strong>02 · Strategy</strong>
-                        Prioritized improvements based on performance data
-                        and advertiser objectives.
-                    </div>
+            diagnosis:
+                "Reviewed campaign structure, performance data, Meta Pixel and conversion signals.",
 
-                    <div class="detail">
-                        <strong>03 · Optimize</strong>
-                        Improved campaign structure, targeting,
-                        Pixel usage and account strategy.
-                    </div>
+            action:
+                "Prioritized optimization actions based on advertiser goals and performance evidence.",
 
-                    <div class="detail">
-                        <strong>04 · Scale</strong>
-                        Supported 150+ accounts and generated
-                        USD 612,458 Q4 revenue.
-                    </div>
-
-                </div>
-
-                <div class="result-box">
-                    Commercial impact: $612K+ Q4 revenue with
-                    185.71% conversion growth.
-                </div>
-            `
+            result:
+                "Supported 150+ accounts and generated USD 612,458 Q4 revenue."
         },
 
         zh:{
             title:"商业增长",
             subtitle:"我是如何通过优化创造 $612K+ Q4 收益",
-            body:`
-                <div class="detail-grid">
+            intro:
+                "广告优化并不是单纯增加预算，而是先判断真正值得优化的机会。",
 
-                    <div class="detail">
-                        <strong>01 · Audit</strong>
-                        检查广告账户中的 Campaign、Tracking
-                        及 Conversion 优化机会。
-                    </div>
+            problem:
+                "广告主账户在 Campaign Strategy、Tracking 及 Conversion 方面存在增长空间。",
 
-                    <div class="detail">
-                        <strong>02 · Strategy</strong>
-                        根据表现数据及广告主目标确定优化优先级。
-                    </div>
+            diagnosis:
+                "分析 Campaign Structure、表现数据、Meta Pixel 及 Conversion Signals。",
 
-                    <div class="detail">
-                        <strong>03 · Optimize</strong>
-                        优化 Campaign Structure、Targeting、
-                        Pixel 及账户策略。
-                    </div>
+            action:
+                "根据广告主目标及表现数据确定优化优先级。",
 
-                    <div class="detail">
-                        <strong>04 · Scale</strong>
-                        支持 150+ 广告主账户，并在 Q4 创造
-                        USD 612,458 收益。
-                    </div>
-
-                </div>
-
-                <div class="result-box">
-                    商业成果：$612K+ Q4 收益，并实现 185.71% 转化增长。
-                </div>
-            `
+            result:
+                "支持 150+ 广告主账户，并在 Q4 创造 USD 612,458 收益。"
         }
     }
+
 };
 
-/* =========================
-   OPEN MODALS
-========================= */
+/* =========================================================
+   SKILL CONTENT
+========================================================= */
 
-function renderModal(data){
+const skillData = {
 
-    const content =
-        currentLanguage === "zh"
-        ? data.zh
-        : data.en;
+    qa_audit:{
+        title:"Quality Auditing",
+        en:
+            "Conduct structured quality reviews, identify recurring defects and translate audit findings into actionable improvement opportunities.",
+        zh:
+            "进行结构化质量审核、识别重复问题，并将审核结果转化成可执行的改善行动。"
+    },
 
-    document.getElementById("modalTitle")
-        .textContent = content.title;
+    governance:{
+        title:"Quality Governance",
+        en:
+            "Build consistent quality standards across reviewers, operational teams and leadership stakeholders.",
+        zh:
+            "建立一致的质量标准，确保审核人员、运营团队及管理层对质量要求有统一理解。"
+    },
 
-    document.getElementById("modalSubtitle")
-        .textContent = content.subtitle;
+    rca:{
+        title:"Root Cause Analysis",
+        en:
+            "Break recurring defects into process, knowledge and behavior-level root causes instead of treating every failure as an isolated case.",
+        zh:
+            "将重复问题拆解成流程、知识及行为层面的根因，而不是把每次失误视为独立事件。"
+    },
 
-    document.getElementById("modalBody")
-        .innerHTML = content.body;
+    calibration:{
+        title:"Calibration",
+        en:
+            "Facilitate scoring alignment and clarify ambiguous decision points to improve QA consistency.",
+        zh:
+            "通过评分对齐及明确容易产生歧义的判断点，提高 QA 团队评分一致性。"
+    },
 
-    document.getElementById("modal")
+    compliance:{
+        title:"Compliance Monitoring",
+        en:
+            "Monitor recurring compliance risks and identify patterns that require preventive action.",
+        zh:
+            "监控重复出现的合规风险，并识别需要采取预防措施的问题模式。"
+    },
+
+    sop:{
+        title:"SOP Standardization",
+        en:
+            "Translate policy and operational requirements into clearer and more repeatable working standards.",
+        zh:
+            "将政策及运营要求整理成更清晰、更容易重复执行的工作标准。"
+    },
+
+    framework:{
+        title:"Quality Frameworks",
+        en:
+            "Use structured quality criteria to make evaluation more consistent, measurable and defensible.",
+        zh:
+            "通过结构化质量标准，让评估更加一致、可量化，并具备清晰判断依据。"
+    },
+
+    risk:{
+        title:"Risk Identification",
+        en:
+            "Spot emerging quality and compliance risks before they become larger operational issues.",
+        zh:
+            "在质量及合规问题扩大之前识别潜在风险，并推动预防性改善。"
+    },
+
+    performance:{
+        title:"Performance Analysis",
+        en:
+            "Use quality and operational data to identify trends, performance gaps and improvement priorities.",
+        zh:
+            "通过质量及运营数据识别趋势、表现差距及改善优先级。"
+    },
+
+    operational:{
+        title:"Operational Excellence",
+        en:
+            "Connect QA findings with operational improvements instead of treating quality as a standalone score.",
+        zh:
+            "将 QA 发现与运营改善结合，而不是把质量仅仅视为一个分数。"
+    },
+
+    process:{
+        title:"Process Improvement",
+        en:
+            "Identify inefficient or inconsistent workflows and turn findings into practical process improvements.",
+        zh:
+            "识别低效或不一致的工作流程，并将发现转化成实际可执行的流程改善。"
+    },
+
+    coaching:{
+        title:"Performance Coaching",
+        en:
+            "Deliver targeted coaching based on specific performance patterns and root causes.",
+        zh:
+            "根据具体表现模式及根因进行针对性 Coaching，而不是使用泛泛的反馈。"
+    },
+
+    stakeholder:{
+        title:"Stakeholder Management",
+        en:
+            "Communicate quality findings and improvement priorities clearly across QA, operations and leadership.",
+        zh:
+            "在 QA、运营及管理团队之间清楚沟通质量发现及改善优先级。"
+    },
+
+    collaboration:{
+        title:"Cross-functional Collaboration",
+        en:
+            "Work across QA, operations, training and leadership teams to solve issues that cannot be fixed by one function alone.",
+        zh:
+            "与 QA、运营、培训及管理团队跨部门合作，解决无法由单一团队独立处理的问题。"
+    },
+
+    continuous:{
+        title:"Continuous Improvement",
+        en:
+            "Turn audit findings, feedback and performance data into recurring improvement loops.",
+        zh:
+            "将审核结果、反馈及绩效数据转化成持续改善循环。"
+    },
+
+    data_analysis:{
+        title:"Data Analysis",
+        en:
+            "Use data to move conversations from assumptions toward measurable patterns and evidence.",
+        zh:
+            "通过数据将讨论从主观判断转向可量化的趋势及证据。"
+    },
+
+    reporting:{
+        title:"Performance Reporting",
+        en:
+            "Translate operational and quality data into clear reporting that highlights risks, trends and actions.",
+        zh:
+            "将运营及质量数据整理成清晰报告，突出风险、趋势及下一步行动。"
+    },
+
+    meta_ads:{
+        title:"Meta Ads",
+        en:
+            "Hands-on experience supporting advertisers with campaign strategy, optimization and account growth.",
+        zh:
+            "具备实际 Meta Ads 广告经验，为广告主提供 Campaign Strategy、优化及账户增长建议。"
+    },
+
+    campaign:{
+        title:"Campaign Optimization",
+        en:
+            "Analyze campaign structure and performance to identify practical optimization opportunities.",
+        zh:
+            "分析广告结构及表现，找出可执行的 Campaign Optimization 机会。"
+    },
+
+    pixel:{
+        title:"Meta Pixel",
+        en:
+            "Support tracking and conversion optimization through Meta Pixel implementation and troubleshooting.",
+        zh:
+            "通过 Meta Pixel 设置及问题排查支持 Tracking 与 Conversion Optimization。"
+    },
+
+    conversion:{
+        title:"Conversion Optimization",
+        en:
+            "Use performance signals to improve conversion outcomes and advertiser efficiency.",
+        zh:
+            "通过表现数据改善转化结果及广告主效率。"
+    },
+
+    account:{
+        title:"Account Strategy",
+        en:
+            "Balance advertiser objectives, performance data and optimization opportunities to build practical account strategies.",
+        zh:
+            "结合广告主目标、表现数据及优化机会，制定实际可执行的账户策略。"
+    },
+
+    qms:{
+        title:"Meta QMS",
+        en:
+            "Used for quality audits, compliance tagging and structured performance review across Meta operations.",
+        zh:
+            "用于 Meta 项目的质量审核、合规标签及结构化绩效 Review。"
+    },
+
+    zendesk:{
+        title:"Zendesk",
+        en:
+            "Used in customer service operations for case review, ticket analysis, SLA tracking and service quality workflows.",
+        zh:
+            "用于客户服务运营中的工单 Review、Ticket Analysis、SLA 追踪及服务质量流程。"
+    },
+
+    ads_manager:{
+        title:"Meta Ads Manager",
+        en:
+            "Hands-on platform experience managing and optimizing advertiser campaign performance.",
+        zh:
+            "具备 Meta Ads Manager 实际操作经验，用于管理及优化广告表现。"
+    },
+
+    tableau:{
+        title:"Tableau",
+        en:
+            "Used to review performance trends and support data-driven quality and operational analysis.",
+        zh:
+            "用于查看绩效趋势，并支持数据驱动的质量及运营分析。"
+    },
+
+    excel:{
+        title:"Microsoft Excel",
+        en:
+            "Used for performance tracking, quality analysis, reporting, data organization and operational review.",
+        zh:
+            "用于绩效追踪、质量分析、报告、数据整理及运营 Review。"
+    },
+
+    google_sheets:{
+        title:"Google Sheets",
+        en:
+            "Used for collaborative trackers, QA reporting, shared operational data and performance visibility.",
+        zh:
+            "用于协作式 Tracker、QA 报告、运营数据及团队共享绩效追踪。"
+    },
+
+    google_workspace:{
+        title:"Google Workspace",
+        en:
+            "Used across documentation, collaboration, reporting and cross-functional communication.",
+        zh:
+            "用于文件管理、团队协作、报告及跨部门沟通。"
+    },
+
+    powerpoint:{
+        title:"Microsoft PowerPoint",
+        en:
+            "Used to structure findings, performance updates and stakeholder-facing presentations.",
+        zh:
+            "用于整理审核发现、绩效更新及面向 Stakeholder 的汇报内容。"
+    },
+
+    word:{
+        title:"Microsoft Word",
+        en:
+            "Used for structured documentation, SOP content and professional reporting.",
+        zh:
+            "用于结构化文件、SOP 内容及专业报告。"
+    },
+
+    canva:{
+        title:"Canva",
+        en:
+            "Used for visual communication and presentation design, supported by my Fine Arts background.",
+        zh:
+            "结合 Fine Arts 背景，用于视觉沟通及 Presentation Design。"
+    },
+
+    analytical:{
+        title:"Analytical Thinking",
+        en:
+            "I prefer breaking complex problems into smaller patterns before deciding what action to take.",
+        zh:
+            "面对复杂问题时，我习惯先拆解问题及模式，再决定最合适的行动。"
+    },
+
+    problem_solving:{
+        title:"Problem Solving",
+        en:
+            "I focus on solving the underlying issue rather than only correcting the visible symptom.",
+        zh:
+            "我更重视解决问题背后的根因，而不只是修正表面现象。"
+    },
+
+    communication:{
+        title:"Communication",
+        en:
+            "I translate detailed quality findings into clear language that different stakeholders can act on.",
+        zh:
+            "我会把复杂的质量发现转化成不同 Stakeholder 都能理解并执行的清晰信息。"
+    },
+
+    detail:{
+        title:"Attention to Detail",
+        en:
+            "Quality work requires noticing small inconsistencies that can create larger operational or compliance risks.",
+        zh:
+            "质量工作需要发现细小的不一致，因为这些细节可能进一步形成运营或合规风险。"
+    },
+
+    adaptability:{
+        title:"Adaptability",
+        en:
+            "Comfortable working across changing policies, markets, priorities and operational requirements.",
+        zh:
+            "能够适应不断变化的政策、市场、工作优先级及运营要求。"
+    },
+
+    multicultural:{
+        title:"Multicultural Collaboration",
+        en:
+            "Experienced working across multiple markets and communicating with people from different operational and cultural contexts.",
+        zh:
+            "具备跨市场工作经验，能够与不同运营背景及文化背景的团队合作。"
+    }
+
+};
+
+/* =========================================================
+   MODAL HELPERS
+========================================================= */
+
+function openModalContent(
+    title,
+    subtitle,
+    body
+){
+
+    document
+        .getElementById("modalTitle")
+        .textContent = title;
+
+    document
+        .getElementById("modalSubtitle")
+        .textContent = subtitle;
+
+    document
+        .getElementById("modalBody")
+        .innerHTML = body;
+
+    document
+        .getElementById("modalOverlay")
         .classList.add("active");
 
-    document.body.style.overflow="hidden";
+    document.body.style.overflow =
+        "hidden";
 }
 
-function openMetric(id){
-    renderModal(metrics[id]);
+function buildCaseBody(data){
+
+    return `
+        <p>${data.intro}</p>
+
+        <div class="detail-grid">
+
+            <div class="detail-item">
+                <span class="detail-label">
+                    ${
+                        currentLanguage === "zh"
+                        ? "问题"
+                        : "Problem"
+                    }
+                </span>
+
+                <div class="detail-text">
+                    ${data.problem}
+                </div>
+            </div>
+
+            <div class="detail-item">
+                <span class="detail-label">
+                    ${
+                        currentLanguage === "zh"
+                        ? "分析"
+                        : "Diagnosis"
+                    }
+                </span>
+
+                <div class="detail-text">
+                    ${data.diagnosis}
+                </div>
+            </div>
+
+            <div class="detail-item">
+                <span class="detail-label">
+                    ${
+                        currentLanguage === "zh"
+                        ? "行动"
+                        : "Action"
+                    }
+                </span>
+
+                <div class="detail-text">
+                    ${data.action}
+                </div>
+            </div>
+
+            <div class="detail-item">
+                <span class="detail-label">
+                    ${
+                        currentLanguage === "zh"
+                        ? "成果"
+                        : "Result"
+                    }
+                </span>
+
+                <div class="detail-text">
+                    ${data.result}
+                </div>
+            </div>
+
+        </div>
+
+        <div class="result-box">
+            ✨ ${data.result}
+        </div>
+    `;
 }
 
-function openCase(id){
-    renderModal(cases[id]);
+/* =========================================================
+   OPEN METRIC
+========================================================= */
+
+function openMetric(key){
+
+    const set =
+        metricData[key];
+
+    const data =
+        currentLanguage === "zh"
+            ? set.zh
+            : set.en;
+
+    openModalContent(
+        data.title,
+        data.subtitle,
+        buildCaseBody(data)
+    );
 }
+
+/* =========================================================
+   OPEN CASE STUDY
+========================================================= */
+
+function openCaseStudy(key){
+
+    const set =
+        caseStudyData[key];
+
+    const data =
+        currentLanguage === "zh"
+            ? set.zh
+            : set.en;
+
+    openModalContent(
+        data.title,
+        data.subtitle,
+        buildCaseBody(data)
+    );
+}
+
+/* =========================================================
+   OPEN SKILL
+========================================================= */
+
+function openSkill(key){
+
+    const skill =
+        skillData[key];
+
+    if(!skill){
+        return;
+    }
+
+    const description =
+        currentLanguage === "zh"
+            ? skill.zh
+            : skill.en;
+
+    const subtitle =
+        currentLanguage === "zh"
+            ? "这个技能，我不是只写在 Resume 上。"
+            : "More than a keyword on my résumé.";
+
+    const bottomMessage =
+        currentLanguage === "zh"
+            ? "✨ 这些能力都来自实际 QA、运营、广告及跨市场工作经验。"
+            : "✨ These skills come from hands-on QA, operations, advertising and cross-market experience.";
+
+    openModalContent(
+        "⚡ " + skill.title,
+        subtitle,
+        `
+            <p>${description}</p>
+
+            <div class="result-box">
+                ${bottomMessage}
+            </div>
+        `
+    );
+}
+
+/* =========================================================
+   CLOSE MODAL
+========================================================= */
 
 function closeModal(){
 
-    document.getElementById("modal")
+    document
+        .getElementById("modalOverlay")
         .classList.remove("active");
 
-    document.body.style.overflow="";
+    document.body.style.overflow =
+        "";
 }
 
-function overlayClose(event){
+function closeModalByOverlay(event){
 
-    if(event.target.id==="modal"){
+    if(
+        event.target.id
+        === "modalOverlay"
+    ){
         closeModal();
     }
 }
 
-/* =========================
-   IMAGE LIGHTBOX
-========================= */
+/* =========================================================
+   LIGHTBOX
+========================================================= */
 
 function openImage(src){
 
-    const lightbox =
-        document.getElementById("lightbox");
-
     const image =
-        document.getElementById("lightboxImage");
+        document.getElementById(
+            "lightboxImage"
+        );
 
-    image.src=src;
+    image.src = src;
 
-    lightbox.classList.add("active");
+    document
+        .getElementById("lightbox")
+        .classList.add("active");
 
-    document.body.style.overflow="hidden";
+    document.body.style.overflow =
+        "hidden";
 }
 
-function closeLightbox(event){
+function closeLightbox(){
 
-    if(event.target.id==="lightbox"){
-        forceCloseLightbox();
-    }
-}
-
-function forceCloseLightbox(){
-
-    document.getElementById("lightbox")
+    document
+        .getElementById("lightbox")
         .classList.remove("active");
 
-    document.body.style.overflow="";
+    document.body.style.overflow =
+        "";
 }
 
-/* =========================
-   ESCAPE
-========================= */
+function closeLightboxByOverlay(event){
 
-document.addEventListener("keydown",event=>{
-
-    if(event.key==="Escape"){
-
-        closeModal();
-        forceCloseLightbox();
-
+    if(
+        event.target.id
+        === "lightbox"
+    ){
+        closeLightbox();
     }
-});
+}
 
-/* =========================
-   BACK TO TOP
-========================= */
+/* =========================================================
+   ESC KEY
+========================================================= */
 
-const topButton =
-    document.getElementById("topButton");
+document.addEventListener(
+    "keydown",
+    event=>{
 
-window.addEventListener("scroll",()=>{
+        if(event.key === "Escape"){
 
-    if(window.scrollY>600){
-
-        topButton.classList.add("show");
-
-    }else{
-
-        topButton.classList.remove("show");
-
-    }
-
-});
-
-/* =========================
-   HASH SUPPORT
-   https://.../#impact
-========================= */
-
-window.addEventListener("load",()=>{
-
-    if(window.location.hash){
-
-        const target =
-            document.querySelector(window.location.hash);
-
-        if(target){
-
-            setTimeout(()=>{
-
-                target.scrollIntoView({
-                    behavior:"smooth",
-                    block:"start"
-                });
-
-            },150);
+            closeModal();
+            closeLightbox();
 
         }
     }
-});
+);
+
+/* =========================================================
+   BACK TO TOP
+========================================================= */
+
+const backToTop =
+    document.getElementById(
+        "backToTop"
+    );
+
+window.addEventListener(
+    "scroll",
+    ()=>{
+
+        if(window.scrollY > 500){
+
+            backToTop.classList.add(
+                "show"
+            );
+
+        }else{
+
+            backToTop.classList.remove(
+                "show"
+            );
+
+        }
+    }
+);
+
+/* =========================================================
+   HASH SUPPORT
+   /portfolio/#impact
+========================================================= */
+
+window.addEventListener(
+    "load",
+    ()=>{
+
+        if(window.location.hash){
+
+            const target =
+                document.querySelector(
+                    window.location.hash
+                );
+
+            if(target){
+
+                setTimeout(
+                    ()=>{
+
+                        target.scrollIntoView({
+                            behavior:"smooth",
+                            block:"start"
+                        });
+
+                    },
+                    150
+                );
+
+            }
+        }
+    }
+);
+
+/* =========================================================
+   DEFAULT LANGUAGE
+========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    ()=>{
+
+        document
+            .querySelectorAll(".lang-en")
+            .forEach(element=>{
+                element.classList.add(
+                    "lang-hide"
+                );
+            });
+
+    }
+);
 
 </script>
 
